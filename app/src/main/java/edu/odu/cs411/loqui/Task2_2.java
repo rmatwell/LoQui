@@ -1,4 +1,4 @@
-package edu.odu.cs411.loqui
+package edu.odu.cs411.loqui;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -10,9 +10,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
-
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableStringBuilder;
 import android.text.style.RelativeSizeSpan;
@@ -155,7 +153,6 @@ public class Task2_2 extends AppCompatActivity {
                 //TODO: update progress
                 detectionProgressDialog.setMessage(progress[0]);
             }
-
 
             @Override
             protected void onPostExecute(Face[] result) {

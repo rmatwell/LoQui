@@ -1,12 +1,12 @@
 package edu.odu.cs411.loqui;
+
 import android.content.Intent;
+import android.media.Image;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-
-import android.support.v7.app.AppCompatActivity;
-
 
 import org.json.JSONArray;
 import org.json.JSONException;
