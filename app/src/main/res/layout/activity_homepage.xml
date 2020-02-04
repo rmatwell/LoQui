@@ -18,22 +18,31 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.38"
-            android:background="#FFCAEA"
-            android:orientation="vertical"
-            android:gravity="center_horizontal|center_vertical">
+            android:background="#03A9F4"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
 
             <TextView
-                android:id="@+id/textView"
-                android:layout_width="402dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#03A9F4"
+                android:id="@+id/textView9"
+                android:layout_width="106dp"
+                android:layout_height="58dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/llogo"
                 android:fontFamily="@font/schoolbell"
                 android:gravity="center"
-                android:text="LoQui"
-                android:textAlignment="center"
-                android:textColor="#FFEB3B"
-                android:textSize="36sp" />
+                android:textColor="#420ED6"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:fontFamily="@font/schoolbell"
+                android:gravity="left"
+                android:text="Settings"
+                android:textAlignment="center" />
 
         </LinearLayout>
 
@@ -90,7 +99,7 @@
                     <Button
                         android:id="@+id/go1"
                         android:layout_width="97dp"
-                        android:layout_height="45dp"
+                        android:layout_height="34dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="15dp"
                         android:background="#fbee06"

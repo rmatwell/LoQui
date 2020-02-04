@@ -8,11 +8,13 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/enter"
+        android:id="@+id/signin"
         style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
-        android:layout_width="179dp"
+        android:layout_width="171dp"
         android:layout_height="81dp"
-        android:layout_marginBottom="84dp"
+        android:layout_marginBottom="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+
 </android.support.constraint.ConstraintLayout>

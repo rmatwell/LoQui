@@ -58,6 +58,10 @@ public class IntroPage extends AppCompatActivity {
                     Intent it = new Intent(IntroPage.this, Task3_question.class);
                     startActivity(it);
                 }
+                else if(task.equals("Settings")){
+                    Intent it = new Intent(IntroPage.this, Settings.class);
+                    startActivity(it);
+                }
             }
         });
         back.setOnClickListener(new View.OnClickListener() {

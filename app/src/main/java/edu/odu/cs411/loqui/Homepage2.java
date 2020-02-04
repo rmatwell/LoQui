@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Homepage extends AppCompatActivity {
+public class Homepage2 extends AppCompatActivity {
 
     private Button go1, go2, go3;
     @Override
@@ -29,7 +29,7 @@ public class Homepage extends AppCompatActivity {
         go1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(Homepage.this, IntroPage.class);
+                Intent it = new Intent(Homepage2.this, IntroPage.class);
                 it.putExtra("content", "Look at the pictures, and learn what they mean!");
                 it.putExtra("task", "Learn Your Emotions");
                 it.putExtra("pic_id", R.drawable.task1_intro);
@@ -39,7 +39,7 @@ public class Homepage extends AppCompatActivity {
         go2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(Homepage.this, IntroPage.class);
+                Intent it = new Intent(Homepage2.this, IntroPage.class);
                 it.putExtra("content", "Make your face look like the picture of the character!");
                 it.putExtra("task", "Face Matching Game");
                 it.putExtra("pic_id", R.drawable.task2_intro);
@@ -49,7 +49,7 @@ public class Homepage extends AppCompatActivity {
         go3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(Homepage.this, IntroPage.class);
+                Intent it = new Intent(Homepage2.this, IntroPage.class);
                 it.putExtra("content", "Lets see how well you know your emotions!");
                 it.putExtra("task", "Emotion Quiz");
                 it.putExtra("pic_id", R.drawable.task3_intro);
