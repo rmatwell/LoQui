@@ -23,8 +23,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/yi"
             android:fontFamily="@font/schoolbell"
-            android:text="Emotion Quiz"
+            android:text="@string/app_name"
             android:textAlignment="center"
             android:textColor="#420ED6"
             android:textSize="36sp" />
@@ -39,38 +40,38 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="9"
-        android:background="#B0AAE8F1"
+        android:background="@drawable/pd"
         android:orientation="vertical"
         android:weightSum="10">
 
         <TextView
             android:id="@+id/hint"
-            android:layout_weight="1.5"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:textSize="25sp"
             android:layout_margin="15dp"
-            android:fontFamily="@font/schoolbell"/>
+            android:layout_weight="1.5"
+            android:fontFamily="@font/schoolbell"
+            android:textSize="25sp" />
 
         <GridLayout
             android:id="@+id/mainGrid"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="7"
-            android:columnCount="2"
-            android:rowCount="2"
             android:alignmentMode="alignMargins"
+            android:columnCount="2"
+            android:columnOrderPreserved="false"
             android:padding="10dp"
-            android:columnOrderPreserved="false">
+            android:rowCount="2">
 
             <android.support.v7.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                android:layout_marginBottom="10dp"
+                android:layout_columnWeight="1"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="10dp">
 
@@ -79,18 +80,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_margin="10dp"/>
+                    android:layout_margin="10dp" />
 
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                android:layout_marginBottom="10dp"
+                android:layout_columnWeight="1"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="10dp">
 
@@ -99,18 +100,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_margin="10dp"/>
+                    android:layout_margin="10dp" />
 
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                android:layout_marginBottom="10dp"
+                android:layout_columnWeight="1"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="10dp">
 
@@ -119,18 +120,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_margin="10dp"/>
+                    android:layout_margin="10dp" />
 
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                android:layout_marginBottom="10dp"
+                android:layout_columnWeight="1"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="10dp">
 
@@ -139,7 +140,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_margin="10dp"/>
+                    android:layout_margin="10dp" />
 
             </android.support.v7.widget.CardView>
         </GridLayout>
@@ -154,24 +155,24 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
+                android:layout_marginLeft="10dp"
                 android:background="#FBC18D"
-                android:textColor="#420ED6"
                 android:fontFamily="@font/schoolbell"
                 android:text="Home"
-                android:textSize="25dp"
-                android:layout_marginLeft="10dp"/>
+                android:textColor="#420ED6"
+                android:textSize="25dp" />
 
             <Button
                 android:id="@+id/submit"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
                 android:background="#FBC18D"
-                android:textColor="#420ED6"
                 android:fontFamily="@font/schoolbell"
                 android:text="Submit"
-                android:textSize="25dp"
-                android:layout_marginRight="10dp"/>
+                android:textColor="#420ED6"
+                android:textSize="25dp" />
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

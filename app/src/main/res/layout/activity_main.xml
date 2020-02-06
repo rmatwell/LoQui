@@ -12,7 +12,8 @@
         style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
         android:layout_width="171dp"
         android:layout_height="81dp"
-        android:layout_marginBottom="120dp"
+        android:layout_marginBottom="112dp"
+        android:elevation="@dimen/fui_button_inset_bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

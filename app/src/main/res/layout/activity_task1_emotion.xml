@@ -23,11 +23,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/yi"
             android:fontFamily="@font/schoolbell"
             android:text="Learn Your Emotions"
             android:textAlignment="center"
             android:textColor="#420ED6"
-            android:textSize="36sp"/>
+            android:textSize="36sp" />
     </RelativeLayout>
 
     <View
@@ -77,10 +78,10 @@
 
             <Button
                 android:id="@+id/button"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:layout_width="114dp"
+                android:layout_height="66dp"
                 android:layout_centerInParent="true"
-                android:background="#FBC18D"
+                android:background="@drawable/yi"
                 android:fontFamily="@font/schoolbell"
                 android:text="Back"
                 android:textColor="#420ED6"
