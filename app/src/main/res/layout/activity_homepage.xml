@@ -7,44 +7,26 @@
     tools:context=".Homepage">
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:id="@+id/ll0"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.38"
-            android:background="#03A9F4"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
 
-
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="106dp"
-                android:layout_height="58dp"
-                android:layout_weight="0.5"
-                android:background="@drawable/llogo"
-                android:fontFamily="@font/schoolbell"
-                android:gravity="center"
-                android:textColor="#420ED6"
-                android:textSize="24sp" />
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:fontFamily="@font/schoolbell"
-                android:gravity="left"
-                android:text="Settings"
-                android:textAlignment="center" />
-
-        </LinearLayout>
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="115dp"
+            android:layout_height="28dp"
+            android:layout_gravity="bottom|center|center_horizontal"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="0.25dp"
+            android:background="@drawable/pp"
+            android:fontFamily="@font/schoolbell"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <LinearLayout
             android:id="@+id/ll1"
@@ -71,6 +53,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/task1_main" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -99,14 +82,14 @@
                     <Button
                         android:id="@+id/go1"
                         android:layout_width="97dp"
-                        android:layout_height="34dp"
+                        android:layout_height="45dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="15dp"
-                        android:background="#fbee06"
+                        android:background="#FFEB3B"
                         android:fontFamily="@font/schoolbell"
                         android:text="Go"
                         android:textAlignment="center"
-                        android:textColor="@android:color/holo_blue_bright"
+                        android:textColor="#3F51B5"
                         android:textSize="25dp" />
                 </LinearLayout>
 
@@ -162,9 +145,9 @@
                         android:layout_weight="0.5"
                         android:fontFamily="@font/schoolbell"
                         android:gravity="center"
-                        android:text="Face Matching Game"
+                        android:text="Look At Me!"
                         android:textAlignment="center"
-                        android:textColor="#420ED6"
+                        android:textColor="#FFEB3B"
                         android:textSize="24sp" />
 
                     <Button

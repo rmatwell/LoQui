@@ -39,18 +39,18 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="9"
-        android:background="#B0AAE8F1"
+        android:background="@drawable/puzzle"
         android:orientation="vertical"
         android:weightSum="10">
 
         <TextView
             android:id="@+id/hint"
-            android:layout_weight="0.5"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:textSize="20sp"
             android:layout_marginLeft="10dp"
-            android:fontFamily="@font/schoolbell"/>
+            android:layout_weight="0.5"
+            android:fontFamily="@font/schoolbell"
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -62,21 +62,21 @@
 
             <ImageView
                 android:id="@+id/img_1"
-                android:layout_weight="1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
             <ImageView
                 android:id="@+id/img_2"
-                android:layout_weight="1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
             <ImageView
                 android:id="@+id/img_3"
-                android:layout_weight="1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
 
         </LinearLayout>
@@ -85,7 +85,6 @@
             android:layout_width="match_parent"
             android:layout_height="5dp"
             android:background="#F02E8B" />
-
 
 
         <LinearLayout
@@ -98,22 +97,22 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/youdidit"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:src="@drawable/youdidit" />
 
             <TextView
                 android:id="@+id/msg_def"
-                android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="15dp"
+                android:layout_weight="1"
                 android:fontFamily="@font/schoolbell"
+                android:gravity="center"
+                android:scaleType="centerInside"
                 android:textColor="#696969"
                 android:textSize="28sp"
-                android:visibility="visible"
-                android:scaleType="centerInside"
-                android:gravity="center"/>
+                android:visibility="visible" />
         </LinearLayout>
 
         <RelativeLayout
@@ -126,24 +125,24 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
+                android:layout_marginLeft="10dp"
                 android:background="#FBC18D"
-                android:textColor="#420ED6"
                 android:fontFamily="@font/schoolbell"
                 android:text="Home"
-                android:textSize="25dp"
-                android:layout_marginLeft="10dp"/>
+                android:textColor="#420ED6"
+                android:textSize="25dp" />
 
             <Button
                 android:id="@+id/next"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
                 android:background="#FBC18D"
-                android:textColor="#420ED6"
                 android:fontFamily="@font/schoolbell"
                 android:text="Next Face"
-                android:textSize="25dp"
-                android:layout_marginRight="10dp"/>
+                android:textColor="#420ED6"
+                android:textSize="25dp" />
 
         </RelativeLayout>
     </LinearLayout>
