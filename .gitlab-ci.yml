@@ -18,7 +18,7 @@ test:
   stage: test
   script:
     - chmod a+x ./gradlew
-    - ./gradlew --no-daemon testDebug
+    - ./gradlew --no-daemon lint testDebug
   artifacts:
     when: always
     paths:
