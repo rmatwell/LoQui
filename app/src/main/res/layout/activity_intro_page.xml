@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
-                android:background="@drawable/yi"
+                android:background="@drawable/hcomb2"
                 android:fontFamily="@font/schoolbell"
                 android:gravity="center"
                 android:text="Express your Emotions"
@@ -51,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.13"
-            android:background="@drawable/star"
+            android:background="@drawable/bees"
             android:orientation="vertical">
 
             <LinearLayout
@@ -77,8 +77,9 @@
                 android:gravity="center"
                 android:text="Nihao"
                 android:textAlignment="center"
-                android:textColor="#4AE2F8"
+                android:textColor="#FFFFFF"
                 android:textSize="36sp"
+                android:textStyle="bold"
                 android:visibility="visible" />
 
             <LinearLayout
@@ -97,7 +98,7 @@
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
-                        android:background="@drawable/yi"
+                        android:background="@drawable/hcomb"
                         android:fontFamily="@font/schoolbell"
                         android:text="Back"
                         android:textColor="#3F51B5"
@@ -109,11 +110,11 @@
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:background="@drawable/yi"
+                        android:background="@drawable/hcomb"
                         android:fontFamily="@font/schoolbell"
                         android:text="Let's Go"
-                        android:textColor="#420ED6"
-                        android:textSize="25dp"
+                        android:textColor="#3F51B5"
+                        android:textSize="24sp"
                         android:textStyle="bold" />
 
                 </RelativeLayout>

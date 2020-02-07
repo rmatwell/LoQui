@@ -23,7 +23,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/yi"
+            android:background="@drawable/hcomb2"
             android:fontFamily="@font/schoolbell"
             android:text="@string/app_name"
             android:textAlignment="center"
@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="9"
-        android:background="@drawable/pd"
+        android:background="@drawable/bees3"
         android:orientation="vertical"
         android:weightSum="10">
 
@@ -152,11 +152,11 @@
 
             <Button
                 android:id="@+id/home"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:layout_width="84dp"
+                android:layout_height="79dp"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="10dp"
-                android:background="#FBC18D"
+                android:layout_marginLeft="62dp"
+                android:background="@drawable/hcomb"
                 android:fontFamily="@font/schoolbell"
                 android:text="Home"
                 android:textColor="#420ED6"
@@ -164,11 +164,11 @@
 
             <Button
                 android:id="@+id/submit"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="79dp"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="10dp"
-                android:background="#FBC18D"
+                android:layout_marginRight="62dp"
+                android:background="@drawable/hcomb"
                 android:fontFamily="@font/schoolbell"
                 android:text="Submit"
                 android:textColor="#420ED6"

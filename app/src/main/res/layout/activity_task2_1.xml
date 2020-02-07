@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/cool">
+    android:background="@drawable/bees2">
 
 
     <Button
@@ -15,7 +15,7 @@
         android:layout_marginStart="36dp"
 
         android:layout_marginBottom="16dp"
-        android:background="@color/colorAccent"
+        android:background="@drawable/hcomb"
         android:fontFamily="@font/schoolbell"
         android:text="Back"
         android:textColor="#3F51B5"
@@ -31,7 +31,7 @@
         android:layout_height="45dp"
         android:layout_marginEnd="108dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/yi"
+        android:background="@drawable/hcomb"
         android:fontFamily="@font/schoolbell"
         android:text="Take Picture"
         android:textColor="@color/purpleText"
@@ -43,7 +43,7 @@
         android:id="@+id/view5"
         android:layout_width="match_parent"
         android:layout_height="77dp"
-        android:background="@drawable/yi"
+        android:background="@drawable/hcomb2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,11 +103,11 @@
 
     <Button
         android:id="@+id/next_button123"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="88dp"
+        android:layout_height="47dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="17dp"
-        android:background="#FFEB3B"
+        android:background="@drawable/hcomb"
         android:fontFamily="@font/schoolbell"
         android:text="Next"
         android:textColor="@color/purpleText"

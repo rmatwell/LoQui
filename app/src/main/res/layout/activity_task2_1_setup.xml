@@ -16,13 +16,16 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@drawable/yi"
+        android:background="@drawable/bees2"
         android:gravity="center_horizontal|center_vertical"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/hcomb2"
             android:fontFamily="@font/schoolbell"
             android:text="Face Matching Game"
             android:textAlignment="center"
@@ -39,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="9"
-        android:background="@drawable/yi"
+        android:background="@drawable/bees2"
         android:orientation="vertical"
         android:weightSum="10">
 
@@ -199,7 +202,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:background="#FBC18D"
+                android:background="@drawable/hcomb"
                 android:fontFamily="@font/schoolbell"
                 android:text="Home"
                 android:textColor="#420ED6"

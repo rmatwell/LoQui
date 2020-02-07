@@ -16,9 +16,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#FFCAEA"
-        android:orientation="vertical"
-        android:gravity="center_horizontal|center_vertical">
+        android:background="@drawable/hcomb2"
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="9"
-        android:background="@drawable/puzzle"
+        android:background="@drawable/bees4"
         android:orientation="vertical"
         android:weightSum="10">
 
@@ -95,8 +95,8 @@
             android:weightSum="2">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="243dp"
+                android:layout_height="408dp"
                 android:layout_weight="1"
                 android:src="@drawable/youdidit" />
 
@@ -126,7 +126,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="10dp"
-                android:background="#FBC18D"
+                android:background="@drawable/hcomb"
                 android:fontFamily="@font/schoolbell"
                 android:text="Home"
                 android:textColor="#420ED6"
@@ -138,7 +138,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="10dp"
-                android:background="#FBC18D"
+                android:background="@drawable/hcomb"
                 android:fontFamily="@font/schoolbell"
                 android:text="Next Face"
                 android:textColor="#420ED6"

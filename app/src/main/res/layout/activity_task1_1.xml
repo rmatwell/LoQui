@@ -23,11 +23,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/yi"
+            android:background="@drawable/hcomb2"
             android:fontFamily="@font/schoolbell"
             android:text="Learn Your Emotions"
             android:textAlignment="center"
-            android:textColor="#3F51B5"
+            android:textColor="#FEFEFF"
             android:textSize="40sp"
             android:textStyle="bold" />
     </RelativeLayout>
@@ -41,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="9"
-        android:background="@drawable/spots"
+        android:background="@drawable/bees"
         android:orientation="vertical"
         android:weightSum="10">
 
@@ -55,7 +55,7 @@
             android:gravity="center"
             android:text="   Pick an emotion!"
             android:textAlignment="center"
-            android:textColor="#3F51B5"
+            android:textColor="#F7F7FA"
             android:textSize="36sp"
             android:textStyle="bold" />
 
@@ -209,10 +209,10 @@
                 android:layout_width="122dp"
                 android:layout_height="59dp"
                 android:layout_centerInParent="true"
-                android:background="@drawable/yi"
+                android:background="@drawable/hcomb"
                 android:fontFamily="@font/schoolbell"
                 android:text="Home"
-                android:textColor="#420ED6"
+                android:textColor="#FFFFFF"
                 android:textSize="25dp" />
 
 

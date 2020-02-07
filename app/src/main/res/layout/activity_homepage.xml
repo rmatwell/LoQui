@@ -10,10 +10,18 @@
         android:id="@+id/linearLayout3"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:background="#2196F3"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="99dp"
+            android:layout_height="42dp"
+            android:background="@drawable/llogo"
+            android:backgroundTintMode="multiply" />
 
         <Button
             android:id="@+id/button2"
@@ -81,13 +89,12 @@
 
                     <Button
                         android:id="@+id/go1"
-                        android:layout_width="97dp"
-                        android:layout_height="45dp"
+                        android:layout_width="71dp"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginBottom="15dp"
-                        android:background="#FFEB3B"
+                        android:background="@drawable/play"
                         android:fontFamily="@font/schoolbell"
-                        android:text="Go"
                         android:textAlignment="center"
                         android:textColor="#3F51B5"
                         android:textSize="25dp" />
@@ -152,13 +159,12 @@
 
                     <Button
                         android:id="@+id/go2"
-                        android:layout_width="97dp"
-                        android:layout_height="45dp"
+                        android:layout_width="68dp"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginBottom="15dp"
-                        android:background="#9f00cb"
+                        android:background="@drawable/play"
                         android:fontFamily="@font/schoolbell"
-                        android:text="Go"
                         android:textAlignment="center"
                         android:textColor="@android:color/white"
                         android:textSize="25dp" />
@@ -228,9 +234,8 @@
                         android:layout_height="45dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="15dp"
-                        android:background="#018c39"
+                        android:background="@drawable/play"
                         android:fontFamily="@font/schoolbell"
-                        android:text="Go"
                         android:textAlignment="center"
                         android:textColor="#420ED6"
                         android:textSize="25dp" />
