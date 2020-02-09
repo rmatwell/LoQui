@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "287851690262",
+    "firebase_url": "https://loqui-267104.firebaseio.com",
+    "project_id": "loqui-267104",
+    "storage_bucket": "loqui-267104.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:287851690262:android:d87bc02977a80a75d2b837",
+        "android_client_info": {
+          "package_name": "com.example.chmarax.logregform"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "287851690262-ujij3nfrb9bo8tgac1g5brr6i0jucp6q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZZT0Qdl6-AxnNWb-HvarqXvsniiOu8EY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "287851690262-ujij3nfrb9bo8tgac1g5brr6i0jucp6q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:287851690262:android:bbff79ec5e931a21d2b837",
+        "android_client_info": {
+          "package_name": "edu.odu.cs411.loqui"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "287851690262-ujij3nfrb9bo8tgac1g5brr6i0jucp6q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZZT0Qdl6-AxnNWb-HvarqXvsniiOu8EY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "287851690262-ujij3nfrb9bo8tgac1g5brr6i0jucp6q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

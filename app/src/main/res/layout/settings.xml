@@ -14,7 +14,9 @@ tools:context=".Avatar">
         android:layout_weight="0.38"
         android:background="#FFEB3B"
         android:gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" >
 
         <TextView
             android:id="@+id/textView10"

@@ -16,13 +16,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="99dp"
-            android:layout_height="42dp"
-            android:background="@drawable/llogo"
-            android:backgroundTintMode="multiply" />
-
         <Button
             android:id="@+id/button2"
             android:layout_width="115dp"
@@ -35,6 +28,13 @@
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00BCD4"
+            app:srcCompat="@drawable/sun" />
 
         <LinearLayout
             android:id="@+id/ll1"
@@ -230,8 +230,8 @@
 
                     <Button
                         android:id="@+id/go3"
-                        android:layout_width="97dp"
-                        android:layout_height="45dp"
+                        android:layout_width="76dp"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginBottom="15dp"
                         android:background="@drawable/play"

@@ -11,19 +11,11 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/logo_noshadow"
         android:label="LoQui"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/logo_noshadow"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <uses-library android:name="org.apache.http.legacy" android:required="false" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.loqui.android.fileprovider"
@@ -33,8 +25,19 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"></meta-data>
         </provider>
-        <activity android:name=".Login"/>
-        <activity android:name=".Signup"/>
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".RegistrationActivity" />
+        <activity android:name=".SplashScrActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".PWresetActivity"></activity>
+        <activity android:name=".UserProfile"/>
         <activity android:name=".Avatar"/>
         <activity android:name=".Homepage" />
         <activity android:name=".Homepage2"/>
@@ -47,7 +50,6 @@
         <activity android:name=".Task2_2" />
         <activity android:name=".Task1_1" />
         <activity android:name=".EmotionRecogTestClass"/>
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
