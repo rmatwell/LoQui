@@ -1,114 +1,43 @@
+image: commit451/android-sdk-installer:latest
+
+before_script:
+  - android-sdk-installer
+
 stages:
-  - environment
   - build
   - test
-  - internal
-  - alpha
-  - beta
-  - production
+  - deploy
 
-
-.updateContainerJob:
-  image: docker:stable
-  stage: environment
-  services:
-    - docker:dind
+build:
+  stage: build
   script:
-    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-    - docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG || true
-    - docker build --cache-from $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG -t $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG .
-    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+    - chmod a+x ./gradlew
+    - ./gradlew --no-daemon assembleDebug
 
-updateContainer:
-  extends: .updateContainerJob
-  only:
-    changes:
-      - Dockerfile
+test:
+  stage: test
+  script:
+    - chmod a+x ./gradlew
+    - ./gradlew --no-daemon lint testDebug
+  artifacts:
+    when: always
+    paths:
+      - app/build/reports/tests/testDebugUnitTest
+    expire_in: 15 days
 
-ensureContainer:
-  extends: .updateContainerJob
+pages:
+  stage: deploy
+  dependencies:
+    - test
   allow_failure: true
   before_script:
-    - "mkdir -p ~/.docker && echo '{\"experimental\": \"enabled\"}' > ~/.docker/config.json"
-    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-    # Skip update container `script` if the container already exists
-    # via https://gitlab.com/gitlab-org/gitlab-ce/issues/26866#note_97609397 -> https://stackoverflow.com/a/52077071/796832
-    - docker manifest inspect $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG > /dev/null && exit || true
-  except:
-    changes:
-      - Dockerfile
-
-
-.build_job:
-  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
-  stage: build
-  before_script:
-    - chmod +x gradlew
-    - "export VERSION_CODE=$(($CI_PIPELINE_IID)) && echo $VERSION_CODE"
-    - "export VERSION_SHA=`echo ${CI_COMMIT_SHA:0:8}` && echo $VERSION_SHA"
+  - echo "Overide global before_script and don't do anything."
+  script:
+    - mkdir -p public/tests
+    - cp -r app/build/reports/tests/testDebugUnitTest/ public/tests
   artifacts:
     paths:
-    - app/build/outputs
-
-buildDebug:
-  extends: .build_job
-  script:
-    - bundle exec fastlane buildDebug
-
-buildRelease:
-  extends: .build_job
-  script:
-    - bundle exec fastlane buildRelease
-  environment:
-    name: production
-
-testDebug:
-  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
-  stage: test
-  dependencies:
-    - buildDebug
-  script:
-    - chmod +x gradlew  
-    - bundle exec fastlane test
-
-.promote_job:
-  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
-  when: manual
-  dependencies: []
-  before_script:
-    - echo You need to add your google_play_api_key.json file for this to work. Please see project's README.md. && false
-    - chmod +x gradlew    
-  after_script:
-    - rm -f ~/google_play_api_key.json
-
-publishInternal:
-  extends: .promote_job
-  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
-  stage: internal
-  dependencies:
-    - buildRelease
-  when: manual
-  script:
-    - bundle exec fastlane internal
-
-promoteAlpha:
-  extends: .promote_job
-  stage: alpha
-  script:
-    - bundle exec fastlane promote_internal_to_alpha
-
-promoteBeta:
-  extends: .promote_job
-  stage: beta
-  script:
-    - bundle exec fastlane promote_alpha_to_beta
-
-promoteProduction:
-  extends: .promote_job
-  stage: production
-  # We only allow production promotion on master because
-  # in this way you can protect production scoped secret variables
+      - public
+  when: always
   only:
-   - master
-  script:
-    - bundle exec fastlane promote_beta_to_production
+    - develop

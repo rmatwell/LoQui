@@ -1,0 +1,4 @@
+debug: true
+components:
+  - build-tools;29.0.0
+  - platforms;android-29
