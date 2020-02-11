@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "edu.odu.cs411.loqui"
-        minSdkVersion 28
+        minSdkVersion 22
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -20,6 +20,11 @@ android {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
     }
+
+    lintOptions {
+        abortOnError false
+    }
+
     buildToolsVersion = '29.0.0'
 }
 
