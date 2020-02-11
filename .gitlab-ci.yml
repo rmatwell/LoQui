@@ -22,7 +22,7 @@ test:
   artifacts:
     when: always
     paths:
-      - app/build/reports/tests/testDebugUnitTest
+      - app/build/reports/tests/
     expire_in: 15 days
 
 pages:
