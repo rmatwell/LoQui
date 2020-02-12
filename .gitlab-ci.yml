@@ -22,7 +22,7 @@ test:
   artifacts:
     when: always
     paths:
-      - app/build/reports/tests/
+      - app/build/reports/
     expire_in: 15 days
 
 pages:
@@ -34,7 +34,7 @@ pages:
   - echo "Overide global before_script and don't do anything."
   script:
     - mkdir -p public/tests
-    - cp -r app/build/reports/tests/ public/tests
+    - cp -r app/build/reports/ public/reports
   artifacts:
     paths:
       - public
