@@ -17,7 +17,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -27,7 +29,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private TextView signin;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
-    private FirebaseDatabase firebaseDatabase;
+    private FirebaseFirestore db;
 
 
 
@@ -90,7 +92,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         progressDialog.dismiss();
-                        sendUserData(inputName, inputPw);
+                        sendUserData(inputName, inputEmail);
                         Toast.makeText(RegistrationActivity.this,"You've been registered successfully.",Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(RegistrationActivity.this,MainActivity.class));
                     }
@@ -104,13 +106,19 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
 
-    private void sendUserData(String username, String password){
+    private void sendUserData(String inputUsername, String inputEmail){
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference users = firebaseDatabase.getReference("users");
-        UserProfile user = new UserProfile(username, password);
-        users.push().setValue(user);
+        db = FirebaseFirestore.getInstance();
+        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+                .setPersistenceEnabled(true)
+                .build();
+        db.setFirestoreSettings(settings);
 
+        Map<String,Object> userData = new HashMap<>();
+        userData.put("email",inputEmail);
+        userData.put("username",inputUsername);
+        db.collection("users").document(inputUsername)
+                .set(userData);
     }
 
     private boolean validateInput(String inName, String inPw, String inEmail){
