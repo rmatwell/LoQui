@@ -50,6 +50,7 @@
         <activity android:name=".Task2_2" />
         <activity android:name=".Task1_1" />
         <activity android:name=".EmotionRecogTestClass"/>
+        <activity android:name=".SettingsActivity"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

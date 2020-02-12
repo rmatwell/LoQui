@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class Homepage2 extends AppCompatActivity {
 
-    private Button go1, go2, go3;
+    private Button go1, go2, go3, button2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +25,7 @@ public class Homepage2 extends AppCompatActivity {
         go1 = (Button) findViewById(R.id.go1);
         go2 = (Button) findViewById(R.id.go2);
         go3 = (Button) findViewById(R.id.go3);
+        button2 = (Button) findViewById(R.id.button2);
 
         go1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +54,13 @@ public class Homepage2 extends AppCompatActivity {
                 it.putExtra("content", "Lets see how well you know your emotions!");
                 it.putExtra("task", "Emotion Quiz");
                 it.putExtra("pic_id", R.drawable.task3_intro);
+                startActivity(it);
+            }
+        });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Homepage2.this, SettingsActivity.class);
                 startActivity(it);
             }
         });
