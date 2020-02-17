@@ -8,6 +8,11 @@ android {
         minSdkVersion 22
         targetSdkVersion 28
     }
+    
+    lintOptions {
+           abortOnError false
+       }
+    
 
     buildTypes {
         release {
