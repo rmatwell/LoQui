@@ -69,9 +69,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private void initializeGUI(){
 
-        logo = findViewById(R.id.ivRegLogo);
         joinus = findViewById(R.id.ivJoinUs);
-        username = findViewById(R.id.atvUsernameReg);
         email =  findViewById(R.id.atvEmailReg);
         password = findViewById(R.id.atvPasswordReg);
         signin = findViewById(R.id.tvSignIn);
@@ -94,7 +92,7 @@ public class RegistrationActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                         sendUserData(inputName, inputEmail);
                         Toast.makeText(RegistrationActivity.this,"You've been registered successfully.",Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(RegistrationActivity.this,MainActivity.class));
+                        startActivity(new Intent(RegistrationActivity.this,Homepage.class));
                     }
                     else{
                         progressDialog.dismiss();

@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@drawable/bees2"
+        android:background="@drawable/origrrinal"
         android:gravity="center_horizontal|center_vertical"
         android:orientation="vertical">
 
@@ -25,7 +25,7 @@
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_marginTop="0dp"
-            android:background="@drawable/hcomb2"
+            android:background="@color/white"
             android:fontFamily="@font/schoolbell"
             android:text="Face Matching Game"
             android:textAlignment="center"
@@ -42,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="9"
-        android:background="@drawable/bees2"
+        android:background="@drawable/origrrinal"
         android:orientation="vertical"
         android:weightSum="10">
 
@@ -56,7 +56,9 @@
             android:gravity="center"
             android:text="Pick an emotion!"
             android:textAlignment="center"
-            android:textSize="35sp" />
+            android:textColor="#3F51B5"
+            android:textSize="35sp"
+            android:textStyle="bold" />
 
         <GridLayout
             android:id="@+id/mainGrid"
@@ -199,12 +201,11 @@
 
             <Button
                 android:id="@+id/task1_home"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:layout_width="103dp"
+                android:layout_height="70dp"
                 android:layout_centerInParent="true"
-                android:background="@drawable/hcomb"
+                android:background="@drawable/homebtn"
                 android:fontFamily="@font/schoolbell"
-                android:text="Home"
                 android:textColor="#420ED6"
                 android:textSize="25dp" />
 

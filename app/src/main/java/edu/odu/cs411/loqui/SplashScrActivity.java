@@ -13,7 +13,7 @@ import android.widget.ImageView;
 
 public class SplashScrActivity extends AppCompatActivity {
 
-    private ImageView logoSplash, chmaraTech, logoWhite;
+    private ImageView logoSplash, charmaTech;
     private Animation anim1, anim2, anim3, anim4;
 
 
@@ -37,11 +37,10 @@ public class SplashScrActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                logoSplash.startAnimation(anim2);
-                logoSplash.setVisibility(View.GONE);
+                charmaTech.startAnimation(anim2);
+                charmaTech.setVisibility(View.GONE);
 
-                logoWhite.startAnimation(anim3);
-                chmaraTech.startAnimation(anim3);
+                charmaTech.startAnimation(anim3);
                 anim3.setAnimationListener(new Animation.AnimationListener() {
                     @Override
                     public void onAnimationStart(Animation animation) {
@@ -49,8 +48,8 @@ public class SplashScrActivity extends AppCompatActivity {
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
-                        logoWhite.setVisibility(View.VISIBLE);
-                        chmaraTech.setVisibility(View.VISIBLE);
+                        logoSplash.setVisibility(View.VISIBLE);
+                        charmaTech.setVisibility(View.VISIBLE);
 
 
                         finish();
@@ -81,8 +80,7 @@ public class SplashScrActivity extends AppCompatActivity {
     private void init(){
 
         logoSplash = findViewById(R.id.ivLogoSplash);
-        logoWhite = findViewById(R.id.ivLogoWhite);
-        chmaraTech = findViewById(R.id.ivCHTtext);
+        charmaTech = findViewById(R.id.ivCHTtext);
         anim1 = AnimationUtils.loadAnimation(getBaseContext(), R.anim.fadein);
         anim2 = AnimationUtils.loadAnimation(getBaseContext(), R.anim.rotate);
         anim3 = AnimationUtils.loadAnimation(getBaseContext(), R.anim.beerotate);

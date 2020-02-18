@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@drawable/hcomb2"
+        android:background="@color/white"
         android:gravity="center_horizontal|center_vertical"
         android:orientation="vertical">
 
@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="9"
-        android:background="@drawable/bees4"
+        android:background="@drawable/softbg"
         android:orientation="vertical"
         android:weightSum="10">
 
@@ -122,25 +122,23 @@
 
             <Button
                 android:id="@+id/home"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:layout_width="151dp"
+                android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="10dp"
-                android:background="@drawable/hcomb"
+                android:background="@drawable/back"
                 android:fontFamily="@font/schoolbell"
-                android:text="Home"
                 android:textColor="#420ED6"
                 android:textSize="25dp" />
 
             <Button
                 android:id="@+id/next"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:layout_width="149dp"
+                android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/hcomb"
+                android:background="@drawable/next"
                 android:fontFamily="@font/schoolbell"
-                android:text="Next Face"
                 android:textColor="#420ED6"
                 android:textSize="25dp" />
 

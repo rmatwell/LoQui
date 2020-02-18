@@ -29,12 +29,22 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:fontFamily="@font/schoolbell"
+            android:text="Games"
+            android:textColor="#3F51B5"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
         <ImageButton
             android:id="@+id/imageButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#00BCD4"
-            app:srcCompat="@drawable/sun" />
+            android:background="@color/white" />
 
         <LinearLayout
             android:id="@+id/ll1"
@@ -60,7 +70,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/task1_main" />
+                        android:background="@drawable/task1_intro" />
 
                 </LinearLayout>
 
@@ -68,8 +78,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
-                    android:background="#fbee06"
-                    android:backgroundTint="#fbee06"
+                    android:background="#c2eec7"
+                    android:backgroundTint="#c2eec7"
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical">
 
@@ -77,11 +87,11 @@
                     <TextView
                         android:id="@+id/textView2"
                         android:layout_width="match_parent"
-                        android:layout_height="127dp"
+                        android:layout_height="113dp"
                         android:layout_weight="0.5"
                         android:fontFamily="@font/schoolbell"
                         android:gravity="center"
-                        android:text="Learn Your Emotions"
+                        android:text="Learn Emotions"
                         android:textAlignment="center"
                         android:textColor="#420ED6"
                         android:textSize="24sp" />
@@ -89,11 +99,11 @@
 
                     <Button
                         android:id="@+id/go1"
-                        android:layout_width="71dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="87dp"
+                        android:layout_height="88dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="15dp"
-                        android:background="@drawable/play"
+                        android:background="@drawable/playbutton"
                         android:fontFamily="@font/schoolbell"
                         android:textAlignment="center"
                         android:textColor="#3F51B5"
@@ -130,10 +140,10 @@
 
                     <View
                         android:id="@+id/view2"
-                        android:layout_width="wrap_content"
+                        android:layout_width="359dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/task2_main" />
+                        android:background="@drawable/fun" />
 
                 </LinearLayout>
 
@@ -141,7 +151,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
-                    android:background="#9F00CB"
+                    android:background="#eed2e8"
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical">
 
@@ -159,11 +169,11 @@
 
                     <Button
                         android:id="@+id/go2"
-                        android:layout_width="68dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="85dp"
+                        android:layout_height="84dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="15dp"
-                        android:background="@drawable/play"
+                        android:background="@drawable/playbutton"
                         android:fontFamily="@font/schoolbell"
                         android:textAlignment="center"
                         android:textColor="@android:color/white"
@@ -204,7 +214,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/task3_main" />
+                        android:background="@drawable/avat" />
 
                 </LinearLayout>
 
@@ -212,7 +222,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
-                    android:background="#018C39"
+                    android:background="#f2e3c6"
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical">
 
@@ -230,15 +240,16 @@
 
                     <Button
                         android:id="@+id/go3"
-                        android:layout_width="76dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="85dp"
+                        android:layout_height="84dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="15dp"
-                        android:background="@drawable/play"
+                        android:background="@drawable/playbutton"
                         android:fontFamily="@font/schoolbell"
                         android:textAlignment="center"
                         android:textColor="#420ED6"
                         android:textSize="25dp" />
+
                 </LinearLayout>
             </LinearLayout>
 

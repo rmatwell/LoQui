@@ -3,9 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/background"
+    android:background="@drawable/origrrinal"
     tools:context=".PWresetActivity">
-
 
 
     <ScrollView
@@ -20,11 +19,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="50dp"
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"
-            >
+            android:layout_marginBottom="50dp"
+            android:orientation="vertical">
 
 
             <ImageView
@@ -34,7 +32,7 @@
                 android:layout_marginTop="18dp"
                 android:layout_marginBottom="55dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/logo" />
+                android:src="@drawable/logo3" />
 
             <ImageView
                 android:id="@+id/ivPassReset"
@@ -57,22 +55,20 @@
 
             <AutoCompleteTextView
                 android:id="@+id/atvEmailRes"
-                android:inputType="textEmailAddress"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/rounded_rect"
+                android:drawableStart="@drawable/icon_person"
                 android:drawableLeft="@drawable/icon_person"
                 android:drawablePadding="10dp"
-                android:drawableStart="@drawable/icon_person"
                 android:hint="@string/emailReg"
-                android:paddingEnd="10dp"
+                android:inputType="textEmailAddress"
                 android:paddingStart="10dp"
+                android:paddingEnd="10dp"
                 android:textColor="@color/white"
                 android:textColorHint="@color/gray"
                 android:textSize="15sp" />
-
-
 
 
             <Button
@@ -85,8 +81,6 @@
                 android:textColor="#FFFFFF" />
 
 
-
-
             <TextView
                 android:id="@+id/tvGoBack"
                 android:layout_width="wrap_content"
@@ -94,11 +88,10 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:text="Go back to Sign In."
-                android:textColor="@color/gray"  />
+                android:textColor="@color/gray" />
 
 
         </LinearLayout>
-
 
 
     </ScrollView>

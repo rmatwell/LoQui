@@ -104,7 +104,6 @@ public class LoginActivity extends AppCompatActivity {
     private void initializeGUI(){
 
         logo = findViewById(R.id.ivLogLogo);
-        ivSignIn = findViewById(R.id.ivSignIn);
         btnTwitter = findViewById(R.id.ivFacebook);
         email = findViewById(R.id.atvEmailLog);
         password = findViewById(R.id.atvPasswordLog);
