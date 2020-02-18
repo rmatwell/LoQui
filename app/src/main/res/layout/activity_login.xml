@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/hc"
+    android:background="@drawable/d1296d5419f53391f38563e894fc4e67"
     tools:context=".LoginActivity">
 
 
@@ -32,16 +32,7 @@
                 android:layout_marginTop="18dp"
                 android:layout_marginBottom="55dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/zz2" />
-
-
-            <ImageView
-                android:id="@+id/ivSignIn"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginBottom="15dp"
-                android:contentDescription="Sign in text on registration activity"
-                android:src="@drawable/sign_in" />
+                android:src="@drawable/zz45" />
 
 
             <AutoCompleteTextView
