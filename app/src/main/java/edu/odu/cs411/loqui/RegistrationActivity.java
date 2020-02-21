@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.*;
 import java.util.HashMap;
@@ -46,7 +47,8 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                final String inputName = username.getText().toString().trim();
+                //final String inputName = username.getText().toString().trim();
+                final String inputName = "testUser2";
                 final String inputPw = password.getText().toString().trim();
                 final String inputEmail = email.getText().toString().trim();
 
@@ -112,11 +114,24 @@ public class RegistrationActivity extends AppCompatActivity {
                 .build();
         db.setFirestoreSettings(settings);
 
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        String userID = user.getUid();
+
         Map<String,Object> userData = new HashMap<>();
         userData.put("email",inputEmail);
         userData.put("username",inputUsername);
-        db.collection("users").document(inputUsername)
+        userData.put("parentFirstName","FirstNamePlaceholder");
+        userData.put("parentLastName","LastNamePlaceholder");
+        userData.put("childFirstName","ChildNamePlaceholder");
+        userData.put("accountCreationDate",FieldValue.serverTimestamp());
+        db.collection("users").document(userID)
                 .set(userData);
+
+        Map<String,Object> emotionData = new HashMap<>();
+        emotionData.put(inputUsername + "EmotionScore",50);
+        emotionData.put("EmotionScoreTimestamp",FieldValue.serverTimestamp());
+
+        db.collection("users").document(inputUsername).collection("EmotionScores").add(emotionData);
     }
 
     private boolean validateInput(String inName, String inPw, String inEmail){
