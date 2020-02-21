@@ -16,6 +16,11 @@
         android:roundIcon="@mipmap/logo_noshadow"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <service
+            android:name=".MusicService"
+            android:enabled="true" />
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="edu.odu.cs411.loqui.fileprovider"
@@ -51,6 +56,10 @@
         <activity android:name=".Task1_1" />
         <activity android:name=".EmotionRecogTestClass"/>
         <activity android:name=".SettingsActivity"/>
+        <activity android:name=".MusicActivity"/>
+        <activity android:name=".ProgressActivity"/>
+        <activity android:name=".GoalsActivity"/>
+        <activity android:name=".Rewards"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
