@@ -8,12 +8,24 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class Rewards extends AppCompatActivity
 {
     public int trigger = 0;
 
-    public void Reward(View view)
+    String currentDate = "";
+    String currentTime = "";
+    String gamename = "";
+
+    public void Reward(View view, String game)
     {
+        currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+        currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+        gamename = game;
+
         // inflate the layout of the popup window
         LayoutInflater inflater = (LayoutInflater)
                 getSystemService(LAYOUT_INFLATER_SERVICE);

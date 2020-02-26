@@ -319,7 +319,7 @@ public class Task3_question extends AppCompatActivity {
                 if (r.trigger >= 3)
                 {
                     r.trigger = 0;
-                    r.Reward(upperright);
+                    r.Reward(upperright, "Emotion Recognition");
                 }
                 else { r.trigger++; }
 
