@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if(user != null) {
             finish();
-            startActivity(new Intent(LoginActivity.this,Homepage.class));
+            startActivity(new Intent(LoginActivity.this,Avatar.class));
         }
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {

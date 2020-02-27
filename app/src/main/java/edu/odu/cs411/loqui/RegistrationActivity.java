@@ -62,7 +62,7 @@ public class RegistrationActivity extends AppCompatActivity {
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(RegistrationActivity.this,LoginActivity.class));
+                startActivity(new Intent(RegistrationActivity.this,Avatar.class));
             }
         });
 
@@ -94,7 +94,7 @@ public class RegistrationActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                         sendUserData(inputName, inputEmail);
                         Toast.makeText(RegistrationActivity.this,"You've been registered successfully.",Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(RegistrationActivity.this,Homepage.class));
+                        startActivity(new Intent(RegistrationActivity.this,Avatar.class));
                     }
                     else{
                         progressDialog.dismiss();
