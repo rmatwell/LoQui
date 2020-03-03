@@ -14,7 +14,8 @@ import java.util.Locale;
 
 public class Rewards extends AppCompatActivity
 {
-    public int trigger = 0;
+    public int EmoRecogTrigger = 0;
+    public int EmoCopyTrigger = 0;
 
     String currentDate = "";
     String currentTime = "";
@@ -22,8 +23,6 @@ public class Rewards extends AppCompatActivity
 
     public void Reward(View view, String game)
     {
-        currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-        currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
         gamename = game;
 
         // inflate the layout of the popup window

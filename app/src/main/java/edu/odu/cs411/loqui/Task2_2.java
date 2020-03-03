@@ -158,6 +158,7 @@ public class Task2_2 extends AppCompatActivity {
             protected void onPostExecute(Face[] result) {
                 //TODO: update face frames
                 detectionProgressDialog.dismiss();
+                Rewards r = new Rewards();
 
                 if (!exceptionMessage.equals("")) {
                     showError(exceptionMessage);
@@ -172,6 +173,12 @@ public class Task2_2 extends AppCompatActivity {
                     }
 
                     if (correct_face) {
+                        if (r.EmoCopyTrigger >= 5)
+                        {
+                            r.EmoCopyTrigger = 0;
+                            r.Reward(visual_support, "Emotion Imitation");
+                        }
+                        else { r.EmoCopyTrigger++; }
                         visual_support.setImageResource(R.drawable.mickey);
                     }
                     else {
