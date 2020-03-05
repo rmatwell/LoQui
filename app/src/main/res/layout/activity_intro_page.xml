@@ -96,7 +96,7 @@
                     <Button
                         android:id="@+id/back"
                         android:layout_width="159dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="60dp"
                         android:layout_alignParentLeft="true"
                         android:layout_marginLeft="0dp"
                         android:background="@drawable/back"
@@ -107,10 +107,10 @@
 
                     <Button
                         android:id="@+id/letsgo"
-                        android:layout_width="145dp"
+                        android:layout_width="187dp"
                         android:layout_height="match_parent"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="19dp"
+                        android:layout_marginRight="0dp"
                         android:background="@drawable/next"
                         android:fontFamily="@font/schoolbell"
                         android:textColor="#3F51B5"

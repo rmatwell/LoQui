@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/schoolbell"
-            android:text="Emotion Quiz"
+            android:text="Emotion Quest"
             android:textAlignment="center"
             android:textColor="#420ED6"
             android:textSize="36sp" />

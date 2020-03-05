@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:fontFamily="@font/schoolbell"
-            android:text="Emotion Matching"
+            android:text="Emotion Quest"
             android:textAlignment="center"
             android:textColor="#420ED6"
             android:textSize="36sp" />
@@ -158,10 +158,10 @@
 
             <Button
                 android:id="@+id/submit"
-                android:layout_width="140dp"
-                android:layout_height="78dp"
+                android:layout_width="161dp"
+                android:layout_height="76dp"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="6dp"
+                android:layout_marginRight="11dp"
                 android:background="@drawable/next"
                 android:fontFamily="@font/schoolbell"
                 android:textColor="#420ED6"
