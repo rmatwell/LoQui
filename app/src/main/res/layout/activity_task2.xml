@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/task1_intro"
+    android:background="@drawable/emotion2"
     tools:context=".Task2">
 
     <Button
@@ -14,7 +14,7 @@
         android:layout_height="67dp"
         android:layout_marginStart="36dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/hcomb"
+        android:background="@drawable/back"
         android:textColor="#FFFFFF"
         android:textColorLink="#FFFFFF"
         android:textStyle="bold"
@@ -28,7 +28,7 @@
         android:layout_height="62dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/hcomb"
+        android:background="@drawable/next"
         android:textColor="#F8F8FA"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

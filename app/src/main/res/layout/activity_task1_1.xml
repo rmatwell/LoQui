@@ -23,11 +23,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="#FFCAEA"
             android:fontFamily="@font/schoolbell"
             android:text="Learn Your Emotions"
             android:textAlignment="center"
-            android:textColor="#3F51B5"
+            android:textColor="#171785"
             android:textSize="36sp"
             android:textStyle="bold" />
     </RelativeLayout>
@@ -48,10 +48,10 @@
             android:layout_weight="1.5"
             android:fontFamily="@font/schoolbell"
             android:gravity="center"
-            android:text="   Pick an emotion!"
+            android:text="Choose an emotion to learn its meaning!"
             android:textAlignment="center"
-            android:textColor="#8B64DD"
-            android:textSize="36sp"
+            android:textColor="#171785"
+            android:textSize="35sp"
             android:textStyle="bold" />
 
         <GridLayout
@@ -78,8 +78,8 @@
 
                 <ImageView
                     android:id="@+id/angry"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="101dp"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
                     android:background="#ffabab"
                     android:src="@drawable/angry" />
@@ -100,7 +100,7 @@
                 <ImageView
                     android:id="@+id/bored"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="216dp"
                     android:layout_gravity="center_horizontal"
                     android:background="#c5a3ff"
                     android:src="@drawable/bored" />
@@ -121,8 +121,8 @@
 
                 <ImageView
                     android:id="@+id/happy"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="91dp"
+                    android:layout_height="225dp"
                     android:layout_gravity="center_horizontal"
                     android:background="#fff5ba"
                     android:src="@drawable/happy" />
@@ -142,8 +142,8 @@
 
                 <ImageView
                     android:id="@+id/sad"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="111dp"
+                    android:layout_height="214dp"
                     android:layout_gravity="center_horizontal"
                     android:background="#ace7ff"
                     android:src="@drawable/sad" />
@@ -164,8 +164,8 @@
 
                 <ImageView
                     android:id="@+id/scared"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="103dp"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
                     android:background="#aff9db"
                     android:src="@drawable/scared" />
@@ -185,8 +185,8 @@
 
                 <ImageView
                     android:id="@+id/surprised"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="95dp"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
                     android:background="#ffccf9"
                     android:src="@drawable/surprised" />
@@ -201,8 +201,8 @@
 
             <Button
                 android:id="@+id/task1_home"
-                android:layout_width="100dp"
-                android:layout_height="84dp"
+                android:layout_width="90dp"
+                android:layout_height="70dp"
                 android:layout_centerInParent="true"
                 android:background="@drawable/homebtn"
                 android:fontFamily="@font/schoolbell"
