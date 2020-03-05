@@ -47,14 +47,17 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                progressDialog.dismiss();
+
                 //final String inputName = username.getText().toString().trim();
                 final String inputName = "testUser2";
                 final String inputPw = password.getText().toString().trim();
                 final String inputEmail = email.getText().toString().trim();
 
-                if(validateInput(inputName, inputPw, inputEmail))
-                         registerUser(inputName, inputPw, inputEmail);
 
+                    if(validateInput(inputName, inputPw, inputEmail)) {
+                        registerUser(inputName, inputPw, inputEmail);
+                    }
             }
         });
 
@@ -83,7 +86,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private void registerUser(final String inputName, final String inputPw, String inputEmail) {
 
-        progressDialog.setMessage("Verificating...");
+        progressDialog.setMessage("Please Wait...");
         progressDialog.show();
 
 
@@ -140,12 +143,57 @@ public class RegistrationActivity extends AppCompatActivity {
             username.setError("Username is empty.");
             return false;
         }
-        if(inPw.isEmpty()){
+
+        validatePassword(inPw);
+
+        if(inEmail.isEmpty()){
+            email.setError("Email is empty.");
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean validatePassword(String passIn)
+    {
+        boolean upperFlag = false;
+        boolean lowerFlag = false;
+        boolean numberFlag = false;
+
+        int asciiVal = 0;
+
+        if(passIn.isEmpty()){
             password.setError("Password is empty.");
             return false;
         }
-        if(inEmail.isEmpty()){
-            email.setError("Email is empty.");
+
+        if (passIn.length() > 20 || passIn.length() < 8)
+        {
+            password.setError("Password must be between 8 and 20 characters long.");
+            return false;
+        }
+
+        for (int i = 0; i < passIn.length(); i++)
+        {
+            asciiVal = passIn.charAt(i);
+
+            if (asciiVal >= 97 && asciiVal <= 122)
+            {
+                lowerFlag = true;
+            }
+            else if (asciiVal >= 65 && asciiVal <= 90)
+            {
+                upperFlag = true;
+            }
+            else if (asciiVal >= 48 && asciiVal <= 57)
+            {
+                numberFlag = true;
+            }
+        }
+
+        if (upperFlag == false || lowerFlag == false || numberFlag == false)
+        {
+            password.setError("Password must contain at least 1 uppercase and lowercase letter, and 1 number");
             return false;
         }
 
