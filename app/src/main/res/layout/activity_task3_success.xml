@@ -98,7 +98,7 @@
                 android:layout_width="243dp"
                 android:layout_height="408dp"
                 android:layout_weight="1"
-                android:src="@drawable/youdidit" />
+                android:src="@drawable/emma3" />
 
             <TextView
                 android:id="@+id/msg_def"

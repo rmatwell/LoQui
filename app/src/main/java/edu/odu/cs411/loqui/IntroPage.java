@@ -50,7 +50,7 @@ public class IntroPage extends AppCompatActivity {
                     Intent it = new Intent(IntroPage.this, Task1_1.class);
                     startActivity(it);
                 }
-                else if(task.equals("Face Matching Game")){
+                else if(task.equals("Sammie Says!")){
                     Intent it = new Intent(IntroPage.this, Task2_1_Setup.class);
                     startActivity(it);
                 }

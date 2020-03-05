@@ -18,7 +18,7 @@ public class Avatar extends AppCompatActivity {
             this.getSupportActionBar().hide();
         }
         catch (NullPointerException e){}
-        setContentView(R.layout.settings);
+        setContentView(R.layout.avatar);
         clickOnButton();
     }
 

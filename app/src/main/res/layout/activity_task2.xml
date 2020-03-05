@@ -10,8 +10,8 @@
     <Button
         android:id="@+id/back2_1"
         style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
-        android:layout_width="113dp"
-        android:layout_height="67dp"
+        android:layout_width="146dp"
+        android:layout_height="77dp"
         android:layout_marginStart="36dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/back"
@@ -24,8 +24,8 @@
     <Button
         android:id="@+id/b2_2"
         style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
-        android:layout_width="155dp"
-        android:layout_height="62dp"
+        android:layout_width="170dp"
+        android:layout_height="73dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/next"

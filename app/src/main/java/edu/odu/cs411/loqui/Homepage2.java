@@ -61,8 +61,8 @@ public class Homepage2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(Homepage2.this, IntroPage.class);
-                it.putExtra("content", "Look at the pictures, and learn what they mean!");
-                it.putExtra("task", "Learn Your Emotions");
+                it.putExtra("content", "Click on each emotion flashcard to learn the meaning!");
+                it.putExtra("task", "Learn Your Emotions!");
                 it.putExtra("pic_id", R.drawable.task1_intro);
                 startActivity(it);
             }
@@ -71,8 +71,8 @@ public class Homepage2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(Homepage2.this, IntroPage.class);
-                it.putExtra("content", "Make your face look like the picture of the character!");
-                it.putExtra("task", "Face Matching Game");
+                it.putExtra("content", "Let's improve your speech!!");
+                it.putExtra("task", "Sammie Says!");
                 it.putExtra("pic_id", R.drawable.task2_intro);
                 startActivity(it);
             }
@@ -81,8 +81,8 @@ public class Homepage2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(Homepage2.this, IntroPage.class);
-                it.putExtra("content", "Lets see how well you know your emotions!");
-                it.putExtra("task", "Emotion Quiz");
+                it.putExtra("content", "");
+                it.putExtra("task", "Emotion Quest!");
                 it.putExtra("pic_id", R.drawable.task3_intro);
                 startActivity(it);
             }

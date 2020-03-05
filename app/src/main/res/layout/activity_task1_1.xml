@@ -51,7 +51,7 @@
             android:text="Choose an emotion to learn its meaning!"
             android:textAlignment="center"
             android:textColor="#171785"
-            android:textSize="35sp"
+            android:textSize="34sp"
             android:textStyle="bold" />
 
         <GridLayout
@@ -100,7 +100,7 @@
                 <ImageView
                     android:id="@+id/bored"
                     android:layout_width="wrap_content"
-                    android:layout_height="216dp"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
                     android:background="#c5a3ff"
                     android:src="@drawable/bored" />
@@ -121,8 +121,8 @@
 
                 <ImageView
                     android:id="@+id/happy"
-                    android:layout_width="91dp"
-                    android:layout_height="225dp"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
                     android:background="#fff5ba"
                     android:src="@drawable/happy" />
@@ -142,8 +142,8 @@
 
                 <ImageView
                     android:id="@+id/sad"
-                    android:layout_width="111dp"
-                    android:layout_height="214dp"
+                    android:layout_width="101dp"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
                     android:background="#ace7ff"
                     android:src="@drawable/sad" />
@@ -164,7 +164,7 @@
 
                 <ImageView
                     android:id="@+id/scared"
-                    android:layout_width="103dp"
+                    android:layout_width="102dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
                     android:background="#aff9db"
@@ -185,7 +185,7 @@
 
                 <ImageView
                     android:id="@+id/surprised"
-                    android:layout_width="95dp"
+                    android:layout_width="99dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
                     android:background="#ffccf9"

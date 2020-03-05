@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:background="#2196F3"
             android:fontFamily="@font/schoolbell"
-            android:text="Games"
+            android:text="Hello! Choose an activity!"
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -233,10 +233,10 @@
                         android:layout_weight="0.5"
                         android:fontFamily="@font/schoolbell"
                         android:gravity="center"
-                        android:text="Speech with Sammie!"
+                        android:text="Sammie Says!"
                         android:textAlignment="center"
                         android:textColor="#171785"
-                        android:textSize="18sp"
+                        android:textSize="24sp"
                         android:textStyle="bold" />
 
                     <Button
@@ -305,10 +305,10 @@
                         android:layout_weight="0.5"
                         android:fontFamily="@font/schoolbell"
                         android:gravity="center"
-                        android:text="Emotion Quiz"
+                        android:text="Emotion Quest!"
                         android:textAlignment="center"
                         android:textColor="#171785"
-                        android:textSize="24sp"
+                        android:textSize="23sp"
                         android:textStyle="bold" />
 
                     <Button
