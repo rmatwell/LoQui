@@ -1,6 +1,5 @@
 package edu.odu.cs411.loqui;
 
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -36,12 +35,14 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         initializeGUI();
 
-        user = firebaseAuth.getCurrentUser();
+        //This block of code automatically signs in whoever was using the app previously.
+        //While useful, Im removing it for now so we know exactly who is signing in for testing purposes.
+        /*user = firebaseAuth.getCurrentUser();
 
         if(user != null) {
             finish();
             startActivity(new Intent(LoginActivity.this,Avatar.class));
-        }
+        }*/
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,8 +51,13 @@ public class LoginActivity extends AppCompatActivity {
                 String inEmail = email.getText().toString();
                 String inPassword = password.getText().toString();
 
-                if(validateInput(inEmail, inPassword)){
+                if(validateInput(inEmail, inPassword))
+                {
                     signUser(inEmail, inPassword);
+                }
+                else
+                {
+                    email.setError("Incorrect email or password.");
                 }
 
             }
@@ -80,24 +86,30 @@ public class LoginActivity extends AppCompatActivity {
 
     public void signUser(String email, String password){
 
-        progressDialog.setMessage("Verificating...");
+        progressDialog.setMessage("Logging In...");
         progressDialog.show();
+
+        firebaseAuth = FirebaseAuth.getInstance();
 
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+
                 if(task.isSuccessful()){
                     progressDialog.dismiss();
                     Toast.makeText(LoginActivity.this,"Login Successful",Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(LoginActivity.this,Homepage.class));
+                    FirebaseUser user = firebaseAuth.getCurrentUser();
+                    finish();
+                    startActivity(new Intent(LoginActivity.this,Avatar.class));
+                    //startActivity(new Intent(LoginActivity.this,Homepage.class));
                 }
                 else{
                     progressDialog.dismiss();
                     Toast.makeText(LoginActivity.this,"Invalid email or password",Toast.LENGTH_SHORT).show();
+
                 }
             }
         });
-
     }
 
 

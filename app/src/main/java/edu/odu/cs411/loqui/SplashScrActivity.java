@@ -53,7 +53,7 @@ public class SplashScrActivity extends AppCompatActivity {
 
 
                         finish();
-                        startActivity(new Intent(SplashScrActivity.this,RegistrationActivity.class));
+                        startActivity(new Intent(SplashScrActivity.this,LoginActivity.class));
                     }
 
                     @Override

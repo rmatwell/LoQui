@@ -86,7 +86,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private void registerUser(final String inputName, final String inputPw, String inputEmail) {
 
-        progressDialog.setMessage("Please Wait...");
+        progressDialog.setMessage("Creating Your Account...");
         progressDialog.show();
 
 
