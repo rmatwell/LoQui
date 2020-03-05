@@ -65,7 +65,7 @@ public class RegistrationActivity extends AppCompatActivity {
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(RegistrationActivity.this,Avatar.class));
+                startActivity(new Intent(RegistrationActivity.this,LoginActivity.class));
             }
         });
 
