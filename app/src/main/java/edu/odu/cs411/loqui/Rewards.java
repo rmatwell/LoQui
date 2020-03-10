@@ -5,6 +5,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
@@ -16,6 +17,7 @@ public class Rewards extends AppCompatActivity
 {
     public int EmoRecogTrigger = 0;
     public int EmoCopyTrigger = 0;
+    public int trigger;
 
     String currentDate = "";
     String currentTime = "";
@@ -48,5 +50,8 @@ public class Rewards extends AppCompatActivity
                 return true;
             }
         });
+    }
+
+    public void Reward(ImageView upperright) {
     }
 }

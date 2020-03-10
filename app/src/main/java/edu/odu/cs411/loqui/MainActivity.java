@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnLogout = findViewById(R.id.btnLogout);
+        //btnLogout = findViewById(R.id.btnLogout);
         firebaseAuth = FirebaseAuth.getInstance();
 
         FirebaseUser user;
@@ -27,10 +27,10 @@ public class MainActivity extends AppCompatActivity {
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+           public void onClick(View view) {
 
-                firebaseAuth.signOut();
-                finish();
+               firebaseAuth.signOut();
+               finish();
                 startActivity(new Intent(MainActivity.this,LoginActivity.class));
             }
         });
