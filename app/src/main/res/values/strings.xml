@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LogRegForm</string>
+    <string name="app_name">LoQui</string>
     <string name="usernameReg">Username</string>
     <string name="emailReg">Email</string>
     <string name="passwordReg">Password</string>
@@ -9,5 +9,4 @@
     <string name="forgot_password">Forgot password?</string>
     <string name="signup_redirect">Don\'t have an account? Register here!</string>
     <string name="title_home">Home</string>
-
 </resources>

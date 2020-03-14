@@ -240,7 +240,7 @@
                         android:layout_weight="0.5"
                         android:fontFamily="@font/schoolbell"
                         android:gravity="center"
-                        android:text="Speech with Emma!"
+                        android:text="Sammie Says"
                         android:textAlignment="center"
                         android:textColor="#171785"
                         android:textSize="23sp"

@@ -34,7 +34,7 @@ public class Task2 extends AppCompatActivity {
         letsGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(Task2.this, Task2.class);
+                Intent it = new Intent(Task2.this, Task_4.class);
                 startActivity(it);
             }
         });

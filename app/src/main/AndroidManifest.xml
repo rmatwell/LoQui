@@ -8,7 +8,8 @@
     <uses-permission android:name="android.hardware.camera2.full" />
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-feature android:name="android.hardware.camera" />
-
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/logo_noshadow"
@@ -54,6 +55,8 @@
         <activity android:name=".Task2_1"/>
         <activity android:name=".Task2_2" />
         <activity android:name=".Task1_1" />
+        <activity android:name=".Task_4"/>
+        <activity android:name=".rcvadapter"/>
         <activity android:name=".SettingsActivity"/>
         <activity android:name=".MusicActivity"/>
         <activity android:name=".ProgressActivity"/>

@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PowerManager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.RadioButton;
 
@@ -15,12 +17,11 @@ public class MusicActivity extends AppCompatActivity {
 
     private RadioGroup radioGroup;
     HomeWatcher mHomeWatcher;
-
+    private RadioButton song1;
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music);
-
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
 
         radioGroup.clearCheck();
@@ -41,11 +42,6 @@ public class MusicActivity extends AppCompatActivity {
                     }
                 });
 
-        //Binds music service
-        doBindService();
-        Intent music = new Intent();
-        music.setClass(this, MusicService.class);
-        startService(music);
 
         mHomeWatcher = new HomeWatcher(this);
         mHomeWatcher.setOnHomePressedListener(new HomeWatcher.OnHomePressedListener() {
@@ -62,8 +58,6 @@ public class MusicActivity extends AppCompatActivity {
                 }
             }
         });
-        mHomeWatcher.startWatch();
-
     }
 
     private boolean mIsBound = false;
@@ -80,11 +74,7 @@ public class MusicActivity extends AppCompatActivity {
         }
     };
 
-    void doBindService(){
-        bindService(new Intent(this,MusicService.class),
-                Scon, Context.BIND_AUTO_CREATE);
-        mIsBound = true;
-    }
+
 
     void doUnbindService()
     {
@@ -95,16 +85,7 @@ public class MusicActivity extends AppCompatActivity {
         }
     }
 
-    //Resume music on onResume
-    @Override
-    protected void onResume() {
-        super.onResume();
 
-        if (mServ != null) {
-            mServ.resumeMusic();
-        }
-
-    }
 
     @Override
     protected void onPause() {
@@ -125,16 +106,21 @@ public class MusicActivity extends AppCompatActivity {
 
     }
 
-    //Unbind music on onDestroy
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
 
-        doUnbindService();
-        Intent music = new Intent();
-        music.setClass(this,MusicService.class);
-        stopService(music);
 
-    }
+
+        //Unbind music on onDestroy
+        @Override
+        protected void onDestroy() {
+            super.onDestroy();
+
+            doUnbindService();
+            Intent music = new Intent();
+            music.setClass(this,MusicService.class);
+            stopService(music);
+
+        }
+
+
+
 }
-

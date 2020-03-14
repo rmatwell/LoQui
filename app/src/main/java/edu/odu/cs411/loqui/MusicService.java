@@ -6,10 +6,16 @@ import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.media.MediaPlayer.OnErrorListener;
 import android.os.Binder;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class MusicService extends Service implements MediaPlayer.OnErrorListener {
-
+    private RadioGroup radioGroup;
+    HomeWatcher mHomeWatcher;
+    private RadioButton song1;
     private final IBinder mBinder = new ServiceBinder();
     MediaPlayer mPlayer;
     private int length = 0;
