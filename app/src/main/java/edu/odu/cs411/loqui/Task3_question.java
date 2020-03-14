@@ -283,7 +283,7 @@ public class Task3_question extends AppCompatActivity {
         int count = 0;
         int correct_ones  = 0;
         List<Boolean> checked = new ArrayList<>();
-        Rewards r = new Rewards();
+        Goals goal = new Goals(10, "Emotion Recognition", 1, upperright);
 
         FirebaseAuth firebaseAuth;
         firebaseAuth = FirebaseAuth.getInstance();
@@ -311,18 +311,12 @@ public class Task3_question extends AppCompatActivity {
 
         }
         else if (count > num_correct_answers) { // if users select more than the number of correct images, inform them the limit
-            r.EmoRecogTrigger += (num_correct_answers - (count - num_correct_answers)); //add points for correct selections and subtract for wrong ones
             return "Pick only " + (num_correct_answers) + " faces!";
 
         }
         else { // if users select exactly the number of correct images
             if (checked.equals(correct_answers)){ // if they are correct
-                if (r.EmoRecogTrigger >= 10)
-                {
-                    r.EmoRecogTrigger = 0;
-                    r.Reward(upperright, "Emotion Recognition");
-                }
-                else { r.EmoRecogTrigger++; }
+                goal.Count();
 
                 //inserts a score for the current user into Firebase
                 Map<String,Object> emotionData = new HashMap<>();
