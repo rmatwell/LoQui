@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class PWresetActivity extends AppCompatActivity {
 
-    private ImageView ivLogo,ivPWreset;
+    private ImageView ivLogo;
     private TextView tvInfo, tvSignin;
     private AutoCompleteTextView atvEmail;
     private Button btnReset;
@@ -74,7 +74,6 @@ public class PWresetActivity extends AppCompatActivity {
     private void initializeGUI(){
 
         ivLogo = findViewById(R.id.ivLogLogo);
-        ivPWreset = findViewById(R.id.ivPassReset);
         tvInfo = findViewById(R.id.tvPWinfo);
         tvSignin = findViewById(R.id.tvGoBack);
         atvEmail = findViewById(R.id.atvEmailRes);

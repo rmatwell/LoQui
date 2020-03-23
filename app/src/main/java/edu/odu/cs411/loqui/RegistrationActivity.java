@@ -74,7 +74,6 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private void initializeGUI(){
 
-        joinus = findViewById(R.id.ivJoinUs);
         email =  findViewById(R.id.atvEmailReg);
         password = findViewById(R.id.atvPasswordReg);
         signin = findViewById(R.id.tvSignIn);
