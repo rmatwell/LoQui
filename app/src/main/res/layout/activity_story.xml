@@ -9,38 +9,55 @@
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/emma3"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="437dp" />
+        android:layout_marginTop="348dp"
+        android:layout_marginEnd="11dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView8"
+        app:layout_constraintHorizontal_bias="0.007"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:srcCompat="@drawable/emma3" />
 
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="257dp"
         android:layout_height="291dp"
-        app:srcCompat="@drawable/b"
-        tools:layout_editor_absoluteX="38dp"
-        tools:layout_editor_absoluteY="257dp" />
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="116dp"
+        android:layout_marginBottom="38dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.793"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/button5"
+        app:srcCompat="@drawable/b" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="160dp"
         android:layout_height="85dp"
+        android:layout_marginStart="81dp"
         android:fontFamily="@font/schoolbell"
         android:text="Pick a story!"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="30dp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="81dp"
-        tools:layout_editor_absoluteY="336dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button5"
         android:layout_width="363dp"
         android:layout_height="202dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="25dp"
         android:background="@drawable/sunandmoon"
         android:textAlignment="viewEnd"
-        tools:layout_editor_absoluteX="23dp"
-        tools:layout_editor_absoluteY="36dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
