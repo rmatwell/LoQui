@@ -1,10 +1,35 @@
 package edu.odu.cs411.loqui;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageView;
 
 public class Goals extends AppCompatActivity
 {
+    private ImageView goals_backbtn;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        try {
+            this.getSupportActionBar().hide();
+        } catch (NullPointerException e) {
+        }
+        setContentView(R.layout.activity_goals);
+
+        goals_backbtn = findViewById(R.id.goals_back_btn);
+
+        goals_backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it = new Intent(Goals.this, ParentPortalActivity.class);
+                startActivity(it);
+            }
+        });
+    }
+
     private int count = 0;
     public int trigger;
     public String game;

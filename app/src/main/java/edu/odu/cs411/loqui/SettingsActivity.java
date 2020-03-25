@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.widget.ImageView;
 
 
 public class SettingsActivity extends AppCompatActivity {
 
-    private CardView progressCard, goalsCard, rewardsCard, musicCard;
+    private CardView accountCard, rewardsCard, audioCard, aboutCard;
+    private ImageView settings_backbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,26 +22,12 @@ public class SettingsActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_settings);
 
-        progressCard = (CardView) findViewById(R.id.progress_settings);
-        goalsCard = (CardView) findViewById(R.id.goal_settings);
-        rewardsCard = (CardView) findViewById(R.id.rewards_settings);
-        musicCard = (CardView) findViewById(R.id.music_settings);
+        //accountCard = (CardView) findViewById(R.id.settings_account);
+        rewardsCard = (CardView) findViewById(R.id.settings_rewards);
+        audioCard = (CardView) findViewById(R.id.settings_audio);
+        //aboutCard = (CardView) findViewById(R.id.settings_about);
+        settings_backbtn = findViewById(R.id.settings_back_btn);
 
-        progressCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent it = new Intent(SettingsActivity.this, ProgressActivity.class);
-                startActivity(it);
-            }
-        });
-
-        goalsCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent it = new Intent(SettingsActivity.this, Goals.class);
-                startActivity(it);
-            }
-        });
 
         rewardsCard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,10 +37,18 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        musicCard.setOnClickListener(new View.OnClickListener() {
+        audioCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent it = new Intent(SettingsActivity.this, MusicActivity.class);
+                startActivity(it);
+            }
+        });
+
+        settings_backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it = new Intent(SettingsActivity.this, ParentPortalActivity.class);
                 startActivity(it);
             }
         });
