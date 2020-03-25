@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2">
+        android:layout_weight="1">
 
         <ImageView
             android:id="@+id/goals_back_btn"
@@ -23,10 +23,29 @@
             android:id="@+id/goals"
             android:layout_width="200dp"
             android:layout_height="100dp"
-            android:layout_marginLeft="110dp"
-            android:layout_marginRight="110dp"
+            android:layout_centerInParent="true"
             android:src="@drawable/ic_star" />
+    </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Goals"
+            android:textSize="34sp"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6">
 
 
         <TextView
@@ -34,25 +53,27 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="110dp"
-            android:text="Select Game" />
+            android:text="Select Game"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/textView10"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="110dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="40dp"
-            android:text="Select Goal Type" />
+            android:text="Select Goal Type"
+            android:textStyle="bold"/>
 
         <RadioGroup
             android:layout_width="150dp"
             android:layout_height="100dp"
             android:layout_alignParentLeft="true"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="140dp">
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="40dp">
 
             <RadioButton
                 android:id="@+id/emotion_game"
@@ -77,8 +98,8 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="140dp"
-            android:layout_marginEnd="40dp">
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="30dp">
 
             <RadioButton
                 android:id="@+id/radioButton5"
@@ -106,26 +127,6 @@
 
         </RadioGroup>
 
-        <EditText
-            android:id="@+id/amount_correct"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="290dp"
-            android:ems="10"
-            android:inputType="number" />
-
-        <EditText
-            android:id="@+id/editText3"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="370dp"
-            android:ems="10"
-            android:inputType="number" />
-
         <TextView
             android:id="@+id/textView11"
             android:layout_width="160dp"
@@ -134,6 +135,15 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="250dp"
             android:text="Enter amount or percent for correct answers." />
+        <EditText
+            android:id="@+id/amount_correct"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="50dp"
+            android:layout_marginTop="250dp"
+            android:ems="10"
+            android:inputType="number" />
 
         <TextView
             android:id="@+id/textView12"
@@ -141,33 +151,34 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="330dp"
+            android:layout_marginTop="350dp"
             android:text="Enter the amount of time in seconds." />
 
-        <Button
-            android:id="@+id/create_goal"
+        <EditText
+            android:id="@+id/editText3"
             android:layout_width="150dp"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="320dp"
-            android:layout_marginEnd="40dp"
-            android:backgroundTint="#31DA0D"
-            android:text="Create Goal" />
+            android:layout_marginEnd="50dp"
+            android:layout_marginTop="350dp"
+            android:ems="10"
+            android:inputType="number" />
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <Button
+            android:id="@+id/create_goal"
+            android:layout_width="300dp"
+            android:layout_height="400dp"
+            android:backgroundTint="#31DA0D"
             android:layout_centerInParent="true"
-            android:text="Goals"
-            android:textSize="34sp"
-            android:textStyle="bold"/>
+            android:layout_marginBottom="20dp"
+            android:text="Create Goal" />
 
     </RelativeLayout>
 
