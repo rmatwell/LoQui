@@ -10,7 +10,7 @@ import android.widget.ImageView;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    private CardView accountCard, rewardsCard, audioCard, aboutCard;
+    private CardView accountCard, tutorialCard, audioCard, aboutCard;
     private ImageView settings_backbtn;
 
     @Override
@@ -23,19 +23,11 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         //accountCard = (CardView) findViewById(R.id.settings_account);
-        rewardsCard = (CardView) findViewById(R.id.settings_rewards);
+        //tutorialCard = (CardView) findViewById(R.id.settings_tutorial);
         audioCard = (CardView) findViewById(R.id.settings_audio);
         //aboutCard = (CardView) findViewById(R.id.settings_about);
         settings_backbtn = findViewById(R.id.settings_back_btn);
 
-
-        rewardsCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent it = new Intent(SettingsActivity.this, Rewards.class);
-                startActivity(it);
-            }
-        });
 
         audioCard.setOnClickListener(new View.OnClickListener() {
             @Override
