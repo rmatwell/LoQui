@@ -148,7 +148,10 @@ public class RegistrationActivity extends AppCompatActivity {
             return false;
         }
 
-        validatePassword(inPw);
+        if(validatePassword(inPw) == false)
+        {
+            return false;
+        }
 
         if(inEmail.isEmpty()){
             email.setError("Email is empty.");
@@ -208,10 +211,12 @@ public class RegistrationActivity extends AppCompatActivity {
         else if (lowerFlag == false)
         {
             password.setError("Password must contain at least 1 lowercase letter.");
+            return false;
         }
         else if (numberFlag == false)
         {
             password.setError("Password must contain at least 1 number.");
+            return false;
         }
 
         return true;
