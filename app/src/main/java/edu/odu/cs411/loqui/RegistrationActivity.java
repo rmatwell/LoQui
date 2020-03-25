@@ -25,7 +25,7 @@ import java.util.Map;
 public class RegistrationActivity extends AppCompatActivity {
 
     private ImageView logo, joinus;
-    private AutoCompleteTextView username, email, password;
+    private AutoCompleteTextView username, email, password, confirmPassword, childName;
     private Button signup;
     private TextView signin;
     private ProgressDialog progressDialog;
@@ -49,14 +49,15 @@ public class RegistrationActivity extends AppCompatActivity {
 
                 progressDialog.dismiss();
 
-                //final String inputName = username.getText().toString().trim();
-                final String inputName = "testUser2";
+                final String inputName = username.getText().toString().trim();
                 final String inputPw = password.getText().toString().trim();
+                final String inputConfirmPw = confirmPassword.getText().toString().trim();
                 final String inputEmail = email.getText().toString().trim();
+                final String inputChildName = childName.getText().toString().trim();
 
 
-                    if(validateInput(inputName, inputPw, inputEmail)) {
-                        registerUser(inputName, inputPw, inputEmail);
+                    if(validateInput(inputName, inputPw, inputConfirmPw, inputEmail, inputChildName)) {
+                        registerUser(inputName, inputPw, inputEmail, inputChildName);
                     }
             }
         });
@@ -75,7 +76,11 @@ public class RegistrationActivity extends AppCompatActivity {
     private void initializeGUI(){
 
         email =  findViewById(R.id.atvEmailReg);
+        username = findViewById(R.id.atvUsername);
         password = findViewById(R.id.atvPasswordReg);
+        confirmPassword = findViewById(R.id.atvConfirmPasswordReg);
+        childName = findViewById(R.id.atvFirstName);
+
         signin = findViewById(R.id.tvSignIn);
         signup = findViewById(R.id.btnSignUp);
         progressDialog = new ProgressDialog(this);
@@ -83,7 +88,7 @@ public class RegistrationActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
     }
 
-    private void registerUser(final String inputName, final String inputPw, String inputEmail) {
+    private void registerUser(final String inputName, final String inputPw, final String inputEmail, final String childName) {
 
         progressDialog.setMessage("Creating Your Account...");
         progressDialog.show();
@@ -94,9 +99,9 @@ public class RegistrationActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         progressDialog.dismiss();
-                        sendUserData(inputName, inputEmail);
+                        sendUserData(inputName, inputEmail, childName);
                         Toast.makeText(RegistrationActivity.this,"You've been registered successfully.",Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(RegistrationActivity.this,Avatar.class));
+                        startActivity(new Intent(RegistrationActivity.this,Homepage.class));
                     }
                     else{
                         progressDialog.dismiss();
@@ -108,7 +113,7 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
 
-    private void sendUserData(String inputUsername, String inputEmail){
+    private void sendUserData(String inputUsername, String inputEmail, String childName){
 
         db = FirebaseFirestore.getInstance();
         FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
@@ -122,32 +127,47 @@ public class RegistrationActivity extends AppCompatActivity {
         Map<String,Object> userData = new HashMap<>();
         userData.put("email",inputEmail);
         userData.put("username",inputUsername);
-        userData.put("parentFirstName","FirstNamePlaceholder");
-        userData.put("parentLastName","LastNamePlaceholder");
-        userData.put("childFirstName","ChildNamePlaceholder");
+        userData.put("childFirstName",childName);
         userData.put("accountCreationDate",FieldValue.serverTimestamp());
         db.collection("users").document(userID)
                 .set(userData);
 
+        //This code is a template for adding score data to the DB for user in the games when they are created
+        /*
         Map<String,Object> emotionData = new HashMap<>();
         emotionData.put(inputUsername + "EmotionScore",50);
         emotionData.put("EmotionScoreTimestamp",FieldValue.serverTimestamp());
 
         db.collection("users").document(inputUsername).collection("EmotionScores").add(emotionData);
+        */
     }
 
-    private boolean validateInput(String inName, String inPw, String inEmail){
+    private boolean validateInput(String inName, String inPw, String confirmPw, String inEmail, String inChildName){
 
         if(inName.isEmpty()){
             username.setError("Username is empty.");
             return false;
         }
 
-        validatePassword(inPw);
+        if(inPw.equals(confirmPw) == false)
+        {
+            confirmPassword.setError("Passwords must be the same in both password fields.");
+            return false;
+        }
+
+        if(validatePassword(inPw) == false)
+        {
+            return false;
+        }
 
         if(inEmail.isEmpty()){
             email.setError("Email is empty.");
             return false;
+        }
+
+        if(inChildName.isEmpty())
+        {
+            childName.setError("First name is empty.");
         }
 
         return true;
@@ -190,9 +210,19 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         }
 
-        if (upperFlag == false || lowerFlag == false || numberFlag == false)
+        if (upperFlag == false)
         {
-            password.setError("Password must contain at least 1 uppercase and lowercase letter, and 1 number");
+            password.setError("Password must contain at least 1 uppercase letter.");
+            return false;
+        }
+        else if (lowerFlag == false)
+        {
+            password.setError("Password must contain at least 1 lowercase letter.");
+            return false;
+        }
+        else if (numberFlag == false)
+        {
+            password.setError("Password must contain at least 1 number.");
             return false;
         }
 
