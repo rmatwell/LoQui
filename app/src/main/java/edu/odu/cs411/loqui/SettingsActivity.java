@@ -36,7 +36,7 @@ public class SettingsActivity extends AppCompatActivity {
         goalsCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it = new Intent(SettingsActivity.this, GoalsActivity.class);
+                Intent it = new Intent(SettingsActivity.this, Goals.class);
                 startActivity(it);
             }
         });
