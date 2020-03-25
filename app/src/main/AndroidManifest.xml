@@ -44,7 +44,6 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".PWresetActivity"></activity>
         <activity android:name=".UserProfile"/>
-        <activity android:name=".Avatar"/>
         <activity android:name=".Homepage" />
         <activity android:name=".Homepage2"/>
         <activity android:name=".Task1" />
@@ -55,7 +54,8 @@
         <activity android:name=".Task2_1"/>
         <activity android:name=".Task2_2" />
         <activity android:name=".Task1_1" />
-        <activity android:name=".Task_4"/>
+        <activity android:name=".Task_4"
+            android:exported="true"/>
         <activity android:name=".rcvadapter"/>
         <activity android:name=".SettingsActivity"/>
         <activity android:name=".MusicActivity"/>

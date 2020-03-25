@@ -15,7 +15,7 @@ public class Homepage extends AppCompatActivity {
 
     //watches to see if the user presses home button
     HomeWatcher mHomeWatcher;
-    private Button go1, go2, go3,button2;
+    private Button go2, go3,button2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,22 +30,12 @@ public class Homepage extends AppCompatActivity {
     }
 
     private void clickOnButton(){
-        go1 = (Button) findViewById(R.id.go1);
+
         go2 = (Button) findViewById(R.id.go2);
         go3 = (Button) findViewById(R.id.go3);
         button2 = (Button) findViewById(R.id.button2);
 
-        go1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent it = new Intent(Homepage.this, IntroPage.class);
-                it.putExtra("content", "Lets help you understand what emotions mean to you");
-                it.putExtra("task", "Learn Your Emotions");
-                it.putExtra("pic_id", R.drawable.task1_intro);
-                startActivity(it);
-            }
-        });
-        go2.setOnClickListener(new View.OnClickListener() {
+            go2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(Homepage.this, Task_4.class);

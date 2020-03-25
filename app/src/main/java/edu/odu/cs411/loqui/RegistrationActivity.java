@@ -100,7 +100,7 @@ public class RegistrationActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                         sendUserData(inputName, inputEmail, childName);
                         Toast.makeText(RegistrationActivity.this,"You've been registered successfully.",Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(RegistrationActivity.this,Avatar.class));
+                        startActivity(new Intent(RegistrationActivity.this,Homepage.class));
                     }
                     else{
                         progressDialog.dismiss();
