@@ -5,27 +5,145 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".GoalsActivity">
+    tools:context=".Goals">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
-        android:layout_marginTop="10dp">
+        android:layout_weight="2">
 
         <ImageView
-            android:id="@+id/goals_back_btn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_backarrow_purple"
-            android:layout_marginTop="10dp"/>
-
-        <ImageView
-            android:src="@drawable/ic_star"
             android:id="@+id/goals"
-            android:layout_centerInParent="true"
             android:layout_width="200dp"
-            android:layout_height="200dp"/>
+            android:layout_height="100dp"
+            android:layout_marginLeft="110dp"
+            android:layout_marginRight="110dp"
+            android:src="@drawable/ic_star" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="110dp"
+            android:text="Select Game" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="110dp"
+            android:layout_marginEnd="40dp"
+            android:text="Select Goal Type" />
+
+        <RadioGroup
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="140dp">
+
+            <RadioButton
+                android:id="@+id/emotion_game"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Emotion Game" />
+
+            <RadioButton
+                android:id="@+id/eye_contact_game"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Eye Contact Game" />
+
+            <RadioButton
+                android:id="@+id/speech_training"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Speech Training" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="140dp"
+            android:layout_marginEnd="40dp">
+
+            <RadioButton
+                android:id="@+id/radioButton5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Overall Correct" />
+
+            <RadioButton
+                android:id="@+id/radioButton6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Streak Correct" />
+
+            <RadioButton
+                android:id="@+id/radioButton7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Overall Correct w/Time" />
+
+            <RadioButton
+                android:id="@+id/radioButton9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Percent Correct w/Time" />
+
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/amount_correct"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="290dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="370dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="250dp"
+            android:text="Enter amount or percent for correct answers." />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="330dp"
+            android:text="Enter the amount of time in seconds." />
+
+        <Button
+            android:id="@+id/create_goal"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="320dp"
+            android:layout_marginEnd="40dp"
+            android:backgroundTint="#31DA0D"
+            android:text="Create Goal" />
 
     </RelativeLayout>
 
@@ -43,7 +161,6 @@
             android:textStyle="bold"/>
 
     </RelativeLayout>
-
 
 
 </LinearLayout>
