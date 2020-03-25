@@ -51,11 +51,12 @@ public class RegistrationActivity extends AppCompatActivity {
 
                 final String inputName = username.getText().toString().trim();
                 final String inputPw = password.getText().toString().trim();
+                final String inputConfirmPw = confirmPassword.getText().toString().trim();
                 final String inputEmail = email.getText().toString().trim();
                 final String inputChildName = childName.getText().toString().trim();
 
 
-                    if(validateInput(inputName, inputPw, inputEmail, inputChildName)) {
+                    if(validateInput(inputName, inputPw, inputConfirmPw, inputEmail, inputChildName)) {
                         registerUser(inputName, inputPw, inputEmail, inputChildName);
                     }
             }
@@ -87,7 +88,7 @@ public class RegistrationActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
     }
 
-    private void registerUser(final String inputName, final String inputPw, String inputEmail, String childName) {
+    private void registerUser(final String inputName, final String inputPw, final String inputEmail, final String childName) {
 
         progressDialog.setMessage("Creating Your Account...");
         progressDialog.show();
@@ -141,11 +142,16 @@ public class RegistrationActivity extends AppCompatActivity {
         */
     }
 
-    private boolean validateInput(String inName, String inPw, String inEmail, String inChildName){
+    private boolean validateInput(String inName, String inPw, String confirmPw, String inEmail, String inChildName){
 
         if(inName.isEmpty()){
             username.setError("Username is empty.");
             return false;
+        }
+
+        if(inPw.equals(confirmPw) == false)
+        {
+            confirmPassword.setError("Passwords must be the same in both password fields.");
         }
 
         if(validatePassword(inPw) == false)
