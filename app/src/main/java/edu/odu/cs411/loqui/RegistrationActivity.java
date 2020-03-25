@@ -152,6 +152,7 @@ public class RegistrationActivity extends AppCompatActivity {
         if(inPw.equals(confirmPw) == false)
         {
             confirmPassword.setError("Passwords must be the same in both password fields.");
+            return false;
         }
 
         if(validatePassword(inPw) == false)
