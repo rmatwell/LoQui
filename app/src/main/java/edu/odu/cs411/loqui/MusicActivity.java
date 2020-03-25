@@ -10,6 +10,7 @@ import android.os.PowerManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RadioButton;
 
@@ -18,11 +19,22 @@ public class MusicActivity extends AppCompatActivity {
     private RadioGroup radioGroup;
     HomeWatcher mHomeWatcher;
     private RadioButton song1;
+    private ImageView audio_backbtn;
+
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        audio_backbtn = findViewById(R.id.audio_back_btn);
+
+
+        audio_backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it = new Intent(MusicActivity.this, SettingsActivity.class);
+            }
+        });
 
         radioGroup.clearCheck();
 
@@ -75,7 +87,6 @@ public class MusicActivity extends AppCompatActivity {
     };
 
 
-
     void doUnbindService()
     {
         if(mIsBound)
@@ -84,7 +95,6 @@ public class MusicActivity extends AppCompatActivity {
             mIsBound = false;
         }
     }
-
 
 
     @Override
@@ -105,8 +115,6 @@ public class MusicActivity extends AppCompatActivity {
         }
 
     }
-
-
 
 
         //Unbind music on onDestroy

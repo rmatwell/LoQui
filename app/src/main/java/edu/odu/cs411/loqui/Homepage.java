@@ -68,7 +68,7 @@ public class Homepage extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(Homepage.this, SettingsActivity.class);
+                Intent it = new Intent(Homepage.this, ParentPortalActivity.class);
                 startActivity(it);
             }
         });

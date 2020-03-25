@@ -14,7 +14,14 @@
         android:layout_marginTop="10dp">
 
         <ImageView
-            android:src="@drawable/ic_library_music"
+            android:id="@+id/audio_back_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_backarrow_purple"
+            android:layout_marginTop="10dp"/>
+
+        <ImageView
+            android:src="@drawable/ic_sound_purple"
             android:id="@+id/music"
             android:layout_centerInParent="true"
             android:layout_width="200dp"

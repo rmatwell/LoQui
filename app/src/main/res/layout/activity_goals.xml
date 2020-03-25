@@ -14,11 +14,19 @@
         android:layout_marginTop="10dp">
 
         <ImageView
+            android:id="@+id/goals_back_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_backarrow_purple"
+            android:layout_marginTop="10dp"/>
+
+        <ImageView
             android:src="@drawable/ic_star"
             android:id="@+id/goals"
             android:layout_centerInParent="true"
             android:layout_width="200dp"
             android:layout_height="200dp"/>
+
     </RelativeLayout>
 
     <RelativeLayout
