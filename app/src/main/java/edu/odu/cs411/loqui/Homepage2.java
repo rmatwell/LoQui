@@ -16,6 +16,10 @@ public class Homepage2 extends AppCompatActivity {
     //watches to see if the user presses home button
     HomeWatcher mHomeWatcher;
     private Button go1, go2, go3, button2;
+    Button btnahead, btnback;
+    static int count = -1;
+    MyProgressBar step_progress_bar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +28,27 @@ public class Homepage2 extends AppCompatActivity {
         } catch (NullPointerException e) {
         }
         setContentView(R.layout.activity_homepage);
+        step_progress_bar = findViewById(R.id.step_progress_bar);
+
         clickOnButton();
+        btnahead = (Button) findViewById(R.id.go2);
+        btnback = (Button) findViewById(R.id.go3);
+
+        btnahead.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                count++;
+                step_progress_bar.updateProgress(count);
+            }
+        });
+
+        btnback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                count--;
+                step_progress_bar.updateProgress(count);
+            }
+        });
 
     }
 
@@ -34,21 +58,12 @@ public class Homepage2 extends AppCompatActivity {
         go3 = (Button) findViewById(R.id.go3);
         button2 = (Button) findViewById(R.id.button2);
 
-        go1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent it = new Intent(Homepage2.this, IntroPage.class);
-                it.putExtra("content", "Click on each emotion flashcard to learn the meaning!");
-                it.putExtra("task", "Learn Your Emotions!");
-                it.putExtra("pic_id", R.drawable.task1_intro);
-                startActivity(it);
-            }
-        });
+
         go2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(Homepage2.this, IntroPage.class);
-                it.putExtra("content", "Let's improve your speech!!");
+                Intent it = new Intent(Homepage2.this, Task_4.class);
+                it.putExtra("content", "Let's improve your speech!");
                 it.putExtra("task", "Sammie Says");
                 it.putExtra("pic_id", R.drawable.task2_intro);
                 startActivity(it);
@@ -58,7 +73,7 @@ public class Homepage2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(Homepage2.this, IntroPage.class);
-                it.putExtra("content", "");
+                it.putExtra("content", "Let's quiz your understanding of emotions!");
                 it.putExtra("task", "Emotion Quest");
                 it.putExtra("pic_id", R.drawable.task3_intro);
                 startActivity(it);
@@ -73,9 +88,6 @@ public class Homepage2 extends AppCompatActivity {
         });
 
     }
-
-
-
 
 
 }

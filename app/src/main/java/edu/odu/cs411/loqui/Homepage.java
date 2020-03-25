@@ -16,6 +16,10 @@ public class Homepage extends AppCompatActivity {
     //watches to see if the user presses home button
     HomeWatcher mHomeWatcher;
     private Button go1, go2, go3,button2;
+    Button btnahead, btnback;
+    static int count = -1;
+    MyProgressBar step_progress_bar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +29,17 @@ public class Homepage extends AppCompatActivity {
         }
         catch (NullPointerException e){}
         setContentView(R.layout.activity_homepage);
+        step_progress_bar = findViewById(R.id.step_progress_bar);
+
         clickOnButton();
+        btnahead = (Button) findViewById(R.id.complete);
+        btnahead.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                count++;
+                step_progress_bar.updateProgress(count);
+            }
+        });
 
     }
 
@@ -38,10 +52,9 @@ public class Homepage extends AppCompatActivity {
         go1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(Homepage.this, IntroPage.class);
-                it.putExtra("content", "Lets help you understand what emotions mean to you");
-                it.putExtra("task", "Learn Your Emotions");
-                it.putExtra("pic_id", R.drawable.task1_intro);
+                Intent it = new Intent(Homepage.this, Story.class);
+                it.putExtra("content", "Story Time");
+                it.putExtra("task", "Story Time");
                 startActivity(it);
             }
         });

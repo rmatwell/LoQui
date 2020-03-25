@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MyProgressBar">
+        <attr name="completeColor" format="color" />
+        <attr name="waitingColor" format="color" />
+        <attr name="noOfSteps" format="integer" />
+    </declare-styleable>
+
+</resources>

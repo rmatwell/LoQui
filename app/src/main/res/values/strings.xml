@@ -13,4 +13,6 @@
     <string name="forgot_password">Forgot password?</string>
     <string name="signup_redirect">Don\'t have an account? Register here!</string>
     <string name="title_home">Home</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 </resources>

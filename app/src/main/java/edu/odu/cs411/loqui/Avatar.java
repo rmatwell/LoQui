@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class Avatar extends AppCompatActivity {
 
-    private Button  sammie, masie;
+    private Button sammie, emma;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +24,7 @@ public class Avatar extends AppCompatActivity {
 
     private void clickOnButton(){
         sammie = (Button) findViewById(R.id.sammie);
-        masie = (Button) findViewById(R.id.masie);
+        emma = (Button) findViewById(R.id.emma);
 
         sammie.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,7 +33,7 @@ public class Avatar extends AppCompatActivity {
                 startActivity(it);
             }
         });
-        masie.setOnClickListener(new View.OnClickListener() {
+        emma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(Avatar.this, Homepage2.class);

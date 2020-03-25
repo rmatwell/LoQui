@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/emma3"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="437dp" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="257dp"
+        android:layout_height="291dp"
+        app:srcCompat="@drawable/b"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="257dp" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="160dp"
+        android:layout_height="85dp"
+        android:fontFamily="@font/schoolbell"
+        android:text="Pick a story!"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="81dp"
+        tools:layout_editor_absoluteY="336dp" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="363dp"
+        android:layout_height="202dp"
+        android:background="@drawable/sunandmoon"
+        android:textAlignment="viewEnd"
+        tools:layout_editor_absoluteX="23dp"
+        tools:layout_editor_absoluteY="36dp" />
+
+</android.support.constraint.ConstraintLayout>

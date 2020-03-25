@@ -4,8 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/chooseavatar"
+    android:background="@drawable/avatarselection2"
     tools:context=".Avatar">
+
+    <Button
+        android:id="@+id/emma"
+        style="@android:style/Widget.DeviceDefault.Light.Button"
+        android:layout_width="171dp"
+        android:layout_height="81dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:background="@color/pinkBack"
+        android:fontFamily="@font/schoolbell"
+        android:text="Emma"
+        android:textColor="@android:color/black"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <LinearLayout
         android:id="@+id/ll0"
@@ -21,12 +37,12 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/masie"
+        android:id="@+id/sammie"
         style="@android:style/Widget.DeviceDefault.Light.Button"
         android:layout_width="171dp"
         android:layout_height="81dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginEnd="204dp"
+        android:layout_marginBottom="16dp"
         android:background="@color/pinkBack"
         android:fontFamily="@font/schoolbell"
         android:text="Sammie"
@@ -36,20 +52,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
-        android:id="@+id/sammie"
-        style="@android:style/Widget.DeviceDefault.Light.Button"
-        android:layout_width="171dp"
-        android:layout_height="81dp"
-        android:layout_marginEnd="224dp"
-        android:layout_marginBottom="28dp"
-        android:background="@color/babyblueback"
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="399dp"
+        android:layout_height="165dp"
         android:fontFamily="@font/schoolbell"
-        android:text="Emma"
-        android:textColor="@android:color/black"
-        android:textSize="36sp"
+        android:text="Would you like Emma or Sammie to be your coach?"
+        android:textAlignment="center"
+        android:textColor="#3F51B5"
+        android:textSize="35sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="4dp" />
 
 </android.support.constraint.ConstraintLayout>
