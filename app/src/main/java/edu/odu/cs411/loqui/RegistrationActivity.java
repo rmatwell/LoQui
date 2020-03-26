@@ -129,7 +129,9 @@ public class RegistrationActivity extends AppCompatActivity {
         userData.put("username",inputUsername);
         userData.put("childFirstName",childName);
         userData.put("accountCreationDate",FieldValue.serverTimestamp());
-        db.collection("users").document(userID)
+        userData.put("rewardScore",0);
+        userData.put("rewardLimit", 20);
+        db.collection("users").document(inputEmail.toLowerCase())
                 .set(userData);
 
         //This code is a template for adding score data to the DB for user in the games when they are created
@@ -168,6 +170,7 @@ public class RegistrationActivity extends AppCompatActivity {
         if(inChildName.isEmpty())
         {
             childName.setError("First name is empty.");
+            return false;
         }
 
         return true;
