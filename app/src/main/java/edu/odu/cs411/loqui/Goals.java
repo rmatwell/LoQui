@@ -75,7 +75,7 @@ public class Goals extends AppCompatActivity
         });
 
 
-        createGoals_btn.setOnClickListener(new View.OnClickListener() {
+       /* createGoals_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent it = new Intent(Goals.this, Goals.class);
@@ -111,7 +111,7 @@ public class Goals extends AppCompatActivity
                 it.putExtra("timestamp", timestamp);
                 startActivity(it);
             }
-        });
+        });*/
     }
 
     //4 types of goals
