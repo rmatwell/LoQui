@@ -12,6 +12,8 @@ public class ParentPortalActivity extends AppCompatActivity {
     private CardView goalsCard, progressCard, rewardsCard, settingsCard;
     private ImageView portal_backbtn;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,5 +68,10 @@ public class ParentPortalActivity extends AppCompatActivity {
                 startActivity(it);
             }
         });
+
+
+
     }
+
+
 }

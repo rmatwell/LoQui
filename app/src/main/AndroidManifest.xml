@@ -18,9 +18,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <service
-            android:name=".MusicService"
-            android:enabled="true" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"

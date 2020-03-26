@@ -13,8 +13,7 @@ import android.widget.Button;
 
 public class Homepage2 extends AppCompatActivity {
 
-    //watches to see if the user presses home button
-    HomeWatcher mHomeWatcher;
+
     private Button go1, go2, go3, button2;
     Button btnahead, btnback;
     static int count = -1;
