@@ -59,7 +59,7 @@ public class Homepage extends AppCompatActivity {
         go2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(Homepage.this, Task_4.class);
+                Intent it = new Intent(Homepage.this, SpeechGame.class);
                 it.putExtra("content", "Let's improve your speech!");
                 it.putExtra("task", "Sammie Says");
                 it.putExtra("pic_id", R.drawable.task2_intro);

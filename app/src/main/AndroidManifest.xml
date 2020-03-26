@@ -6,10 +6,13 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.hardware.camera2.full" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <uses-feature android:name="android.hardware.camera" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/logo_noshadow"
@@ -26,9 +29,13 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"></meta-data>
+                android:resource="@xml/file_paths" />
         </provider>
-        <uses-library android:name="org.apache.http.legacy" android:required="false" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
         <activity android:name=".MainActivity" />
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".SplashScrActivity">
@@ -39,31 +46,30 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginActivity" />
-        <activity android:name=".PWresetActivity"></activity>
-        <activity android:name=".UserProfile"/>
-        <activity android:name=".Avatar"/>
+        <activity android:name=".PWresetActivity" />
+        <activity android:name=".UserProfile" android:exported="true" />
         <activity android:name=".Story" />
-        <activity android:name=".Homepage" />
-        <activity android:name=".Homepage2"/>
+        <activity android:name=".Homepage" android:exported="true"/>
+        <activity android:name=".Homepage2" />
         <activity android:name=".Task1" />
         <activity android:name=".Task3_question" />
         <activity android:name=".Task3_success" />
         <activity android:name=".Task1_1" />
-        <activity android:name=".Task_4"/>
-        <activity android:name=".rcvadapter"/>
-        <activity android:name=".SettingsActivity"/>
-        <activity android:name=".MusicActivity"/>
-        <activity android:name=".ProgressActivity"/>
-        <activity android:name=".GoalsActivity"/>
-        <activity android:name=".Rewards"/>
-        <activity android:name=".ParentPortalActivity"/>
-
+        <activity android:name=".Task_4" />
+        <activity android:name=".rcvadapter" />
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".MusicActivity" />
+        <activity android:name=".ProgressActivity" />
+        <activity android:name=".GoalsActivity" />
+        <activity android:name=".Rewards" />
+        <activity android:name=".ParentPortalActivity" />
+        <activity android:name=".SpeechGame" android:exported="true" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".Task1_emotion" />
-        <activity android:name=".IntroPage"></activity>
+        <activity android:name=".IntroPage" />
     </application>
 
 </manifest>
