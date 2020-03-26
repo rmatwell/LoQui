@@ -61,7 +61,6 @@
         <activity android:name=".MusicActivity"/>
         <activity android:name=".ProgressActivity"/>
         <activity android:name=".GoalsActivity"/>
-        <activity android:name=".Rewards"/>
         <activity android:name=".ParentPortalActivity"/>
 
         <meta-data

@@ -37,6 +37,8 @@ public class Task2_2 extends AppCompatActivity {
 
     ImageView emotion_goal,picture_taken,visual_support;
     Button back, try_again;
+    List<Goals> goals = new ArrayList<Goals>() {};
+    Goals g = new Goals();
 
     boolean correct_face = false;
     int pic_id;
@@ -158,7 +160,6 @@ public class Task2_2 extends AppCompatActivity {
             protected void onPostExecute(Face[] result) {
                 //TODO: update face frames
                 detectionProgressDialog.dismiss();
-                Rewards r = new Rewards();
 
                 if (!exceptionMessage.equals("")) {
                     showError(exceptionMessage);
@@ -173,15 +174,23 @@ public class Task2_2 extends AppCompatActivity {
                     }
 
                     if (correct_face) {
-                        if (r.EmoCopyTrigger >= 5)
-                        {
-                            r.EmoCopyTrigger = 0;
-                            r.Reward(visual_support, "Emotion Imitation");
-                        }
-                        else { r.EmoCopyTrigger++; }
+                        //keep track of right answers
+                        for (int i = 0; i < goals.size(); i++)
+                        {goals.get(i).count++;}
+                        g.setView(findViewById(android.R.id.content).getRootView());
+                        g.Check(2);
+
                         visual_support.setImageResource(R.drawable.mickey);
                     }
                     else {
+                        //keep track of wrong answers
+                        for (int i = 0; i < goals.size(); i++)
+                        {
+                            goals.get(i).countw++;
+                            if (goals.get(i).goal == 1)
+                            {goals.get(i).count = 0;}
+                        }
+
                         visual_support.setImageResource(R.drawable.try_again_text);
                     }
                     String emotion_msg = "You made a " + emotion + " face.";

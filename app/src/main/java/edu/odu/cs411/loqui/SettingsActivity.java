@@ -5,13 +5,20 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+
+import java.time.LocalDateTime;
+import java.util.Date;
 
 
 public class SettingsActivity extends AppCompatActivity {
 
     private CardView accountCard, rewardsCard, audioCard, aboutCard;
     private ImageView settings_backbtn;
+    private Button goals_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,18 +29,56 @@ public class SettingsActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_settings);
 
+        goals_btn = (Button) findViewById(R.id.create_goal);
         //accountCard = (CardView) findViewById(R.id.settings_account);
         rewardsCard = (CardView) findViewById(R.id.settings_rewards);
         audioCard = (CardView) findViewById(R.id.settings_audio);
         //aboutCard = (CardView) findViewById(R.id.settings_about);
         settings_backbtn = findViewById(R.id.settings_back_btn);
 
+        goals_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it = new Intent(SettingsActivity.this, Goals.class);
+                //game type
+                int game = 0;
+                RadioButton g_emotion = (RadioButton) findViewById(R.id.emotion_game);
+                if (g_emotion.isChecked()) {game = 0;}
+                RadioButton g_speech = (RadioButton) findViewById(R.id.speech_training);
+                if (g_speech.isChecked()) {game = 1;}
+                RadioButton g_eye = (RadioButton) findViewById(R.id.eye_contact_game);
+                if (g_eye.isChecked()) {game = 2;}
+                it.putExtra("game", game);
+                //goal type
+                int goal = 0;
+                RadioButton g_overall = (RadioButton) findViewById(R.id.correct_overall);
+                if (g_overall.isChecked()) {goal = 0;}
+                RadioButton g_streak = (RadioButton) findViewById(R.id.correct_streak);
+                if (g_streak.isChecked()) {goal = 1;}
+                RadioButton g_overallt = (RadioButton) findViewById(R.id.correct_overall_time);
+                if (g_overallt.isChecked()) {goal = 2;}
+                RadioButton g_percent = (RadioButton) findViewById(R.id.correct_percent_time);
+                if (g_percent.isChecked()) {goal = 3;}
+                it.putExtra("goal", goal);
+                //amount or percent value
+                EditText t_amount = (EditText) findViewById(R.id.amount_correct);
+                int amount = Integer.parseInt(t_amount.getText().toString());
+                it.putExtra("amount", amount);
+                //time value in seconds
+                EditText t_time = (EditText) findViewById(R.id.time);
+                int time = Integer.parseInt(t_time.getText().toString());
+                it.putExtra("time", time);
+                long timestamp = new Date().getTime()/1000;
+                it.putExtra("timestamp", timestamp);
+                startActivity(it);
+            }
+        });
 
         rewardsCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it = new Intent(SettingsActivity.this, Rewards.class);
-                startActivity(it);
+                //Intent it = new Intent(SettingsActivity.this, Rewards.class);
+                //startActivity(it);
             }
         });
 

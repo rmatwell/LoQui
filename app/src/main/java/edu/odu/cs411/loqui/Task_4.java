@@ -22,6 +22,7 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Task_4 extends AppCompatActivity implements RecognitionListener {
     static final int REQUEST_RECORD_PERMISSION = 100;
@@ -36,6 +37,7 @@ public class Task_4 extends AppCompatActivity implements RecognitionListener {
     MediaPlayer mediaPlayer;
     int i = 0;
     int s[]={R.raw.hello,R.raw.great};
+    List<Goals> goals = new ArrayList<Goals>() {};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

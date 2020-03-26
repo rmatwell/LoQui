@@ -102,25 +102,25 @@
             android:layout_marginEnd="30dp">
 
             <RadioButton
-                android:id="@+id/radioButton5"
+                android:id="@+id/correct_overall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Overall Correct" />
 
             <RadioButton
-                android:id="@+id/radioButton6"
+                android:id="@+id/correct_streak"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Streak Correct" />
 
             <RadioButton
-                android:id="@+id/radioButton7"
+                android:id="@+id/correct_overall_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Overall Correct w/Time" />
 
             <RadioButton
-                android:id="@+id/radioButton9"
+                android:id="@+id/correct_percent_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Percent Correct w/Time" />
@@ -155,7 +155,7 @@
             android:text="Enter the amount of time in seconds." />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/time"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

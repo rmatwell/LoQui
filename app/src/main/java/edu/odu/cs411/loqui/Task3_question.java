@@ -40,6 +40,8 @@ public class Task3_question extends AppCompatActivity {
     private ImageView upperleft, upperright, lowerleft, lowerright;
     private Integer first, second, third, fourth;
     Map<String, Integer[]> drawableMap = new HashMap< String, Integer[]>();
+    List<Goals> goals = new ArrayList<Goals>() {};
+    Goals g = new Goals();
     // image source: https://www.pinclipart.com/
     private Integer[] happy_faces = {
             R.drawable.happy_1,
@@ -306,16 +308,34 @@ public class Task3_question extends AppCompatActivity {
             return "Select " + num_correct_answers + " faces!";
         }
         else if (count < num_correct_answers) { // if users select less than the number of correct images, inform them to pick enough ones
-            return "Pick " + (num_correct_answers - count) + " more faces!";
+            //keep track of wrong answers
+            for (int i = 0; i < goals.size(); i++)
+            {
+                goals.get(i).countw++;
+                if (goals.get(i).goal == 1)
+                {goals.get(i).count = 0;}
+            }
 
+            return "Pick " + (num_correct_answers - count) + " more faces!";
         }
         else if (count > num_correct_answers) { // if users select more than the number of correct images, inform them the limit
-            return "Pick only " + (num_correct_answers) + " faces!";
+            //keep track of wrong answers
+            for (int i = 0; i < goals.size(); i++)
+            {
+                goals.get(i).countw++;
+                if (goals.get(i).goal == 1)
+                {goals.get(i).count = 0;}
+            }
 
+            return "Pick only " + (num_correct_answers) + " faces!";
         }
         else { // if users select exactly the number of correct images
             if (checked.equals(correct_answers)){ // if they are correct
-
+                //keep track of right answers
+                for(int i = 0; i < goals.size(); i++)
+                {goals.get(i).count++;}
+                g.setView(findViewById(android.R.id.content).getRootView());
+                g.Check(0);
 
                 //inserts a score for the current user into Firebase
                 Map<String,Object> emotionData = new HashMap<>();
