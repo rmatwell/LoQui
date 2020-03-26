@@ -45,13 +45,13 @@ public class ParentPortalActivity extends AppCompatActivity {
             }
         });
 
-        rewardsCard.setOnClickListener(new View.OnClickListener() {
+        /*rewardsCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent it = new Intent(ParentPortalActivity.this, Rewards.class);
                 startActivity(it);
             }
-        });
+        });*/
 
         settingsCard.setOnClickListener(new View.OnClickListener() {
             @Override
