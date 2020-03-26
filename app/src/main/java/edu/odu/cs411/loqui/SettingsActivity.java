@@ -10,13 +10,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 
 public class SettingsActivity extends AppCompatActivity {
 
-    private CardView accountCard, rewardsCard, audioCard, aboutCard;
+    private CardView accountCard, tutorialCard, audioCard, aboutCard;
     private ImageView settings_backbtn;
     private Button goals_btn;
 
@@ -29,10 +28,10 @@ public class SettingsActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_settings);
 
-        goals_btn = (Button) findViewById(R.id.create_goal);
         //accountCard = (CardView) findViewById(R.id.settings_account);
-        rewardsCard = (CardView) findViewById(R.id.settings_rewards);
+        //tutorialCard = (CardView) findViewById(R.id.settings_tutorial);
         audioCard = (CardView) findViewById(R.id.settings_audio);
+        goals_btn = (Button) findViewById(R.id.create_goal);
         //aboutCard = (CardView) findViewById(R.id.settings_about);
         settings_backbtn = findViewById(R.id.settings_back_btn);
 
@@ -71,14 +70,6 @@ public class SettingsActivity extends AppCompatActivity {
                 long timestamp = new Date().getTime()/1000;
                 it.putExtra("timestamp", timestamp);
                 startActivity(it);
-            }
-        });
-
-        rewardsCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Intent it = new Intent(SettingsActivity.this, Rewards.class);
-                //startActivity(it);
             }
         });
 

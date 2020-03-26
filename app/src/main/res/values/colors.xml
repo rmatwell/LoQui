@@ -12,7 +12,7 @@
     <color name="purpleText">#420ED6</color>
     <color name="pinkBack">#FFCAEA</color>
     <color name="beige">#FACA91</color>
- <color name="popup_background">#DD1F2833</color>
+    <color name="popup_background">#DD1F2833</color>
     <color name="meaningBackground">#FFFFFF</color>
     <color name="floatingButton">#ab47bc</color>
     <color name="searchBackground">#FF9800</color>
@@ -21,5 +21,9 @@
     <color name="golden_tainoi">#FFFFBD55</color>
     <color name="crusta">#FFFB8A61</color>
     <color name="blue">#FF20A7C7</color>
+    <color name="orange">#fffaaa00</color>
+
+    <color name="black_overlay">#66000000</color>
+
 
 </resources>

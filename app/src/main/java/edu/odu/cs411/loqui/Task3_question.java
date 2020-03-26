@@ -4,12 +4,14 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.text.SpannableStringBuilder;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.TypefaceSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
@@ -17,8 +19,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -39,9 +46,8 @@ public class Task3_question extends AppCompatActivity {
     private final Integer num_correct_answers = 3;
     private ImageView upperleft, upperright, lowerleft, lowerright;
     private Integer first, second, third, fourth;
+    private static final String TAG = "EmotionActivity";
     Map<String, Integer[]> drawableMap = new HashMap< String, Integer[]>();
-    List<Goals> goals = new ArrayList<Goals>() {};
-    Goals g = new Goals();
     // image source: https://www.pinclipart.com/
     private Integer[] happy_faces = {
             R.drawable.happy_1,
@@ -148,6 +154,7 @@ public class Task3_question extends AppCompatActivity {
         drawableMap.put("bored", bored_faces);
         drawableMap.put("surprised", surprised_faces);
         drawableMap.put("scared", scared_faces);
+
 
         // randomly pick the tested emotion from emotions
         List<String> emotion_str = new ArrayList<String>(drawableMap.keySet());
@@ -289,7 +296,7 @@ public class Task3_question extends AppCompatActivity {
         FirebaseAuth firebaseAuth;
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
-        String userID = user.getUid();
+        String userID = user.getEmail();
         FirebaseFirestore db;
         db = FirebaseFirestore.getInstance();
 
@@ -308,41 +315,56 @@ public class Task3_question extends AppCompatActivity {
             return "Select " + num_correct_answers + " faces!";
         }
         else if (count < num_correct_answers) { // if users select less than the number of correct images, inform them to pick enough ones
-            //keep track of wrong answers
-            for (int i = 0; i < goals.size(); i++)
-            {
-                goals.get(i).countw++;
-                if (goals.get(i).goal == 1)
-                {goals.get(i).count = 0;}
-            }
-
             return "Pick " + (num_correct_answers - count) + " more faces!";
+
         }
         else if (count > num_correct_answers) { // if users select more than the number of correct images, inform them the limit
-            //keep track of wrong answers
-            for (int i = 0; i < goals.size(); i++)
-            {
-                goals.get(i).countw++;
-                if (goals.get(i).goal == 1)
-                {goals.get(i).count = 0;}
-            }
-
             return "Pick only " + (num_correct_answers) + " faces!";
+
         }
         else { // if users select exactly the number of correct images
             if (checked.equals(correct_answers)){ // if they are correct
-                //keep track of right answers
-                for(int i = 0; i < goals.size(); i++)
-                {goals.get(i).count++;}
-                g.setView(findViewById(android.R.id.content).getRootView());
-                g.Check(0);
+
+                DocumentReference userRef = db.collection("users").document(userID);
+
+                userRef.get().addOnCompleteListener(new OnCompleteListener< DocumentSnapshot >() {
+                    @Override
+                    public void onComplete(@NonNull Task < DocumentSnapshot > task) {
+                        if (task.isSuccessful())
+                        {
+                            DocumentSnapshot userData = task.getResult();
+
+                            if(userData.exists())
+                            {
+                                Log.d(TAG, "DocumentSnapshot data: " + userData.getData());
+                            }
+                            else {
+                                Log.d(TAG, "No such document userID = " + userID);
+                            }
+                            double dbScore = userData.getDouble("rewardScore");
+                            dbScore = dbScore + 1;
+                            userRef.update("rewardScore", dbScore);
+                        }
+                        else
+                        {
+                            Log.d(TAG, "get fail with ", task.getException());
+                        }
+                    }
+                })
+
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                            }
+                        });
 
                 //inserts a score for the current user into Firebase
+                /*
                 Map<String,Object> emotionData = new HashMap<>();
                 emotionData.put(userID + "EmotionScore",3);
                 emotionData.put("EmotionScoreTimestamp", FieldValue.serverTimestamp());
 
-                db.collection("users").document(userID).collection("EmotionScores").add(emotionData);
+                db.collection("users").document(userID).collection("EmotionScores").add(emotionData);*/
 
                 return "correct";
             }

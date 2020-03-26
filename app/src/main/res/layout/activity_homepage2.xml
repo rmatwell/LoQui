@@ -15,6 +15,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <edu.odu.cs411.loqui.MyProgressBar
+            app:completeColor="@color/colorAccent"
+            app:waitingColor="@color/colorPrimaryDark"
+            app:noOfSteps="5"
+            android:id="@+id/step_progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="?android:selectableItemBackground" />
 
         <Button
             android:id="@+id/button2"
@@ -46,73 +54,6 @@
             android:layout_height="wrap_content"
             android:background="@color/white" />
 
-        <LinearLayout
-            android:id="@+id/ll1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3"
-            android:background="#B0AAE8F1"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.3"
-                    android:orientation="horizontal">
-
-                    <View
-                        android:id="@+id/view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/emotion2" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.5"
-                    android:background="#c2eec7"
-                    android:backgroundTint="#c2eec7"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:orientation="vertical">
-
-
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="match_parent"
-                        android:layout_height="113dp"
-                        android:layout_weight="0.5"
-                        android:fontFamily="@font/schoolbell"
-                        android:gravity="center"
-                        android:text="Learn Emotions"
-                        android:textAlignment="center"
-                        android:textColor="#171785"
-                        android:textSize="23sp"
-                        android:textStyle="bold" />
-
-
-                    <Button
-                        android:id="@+id/go1"
-                        android:layout_width="87dp"
-                        android:layout_height="88dp"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="15dp"
-                        android:background="@drawable/playbutton"
-                        android:fontFamily="@font/schoolbell"
-                        android:textAlignment="center"
-                        android:textColor="#3F51B5"
-                        android:textSize="25dp" />
-                </LinearLayout>
-
-            </LinearLayout>
-        </LinearLayout>
         <View
             android:id="@+id/divider7"
             android:layout_width="match_parent"
@@ -120,7 +61,7 @@
             android:background="#F02E8B" />
 
         <LinearLayout
-            android:id="@+id/ll4"
+            android:id="@+id/ll5"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
@@ -169,7 +110,7 @@
                         android:textStyle="bold" />
 
                     <Button
-                        android:id="@+id/go4"
+                        android:id="@+id/go1"
                         android:layout_width="85dp"
                         android:layout_height="84dp"
                         android:layout_gravity="center"
@@ -191,7 +132,7 @@
             android:background="#F02E8B" />
 
         <LinearLayout
-            android:id="@+id/ll2"
+            android:id="@+id/ll5"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
@@ -214,14 +155,7 @@
                         android:layout_width="359dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/emma2" />
-
-                    <TextView
-                        android:id="@+id/textView8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="TextView" />
+                        android:background="@drawable/sammiespeech" />
 
                 </LinearLayout>
 
@@ -236,14 +170,14 @@
                     <TextView
                         android:id="@+id/textView3"
                         android:layout_width="match_parent"
-                        android:layout_height="68dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="0.5"
                         android:fontFamily="@font/schoolbell"
                         android:gravity="center"
                         android:text="Sammie Says"
                         android:textAlignment="center"
                         android:textColor="#171785"
-                        android:textSize="23sp"
+                        android:textSize="24sp"
                         android:textStyle="bold" />
 
                     <Button

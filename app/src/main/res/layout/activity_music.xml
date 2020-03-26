@@ -54,37 +54,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:text="Song 1"
+            android:text="On"
             android:textSize="25sp"
-            android:id="@+id/song1"
+            android:id="@+id/song_on"
             android:padding="25dp"/>
 
         <RadioButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:text="Song 2"
+            android:text="Off"
             android:textSize="25sp"
-            android:id="@+id/song2"
+            android:id="@+id/song_off"
             android:padding="25dp"/>
 
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:padding="25dp"
-            android:text="Song 3"
-            android:textSize="25sp"
-            android:id="@+id/song3"/>
 
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:padding="25dp"
-            android:text="Song 4"
-            android:textSize="25sp"
-            android:id="@+id/song4"/>
 
     </RadioGroup>
 

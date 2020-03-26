@@ -9,8 +9,10 @@ import android.widget.ImageView;
 
 public class ParentPortalActivity extends AppCompatActivity {
 
-    private CardView goalsCard, progressCard, settingsCard;
+    private CardView goalsCard, progressCard, rewardsCard, settingsCard;
     private ImageView portal_backbtn;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,7 @@ public class ParentPortalActivity extends AppCompatActivity {
 
         goalsCard = (CardView) findViewById(R.id.portal_goals);
         progressCard = (CardView) findViewById(R.id.portal_progress);
+        rewardsCard = (CardView) findViewById(R.id.portal_rewards);
         settingsCard = (CardView) findViewById(R.id.portal_settings);
         portal_backbtn = findViewById(R.id.portal_back_btn);
 
@@ -42,6 +45,14 @@ public class ParentPortalActivity extends AppCompatActivity {
             }
         });
 
+        rewardsCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it = new Intent(ParentPortalActivity.this, Rewards.class);
+                startActivity(it);
+            }
+        });
+
         settingsCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,5 +68,10 @@ public class ParentPortalActivity extends AppCompatActivity {
                 startActivity(it);
             }
         });
+
+
+
     }
+
+
 }

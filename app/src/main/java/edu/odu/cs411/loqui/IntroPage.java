@@ -46,11 +46,8 @@ public class IntroPage extends AppCompatActivity {
         letsgo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(task.equals("Learn Your Emotions")){
-                    Intent it = new Intent(IntroPage.this, Task1_1.class);
-                    startActivity(it);
-                }
-                else if(task.equals("Sammie Says")){
+               
+                if(task.equals("Sammie Says")){
                     Intent it = new Intent(IntroPage.this, Task_4.class);
                     startActivity(it);
                 }

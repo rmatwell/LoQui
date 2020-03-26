@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#828f93"
+    android:background="@color/white"
     tools:context=".Task_4">
 
     <ProgressBar
@@ -12,8 +12,8 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_below="@+id/toggleButton1"
+        android:layout_alignParentLeft="true"
         android:layout_marginTop="28dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp" />
@@ -49,7 +49,8 @@
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="206dp" />
+        android:layout_marginTop="206dp"
+        android:background="@color/white" />
 
     <TextView
         android:id="@+id/textView"
