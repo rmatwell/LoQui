@@ -18,6 +18,7 @@ public class SettingsActivity extends AppCompatActivity {
     private CardView accountCard, tutorialCard, audioCard, aboutCard;
     private ImageView settings_backbtn;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +33,7 @@ public class SettingsActivity extends AppCompatActivity {
         audioCard = (CardView) findViewById(R.id.settings_audio);
         //aboutCard = (CardView) findViewById(R.id.settings_about);
         settings_backbtn = findViewById(R.id.settings_back_btn);
+
 
 
         audioCard.setOnClickListener(new View.OnClickListener() {
