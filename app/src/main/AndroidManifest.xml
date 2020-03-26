@@ -44,16 +44,12 @@
         <activity android:name=".SpeechGame" android:exported="true"/>
         <activity android:name=".PWresetActivity"></activity>
         <activity android:name=".UserProfile"/>
-        <activity android:name=".Avatar"/>
+        <activity android:name=".Story"/>
         <activity android:name=".Homepage" />
         <activity android:name=".Homepage2"/>
         <activity android:name=".Task1" />
-        <activity android:name=".Task2" />
         <activity android:name=".Task3_question" />
         <activity android:name=".Task3_success" />
-        <activity android:name=".Task2_1_Setup"/>
-        <activity android:name=".Task2_1"/>
-        <activity android:name=".Task2_2" />
         <activity android:name=".Task1_1" />
         <activity android:name=".Task_4"/>
         <activity android:name=".rcvadapter"/>
@@ -61,7 +57,6 @@
         <activity android:name=".MusicActivity"/>
         <activity android:name=".ProgressActivity"/>
         <activity android:name=".GoalsActivity"/>
-        <activity android:name=".Rewards"/>
         <activity android:name=".ParentPortalActivity"/>
 
         <meta-data
