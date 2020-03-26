@@ -54,8 +54,8 @@ public class Goals extends AppCompatActivity
                 g1.goals.add(this);
                 break;
             case 2:
-                Task2_2 g2 = new Task2_2();
-                g2.goals.add(this);
+                //Task2_2 g2 = new Task2_2();
+                //g2.goals.add(this);
                 break;
         }
 
@@ -130,7 +130,7 @@ public class Goals extends AppCompatActivity
                 }
                 break;
             case 2:
-                Task2_2 g2 = new Task2_2();
+                /*Task2_2 g2 = new Task2_2();
                 for (int i = 0; i < g2.goals.size(); i++)
                 {
                     switch(g2.goals.get(i).goal)
@@ -149,7 +149,7 @@ public class Goals extends AppCompatActivity
                             break;
                     }
                 }
-                break;
+                break;*/
         }
     }
 
