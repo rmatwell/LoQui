@@ -58,13 +58,13 @@ public class Goals extends AppCompatActivity
                 g1.goals.add(this);
                 break;
             case 2:
-                //Task2_2 g2 = new Task2_2();
+                //Story g2 = new Story();
                 //g2.goals.add(this);
                 break;
         }
 
         goals_backbtn = findViewById(R.id.goals_back_btn);
-        createGoals_btn = (Button) findViewById(R.id.create_goal);
+        createGoals_btn = findViewById(R.id.create_goal);
 
         goals_backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +75,7 @@ public class Goals extends AppCompatActivity
         });
 
 
-       /* createGoals_btn.setOnClickListener(new View.OnClickListener() {
+        createGoals_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent it = new Intent(Goals.this, Goals.class);
@@ -111,7 +111,7 @@ public class Goals extends AppCompatActivity
                 it.putExtra("timestamp", timestamp);
                 startActivity(it);
             }
-        });*/
+        });
     }
 
     //4 types of goals
@@ -174,7 +174,7 @@ public class Goals extends AppCompatActivity
                 }
                 break;
             case 2:
-                /*Task2_2 g2 = new Task2_2();
+                /*Story g2 = new Story();
                 for (int i = 0; i < g2.goals.size(); i++)
                 {
                     switch(g2.goals.get(i).goal)
@@ -192,8 +192,8 @@ public class Goals extends AppCompatActivity
                             TimePercent(time, timestamp, count, countw, amount);
                             break;
                     }
-                }
-                break;*/
+                }*/
+                break;
         }
     }
 
