@@ -133,15 +133,16 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="250dp"
+            android:layout_marginTop="220dp"
             android:text="Enter amount or percent for correct answers." />
+
         <EditText
             android:id="@+id/amount_correct"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:layout_marginTop="220dp"
             android:layout_marginEnd="50dp"
-            android:layout_marginTop="250dp"
             android:ems="10"
             android:inputType="number" />
 
@@ -151,7 +152,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="350dp"
+            android:layout_marginTop="320dp"
             android:text="Enter the amount of time in seconds." />
 
         <EditText
@@ -159,10 +160,29 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:layout_marginTop="320dp"
             android:layout_marginEnd="50dp"
-            android:layout_marginTop="350dp"
             android:ems="10"
             android:inputType="number" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="400dp"
+            android:text="Enter the associated reward message:" />
+
+        <EditText
+            android:id="@+id/reward"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="400dp"
+            android:layout_marginEnd="50dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
 
     </RelativeLayout>
 

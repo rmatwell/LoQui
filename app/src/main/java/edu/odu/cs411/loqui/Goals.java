@@ -13,20 +13,37 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Date;
 
 public class Goals extends AppCompatActivity
 {
     private ImageView goals_backbtn;
-    public int game;
-    public int goal;
-    public int amount;
-    public int count;
-    public int countw;
-    public int time;
-    public long timestamp;
-    public View view;
+    public int game; //which game the goal belongs to
+    public int goal; //which goal type
+
+    //4 types of goals
+    //1: X correct answers overall (no streaks)
+    //2: X correct answers in a row
+    //3: X correct answers in a certain amount of time
+    //4: Percentage of correct answers in an amount of time
+
+    public int amount; //amount of points or percentage needed to achieve goal
+    public int count; //points collected so far
+    public int countw; //wrong answers collected, important for percentages
+    public int time; //time limit for certain goals, in seconds
+    public long timestamp; //shows when a goal was created, so we know when time runs out
+    public View view; //need this so we know where to display notification
+    public String reward;
     private Button createGoals_btn;
 
     @Override
@@ -44,6 +61,7 @@ public class Goals extends AppCompatActivity
         amount = intent.getIntExtra("amount", 0);
         time = intent.getIntExtra("time", 0);
         timestamp = intent.getLongExtra("timestamp", 0);
+        reward = intent.getStringExtra("reward");
         count = 0;
 
         //add this goal to an array
@@ -113,12 +131,6 @@ public class Goals extends AppCompatActivity
             }
         });
     }
-
-    //4 types of goals
-    //1: X correct answers overall (no streaks)
-    //2: X correct answers in a row
-    //3: X correct answers in a certain amount of time
-    //4: Percentage of correct answers in an amount of time
 
     Goals(){}
 
@@ -237,8 +249,7 @@ public class Goals extends AppCompatActivity
     public void Reward()
     {
         // inflate the layout of the popup window
-        LayoutInflater inflater = (LayoutInflater)
-                getSystemService(LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = inflater.inflate(R.layout.reward, null);
 
         // create the popup window
@@ -247,8 +258,10 @@ public class Goals extends AppCompatActivity
         boolean focusable = true; // lets taps outside the popup also dismiss it
         final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
 
+        //sets reward text
+        ((TextView)popupWindow.getContentView().findViewById(R.id.rewardwindow)).setText(reward);
         // show the popup window
-        // which view you pass in doesn't matter, it is only used for the window tolken
+        // which view you pass in doesn't matter, it is only used for the window token
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
         // dismiss the popup window when touched
@@ -259,5 +272,15 @@ public class Goals extends AppCompatActivity
                 return true;
             }
         });
+    }
+
+    public void GlobalGoalAdd()
+    {
+        String userID = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        DocumentReference userRef = db.collection("users").document(userID);
+
+        //don't know how to retrieve user's points
     }
 }

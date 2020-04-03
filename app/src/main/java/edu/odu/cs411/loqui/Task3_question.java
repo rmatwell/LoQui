@@ -339,9 +339,9 @@ public class Task3_question extends AppCompatActivity {
 
                 DocumentReference userRef = db.collection("users").document(userID);
 
-                userRef.get().addOnCompleteListener(new OnCompleteListener< DocumentSnapshot >() {
+                userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task < DocumentSnapshot > task) {
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if (task.isSuccessful())
                         {
                             DocumentSnapshot userData = task.getResult();
