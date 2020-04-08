@@ -4,31 +4,18 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.text.SpannableStringBuilder;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.TypefaceSpan;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FieldValue;
-import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -295,15 +282,6 @@ public class Task3_question extends AppCompatActivity {
         int correct_ones  = 0;
         List<Boolean> checked = new ArrayList<>();
 
-        /*
-        FirebaseAuth firebaseAuth;
-        firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        String userID = user.getEmail();
-        FirebaseFirestore db;
-        db = FirebaseFirestore.getInstance();
-        */
-
         for (int i = 0; i < mainGrid.getChildCount(); i++) {
             final CardView child = (CardView) mainGrid.getChildAt(i);
             if (child.getCardBackgroundColor().getDefaultColor() != -1) {
@@ -340,52 +318,7 @@ public class Task3_question extends AppCompatActivity {
                 g.Check(0);
 
                 FirestoreWorker dbWorker = new FirestoreWorker();
-
                 dbWorker.addToRewardScore(1);
-
-                /*
-                DocumentReference userRef = db.collection("users").document(userID);
-
-                userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful())
-                        {
-                            DocumentSnapshot userData = task.getResult();
-
-                            if(userData.exists())
-                            {
-                                Log.d(TAG, "DocumentSnapshot data: " + userData.getData());
-                            }
-                            else {
-                                Log.d(TAG, "No such document userID = " + userID);
-                            }
-                            double dbScore = userData.getDouble("rewardScore");
-                            dbScore = dbScore + 1;
-                            userRef.update("rewardScore", dbScore);
-                        }
-                        else
-                        {
-                            Log.d(TAG, "get fail with ", task.getException());
-                        }
-                    }
-                })
-
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                            }
-                        });
-
-                 */
-
-                //inserts a score for the current user into Firebase
-                /*
-                Map<String,Object> emotionData = new HashMap<>();
-                emotionData.put(userID + "EmotionScore",3);
-                emotionData.put("EmotionScoreTimestamp", FieldValue.serverTimestamp());
-
-                db.collection("users").document(userID).collection("EmotionScores").add(emotionData);*/
 
                 return "correct";
             }

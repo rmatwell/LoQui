@@ -20,6 +20,7 @@ public class FirestoreWorker
     FirebaseFirestore db;
     String TAG = "Firestore Worker";
     static boolean rewardFlag;
+    static double rewardScore;
 
     FirestoreWorker()
     {
@@ -126,5 +127,37 @@ public class FirestoreWorker
                     public void onFailure(@NonNull Exception e) {
                     }
                 });
+    }
+
+    public int getRewardScore()
+    {
+        DocumentReference userRef = db.collection("users").document(userID);
+
+        userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot userData = task.getResult();
+
+                    if (userData.exists()) {
+                        Log.d(TAG, "DocumentSnapshot data: " + userData.getData());
+                    } else {
+                        Log.d(TAG, "No such document userID = " + userID);
+                    }
+                    double dbScore = userData.getDouble("rewardScore");
+                    rewardScore = dbScore;
+                } else {
+                    Log.d(TAG, "get fail with ", task.getException());
+                }
+            }
+        })
+
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                    }
+                });
+
+        return (int) rewardScore;
     }
 }
