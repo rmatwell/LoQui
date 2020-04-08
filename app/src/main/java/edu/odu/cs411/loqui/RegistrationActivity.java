@@ -121,9 +121,6 @@ public class RegistrationActivity extends AppCompatActivity {
                 .build();
         db.setFirestoreSettings(settings);
 
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        String userID = user.getUid();
-
         Map<String,Object> userData = new HashMap<>();
         userData.put("email",inputEmail);
         userData.put("username",inputUsername);

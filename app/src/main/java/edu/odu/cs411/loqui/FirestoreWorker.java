@@ -11,6 +11,14 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
+
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FirestoreWorker
 {
@@ -28,6 +36,10 @@ public class FirestoreWorker
         user = firebaseAuth.getCurrentUser();
         db = FirebaseFirestore.getInstance();
         userID = user.getEmail();
+        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+                .setPersistenceEnabled(true)
+                .build();
+        db.setFirestoreSettings(settings);
     }
 
     public void checkForReward()
@@ -159,5 +171,56 @@ public class FirestoreWorker
                 });
 
         return (int) rewardScore;
+    }
+
+    public void addEmotionScore(int emotionScore)
+    {
+        Date date = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        Map<String,Object> emotionData = new HashMap<>();
+        emotionData.put("EmotionScore",emotionScore);
+        emotionData.put("scoreMonth",month);
+        emotionData.put("scoreDay",day);
+        emotionData.put("scoreYear",year);
+
+        db.collection("users").document(userID).collection("EmotionScores").add(emotionData);
+    }
+
+    public void addSpeechScore(int speechScore)
+    {
+        Date date = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        Map<String,Object> emotionData = new HashMap<>();
+        emotionData.put("EmotionScore",speechScore);
+        emotionData.put("scoreMonth",month);
+        emotionData.put("scoreDay",day);
+        emotionData.put("scoreYear",year);
+
+        db.collection("users").document(userID).collection("SpeechScores").add(emotionData);
+    }
+
+    public void addEyeScore(double contactPercent)
+    {
+        Date date = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        Map<String,Object> emotionData = new HashMap<>();
+        emotionData.put("EmotionScore",contactPercent);
+        emotionData.put("scoreMonth",month);
+        emotionData.put("scoreDay",day);
+        emotionData.put("scoreYear",year);
+
+        db.collection("users").document(userID).collection("EyeContactScores").add(emotionData);
     }
 }
