@@ -295,12 +295,14 @@ public class Task3_question extends AppCompatActivity {
         int correct_ones  = 0;
         List<Boolean> checked = new ArrayList<>();
 
+        /*
         FirebaseAuth firebaseAuth;
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
         String userID = user.getEmail();
         FirebaseFirestore db;
         db = FirebaseFirestore.getInstance();
+        */
 
         for (int i = 0; i < mainGrid.getChildCount(); i++) {
             final CardView child = (CardView) mainGrid.getChildAt(i);
@@ -337,6 +339,11 @@ public class Task3_question extends AppCompatActivity {
                 {goals.get(i).count++;}
                 g.Check(0);
 
+                FirestoreWorker dbWorker = new FirestoreWorker();
+
+                dbWorker.addToRewardScore(1);
+
+                /*
                 DocumentReference userRef = db.collection("users").document(userID);
 
                 userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -369,6 +376,8 @@ public class Task3_question extends AppCompatActivity {
                             public void onFailure(@NonNull Exception e) {
                             }
                         });
+
+                 */
 
                 //inserts a score for the current user into Firebase
                 /*
