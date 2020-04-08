@@ -135,9 +135,7 @@ public class Homepage extends AppCompatActivity {
         go1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(Homepage.this, Story.class);
-                it.putExtra("content", "Story Time");
-                it.putExtra("task", "Story Time");
+                Intent it = new Intent(Homepage.this, StoryBook.class);
                 startActivity(it);
             }
         });
