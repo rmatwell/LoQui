@@ -48,6 +48,8 @@ public class Avatars extends AppCompatActivity {
         sarah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FirestoreWorker dbWorker = new FirestoreWorker();
+                dbWorker.setAvatar(1);
                 Intent it = new Intent(Avatars.this, Homepage.class);
                 startActivity(it);
             }
@@ -55,6 +57,8 @@ public class Avatars extends AppCompatActivity {
         sam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FirestoreWorker dbWorker = new FirestoreWorker();
+                dbWorker.setAvatar(2);
                 Intent it = new Intent(Avatars.this, Homepage2.class);
                 startActivity(it);
             }

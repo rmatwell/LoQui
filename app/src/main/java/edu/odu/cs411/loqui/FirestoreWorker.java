@@ -13,6 +13,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
+import com.google.firebase.firestore.SetOptions;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -30,6 +31,7 @@ public class FirestoreWorker
     String TAG = "Firestore Worker";
     static boolean rewardFlag;
     static double rewardScore;
+    static int avatarNumber;
 
     FirestoreWorker()
     {
@@ -223,5 +225,44 @@ public class FirestoreWorker
         emotionData.put("scoreYear",year);
 
         db.collection("users").document(userID).collection("EyeContactScores").add(emotionData);
+    }
+
+    public void setAvatar(int avatar)
+    {
+        Map<String,Object> data = new HashMap<>();
+        data.put("Avatar",avatar);
+
+        db.collection("users").document(userID).set(data, SetOptions.merge());
+    }
+    public int getAvatar()
+    {
+        DocumentReference userRef = db.collection("users").document(userID);
+
+        userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot userData = task.getResult();
+
+                    if (userData.exists()) {
+                        Log.d(TAG, "DocumentSnapshot data: " + userData.getData());
+                    } else {
+                        Log.d(TAG, "No such document userID = " + userID);
+                    }
+                    double dbAvatar = userData.getDouble("Avatar");
+                    avatarNumber = (int)dbAvatar;
+                } else {
+                    Log.d(TAG, "get fail with ", task.getException());
+                }
+            }
+        })
+
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                    }
+                });
+
+        return avatarNumber;
     }
 }
