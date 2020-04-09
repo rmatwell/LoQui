@@ -59,8 +59,6 @@ public class MyProgressBar extends LinearLayout {
 
     public void addedBarToView() {
         calculateBarWidth(noOfSteps);
-
-
     }
 
     private void intializeBarArray() {

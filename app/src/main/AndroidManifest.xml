@@ -56,7 +56,7 @@
         <activity android:name=".SettingsActivity"/>
         <activity android:name=".MusicActivity"/>
         <activity android:name=".ProgressActivity"/>
-        <activity android:name=".GoalsActivity"/>
+        <activity android:name=".Goals"/>
         <activity android:name=".ParentPortalActivity"/>
 
         <meta-data
