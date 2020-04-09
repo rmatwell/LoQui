@@ -117,7 +117,7 @@ public class FirestoreWorker
                         double dbScore = userData.getDouble("rewardScore");
 
                         //If the amount to be added would make rewardScore 20 or more
-                        if(dbScore + amount >= 20)
+                        if(dbScore + amount > 20)
                         {
                             double difference = (dbScore + amount) - 20;
                             dbScore = dbScore + difference;
