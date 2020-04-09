@@ -319,6 +319,7 @@ public class Task3_question extends AppCompatActivity {
 
                 FirestoreWorker dbWorker = new FirestoreWorker();
                 dbWorker.addToRewardScore(1);
+                dbWorker.addEmotionScore(1);
 
                 return "correct";
             }
