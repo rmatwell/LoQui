@@ -59,7 +59,7 @@ public class Avatars extends AppCompatActivity {
             public void onClick(View v) {
                 FirestoreWorker dbWorker = new FirestoreWorker();
                 dbWorker.setAvatar(2);
-                Intent it = new Intent(Avatars.this, Homepage2.class);
+                Intent it = new Intent(Avatars.this, Homepage.class);
                 startActivity(it);
             }
 
