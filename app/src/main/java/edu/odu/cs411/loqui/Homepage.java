@@ -34,13 +34,7 @@ public class Homepage extends AppCompatActivity {
 
         clickOnButton();
 
-        btnahead = (Button) findViewById(R.id.complete);
-        btnahead.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                step_progress_bar.updateProgress(count);
-            }
-        });
+
     }
 
     @Override
