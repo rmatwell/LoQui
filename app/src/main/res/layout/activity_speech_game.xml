@@ -6,35 +6,52 @@
     android:layout_height="match_parent"
     android:background="@drawable/bluredbackgroundimg"
     tools:context=".SpeechGame">
+
+    <edu.odu.cs411.loqui.MyProgressBar
+        android:id="@+id/step_progress_bar"
+        android:layout_width="420dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:background="?android:selectableItemBackground"
+        app:completeColor="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.793"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:noOfSteps="20"
+        app:waitingColor="@color/colorPrimaryDark" />
+
     <Button
         android:id="@+id/speechButton"
         style="@style/Widget.MaterialComponents.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="171dp"
+        android:layout_height="89dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="84dp"
         android:text="Speak"
-        android:textSize="24sp"
         android:textColor="@color/white"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.939" />
+
     <TextView
         android:id="@+id/textViewSpeech"
-        android:layout_width="226dp"
-        android:layout_height="66dp"
+        android:layout_width="268dp"
+        android:layout_height="110dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="132dp"
         android:textAlignment="center"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/speechButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
+
     <android.support.v7.widget.CardView
         android:layout_width="200dp"
         android:layout_height="200dp"
@@ -47,6 +64,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.666" >
+
         <ImageView
             android:id="@+id/imageViewSpeech"
             android:layout_width="match_parent"
@@ -54,17 +72,19 @@
             android:visibility="visible"
             app:srcCompat="@drawable/checkmark" />
     </android.support.v7.widget.CardView>
+
     <ImageButton
         android:id="@+id/homeButton"
-        android:layout_width="58dp"
-        android:layout_height="50dp"
+        android:layout_width="80dp"
+        android:layout_height="67dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/speechButton"
-        app:srcCompat="@drawable/ic_home_black_24dp" />
+        app:srcCompat="@drawable/home_butt" />
 </android.support.constraint.ConstraintLayout>
