@@ -320,6 +320,8 @@ public class Task3_question extends AppCompatActivity {
                 FirestoreWorker dbWorker = new FirestoreWorker();
                 dbWorker.addToRewardScore(1);
                 dbWorker.addEmotionScore(1);
+                dbWorker.getNumberOfScores("April");
+                dbWorker.getNumberOfCorrectScores("April");
 
                 return "correct";
             }
@@ -338,6 +340,9 @@ public class Task3_question extends AppCompatActivity {
                         }
                     }
                 }
+
+                FirestoreWorker dbWorker = new FirestoreWorker();
+                dbWorker.addEmotionScore(0);
                 // inform them the number of correct images they've picked so far, and the extra ones they need to select
                 return "You got " + correct_ones + " correct! Pick " + (num_correct_answers - correct_ones) + " more!";
             }
