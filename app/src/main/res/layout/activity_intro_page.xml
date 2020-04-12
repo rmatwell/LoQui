@@ -94,7 +94,7 @@
                     android:layout_margin="10dp">
 
                     <Button
-                        android:id="@+id/back"
+                        android:id="@+id/sam"
                         android:layout_width="159dp"
                         android:layout_height="60dp"
                         android:layout_alignParentLeft="true"
@@ -106,7 +106,7 @@
                         android:textStyle="bold" />
 
                     <Button
-                        android:id="@+id/letsgo"
+                        android:id="@+id/sarah"
                         android:layout_width="187dp"
                         android:layout_height="match_parent"
                         android:layout_alignParentRight="true"

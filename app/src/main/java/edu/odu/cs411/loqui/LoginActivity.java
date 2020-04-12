@@ -100,7 +100,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this,"Login Successful",Toast.LENGTH_SHORT).show();
                     FirebaseUser user = firebaseAuth.getCurrentUser();
                     finish();
-                    startActivity(new Intent(LoginActivity.this,Homepage.class));
+                    startActivity(new Intent(LoginActivity.this,Avatars.class));
                     //startActivity(new Intent(LoginActivity.this,Homepage.class));
                 }
                 else{
@@ -116,7 +116,6 @@ public class LoginActivity extends AppCompatActivity {
     private void initializeGUI(){
 
         logo = findViewById(R.id.ivLogLogo);
-        btnTwitter = findViewById(R.id.ivFacebook);
         email = findViewById(R.id.atvEmailLog);
         password = findViewById(R.id.atvPasswordLog);
         forgotPass = findViewById(R.id.tvForgotPass);

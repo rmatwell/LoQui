@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="22dp"
+        android:layout_marginBottom="110dp"
 
         >
 
@@ -86,18 +86,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/loginbtn"
-                android:text="@string/sign_inLog"
                 android:fontFamily="@font/adamina"
+                android:text="@string/sign_inLog"
                 android:textColor="#000" />
-
-
-            <ImageView
-                android:id="@+id/ivFacebook"
-                android:layout_width="match_parent"
-                android:layout_height="51dp"
-                android:layout_marginTop="10dp"
-                android:contentDescription="Social site button"
-                android:src="@drawable/btn_twitter" />
 
 
             <TextView

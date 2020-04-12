@@ -19,7 +19,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.*;
+
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class RegistrationActivity extends AppCompatActivity {
@@ -99,9 +103,18 @@ public class RegistrationActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         progressDialog.dismiss();
-                        sendUserData(inputName, inputEmail, childName);
-                        Toast.makeText(RegistrationActivity.this,"You've been registered successfully.",Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(RegistrationActivity.this,Homepage.class));
+                        if (inputName.equals("ProgressTest"))
+                        {
+                            sendProgressUserData(inputName, inputEmail, childName);
+                            Toast.makeText(RegistrationActivity.this,"You've been registered successfully.",Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(RegistrationActivity.this,Avatars.class));
+                        }
+                        else
+                        {
+                            sendUserData(inputName, inputEmail, childName);
+                            Toast.makeText(RegistrationActivity.this,"You've been registered successfully.",Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(RegistrationActivity.this,Avatars.class));
+                        }
                     }
                     else{
                         progressDialog.dismiss();
@@ -121,8 +134,33 @@ public class RegistrationActivity extends AppCompatActivity {
                 .build();
         db.setFirestoreSettings(settings);
 
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        String userID = user.getUid();
+        Map<String,Object> userData = new HashMap<>();
+        userData.put("email",inputEmail);
+        userData.put("username",inputUsername);
+        userData.put("childFirstName",childName);
+        userData.put("accountCreationDate",FieldValue.serverTimestamp());
+        userData.put("rewardScore",0);
+        userData.put("rewardLimit", 20);
+        db.collection("users").document(inputEmail.toLowerCase())
+                .set(userData);
+
+        //This code is a template for adding score data to the DB for user in the games when they are created
+        /*
+        Map<String,Object> emotionData = new HashMap<>();
+        emotionData.put(inputUsername + "EmotionScore",50);
+        emotionData.put("EmotionScoreTimestamp",FieldValue.serverTimestamp());
+
+        db.collection("users").document(inputUsername).collection("EmotionScores").add(emotionData);
+        */
+    }
+
+    private void sendProgressUserData(String inputUsername, String inputEmail, String childName){
+
+        db = FirebaseFirestore.getInstance();
+        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+                .setPersistenceEnabled(true)
+                .build();
+        db.setFirestoreSettings(settings);
 
         Map<String,Object> userData = new HashMap<>();
         userData.put("email",inputEmail);
@@ -142,6 +180,29 @@ public class RegistrationActivity extends AppCompatActivity {
 
         db.collection("users").document(inputUsername).collection("EmotionScores").add(emotionData);
         */
+
+        for (int i = 0; i < 30; i++)
+        {
+
+            for (int j = 0; j < 5; j++)
+            {
+                long randomNum = 0;
+                randomNum = Math.round(Math.random());
+                Date date = new Date();
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(date);
+                Map<String,Object> emotionData = new HashMap<>();
+                emotionData.put("EmotionScore",(int)randomNum);
+                emotionData.put("scoreMonth",3);
+                emotionData.put("scoreDay",i);
+                emotionData.put("scoreYear",2020);
+
+                db.collection("users").document(inputEmail.toLowerCase())
+                        .collection("AprilEmotionScores")
+                        .add(emotionData);
+            }
+        }
+
     }
 
     private boolean validateInput(String inName, String inPw, String confirmPw, String inEmail, String inChildName){
