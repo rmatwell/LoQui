@@ -7,13 +7,23 @@
 
     <VideoView
         android:id="@+id/videoView"
-        android:layout_width="355dp"
-        android:layout_height="628dp"
+        android:layout_width="363dp"
+        android:layout_height="318dp"
         android:layout_marginStart="28dp"
         android:layout_marginEnd="28dp"
-        android:layout_marginBottom="31dp"
+        android:layout_marginBottom="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <io.fotoapparat.view.CameraView
+        android:id="@+id/camera_view"
+        android:layout_width="385dp"
+        android:layout_height="350dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </android.support.constraint.ConstraintLayout>
