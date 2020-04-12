@@ -331,4 +331,50 @@ public class FirestoreWorker
 
         return numCorrect;
     }
+
+    public void getMonthlyScores(MonthlyReport monthlyScores, String month)
+    {
+        Date date = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int daysInMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+        for (int i = 0; i < daysInMonth; i++)
+        {
+            Log.d(TAG, "getMonthlyScore i = " + i);
+            DailyReport newReport = new DailyReport();
+            setDailyReport(newReport, month, i);
+            monthlyScores.monthlyReport.add(newReport);
+        }
+    }
+
+    public void setDailyReport (DailyReport newReport, String month, int day)
+    {
+        db.collection("users").document(userID).collection(month + "EmotionScores")
+                .whereEqualTo("scoreDay", day)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                DailyData newData = new DailyData();
+                                double emotionScore = document.getDouble("EmotionScore");
+                                double scoreDay = document.getDouble("scoreDay");
+                                double scoreMonth = document.getDouble("scoreMonth");
+                                double scoreYear = document.getDouble("scoreYear");
+                                newData.setEmotionScore((int)emotionScore);
+                                newData.setScoreDay((int)scoreDay);
+                                newData.setScoreMonth((int)scoreMonth);
+                                newData.setScoreYear((int)scoreYear);
+                                Log.d(TAG, "newData = " + newData.getEmotionScore() + " " + newData.getScoreDay());
+                                newReport.dailyList.add(newData);
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+    }
 }
