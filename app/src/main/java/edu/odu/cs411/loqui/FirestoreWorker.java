@@ -199,6 +199,22 @@ public class FirestoreWorker
                 .add(emotionData);
     }
 
+    public void addEmotionScore(int emotionScore, int day, int month, int year)
+    {
+        Date date = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        Map<String,Object> emotionData = new HashMap<>();
+        emotionData.put("EmotionScore",emotionScore);
+        emotionData.put("scoreMonth",month);
+        emotionData.put("scoreDay",day);
+        emotionData.put("scoreYear",year);
+
+        db.collection("users").document(userID)
+                .collection(cal.getDisplayName(month, Calendar.LONG, Locale.ENGLISH) + "EmotionScores")
+                .add(emotionData);
+    }
+
     public void addSpeechScore(int speechScore)
     {
         Date date = new Date();
