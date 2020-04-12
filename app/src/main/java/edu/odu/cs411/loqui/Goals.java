@@ -54,7 +54,7 @@ public class Goals extends AppCompatActivity
         super.onCreate(savedInstanceState);
 
         try {this.getSupportActionBar().hide();}
-        catch (NullPointerException e) {}
+        catch (NullPointerException e) { System.out.print("it's fucked"); }
 
         setContentView(R.layout.activity_goals);
 
@@ -109,9 +109,9 @@ public class Goals extends AppCompatActivity
         });
     }
 
-    Goals () {}
+    public Goals () {}
 
-    Goals(int game_, int goal_, int amount_, int time_, long timestamp_)
+    public Goals(int game_, int goal_, int amount_, int time_, long timestamp_)
     {
         game = game_;
         goal = goal_;
