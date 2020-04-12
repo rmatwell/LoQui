@@ -224,7 +224,7 @@ public class FirestoreWorker
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
         Map<String,Object> speechData = new HashMap<>();
-        speechData.put("EmotionScore",speechScore);
+        speechData.put("SpeechScore",speechScore);
         speechData.put("scoreMonth",month);
         speechData.put("scoreDay",day);
         speechData.put("scoreYear",year);
@@ -243,7 +243,7 @@ public class FirestoreWorker
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
         Map<String,Object> eyeData = new HashMap<>();
-        eyeData.put("EmotionScore",contactPercent);
+        eyeData.put("EyeContactScore",contactPercent);
         eyeData.put("scoreMonth",month);
         eyeData.put("scoreDay",day);
         eyeData.put("scoreYear",year);
