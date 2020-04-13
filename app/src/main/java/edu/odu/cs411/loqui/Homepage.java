@@ -1,7 +1,8 @@
 package edu.odu.cs411.loqui;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,7 @@ import android.os.Handler;
 
 public class Homepage extends AppCompatActivity {
 
+    private static final int MY_PERMISSIONS_RECORD_AUDIO = 1;
     private Button go1, go2, go3,button2;
     Button btnahead, btnback;
     static int count = 0;
@@ -24,6 +26,7 @@ public class Homepage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         try
         {
             this.getSupportActionBar().hide();
