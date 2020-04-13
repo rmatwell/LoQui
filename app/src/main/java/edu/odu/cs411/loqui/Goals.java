@@ -239,6 +239,6 @@ public class Goals extends AppCompatActivity
                 return i;
             }
         }
-        return -1;// not here
+        return 0;// not here
     }
 }

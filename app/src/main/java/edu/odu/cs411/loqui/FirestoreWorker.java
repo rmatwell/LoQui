@@ -348,23 +348,32 @@ public class FirestoreWorker
         return numCorrect;
     }
 
-    public void getMonthlyScores(MonthlyReport monthlyScores, String month)
+    public void getMonthlyScores(MonthlyReport monthlyScores, String month, int gameType)
     {
         Date date = new Date();
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         int daysInMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 
-        for (int i = 0; i < daysInMonth; i++)
+        switch (gameType)
         {
-            Log.d(TAG, "getMonthlyScore i = " + i);
-            DailyReport newReport = new DailyReport();
-            setDailyReport(newReport, month, i);
-            monthlyScores.monthlyReport.add(newReport);
+            case 1:
+                for (int i = 0; i < daysInMonth; i++)
+                {
+                    Log.d(TAG, "getMonthlyScore i = " + i);
+                    DailyReport newReport = new DailyReport();
+                    setDailyEmotionReport(newReport, month, i);
+                    monthlyScores.monthlyReport.add(newReport);
+                }
+
+            case 2:
+
+            case 3:
         }
+
     }
 
-    public void setDailyReport (DailyReport newReport, String month, int day)
+    public void setDailyEmotionReport (DailyReport newReport, String month, int day)
     {
         db.collection("users").document(userID).collection(month + "EmotionScores")
                 .whereEqualTo("scoreDay", day)
@@ -380,11 +389,71 @@ public class FirestoreWorker
                                 double scoreDay = document.getDouble("scoreDay");
                                 double scoreMonth = document.getDouble("scoreMonth");
                                 double scoreYear = document.getDouble("scoreYear");
-                                newData.setEmotionScore((int)emotionScore);
+                                newData.setScore((int)emotionScore);
                                 newData.setScoreDay((int)scoreDay);
                                 newData.setScoreMonth((int)scoreMonth);
                                 newData.setScoreYear((int)scoreYear);
-                                Log.d(TAG, "newData = " + newData.getEmotionScore() + " " + newData.getScoreDay());
+                                Log.d(TAG, "newData = " + newData.getScore() + " " + newData.getScoreDay());
+                                newReport.dailyList.add(newData);
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+    }
+
+    public void setDailySpeechReport (DailyReport newReport, String month, int day)
+    {
+        db.collection("users").document(userID).collection(month + "SpeechScores")
+                .whereEqualTo("scoreDay", day)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                DailyData newData = new DailyData();
+                                double speechScore = document.getDouble("SpeechScore");
+                                double scoreDay = document.getDouble("scoreDay");
+                                double scoreMonth = document.getDouble("scoreMonth");
+                                double scoreYear = document.getDouble("scoreYear");
+                                newData.setScore(speechScore);
+                                newData.setScoreDay((int)scoreDay);
+                                newData.setScoreMonth((int)scoreMonth);
+                                newData.setScoreYear((int)scoreYear);
+                                Log.d(TAG, "newData = " + newData.getScore() + " " + newData.getScoreDay());
+                                newReport.dailyList.add(newData);
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+    }
+
+    public void setDailyEyeReport (DailyReport newReport, String month, int day)
+    {
+        db.collection("users").document(userID).collection(month + "EyeContactScores")
+                .whereEqualTo("scoreDay", day)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                DailyData newData = new DailyData();
+                                double eyeScore = document.getDouble("EyeContactScore");
+                                double scoreDay = document.getDouble("scoreDay");
+                                double scoreMonth = document.getDouble("scoreMonth");
+                                double scoreYear = document.getDouble("scoreYear");
+                                newData.setScore(eyeScore);
+                                newData.setScoreDay((int)scoreDay);
+                                newData.setScoreMonth((int)scoreMonth);
+                                newData.setScoreYear((int)scoreYear);
+                                Log.d(TAG, "newData = " + newData.getScore() + " " + newData.getScoreDay());
                                 newReport.dailyList.add(newData);
                             }
                         } else {

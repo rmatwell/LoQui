@@ -314,7 +314,7 @@ public class Task3_question extends AppCompatActivity {
                 g.setView(findViewById(android.R.id.content).getRootView());
                 for(int i = 0; i < g.goals.size(); i++)
                 {g.goals.get(i).count++;}
-                g.Check(0);
+                //g.Check(0); Remove the comment when this works again
 
                 FirestoreWorker dbWorker = new FirestoreWorker();
                 dbWorker.addToRewardScore(1);

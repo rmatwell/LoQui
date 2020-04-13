@@ -22,7 +22,7 @@ import lecho.lib.hellocharts.model.PointValue;
 import lecho.lib.hellocharts.model.Viewport;
 import lecho.lib.hellocharts.view.LineChartView;
 
-public class MonthlyProgressActivity extends AppCompatActivity
+public class MonthlySpeechProgressActivity extends AppCompatActivity
 {
     LineChartView monthlyChart;
     String[] axisData = {"3", "6", "9", "12", "15", "18", "21", "24", "27", "30"};
