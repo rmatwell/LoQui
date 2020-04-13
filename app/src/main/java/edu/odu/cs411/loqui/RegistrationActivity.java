@@ -101,7 +101,7 @@ public class RegistrationActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                         sendUserData(inputName, inputEmail, childName);
                         Toast.makeText(RegistrationActivity.this,"You've been registered successfully.",Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(RegistrationActivity.this,Homepage.class));
+                        startActivity(new Intent(RegistrationActivity.this,Avatars.class));
                     }
                     else{
                         progressDialog.dismiss();
@@ -120,9 +120,6 @@ public class RegistrationActivity extends AppCompatActivity {
                 .setPersistenceEnabled(true)
                 .build();
         db.setFirestoreSettings(settings);
-
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        String userID = user.getUid();
 
         Map<String,Object> userData = new HashMap<>();
         userData.put("email",inputEmail);

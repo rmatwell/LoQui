@@ -40,8 +40,8 @@ public class IntroPage extends AppCompatActivity {
     }
 
     private void clickOnButton(){
-        letsgo = (Button) findViewById(R.id.letsgo);
-        back = (Button) findViewById(R.id.back);
+        letsgo = (Button) findViewById(R.id.sarah);
+        back = (Button) findViewById(R.id.sam);
 
         letsgo.setOnClickListener(new View.OnClickListener() {
             @Override

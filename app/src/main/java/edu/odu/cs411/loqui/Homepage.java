@@ -1,34 +1,13 @@
 package edu.odu.cs411.loqui;
 
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.PowerManager;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import java.util.Timer;
+import java.util.TimerTask;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FieldValue;
-import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
 import android.os.Handler;
 
 public class Homepage extends AppCompatActivity {
@@ -39,6 +18,8 @@ public class Homepage extends AppCompatActivity {
     MyProgressBar step_progress_bar;
     private static final String TAG = "Homepage";
     final Handler handler = new Handler();
+    Timer timer;
+    TimerTask timerTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,79 +32,38 @@ public class Homepage extends AppCompatActivity {
         setContentView(R.layout.activity_homepage);
         step_progress_bar = findViewById(R.id.step_progress_bar);
 
-        Log.d(TAG, "Right before starting Firestore");
-
-        FirebaseAuth firebaseAuth;
-        firebaseAuth = FirebaseAuth.getInstance();
-
-        Log.d(TAG, "Firebase Auth initialized");
-
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        String userID = user.getEmail();
-
-        Log.d(TAG, "User ID pulled");
-
-        FirebaseFirestore db;
-        db = FirebaseFirestore.getInstance();
-
-        Log.d(TAG, "Firestore initialized");
-
-        DocumentReference userRef = db.collection("users").document(userID);
-
-        userRef.get().addOnCompleteListener(new OnCompleteListener< DocumentSnapshot >() {
-            @Override
-            public void onComplete(@NonNull Task< DocumentSnapshot > task) {
-                if (task.isSuccessful())
-                {
-                    DocumentSnapshot userData = task.getResult();
-
-                    if(userData.exists())
-                    {
-                        Log.d(TAG, "DocumentSnapshot data: " + userData.getData());
-                    }
-                    else {
-                        Log.d(TAG, "No such document userID = " + userID);
-                    }
-                    double dbScore = userData.getDouble("rewardScore");
-                    count = (int)dbScore - 1;
-                    Log.d(TAG, "count = " + count);
-                }
-                else
-                {
-                    Log.d(TAG, "get fail with ", task.getException());
-                }
-            }
-        })
-
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                    }
-                });
-
-        Log.d(TAG, "count = " + count);
-
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                step_progress_bar.updateProgress(count);
-            }
-        }, 1000);
-        //step_progress_bar.addedBarToView();
-        //step_progress_bar.updateProgress(count);
-
         clickOnButton();
 
 
-        btnahead = (Button) findViewById(R.id.complete);
-        btnahead.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                step_progress_bar.updateProgress(count);
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        startTimer();
+    }
+
+    public void startTimer()
+    {
+        timer = new Timer();
+        initializeTimerTask();
+        timer.schedule(timerTask, 1000, 1000); //
+    }
+
+    public void initializeTimerTask()
+    {
+        timerTask = new TimerTask() {
+            public void run() {
+                handler.post(new Runnable() {
+                    public void run() {
+                        FirestoreWorker dbWorker = new FirestoreWorker();
+                        count = dbWorker.getRewardScore() - 1;
+                        step_progress_bar.updateProgress(count);
+                    }
+                });
             }
-        });
-
-
+        };
     }
 
     private void clickOnButton(){
@@ -135,9 +75,7 @@ public class Homepage extends AppCompatActivity {
         go1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(Homepage.this, Story.class);
-                it.putExtra("content", "Story Time");
-                it.putExtra("task", "Story Time");
+                Intent it = new Intent(Homepage.this, StoryBook.class);
                 startActivity(it);
             }
         });
