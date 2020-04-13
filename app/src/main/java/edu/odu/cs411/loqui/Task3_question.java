@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -322,13 +323,21 @@ public class Task3_question extends AppCompatActivity {
 
                 Goals goalData = dbWorker.getEmotionGoals();
 
-                if (goalData.goals.size() != 0)
-                {
-                    for (int i = 0; i < goalData.goals.size(); i++)
+                new CountDownTimer(2500, 1000) {
+                    public void onFinish()
                     {
-                        dbWorker.addToGoalCount(goalData.goals.get(i).goalID, 1);
+                        if (goalData.goals.size() != 0)
+                        {
+                            for (int i = 0; i < goalData.goals.size(); i++)
+                            {
+                                dbWorker.addToGoalCount(goalData.goals.get(i).goalID, 1);
+                            }
+                        }
                     }
-                }
+                    public void onTick(long millisUntilFinished) {
+                        // millisUntilFinished    The amount of time until finished.
+                    }
+                }.start();
 
                 return "correct";
             }
@@ -353,13 +362,21 @@ public class Task3_question extends AppCompatActivity {
 
                 Goals goalData = dbWorker.getEmotionGoals();
 
-                if (goalData.goals.size() != 0)
-                {
-                    for (int i = 0; i < goalData.goals.size(); i++)
+                new CountDownTimer(2500, 1000) {
+                    public void onFinish()
                     {
-                        dbWorker.addToGoalCount(goalData.goals.get(i).goalID, 0);
+                        if (goalData.goals.size() != 0)
+                        {
+                            for (int i = 0; i < goalData.goals.size(); i++)
+                            {
+                                dbWorker.addToGoalCount(goalData.goals.get(i).goalID, 0);
+                            }
+                        }
                     }
-                }
+                    public void onTick(long millisUntilFinished) {
+                        // millisUntilFinished    The amount of time until finished.
+                    }
+                }.start();
 
                 // inform them the number of correct images they've picked so far, and the extra ones they need to select
                 return "You got " + correct_ones + " correct! Pick " + (num_correct_answers - correct_ones) + " more!";

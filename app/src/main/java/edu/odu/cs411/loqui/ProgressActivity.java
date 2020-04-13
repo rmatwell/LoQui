@@ -51,7 +51,7 @@ public class ProgressActivity extends AppCompatActivity {
             }
         });
 
-        /*speechProgress.setOnClickListener(new View.OnClickListener() {
+        speechProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent it = new Intent(ProgressActivity.this, MonthlySpeechProgressActivity.class);
@@ -65,7 +65,7 @@ public class ProgressActivity extends AppCompatActivity {
                 Intent it = new Intent(ProgressActivity.this, MonthlyEyeProgressActivity.class);
                 startActivity(it);
             }
-        });*/
+        });
 
     }
 }
