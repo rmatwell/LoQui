@@ -48,7 +48,7 @@
         <activity android:name=".Homepage" />
         <activity android:name=".Homepage2"/>
         <activity android:name=".Task1" />
-    <activity android:name=".StoryBook"/>
+        <activity android:name=".StoryBook"/>
         <activity android:name=".Goals"/>
         <activity android:name=".Avatars"/>
         <activity android:name=".Task3_question" />
@@ -59,7 +59,6 @@
         <activity android:name=".SettingsActivity"/>
         <activity android:name=".MusicActivity"/>
         <activity android:name=".ProgressActivity"/>
-        <activity android:name=".Goals"/>
         <activity android:name=".ParentPortalActivity"/>
         <activity android:name=".MonthlyProgressActivity" android:exported="true"/>
 
