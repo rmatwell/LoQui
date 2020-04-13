@@ -35,7 +35,6 @@ public class Task3_question extends AppCompatActivity {
     private Integer first, second, third, fourth;
     private static final String TAG = "EmotionActivity";
     Map<String, Integer[]> drawableMap = new HashMap< String, Integer[]>();
-    List<Goals> goals = new ArrayList<>();
     Goals g = new Goals();
     // image source: https://www.pinclipart.com/
     private Integer[] happy_faces = {
@@ -297,15 +296,15 @@ public class Task3_question extends AppCompatActivity {
             return "Select " + num_correct_answers + " faces!";
         }
         else if (count < num_correct_answers) { // if users select less than the number of correct images, inform them to pick enough ones
-            for(int i = 0; i < goals.size(); i++)
-            {goals.get(i).countw++;}
+            for(int i = 0; i < g.goals.size(); i++)
+            {g.goals.get(i).countw++;}
 
             return "Pick " + (num_correct_answers - count) + " more faces!";
 
         }
         else if (count > num_correct_answers) { // if users select more than the number of correct images, inform them the limit
-            for(int i = 0; i < goals.size(); i++)
-            {goals.get(i).countw++;}
+            for(int i = 0; i < g.goals.size(); i++)
+            {g.goals.get(i).countw++;}
 
             return "Pick only " + (num_correct_answers) + " faces!";
 
@@ -313,15 +312,13 @@ public class Task3_question extends AppCompatActivity {
         else { // if users select exactly the number of correct images
             if (checked.equals(correct_answers)){ // if they are correct
                 g.setView(findViewById(android.R.id.content).getRootView());
-                for(int i = 0; i < goals.size(); i++)
-                {goals.get(i).count++;}
+                for(int i = 0; i < g.goals.size(); i++)
+                {g.goals.get(i).count++;}
                 g.Check(0);
 
                 FirestoreWorker dbWorker = new FirestoreWorker();
                 dbWorker.addToRewardScore(1);
                 dbWorker.addEmotionScore(1);
-                dbWorker.getNumberOfScores("April");
-                dbWorker.getNumberOfCorrectScores("April");
 
                 return "correct";
             }

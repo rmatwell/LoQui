@@ -19,13 +19,16 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Goals extends AppCompatActivity
 {
     private ImageView goals_backbtn;
     public int game; //which game the goal belongs to
     public int goal; //which goal type
+    public List<Goals> goals = new ArrayList<Goals>();
 
     //4 types of goals
     //1: X correct answers overall (no streaks)
@@ -45,54 +48,28 @@ public class Goals extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        try {
-            this.getSupportActionBar().hide();
-        } catch (NullPointerException e) {
-        }
+
+        try {this.getSupportActionBar().hide();}
+        catch (NullPointerException e) { System.out.print("it's fucked"); }
+
         setContentView(R.layout.activity_goals);
-
-        Intent intent = getIntent();
-        game = intent.getIntExtra("game", 0);
-        goal = intent.getIntExtra("goal", 0);
-        amount = intent.getIntExtra("amount", 0);
-        time = intent.getIntExtra("time", 0);
-        timestamp = intent.getLongExtra("timestamp", 0);
-        reward = intent.getStringExtra("reward");
-        count = 0;
-
-        //add this goal to an array
-        switch(game)
-        {
-            case 0:
-                Task3_question g0 = new Task3_question();
-                g0.goals.add(this);
-                break;
-            case 1:
-                Task_4 g1 = new Task_4();
-                g1.goals.add(this);
-                break;
-            case 2:
-                //Story g2 = new Story();
-                //g2.goals.add(this);
-                break;
-        }
 
         goals_backbtn = findViewById(R.id.goals_back_btn);
         createGoals_btn = findViewById(R.id.create_goal);
 
-        goals_backbtn.setOnClickListener(new View.OnClickListener() {
+        goals_backbtn.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 Intent it = new Intent(Goals.this, ParentPortalActivity.class);
                 startActivity(it);
             }
         });
 
-
         createGoals_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it = new Intent(Goals.this, Goals.class);
                 //game type
                 int game = 0;
                 RadioButton g_emotion = (RadioButton) findViewById(R.id.emotion_game);
@@ -101,7 +78,7 @@ public class Goals extends AppCompatActivity
                 if (g_speech.isChecked()) {game = 1;}
                 RadioButton g_eye = (RadioButton) findViewById(R.id.eye_contact_game);
                 if (g_eye.isChecked()) {game = 2;}
-                it.putExtra("game", game);
+
                 //goal type
                 int goal = 0;
                 RadioButton g_overall = (RadioButton) findViewById(R.id.correct_overall);
@@ -112,23 +89,34 @@ public class Goals extends AppCompatActivity
                 if (g_overallt.isChecked()) {goal = 2;}
                 RadioButton g_percent = (RadioButton) findViewById(R.id.correct_percent_time);
                 if (g_percent.isChecked()) {goal = 3;}
-                it.putExtra("goal", goal);
+
                 //amount or percent value
                 EditText t_amount = (EditText) findViewById(R.id.amount_correct);
                 int amount = Integer.parseInt(t_amount.getText().toString());
-                it.putExtra("amount", amount);
+
                 //time value in seconds
                 EditText t_time = (EditText) findViewById(R.id.time);
                 int time = Integer.parseInt(t_time.getText().toString());
-                it.putExtra("time", time);
+
                 long timestamp = new Date().getTime()/1000;
-                it.putExtra("timestamp", timestamp);
-                startActivity(it);
+                Goals g = new Goals(game, goal, amount, time, timestamp);
+                goals.add(g);
             }
         });
     }
 
-    Goals(){}
+    public Goals () {}
+
+    public Goals(int game_, int goal_, int amount_, int time_, long timestamp_)
+    {
+        game = game_;
+        goal = goal_;
+        amount = amount_;
+        time = time_;
+        timestamp = timestamp_;
+        count = 0;
+        countw = 0;
+    }
 
     public void setView(View v)
     {
@@ -137,107 +125,66 @@ public class Goals extends AppCompatActivity
 
     public void Check(int game)
     {
-        switch(game)
+        Goals g = goals.get(getIndexByGameID(game));
+
+        switch(g.goal)
         {
             case 0:
-                Task3_question g0 = new Task3_question();
-                for (int i = 0; i < g0.goals.size(); i++)
-                {
-                   switch(g0.goals.get(i).goal)
-                   {
-                       case 0:
-                           OverallCorrect(count, amount);
-                           break;
-                       case 1:
-                           StreakCorrect(count, amount);
-                           break;
-                       case 2:
-                           TimeCorrect(time, timestamp);
-                           break;
-                       case 3:
-                           TimePercent(time, timestamp, count, countw, amount);
-                           break;
-                   }
-                }
+                OverallCorrect(g.game, g.count, g.amount);
                 break;
             case 1:
-                Task_4 g1 = new Task_4();
-                for (int i = 0; i < g1.goals.size(); i++)
-                {
-                    switch(g1.goals.get(i).goal)
-                    {
-                        case 0:
-                            OverallCorrect(count, amount);
-                            break;
-                        case 1:
-                            StreakCorrect(count, amount);
-                            break;
-                        case 2:
-                            TimeCorrect(time, timestamp);
-                            break;
-                        case 3:
-                            TimePercent(time, timestamp, count, countw, amount);
-                            break;
-                    }
-                }
+                StreakCorrect(g.game, g.count, g.amount);
                 break;
             case 2:
-                /*Story g2 = new Story();
-                for (int i = 0; i < g2.goals.size(); i++)
-                {
-                    switch(g2.goals.get(i).goal)
-                    {
-                        case 0:
-                            OverallCorrect(count, amount);
-                            break;
-                        case 1:
-                            StreakCorrect(count, amount);
-                            break;
-                        case 2:
-                            TimeCorrect(time, timestamp);
-                            break;
-                        case 3:
-                            TimePercent(time, timestamp, count, countw, amount);
-                            break;
-                    }
-                }*/
+                TimeCorrect(g.game, g.time, g.timestamp);
+                break;
+            case 3:
+                TimePercent(g.game, g.time, g.timestamp, g.count, g.countw, g.amount);
                 break;
         }
     }
 
-    public void OverallCorrect(int count, int amount)
+    public void OverallCorrect(int game, int count, int amount)
     {
         if(count >= amount)
         {
+            int index = getIndexByGameID(game);
+            goals.remove(index); //goal is complete, need to remove
             Reward();
         }
     }
 
-    public void StreakCorrect(int count, int amount)
+    public void StreakCorrect(int game, int count, int amount)
     {
         if(count >= amount)
         {
+            int index = getIndexByGameID(game);
+            goals.remove(index); //goal is complete, need to remove
             Reward();
         }
     }
 
-    public void TimeCorrect(int time, long timestamp)
+    public void TimeCorrect(int game, int time, long timestamp)
     {
         long now = new Date().getTime()/1000;
         long elapsed = now - timestamp;
         if (((elapsed >= time) && (elapsed <= time + 10)) && (time != 0))
         {
+            int index = getIndexByGameID(game);
+            goals.remove(index); //goal is complete, need to remove
             Reward();
         }
     }
 
-    public void TimePercent(int time, long timestamp, int count, int countw, int amount)
+    public void TimePercent(int game, int time, long timestamp, int count, int countw, int amount)
     {
         long now = new Date().getTime()/1000;
         long elapsed = now - timestamp;
         int percent = Math.round(count / (count + countw));
         if(((elapsed >= time) && (elapsed <= time + 10)) && percent >= amount)
         {
+            int index = getIndexByGameID(game);
+            goals.remove(index); //goal is complete, need to remove
             Reward();
         }
     }
@@ -278,5 +225,16 @@ public class Goals extends AppCompatActivity
         DocumentReference userRef = db.collection("users").document(userID);
 
         //don't know how to retrieve user's points
+    }
+
+    private int getIndexByGameID(int gameID)
+    {
+        for (int i = 0; i < goals.size(); i++) {
+            if (goals.get(i) != null && (goals.get(i).game == gameID))
+            {
+                return i;
+            }
+        }
+        return -1;// not here
     }
 }
