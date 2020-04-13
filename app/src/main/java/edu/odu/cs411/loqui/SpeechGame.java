@@ -2,6 +2,8 @@ package edu.odu.cs411.loqui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.AnimatedVectorDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Build;
@@ -26,6 +28,7 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 import edu.odu.cs411.loqui.utils.SoundHelper;
 
 
@@ -57,6 +60,9 @@ public class SpeechGame extends AppCompatActivity {
     private int count = 0;
     private SpeechRecognizer speechRecognizer;
     private ProgressBar myProgressBar;
+
+    AnimatedVectorDrawable checkAVD;
+    AnimatedVectorDrawableCompat checkAVDCompat;
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -255,7 +261,19 @@ public class SpeechGame extends AppCompatActivity {
         textSpeech.setVisibility(View.VISIBLE);
         mySoundHelper.playCorrectSound();
         correctAnswerPlayer.start();
-        speechImage.setImageResource(R.drawable.checkmark);
+        speechImage.setImageResource(R.drawable.check);
+
+        Drawable drawable = speechImage.getDrawable();
+
+        if(drawable instanceof AnimatedVectorDrawable){
+            checkAVD = (AnimatedVectorDrawable) drawable;
+            checkAVD.start();
+        }
+        else if(drawable instanceof AnimatedVectorDrawableCompat){
+            checkAVDCompat = (AnimatedVectorDrawableCompat) drawable;
+            startTimer();
+        }
+
         nextImage();
     }
     private void nextImage() {
