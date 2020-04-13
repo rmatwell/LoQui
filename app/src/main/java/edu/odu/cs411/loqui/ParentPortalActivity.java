@@ -44,7 +44,7 @@ public class ParentPortalActivity extends AppCompatActivity {
         progressCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it = new Intent(ParentPortalActivity.this, MonthlyProgressActivity.class);
+                Intent it = new Intent(ParentPortalActivity.this, ProgressActivity.class);
                 startActivity(it);
             }
         });
