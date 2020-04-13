@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -459,6 +460,421 @@ public class FirestoreWorker
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
+                    }
+                });
+    }
+
+    public void addGoal(int game, int goal, int amount, int time, long timestamp)
+    {
+        Map<String,Object> goalData = new HashMap<>();
+        goalData.put("goal",goal);
+        goalData.put("game",game);
+        goalData.put("time",time);
+        goalData.put("amount",amount);
+        goalData.put("timestamp",timestamp);
+        goalData.put("count",0);
+        goalData.put("countw",0);
+
+        db.collection("users").document(userID)
+                .collection("Goals")
+                .add(goalData);
+    }
+
+    public Goals getOverallCorrectGoals()
+    {
+        Goals goalList = new Goals();
+
+        db.collection("users").document(userID).collection("Goals")
+                .whereEqualTo("goal", 0)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                Goals newGoal = new Goals();
+                                double goal = document.getDouble("goal");
+                                double game = document.getDouble("game");
+                                double time = document.getDouble("time");
+                                double amount = document.getDouble("amount");
+                                double timestamp = document.getDouble("timestamp");
+                                double count = document.getDouble("count");
+                                double countw = document.getDouble("countw");
+                                String goalID = document.getId();
+                                newGoal.goal = (int)goal;
+                                newGoal.game = (int)game;
+                                newGoal.time = (int)time;
+                                newGoal.amount = (int)amount;
+                                newGoal.timestamp = (long)timestamp;
+                                newGoal.count = (int)count;
+                                newGoal.countw = (int)countw;
+                                newGoal.goalID = goalID;
+                                Log.d(TAG, "newGoal = " + newGoal.goal + " " + newGoal.game + " " +
+                                        newGoal.time + " " + newGoal.amount + " " + newGoal.timestamp);
+                                goalList.goals.add(newGoal);
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        return goalList;
+    }
+
+    public Goals getStreakCorrectGoals()
+    {
+        Goals goalList = new Goals();
+
+        db.collection("users").document(userID).collection("Goals")
+                .whereEqualTo("goal", 1)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                Goals newGoal = new Goals();
+                                double goal = document.getDouble("goal");
+                                double game = document.getDouble("game");
+                                double time = document.getDouble("time");
+                                double amount = document.getDouble("amount");
+                                double timestamp = document.getDouble("timestamp");
+                                double count = document.getDouble("count");
+                                double countw = document.getDouble("countw");
+                                String goalID = document.getId();
+                                newGoal.goal = (int)goal;
+                                newGoal.game = (int)game;
+                                newGoal.time = (int)time;
+                                newGoal.amount = (int)amount;
+                                newGoal.timestamp = (long)timestamp;
+                                newGoal.count = (int)count;
+                                newGoal.countw = (int)countw;
+                                newGoal.goalID = goalID;
+                                Log.d(TAG, "newGoal = " + newGoal.goal + " " + newGoal.game + " " +
+                                        newGoal.time + " " + newGoal.amount + " " + newGoal.timestamp);
+                                goalList.goals.add(newGoal);
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        return goalList;
+    }
+
+    public Goals getTimeCorrectGoals()
+    {
+        Goals goalList = new Goals();
+
+        db.collection("users").document(userID).collection("Goals")
+                .whereEqualTo("goal", 2)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                Goals newGoal = new Goals();
+                                double goal = document.getDouble("goal");
+                                double game = document.getDouble("game");
+                                double time = document.getDouble("time");
+                                double amount = document.getDouble("amount");
+                                double timestamp = document.getDouble("timestamp");
+                                double count = document.getDouble("count");
+                                double countw = document.getDouble("countw");
+                                String goalID = document.getId();
+                                newGoal.goal = (int)goal;
+                                newGoal.game = (int)game;
+                                newGoal.time = (int)time;
+                                newGoal.amount = (int)amount;
+                                newGoal.timestamp = (long)timestamp;
+                                newGoal.count = (int)count;
+                                newGoal.countw = (int)countw;
+                                newGoal.goalID = goalID;
+                                Log.d(TAG, "newGoal = " + newGoal.goal + " " + newGoal.game + " " +
+                                        newGoal.time + " " + newGoal.amount + " " + newGoal.timestamp);
+                                goalList.goals.add(newGoal);
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        return goalList;
+    }
+
+    public Goals getTimePercentGoals()
+    {
+        Goals goalList = new Goals();
+
+        db.collection("users").document(userID).collection("Goals")
+                .whereEqualTo("goal", 3)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                Goals newGoal = new Goals();
+                                double goal = document.getDouble("goal");
+                                double game = document.getDouble("game");
+                                double time = document.getDouble("time");
+                                double amount = document.getDouble("amount");
+                                double timestamp = document.getDouble("timestamp");
+                                double count = document.getDouble("count");
+                                double countw = document.getDouble("countw");
+                                String goalID = document.getId();
+                                newGoal.goal = (int)goal;
+                                newGoal.game = (int)game;
+                                newGoal.time = (int)time;
+                                newGoal.amount = (int)amount;
+                                newGoal.timestamp = (long)timestamp;
+                                newGoal.count = (int)count;
+                                newGoal.countw = (int)countw;
+                                newGoal.goalID = goalID;
+                                Log.d(TAG, "newGoal = " + newGoal.goal + " " + newGoal.game + " " +
+                                        newGoal.time + " " + newGoal.amount + " " + newGoal.timestamp);
+                                goalList.goals.add(newGoal);
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        return goalList;
+    }
+
+    public Goals getAllGoals()
+    {
+        Goals goalList = new Goals();
+
+        db.collection("users").document(userID).collection("Goals")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                Goals newGoal = new Goals();
+                                double goal = document.getDouble("goal");
+                                double game = document.getDouble("game");
+                                double time = document.getDouble("time");
+                                double amount = document.getDouble("amount");
+                                double timestamp = document.getDouble("timestamp");
+                                double count = document.getDouble("count");
+                                double countw = document.getDouble("countw");
+                                String goalID = document.getId();
+                                newGoal.goal = (int)goal;
+                                newGoal.game = (int)game;
+                                newGoal.time = (int)time;
+                                newGoal.amount = (int)amount;
+                                newGoal.timestamp = (long)timestamp;
+                                newGoal.count = (int)count;
+                                newGoal.countw = (int)countw;
+                                newGoal.goalID = goalID;
+                                Log.d(TAG, "newGoal = " + newGoal.goal + " " + newGoal.game + " " +
+                                        newGoal.time + " " + newGoal.amount + " " + newGoal.timestamp);
+                                goalList.goals.add(newGoal);
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        return goalList;
+    }
+
+    public Goals getEmotionGoals()
+    {
+        Goals goalList = new Goals();
+
+        db.collection("users").document(userID).collection("Goals")
+                .whereEqualTo("game", 0)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                Goals newGoal = new Goals();
+                                double goal = document.getDouble("goal");
+                                double game = document.getDouble("game");
+                                double time = document.getDouble("time");
+                                double amount = document.getDouble("amount");
+                                double timestamp = document.getDouble("timestamp");
+                                double count = document.getDouble("count");
+                                double countw = document.getDouble("countw");
+                                String goalID = document.getId();
+                                newGoal.goal = (int)goal;
+                                newGoal.game = (int)game;
+                                newGoal.time = (int)time;
+                                newGoal.amount = (int)amount;
+                                newGoal.timestamp = (long)timestamp;
+                                newGoal.count = (int)count;
+                                newGoal.countw = (int)countw;
+                                newGoal.goalID = goalID;
+                                Log.d(TAG, "newGoal = " + newGoal.goal + " " + newGoal.game + " " +
+                                        newGoal.time + " " + newGoal.amount + " " + newGoal.timestamp);
+                                goalList.goals.add(newGoal);
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        return goalList;
+    }
+
+    public Goals getSpeechGoals()
+    {
+        Goals goalList = new Goals();
+
+        db.collection("users").document(userID).collection("Goals")
+                .whereEqualTo("game", 1)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                Goals newGoal = new Goals();
+                                double goal = document.getDouble("goal");
+                                double game = document.getDouble("game");
+                                double time = document.getDouble("time");
+                                double amount = document.getDouble("amount");
+                                double timestamp = document.getDouble("timestamp");
+                                double count = document.getDouble("count");
+                                double countw = document.getDouble("countw");
+                                String goalID = document.getId();
+                                newGoal.goal = (int)goal;
+                                newGoal.game = (int)game;
+                                newGoal.time = (int)time;
+                                newGoal.amount = (int)amount;
+                                newGoal.timestamp = (long)timestamp;
+                                newGoal.count = (int)count;
+                                newGoal.countw = (int)countw;
+                                newGoal.goalID = goalID;
+                                Log.d(TAG, "newGoal = " + newGoal.goal + " " + newGoal.game + " " +
+                                        newGoal.time + " " + newGoal.amount + " " + newGoal.timestamp);
+                                goalList.goals.add(newGoal);
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        return goalList;
+    }
+
+    public Goals getEyeGoals()
+    {
+        Goals goalList = new Goals();
+
+        db.collection("users").document(userID).collection("Goals")
+                .whereEqualTo("game", 2)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                Goals newGoal = new Goals();
+                                double goal = document.getDouble("goal");
+                                double game = document.getDouble("game");
+                                double time = document.getDouble("time");
+                                double amount = document.getDouble("amount");
+                                double timestamp = document.getDouble("timestamp");
+                                double count = document.getDouble("count");
+                                double countw = document.getDouble("countw");
+                                String goalID = document.getId();
+                                newGoal.goal = (int)goal;
+                                newGoal.game = (int)game;
+                                newGoal.time = (int)time;
+                                newGoal.amount = (int)amount;
+                                newGoal.timestamp = (long)timestamp;
+                                newGoal.count = (int)count;
+                                newGoal.countw = (int)countw;
+                                newGoal.goalID = goalID;
+                                Log.d(TAG, "newGoal = " + newGoal.goal + " " + newGoal.game + " " +
+                                        newGoal.time + " " + newGoal.amount + " " + newGoal.timestamp);
+                                goalList.goals.add(newGoal);
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        return goalList;
+    }
+
+    public void removeGoal(String goalID)
+    {
+        db.collection("users").document(userID).collection("Goals").document(goalID)
+                .delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "DocumentSnapshot successfully deleted!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error deleting document", e);
+                    }
+                });
+    }
+
+    public void addToGoalCount(String goalID, int correctAnswer)
+    {
+        DocumentReference userRef = db.collection("users").document(userID).collection("Goals").document(goalID);
+
+        userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful())
+                {
+                    DocumentSnapshot userData = task.getResult();
+
+                    if(userData.exists())
+                    {
+                        Log.d(TAG, "DocumentSnapshot data: " + userData.getData());
+                    }
+                    else {
+                        Log.d(TAG, "No such document userID = " + userID);
+                    }
+
+                    if (correctAnswer == 0)
+                    {
+                        double counter = userData.getDouble("countw");
+                        counter++;
+                        userRef.update("countw", (int)counter);
+                    }
+                    else if (correctAnswer == 1)
+                    {
+                        double counter = userData.getDouble("count");
+                        counter++;
+                        userRef.update("count", (int)counter);
+                    }
+                }
+                else
+                {
+                    Log.d(TAG, "get fail with ", task.getException());
+                }
+            }
+        })
+
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
                     }
                 });
     }
