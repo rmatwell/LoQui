@@ -33,6 +33,8 @@ public class Goals extends AppCompatActivity
     public int game; //which game the goal belongs to
     public int goal; //which goal type
     public List<Goals> goals = new ArrayList<Goals>();
+    String goalID;
+    FirestoreWorker dbWorker;
 
     //4 types of goals
     //1: X correct answers overall (no streaks)
@@ -52,6 +54,8 @@ public class Goals extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        dbWorker = new FirestoreWorker();
 
         try {this.getSupportActionBar().hide();}
         catch (NullPointerException e) { System.out.print("it's fucked"); }
@@ -103,8 +107,12 @@ public class Goals extends AppCompatActivity
                 int time = Integer.parseInt(t_time.getText().toString());
 
                 long timestamp = new Date().getTime()/1000;
+
+                dbWorker.addGoal(game, goal, amount, time, timestamp);
+                /*
                 Goals g = new Goals(game, goal, amount, time, timestamp);
                 goals.add(g);
+                 */
             }
         });
     }
@@ -120,6 +128,7 @@ public class Goals extends AppCompatActivity
         timestamp = timestamp_;
         count = 0;
         countw = 0;
+        goalID = "";
     }
 
     public void setView(View v)
@@ -127,8 +136,9 @@ public class Goals extends AppCompatActivity
         view = v;
     }
 
-    public void Check(int game)
+    public void checkForGoalCompletion()
     {
+       /*
         Goals g = goals.get(getIndexByGameID(game));
 
         switch(g.goal)
@@ -146,51 +156,114 @@ public class Goals extends AppCompatActivity
                 TimePercent(g.game, g.time, g.timestamp, g.count, g.countw, g.amount);
                 break;
         }
-    }
+        */
 
-    public void OverallCorrect(int game, int count, int amount)
-    {
-        if(count >= amount)
+       Goals overallCorrectList = dbWorker.getOverallCorrectGoals();
+       Goals streakCorrectList = dbWorker.getStreakCorrectGoals();
+       Goals timeCorrectList = dbWorker.getTimeCorrectGoals();
+       Goals timePercentList = dbWorker.getTimePercentGoals();
+
+       if (overallCorrectList.goals.size() != 0)
+       {
+           for (int i = 0; i < overallCorrectList.goals.size(); i++)
+           {
+               if (OverallCorrect(overallCorrectList.goals.get(i).game, overallCorrectList.goals.get(i).count, overallCorrectList.goals.get(i).amount))
+               {
+                   dbWorker.removeGoal(overallCorrectList.goals.get(i).goalID);
+               }
+           }
+       }
+
+        if (streakCorrectList.goals.size() != 0)
         {
-            int index = getIndexByGameID(game);
-            goals.remove(index); //goal is complete, need to remove
-            Reward();
+            for (int i = 0; i < streakCorrectList.goals.size(); i++)
+            {
+                if (StreakCorrect(streakCorrectList.goals.get(i).game, streakCorrectList.goals.get(i).count, streakCorrectList.goals.get(i).amount))
+                {
+                    dbWorker.removeGoal(streakCorrectList.goals.get(i).goalID);
+                }
+            }
+        }
+
+        if (timeCorrectList.goals.size() != 0)
+        {
+            for (int i = 0; i < timeCorrectList.goals.size(); i++)
+            {
+                if (TimeCorrect(timeCorrectList.goals.get(i).game, timeCorrectList.goals.get(i).time, timeCorrectList.goals.get(i).timestamp))
+                {
+                    dbWorker.removeGoal(timeCorrectList.goals.get(i).goalID);
+                }
+            }
+        }
+
+        if (timePercentList.goals.size() != 0)
+        {
+            for (int i = 0; i < timePercentList.goals.size(); i++)
+            {
+                if (TimePercent(timePercentList.goals.get(i).game, timePercentList.goals.get(i).time, timePercentList.goals.get(i).timestamp,
+                        timePercentList.goals.get(i).count, timePercentList.goals.get(i).countw, timePercentList.goals.get(i).amount))
+                {
+                    dbWorker.removeGoal(timePercentList.goals.get(i).goalID);
+                }
+            }
         }
     }
 
-    public void StreakCorrect(int game, int count, int amount)
+    public boolean OverallCorrect(int game, int count, int amount)
     {
         if(count >= amount)
         {
-            int index = getIndexByGameID(game);
-            goals.remove(index); //goal is complete, need to remove
+            //int index = getIndexByGameID(game);
+            //goals.remove(index); //goal is complete, need to remove
             Reward();
+            return true;
         }
+
+        return false;
     }
 
-    public void TimeCorrect(int game, int time, long timestamp)
+    public boolean StreakCorrect(int game, int count, int amount)
+    {
+        if(count >= amount)
+        {
+            //int index = getIndexByGameID(game);
+            //goals.remove(index); //goal is complete, need to remove
+            Reward();
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean TimeCorrect(int game, int time, long timestamp)
     {
         long now = new Date().getTime()/1000;
         long elapsed = now - timestamp;
         if (((elapsed >= time) && (elapsed <= time + 10)) && (time != 0))
         {
-            int index = getIndexByGameID(game);
-            goals.remove(index); //goal is complete, need to remove
+            //int index = getIndexByGameID(game);
+            //goals.remove(index); //goal is complete, need to remove
             Reward();
+            return true;
         }
+
+        return false;
     }
 
-    public void TimePercent(int game, int time, long timestamp, int count, int countw, int amount)
+    public boolean TimePercent(int game, int time, long timestamp, int count, int countw, int amount)
     {
         long now = new Date().getTime()/1000;
         long elapsed = now - timestamp;
         int percent = Math.round(count / (count + countw));
         if(((elapsed >= time) && (elapsed <= time + 10)) && percent >= amount)
         {
-            int index = getIndexByGameID(game);
-            goals.remove(index); //goal is complete, need to remove
+            //int index = getIndexByGameID(game);
+            //goals.remove(index); //goal is complete, need to remove
             Reward();
+            return true;
         }
+
+        return false;
     }
 
     public void Reward()
@@ -239,6 +312,6 @@ public class Goals extends AppCompatActivity
                 return i;
             }
         }
-        return -1;// not here
+        return 0;// not here
     }
 }

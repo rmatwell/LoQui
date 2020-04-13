@@ -296,31 +296,39 @@ public class Task3_question extends AppCompatActivity {
             return "Select " + num_correct_answers + " faces!";
         }
         else if (count < num_correct_answers) { // if users select less than the number of correct images, inform them to pick enough ones
-            for(int i = 0; i < g.goals.size(); i++)
-            {g.goals.get(i).countw++;}
+            //for(int i = 0; i < g.goals.size(); i++)
+            //{g.goals.get(i).countw++;}
 
             return "Pick " + (num_correct_answers - count) + " more faces!";
 
         }
         else if (count > num_correct_answers) { // if users select more than the number of correct images, inform them the limit
-            for(int i = 0; i < g.goals.size(); i++)
-            {g.goals.get(i).countw++;}
+            //for(int i = 0; i < g.goals.size(); i++)
+            //{g.goals.get(i).countw++;}
 
             return "Pick only " + (num_correct_answers) + " faces!";
 
         }
         else { // if users select exactly the number of correct images
             if (checked.equals(correct_answers)){ // if they are correct
-                g.setView(findViewById(android.R.id.content).getRootView());
-                for(int i = 0; i < g.goals.size(); i++)
-                {g.goals.get(i).count++;}
-                g.Check(0);
+                //g.setView(findViewById(android.R.id.content).getRootView());
+                //for(int i = 0; i < g.goals.size(); i++)
+                //{g.goals.get(i).count++;}
+                //g.Check(0); Remove the comment when this works again
 
                 FirestoreWorker dbWorker = new FirestoreWorker();
                 dbWorker.addToRewardScore(1);
                 dbWorker.addEmotionScore(1);
-                dbWorker.getNumberOfScores("April");
-                dbWorker.getNumberOfCorrectScores("April");
+
+                Goals goalData = dbWorker.getEmotionGoals();
+
+                if (goalData.goals.size() != 0)
+                {
+                    for (int i = 0; i < goalData.goals.size(); i++)
+                    {
+                        dbWorker.addToGoalCount(goalData.goals.get(i).goalID, 1);
+                    }
+                }
 
                 return "correct";
             }
@@ -342,6 +350,17 @@ public class Task3_question extends AppCompatActivity {
 
                 FirestoreWorker dbWorker = new FirestoreWorker();
                 dbWorker.addEmotionScore(0);
+
+                Goals goalData = dbWorker.getEmotionGoals();
+
+                if (goalData.goals.size() != 0)
+                {
+                    for (int i = 0; i < goalData.goals.size(); i++)
+                    {
+                        dbWorker.addToGoalCount(goalData.goals.get(i).goalID, 0);
+                    }
+                }
+
                 // inform them the number of correct images they've picked so far, and the extra ones they need to select
                 return "You got " + correct_ones + " correct! Pick " + (num_correct_answers - correct_ones) + " more!";
             }
