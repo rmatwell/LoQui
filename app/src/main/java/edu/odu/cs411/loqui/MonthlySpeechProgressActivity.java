@@ -48,7 +48,7 @@ public class MonthlySpeechProgressActivity extends AppCompatActivity
 
         FirestoreWorker dbWorker = new FirestoreWorker();
         MonthlyReport newReport = new MonthlyReport();
-        dbWorker.getMonthlyScores(newReport, cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.ENGLISH), 1);
+        dbWorker.getMonthlyScores(newReport, cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.ENGLISH), 2);
 
         new CountDownTimer(2500, 1000) {
             public void onFinish() {
@@ -119,7 +119,7 @@ public class MonthlySpeechProgressActivity extends AppCompatActivity
                 Axis axis = new Axis();
                 axis.setValues(scoreValues);
                 axis.setTextSize(16);
-                axis.setName("Month of April Emotion Progress");
+                axis.setName("Month of April Speech Progress");
                 axis.setTextColor(Color.parseColor("#03A9F4"));
                 data.setAxisXBottom(axis);
 

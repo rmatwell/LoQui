@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:layout_marginTop="10dp">
 
         <ImageView
@@ -30,7 +30,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1">
 
         <TextView
@@ -42,7 +42,129 @@
             android:textStyle="bold"/>
 
     </RelativeLayout>
+    
+    <GridLayout
+        android:columnCount="1"
+        android:rowCount="3"
+        android:alignmentMode="alignMargins"
+        android:columnOrderPreserved="false"
+        android:layout_weight="7"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="30dp">
+       <!--Emotion Game Card -->
+        <android.support.v7.widget.CardView
+            android:id="@+id/EmotionGameProgress"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="8dp">
+            
+            <LinearLayout
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="16dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Emotion Game Progress"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textSize="30sp"/>
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+        <!--Speech Game Card -->
+        <android.support.v7.widget.CardView
+            android:id="@+id/SpeechGameProgress"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="16dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Speech Game Progress"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textSize="30sp"/>
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+        <!--Eye Contact Game Card -->
+        <android.support.v7.widget.CardView
+            android:id="@+id/EyeContactGameProgress"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="16dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Eye Contact Game Progress"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textSize="30sp"/>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </GridLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
+        <ImageView
+            android:id="@+id/progress_back_to_loqui"
+            android:src="@drawable/portal_backbtn"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:text="Back to LoQui"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"/>
+    </RelativeLayout>
 
 
 </LinearLayout>
