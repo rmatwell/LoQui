@@ -34,16 +34,8 @@ public class StoryBook extends AppCompatActivity {
     }
 
     private void clickOnButton() {
-        next = (Button) findViewById(R.id.sarah);
-        back = (Button) findViewById(R.id.sam);
-
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent it = new Intent(StoryBook.this, Story.class);
-                startActivity(it);
-            }
-        });
+        back = (Button) findViewById(R.id.back);
+        next = (Button) findViewById(R.id.next);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,7 +44,14 @@ public class StoryBook extends AppCompatActivity {
             }
 
         });
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(StoryBook.this, Story.class);
+                startActivity(it);
+            }
+
+        });
 
     }
-
 }
