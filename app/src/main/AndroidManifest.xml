@@ -44,6 +44,10 @@
         <activity android:name=".SpeechGame" android:exported="true"/>
         <activity android:name=".PWresetActivity"></activity>
         <activity android:name=".UserProfile"/>
+        <activity android:name=".MainGameActivity"/>
+        <activity android:name=".PlayAgain"/>
+        <activity android:name=".Time_Up"/>
+        <activity android:name=".GameWon"/>
         <activity android:name=".Story"/>
         <activity android:name=".Homepage" />
         <activity android:name=".Homepage2"/>

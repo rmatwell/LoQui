@@ -31,7 +31,7 @@
                 android:background="@color/white"
                 android:fontFamily="@font/schoolbell"
                 android:gravity="center"
-                android:text="Express your Emotions"
+                android:text="Emotion Quest"
                 android:textAlignment="center"
                 android:textColor="#3F51B5"
                 android:textSize="36sp"
@@ -47,78 +47,56 @@
 
 
         <LinearLayout
-            android:id="@+id/ll5"
+            android:id="@+id/ll6"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.13"
             android:background="@color/white"
             android:orientation="vertical">
 
-            <LinearLayout
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1.3"
-                android:orientation="vertical"></LinearLayout>
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.7"
-                app:srcCompat="@drawable/ic_launcher_background" />
-
-            <TextView
-                android:id="@+id/text0"
-                android:layout_width="341dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/schoolbell"
-                android:gravity="center"
-                android:text="Nihao"
-                android:textAlignment="center"
-                android:textColor="@color/colorPrimary"
-                android:textSize="36sp"
-                android:textStyle="bold"
-                android:visibility="visible" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.2">
+                android:orientation="vertical">
 
 
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
+                <VideoView
+                    android:id="@+id/videoView"
+                    android:layout_width="403dp"
+                    android:layout_height="484dp"
+                    android:layout_marginBottom="108dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.485"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="5dp" />
 
-                    <Button
-                        android:id="@+id/sam"
-                        android:layout_width="159dp"
-                        android:layout_height="60dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_marginLeft="0dp"
-                        android:background="@drawable/back"
-                        android:fontFamily="@font/schoolbell"
-                        android:textColor="#3F51B5"
-                        android:textSize="25dp"
-                        android:textStyle="bold" />
+                <Button
+                    android:id="@+id/back"
+                    android:layout_width="204dp"
+                    android:layout_height="86dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/back"
+                    android:fontFamily="@font/schoolbell"
+                    android:textColor="#3F51B5"
+                    android:textSize="25dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
-                    <Button
-                        android:id="@+id/sarah"
-                        android:layout_width="187dp"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="0dp"
-                        android:background="@drawable/next"
-                        android:fontFamily="@font/schoolbell"
-                        android:textColor="#3F51B5"
-                        android:textSize="24sp"
-                        android:textStyle="bold" />
+                <Button
+                    android:id="@+id/next"
+                    android:layout_width="205dp"
+                    android:layout_height="83dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/next"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
 
-                </RelativeLayout>
-            </LinearLayout>
+
+            </android.support.constraint.ConstraintLayout>
 
         </LinearLayout>
 
