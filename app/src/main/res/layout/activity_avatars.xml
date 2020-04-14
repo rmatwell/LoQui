@@ -72,24 +72,25 @@
                     android:layout_weight="1.2">
 
 
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="128dp"
-                        android:layout_margin="10dp"/>
-
                     <Button
                         android:id="@+id/sam"
-                        android:layout_width="15dp"
-                        android:layout_height="82dp"
+                        android:layout_width="42dp"
+                        android:layout_height="72dp"
                         android:layout_weight="1"
-                        android:text="Sam" />
+                        android:background="@color/babyblueback"
+                        android:text="Sam"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/sarah"
-                        android:layout_width="24dp"
-                        android:layout_height="91dp"
+                        android:layout_width="47dp"
+                        android:layout_height="72dp"
                         android:layout_weight="1"
-                        android:text="Sarah" />
+                        android:background="@color/pinkBack"
+                        android:text="Sarah"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
             </LinearLayout>
