@@ -92,8 +92,7 @@ public class Homepage extends AppCompatActivity {
         go3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(Homepage.this, Task3_question.class);
-                it.putExtra("content", "Let's quiz your understanding of emotions!");
+                Intent it = new Intent(Homepage.this, MainGameActivity.class);
                 startActivity(it);
             }
         });

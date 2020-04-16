@@ -47,7 +47,7 @@ public class IntroPage extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(IntroPage.this, Task3_question.class);
+                Intent it = new Intent(IntroPage.this, MainGameActivity.class);
                 startActivity(it);
             }
 
