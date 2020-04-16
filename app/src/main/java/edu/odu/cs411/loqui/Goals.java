@@ -1,6 +1,9 @@
 package edu.odu.cs411.loqui;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
@@ -51,6 +54,7 @@ public class Goals extends AppCompatActivity
     public String reward;
     private Button createGoals_btn;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +62,7 @@ public class Goals extends AppCompatActivity
         dbWorker = new FirestoreWorker();
 
         try {this.getSupportActionBar().hide();}
-        catch (NullPointerException e) { System.out.print("it's fucked"); }
+        catch (NullPointerException e) { System.out.print("oh no"); }
 
         setContentView(R.layout.activity_goals);
 
@@ -115,6 +119,33 @@ public class Goals extends AppCompatActivity
                  */
             }
         });
+
+        RadioButton streak = findViewById(R.id.correct_streak);
+        RadioButton overallTime = findViewById(R.id.correct_overall_time);
+        RadioButton percentTime = findViewById(R.id.correct_percent_time);
+        RadioButton all = findViewById(R.id.all_games);
+
+        all.setOnTouchListener(new View.OnTouchListener()
+        {
+           @Override
+           public boolean onTouch(View view, MotionEvent mtnevent) {
+               ColorStateList colorStateList = new ColorStateList(new int[][]{
+                       new int[]{-android.R.attr.state_enabled},
+                       new int[]{android.R.attr.state_enabled}},
+                       new int[]{Color.BLACK, Color.BLUE});
+
+               if (mtnevent.getAction() == MotionEvent.ACTION_UP) {
+                   streak.setButtonTintList(colorStateList);
+                   overallTime.setButtonTintList(colorStateList);
+                   percentTime.setButtonTintList(colorStateList);
+                   streak.setEnabled(false);
+                   overallTime.setEnabled(false);
+                   percentTime.setEnabled(false);
+                   return true;
+               }
+               return false;
+           }
+        });
     }
 
     public Goals () {}
@@ -157,7 +188,6 @@ public class Goals extends AppCompatActivity
                 break;
         }
         */
-
        Goals overallCorrectList = dbWorker.getOverallCorrectGoals();
        Goals streakCorrectList = dbWorker.getStreakCorrectGoals();
        Goals timeCorrectList = dbWorker.getTimeCorrectGoals();
@@ -174,8 +204,8 @@ public class Goals extends AppCompatActivity
            }
        }
 
-        if (streakCorrectList.goals.size() != 0)
-        {
+       if (streakCorrectList.goals.size() != 0)
+       {
             for (int i = 0; i < streakCorrectList.goals.size(); i++)
             {
                 if (StreakCorrect(streakCorrectList.goals.get(i).game, streakCorrectList.goals.get(i).count, streakCorrectList.goals.get(i).amount))
@@ -185,8 +215,8 @@ public class Goals extends AppCompatActivity
             }
         }
 
-        if (timeCorrectList.goals.size() != 0)
-        {
+       if (timeCorrectList.goals.size() != 0)
+       {
             for (int i = 0; i < timeCorrectList.goals.size(); i++)
             {
                 if (TimeCorrect(timeCorrectList.goals.get(i).game, timeCorrectList.goals.get(i).time, timeCorrectList.goals.get(i).timestamp))
@@ -196,8 +226,8 @@ public class Goals extends AppCompatActivity
             }
         }
 
-        if (timePercentList.goals.size() != 0)
-        {
+       if (timePercentList.goals.size() != 0)
+       {
             for (int i = 0; i < timePercentList.goals.size(); i++)
             {
                 if (TimePercent(timePercentList.goals.get(i).game, timePercentList.goals.get(i).time, timePercentList.goals.get(i).timestamp,
@@ -215,6 +245,7 @@ public class Goals extends AppCompatActivity
         {
             //int index = getIndexByGameID(game);
             //goals.remove(index); //goal is complete, need to remove
+            dbWorker.addToRewardScore(5); //bonus points
             Reward();
             return true;
         }
@@ -228,6 +259,7 @@ public class Goals extends AppCompatActivity
         {
             //int index = getIndexByGameID(game);
             //goals.remove(index); //goal is complete, need to remove
+            dbWorker.addToRewardScore(5); //bonus points
             Reward();
             return true;
         }
@@ -243,6 +275,7 @@ public class Goals extends AppCompatActivity
         {
             //int index = getIndexByGameID(game);
             //goals.remove(index); //goal is complete, need to remove
+            dbWorker.addToRewardScore(5); //bonus points
             Reward();
             return true;
         }
@@ -259,6 +292,7 @@ public class Goals extends AppCompatActivity
         {
             //int index = getIndexByGameID(game);
             //goals.remove(index); //goal is complete, need to remove
+            dbWorker.addToRewardScore(5); //bonus points
             Reward();
             return true;
         }
@@ -294,15 +328,7 @@ public class Goals extends AppCompatActivity
         });
     }
 
-    public void GlobalGoalAdd()
-    {
-        String userID = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        DocumentReference userRef = db.collection("users").document(userID);
-
-        //don't know how to retrieve user's points
-    }
 
     private int getIndexByGameID(int gameID)
     {
