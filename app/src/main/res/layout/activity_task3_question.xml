@@ -20,15 +20,19 @@
         android:orientation="vertical"
         android:gravity="center_horizontal|center_vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:fontFamily="@font/schoolbell"
-            android:text="Emotion Quest"
-            android:textAlignment="center"
-            android:textColor="#420ED6"
-            android:textSize="36sp" />
+        <edu.odu.cs411.loqui.MyProgressBar
+            android:id="@+id/step_progress_bar"
+            android:layout_width="420dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="16dp"
+            android:background="?android:selectableItemBackground"
+            app:completeColor="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.793"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:noOfSteps="20"
+            app:waitingColor="@color/colorPrimaryDark" />
     </RelativeLayout>
 
     <LinearLayout

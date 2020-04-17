@@ -29,7 +29,7 @@ import java.util.ArrayList;
 
 
 public class Story extends AppCompatActivity {
-
+    private Button next, back, sam, sarah;
     CameraSource camera;
     VideoView video;
     TextView textView;
@@ -59,6 +59,7 @@ public class Story extends AppCompatActivity {
 
             createCameraSource();
         }
+        clickOnButton();
     }
 
     //EyeContactTracker Class uses the Google Vision API to detect eye contact.
@@ -169,4 +170,19 @@ public class Story extends AppCompatActivity {
             camera.release();
         }
     }
+
+    private void clickOnButton() {
+       back = (Button) findViewById(R.id.back);
+
+       back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Story.this, StoryBook.class);
+                startActivity(it);
+            }
+
+        });
+
+    }
+
 }

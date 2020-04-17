@@ -4,6 +4,10 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
+import android.os.Build;
+import android.os.CountDownTimer;
+import android.os.Handler;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -22,11 +26,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Task3_question extends AppCompatActivity {
     private GridLayout mainGrid;
     private Button submit, home;
     private Random index;
+    FirestoreWorker worker = new FirestoreWorker();
     List<Integer> images;
     List<Boolean> correct_answers;
     private String correct_emotion;
@@ -34,6 +41,11 @@ public class Task3_question extends AppCompatActivity {
     private ImageView upperleft, upperright, lowerleft, lowerright;
     private Integer first, second, third, fourth;
     private static final String TAG = "EmotionActivity";
+    static int count = 0;
+    MyProgressBar step_progress_bar;
+    final Handler handler = new Handler();
+    Timer timer;
+    TimerTask timerTask;
     Map<String, Integer[]> drawableMap = new HashMap< String, Integer[]>();
     Goals g = new Goals();
     // image source: https://www.pinclipart.com/
@@ -129,6 +141,7 @@ public class Task3_question extends AppCompatActivity {
         }
         catch (NullPointerException e){}
         setContentView(R.layout.activity_task3_question);
+        step_progress_bar = findViewById(R.id.step_progress_bar);
 
         upperleft = findViewById(R.id.img_1);
         upperright = findViewById(R.id.img_2);
@@ -211,6 +224,7 @@ public class Task3_question extends AppCompatActivity {
         submit = (Button) findViewById(R.id.submit);
         submit.setOnClickListener(new View.OnClickListener() {
 
+            @RequiresApi(api = Build.VERSION_CODES.P)
             @Override
             public void onClick(View v) {
                 String msg = check_answers();
@@ -322,13 +336,21 @@ public class Task3_question extends AppCompatActivity {
 
                 Goals goalData = dbWorker.getEmotionGoals();
 
-                if (goalData.goals.size() != 0)
-                {
-                    for (int i = 0; i < goalData.goals.size(); i++)
+                new CountDownTimer(2500, 1000) {
+                    public void onFinish()
                     {
-                        dbWorker.addToGoalCount(goalData.goals.get(i).goalID, 1);
+                        if (goalData.goals.size() != 0)
+                        {
+                            for (int i = 0; i < goalData.goals.size(); i++)
+                            {
+                                dbWorker.addToGoalCount(goalData.goals.get(i).goalID, 1);
+                            }
+                        }
                     }
-                }
+                    public void onTick(long millisUntilFinished) {
+                        // millisUntilFinished    The amount of time until finished.
+                    }
+                }.start();
 
                 return "correct";
             }
@@ -350,16 +372,25 @@ public class Task3_question extends AppCompatActivity {
 
                 FirestoreWorker dbWorker = new FirestoreWorker();
                 dbWorker.addEmotionScore(0);
-
+                count = dbWorker.getRewardScore() - 1;
+                step_progress_bar.updateProgress(count);
                 Goals goalData = dbWorker.getEmotionGoals();
 
-                if (goalData.goals.size() != 0)
-                {
-                    for (int i = 0; i < goalData.goals.size(); i++)
+                new CountDownTimer(2500, 1000) {
+                    public void onFinish()
                     {
-                        dbWorker.addToGoalCount(goalData.goals.get(i).goalID, 0);
+                        if (goalData.goals.size() != 0)
+                        {
+                            for (int i = 0; i < goalData.goals.size(); i++)
+                            {
+                                dbWorker.addToGoalCount(goalData.goals.get(i).goalID, 0);
+                            }
+                        }
                     }
-                }
+                    public void onTick(long millisUntilFinished) {
+                        // millisUntilFinished    The amount of time until finished.
+                    }
+                }.start();
 
                 // inform them the number of correct images they've picked so far, and the extra ones they need to select
                 return "You got " + correct_ones + " correct! Pick " + (num_correct_answers - correct_ones) + " more!";
@@ -377,4 +408,33 @@ public class Task3_question extends AppCompatActivity {
 //            }
 //        }
     }
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        startTimer();
+    }
+
+    public void startTimer()
+    {
+        timer = new Timer();
+        initializeTimerTask();
+        timer.schedule(timerTask, 1000, 1000); //
+    }
+
+    public void initializeTimerTask()
+    {
+        timerTask = new TimerTask() {
+            public void run() {
+                handler.post(new Runnable() {
+                    public void run() {
+                        FirestoreWorker dbWorker = new FirestoreWorker();
+                        count = dbWorker.getRewardScore() - 1;
+                        step_progress_bar.updateProgress(count);
+                    }
+                });
+            }
+        };
+    }
+
 }

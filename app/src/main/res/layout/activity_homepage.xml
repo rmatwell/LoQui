@@ -10,7 +10,7 @@
         android:id="@+id/linearLayout3"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="#B0AAE8F1"
+        android:background="#f2e3c6"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -28,7 +28,7 @@
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#B0AAE8F1"
+            android:background="#f2e3c6"
             android:fontFamily="@font/schoolbell"
             android:text="Hello! Choose an activity!"
             android:textColor="#3F51B5"
@@ -48,7 +48,7 @@
             android:background="#F02E8B" />
 
         <LinearLayout
-            android:id="@+id/ll5"
+            android:id="@+id/ll9"
             android:layout_width="match_parent"
             android:layout_height="900dp"
             android:layout_weight="0.3"
@@ -71,7 +71,7 @@
                         android:layout_width="359dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/fun" />
+                        android:background="@drawable/storytime" />
 
                 </LinearLayout>
 
@@ -79,7 +79,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
-                    android:background="#eed2e8"
+                    android:background="#fcc8c7"
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical">
 
@@ -88,6 +88,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.5"
+                        android:background="#fcc8c7"
                         android:fontFamily="@font/schoolbell"
                         android:gravity="center"
                         android:text="Story Time"
@@ -114,13 +115,13 @@
         </LinearLayout>
 
         <View
-            android:id="@+id/divider6"
+            android:id="@+id/divider8"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#F02E8B" />
 
         <LinearLayout
-            android:id="@+id/ll5"
+            android:id="@+id/ll7"
             android:layout_width="match_parent"
             android:layout_height="900dp"
             android:layout_weight="0.3"
@@ -143,7 +144,7 @@
                         android:layout_width="359dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/sammiespeech" />
+                        android:background="@drawable/sammiesays" />
 
                 </LinearLayout>
 
@@ -151,7 +152,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
-                    android:background="#b3b3ff"
+                    android:background="#cefde1"
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical">
 
@@ -217,7 +218,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@drawable/avat" />
+                        android:background="@drawable/emotionquest" />
 
                 </LinearLayout>
 
@@ -225,7 +226,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
-                    android:background="#f2e3c6"
+                    android:background="#aec6d0"
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical">
 
@@ -267,11 +268,11 @@
             android:background="#F02E8B" />
 
         <LinearLayout
-            android:id="@+id/ll5"
+            android:id="@+id/ll6"
             android:layout_width="match_parent"
             android:layout_height="750dp"
             android:layout_weight="0.3"
-            android:background="#B0AAE8F1"
+            android:background="#f2e3c6"
             android:orientation="horizontal">
 
             <Button
@@ -279,7 +280,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="#B0AAE8F1" />
+                android:background="#f2e3c6" />
 
             <Button
                 android:id="@+id/button2"
@@ -293,7 +294,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="#B0AAE8F1" />
+                android:background="#f2e3c6" />
 
         </LinearLayout>
 

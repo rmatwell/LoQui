@@ -366,10 +366,27 @@ public class FirestoreWorker
                     setDailyEmotionReport(newReport, month, i);
                     monthlyScores.monthlyReport.add(newReport);
                 }
+                break;
 
             case 2:
+                for (int i = 0; i < daysInMonth; i++)
+                {
+                    Log.d(TAG, "getMonthlyScore i = " + i);
+                    DailyReport newReport = new DailyReport();
+                    setDailySpeechReport(newReport, month, i);
+                    monthlyScores.monthlyReport.add(newReport);
+                }
+                break;
 
             case 3:
+                for (int i = 0; i < daysInMonth; i++)
+                {
+                    Log.d(TAG, "getMonthlyScore i = " + i);
+                    DailyReport newReport = new DailyReport();
+                    setDailyEyeReport(newReport, month, i);
+                    monthlyScores.monthlyReport.add(newReport);
+                }
+                break;
         }
 
     }

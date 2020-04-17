@@ -84,7 +84,7 @@ public class Homepage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent it = new Intent(Homepage.this, SpeechGame.class);
                 it.putExtra("content", "Let's improve your speech!");
-                it.putExtra("task", "Sammie Says");
+                it.putExtra("task", "Sarah Says");
                 it.putExtra("pic_id", R.drawable.task2_intro);
                 startActivity(it);
             }
@@ -92,10 +92,8 @@ public class Homepage extends AppCompatActivity {
         go3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(Homepage.this, IntroPage.class);
+                Intent it = new Intent(Homepage.this, Task3_question.class);
                 it.putExtra("content", "Let's quiz your understanding of emotions!");
-                it.putExtra("task", "Emotion Quest");
-                it.putExtra("pic_id", R.drawable.task3_intro);
                 startActivity(it);
             }
         });

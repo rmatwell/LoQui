@@ -47,7 +47,7 @@
 
 
         <LinearLayout
-            android:id="@+id/ll5"
+            android:id="@+id/ll6"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.13"
@@ -72,39 +72,25 @@
                     android:layout_weight="1.2">
 
 
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="128dp"
-                        android:layout_margin="10dp">
+                    <Button
+                        android:id="@+id/sam"
+                        android:layout_width="42dp"
+                        android:layout_height="72dp"
+                        android:layout_weight="1"
+                        android:background="@color/babyblueback"
+                        android:text="Sam"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
 
-                        <Button
-                            android:id="@+id/sarah"
-                            android:layout_width="181dp"
-                            android:layout_height="98dp"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginRight="15dp"
-                            android:background="@color/pinkBack"
-                            android:fontFamily="@font/schoolbell"
-                            android:text="Sarah"
-                            android:textColor="#3F51B5"
-                            android:textSize="55sp"
-                            android:textStyle="bold" />
-
-                        <Button
-                            android:id="@+id/sam"
-                            android:layout_width="175dp"
-                            android:layout_height="102dp"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginLeft="1dp"
-                            android:layout_marginBottom="26dp"
-                            android:background="@color/babyblueback"
-                            android:fontFamily="@font/schoolbell"
-                            android:text="Sam"
-                            android:textColor="#3F51B5"
-                            android:textSize="55dp"
-                            android:textStyle="bold" />
-
-                    </RelativeLayout>
+                    <Button
+                        android:id="@+id/sarah"
+                        android:layout_width="47dp"
+                        android:layout_height="72dp"
+                        android:layout_weight="1"
+                        android:background="@color/pinkBack"
+                        android:text="Sarah"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
             </LinearLayout>

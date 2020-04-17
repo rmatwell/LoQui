@@ -10,41 +10,28 @@
         android:id="@+id/linearLayout3"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="#2196F3"
+        android:background="#f2e3c6"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <edu.odu.cs411.loqui.MyProgressBar
-            app:completeColor="@color/colorAccent"
-            app:waitingColor="@color/colorPrimaryDark"
-            app:noOfSteps="5"
             android:id="@+id/step_progress_bar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="?android:selectableItemBackground" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="115dp"
-            android:layout_height="28dp"
-            android:layout_gravity="bottom|center|center_horizontal"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="0.25dp"
-            android:background="@drawable/pp"
-            android:fontFamily="@font/schoolbell"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:background="?android:selectableItemBackground"
+            app:completeColor="@color/colorAccent"
+            app:noOfSteps="20"
+            app:waitingColor="@color/colorPrimaryDark" />
 
         <Button
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#2196F3"
+            android:background="#f2e3c6"
             android:fontFamily="@font/schoolbell"
             android:text="Hello! Choose an activity!"
-            android:textColor="@color/white"
+            android:textColor="#3F51B5"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -63,10 +50,11 @@
         <LinearLayout
             android:id="@+id/ll5"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="900dp"
             android:layout_weight="0.3"
             android:background="#B0AAE8F1"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="DuplicateIds">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -84,7 +72,7 @@
                         android:layout_width="359dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/fun" />
+                        android:background="@drawable/storytime" />
 
                 </LinearLayout>
 
@@ -92,7 +80,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
-                    android:background="#eed2e8"
+                    android:background="#fcc8c7"
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical">
 
@@ -101,9 +89,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.5"
+                        android:background="#fcc8c7"
                         android:fontFamily="@font/schoolbell"
                         android:gravity="center"
-                        android:text="Look At Me!"
+                        android:text="Story Time"
                         android:textAlignment="center"
                         android:textColor="#171785"
                         android:textSize="24sp"
@@ -125,16 +114,17 @@
 
 
         </LinearLayout>
+
         <View
-            android:id="@+id/divider6"
+            android:id="@+id/divider8"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#F02E8B" />
 
         <LinearLayout
-            android:id="@+id/ll5"
+            android:id="@+id/ll7"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="900dp"
             android:layout_weight="0.3"
             android:background="#B0AAE8F1"
             android:orientation="horizontal">
@@ -155,7 +145,7 @@
                         android:layout_width="359dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/sammiespeech" />
+                        android:background="@drawable/samsays" />
 
                 </LinearLayout>
 
@@ -163,7 +153,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
-                    android:background="#b3b3ff"
+                    android:background="#cefde1"
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical">
 
@@ -174,7 +164,7 @@
                         android:layout_weight="0.5"
                         android:fontFamily="@font/schoolbell"
                         android:gravity="center"
-                        android:text="Sammie Says"
+                        android:text="Sam Says"
                         android:textAlignment="center"
                         android:textColor="#171785"
                         android:textSize="24sp"
@@ -191,6 +181,8 @@
                         android:textAlignment="center"
                         android:textColor="@android:color/white"
                         android:textSize="25dp" />
+
+
                 </LinearLayout>
             </LinearLayout>
 
@@ -206,7 +198,7 @@
         <LinearLayout
             android:id="@+id/ll3"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="890dp"
             android:layout_weight="0.3"
             android:background="#B0AAE8F1"
             android:orientation="horizontal">
@@ -225,9 +217,9 @@
                     <View
                         android:id="@+id/view3"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@drawable/avat" />
+                        android:background="@drawable/emotionquest" />
 
                 </LinearLayout>
 
@@ -235,7 +227,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
-                    android:background="#f2e3c6"
+                    android:background="#aec6d0"
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical">
 
@@ -267,6 +259,43 @@
                 </LinearLayout>
             </LinearLayout>
 
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/divider6"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#F02E8B" />
+
+        <LinearLayout
+            android:id="@+id/ll6"
+            android:layout_width="match_parent"
+            android:layout_height="750dp"
+            android:layout_weight="0.3"
+            android:background="#f2e3c6"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#f2e3c6" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="218dp"
+                android:layout_height="37dp"
+                android:layout_weight="1"
+                android:background="@drawable/pp" />
+
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#f2e3c6" />
 
         </LinearLayout>
 

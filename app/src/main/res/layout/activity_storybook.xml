@@ -47,7 +47,7 @@
 
 
         <LinearLayout
-            android:id="@+id/ll5"
+            android:id="@+id/ll6"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.13"
@@ -64,38 +64,34 @@
 
                 <VideoView
                     android:id="@+id/videoView"
-                    android:layout_width="772dp"
-                    android:layout_height="797dp"
-                    android:layout_marginBottom="317dp"
+                    android:layout_width="403dp"
+                    android:layout_height="484dp"
+                    android:layout_marginBottom="108dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    tools:layout_editor_absoluteX="12dp"
-                    tools:ignore="MissingConstraints" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.485"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="5dp" />
 
                 <Button
-                    android:id="@+id/sarah"
-                    android:layout_width="350dp"
-                    android:layout_height="139dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginBottom="24dp"
-                    android:background="@drawable/next"
-                    android:fontFamily="@font/schoolbell"
-                    android:textColor="#3F51B5"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
-
-                <Button
-                    android:id="@+id/sam"
-                    android:layout_width="326dp"
-                    android:layout_height="144dp"
-                    android:layout_marginEnd="476dp"
-                    android:layout_marginBottom="8dp"
+                    android:id="@+id/back"
+                    android:layout_width="204dp"
+                    android:layout_height="86dp"
+                    android:layout_marginBottom="12dp"
                     android:background="@drawable/back"
                     android:fontFamily="@font/schoolbell"
                     android:textColor="#3F51B5"
                     android:textSize="25dp"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <Button
+                    android:id="@+id/next"
+                    android:layout_width="205dp"
+                    android:layout_height="83dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/next"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
 
