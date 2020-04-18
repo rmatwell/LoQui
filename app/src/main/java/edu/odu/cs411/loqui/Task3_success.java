@@ -71,18 +71,7 @@ public class Task3_success extends AppCompatActivity {
             hint.setText("The " + emotion + " faces are:");
         }
 
-        Goals goalData = new Goals();
-
-        goalData.checkForGoalCompletion(Task3_success.this);
-
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                dbWorker.addToRewardScore(1);
-            }
-        }, 5000);
-
-
+        dbWorker.addToRewardScore(1);
 
         clickOnButton();
     }

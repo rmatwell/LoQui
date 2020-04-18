@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -100,19 +101,32 @@ public class Goals extends AppCompatActivity
 
                 //amount or percent value
                 EditText t_amount = (EditText) findViewById(R.id.amount_correct);
-                int amount = Integer.parseInt(t_amount.getText().toString());
+                int amount;
 
+                if(!t_amount.getText().toString().equals("")) {
+                    amount = Integer.parseInt(t_amount.getText().toString());
+                }
+                else {
+                    amount = 0;
+                }
+
+                int time;
                 //time value in seconds
                 EditText t_time = (EditText) findViewById(R.id.time);
-                int time = Integer.parseInt(t_time.getText().toString());
+                if (!t_time.getText().toString().equals(""))
+                {
+                    time = Integer.parseInt(t_time.getText().toString());
+                }
+                else
+                {
+                    time = 0;
+                }
 
                 long timestamp = new Date().getTime()/1000;
 
                 dbWorker.addGoal(game, goal, amount, time, timestamp);
-                /*
-                Goals g = new Goals(game, goal, amount, time, timestamp);
-                goals.add(g);
-                 */
+
+                Toast.makeText(Goals.this,"You've successfully created a new Goal",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -167,25 +181,6 @@ public class Goals extends AppCompatActivity
 
     public boolean checkForGoalCompletion(Context context)
     {
-       /*
-        Goals g = goals.get(getIndexByGameID(game));
-
-        switch(g.goal)
-        {
-            case 0:
-                OverallCorrect(g.game, g.count, g.amount);
-                break;
-            case 1:
-                StreakCorrect(g.game, g.count, g.amount);
-                break;
-            case 2:
-                TimeCorrect(g.game, g.time, g.timestamp);
-                break;
-            case 3:
-                TimePercent(g.game, g.time, g.timestamp, g.count, g.countw, g.amount);
-                break;
-        }
-        */
        goalFlag = false;
 
        Goals overallCorrectList = dbWorker.getOverallCorrectGoals();
@@ -202,7 +197,7 @@ public class Goals extends AppCompatActivity
                     {
                         if (OverallCorrect(overallCorrectList.goals.get(i).game, overallCorrectList.goals.get(i).count, overallCorrectList.goals.get(i).amount))
                         {
-                            goalAlert(context);
+                            Toast.makeText(context,"You've earned 5 points for completing a Goal! Way to go!",Toast.LENGTH_SHORT).show();
                             dbWorker.removeGoal(overallCorrectList.goals.get(i).goalID);
 
                         }
@@ -215,7 +210,7 @@ public class Goals extends AppCompatActivity
                     {
                         if (StreakCorrect(streakCorrectList.goals.get(i).game, streakCorrectList.goals.get(i).count, streakCorrectList.goals.get(i).amount))
                         {
-                            goalAlert(context);
+                            Toast.makeText(context,"You've earned 5 points for completing a Goal! Way to go!",Toast.LENGTH_SHORT).show();
                             dbWorker.removeGoal(streakCorrectList.goals.get(i).goalID);
                         }
                     }
@@ -227,7 +222,7 @@ public class Goals extends AppCompatActivity
                     {
                         if (TimeCorrect(timeCorrectList.goals.get(i).game, timeCorrectList.goals.get(i).time, timeCorrectList.goals.get(i).timestamp))
                         {
-                            goalAlert(context);
+                            Toast.makeText(context,"You've earned 5 points for completing a Goal! Way to go!",Toast.LENGTH_SHORT).show();
                             dbWorker.removeGoal(timeCorrectList.goals.get(i).goalID);
                         }
                     }
@@ -240,7 +235,7 @@ public class Goals extends AppCompatActivity
                         if (TimePercent(timePercentList.goals.get(i).game, timePercentList.goals.get(i).time, timePercentList.goals.get(i).timestamp,
                                 timePercentList.goals.get(i).count, timePercentList.goals.get(i).countw, timePercentList.goals.get(i).amount))
                         {
-                            goalAlert(context);
+                            Toast.makeText(context,"You've earned 5 points for completing a Goal! Way to go!",Toast.LENGTH_SHORT).show();
                             dbWorker.removeGoal(timePercentList.goals.get(i).goalID);
                         }
                     }
@@ -261,10 +256,7 @@ public class Goals extends AppCompatActivity
         if(count >= amount)
         {
             Log.d("OverallCorrect", "Goal completed. Updating rewardScore");
-            //int index = getIndexByGameID(game);
-            //goals.remove(index); //goal is complete, need to remove
             dbWorker.addToRewardScore(5); //bonus points
-            //Reward();
             return true;
         }
 
@@ -277,10 +269,7 @@ public class Goals extends AppCompatActivity
         if(count >= amount)
         {
             Log.d("StreakCorrect","Goal completed. Updating rewardScore");
-            //int index = getIndexByGameID(game);
-            //goals.remove(index); //goal is complete, need to remove
             dbWorker.addToRewardScore(5); //bonus points
-            //Reward();
             return true;
         }
 
@@ -295,10 +284,7 @@ public class Goals extends AppCompatActivity
         if (((elapsed >= time) && (elapsed <= time + 10)) && (time != 0))
         {
             Log.d("TimeCorrect", "Goal completed. Updating rewardScore");
-            //int index = getIndexByGameID(game);
-            //goals.remove(index); //goal is complete, need to remove
             dbWorker.addToRewardScore(5); //bonus points
-            //Reward();
             return true;
         }
 
@@ -315,10 +301,7 @@ public class Goals extends AppCompatActivity
         if(((elapsed >= time) && (elapsed <= time + 10)) && percent >= amount)
         {
             Log.d("TimePercent", "Goal completed. Updating rewardScore");
-            //int index = getIndexByGameID(game);
-            //goals.remove(index); //goal is complete, need to remove
             dbWorker.addToRewardScore(5); //bonus points
-            //Reward();
             return true;
         }
 
@@ -328,53 +311,6 @@ public class Goals extends AppCompatActivity
     public void Reward(Context context)
     {
         Log.d(TAGreward, "Entering the reward method.");
-
-        /*
-        // inflate the layout of the popup window
-        LayoutInflater inflater = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.reward, null);
-
-        // create the popup window
-        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
-        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-        boolean focusable = true; // lets taps outside the popup also dismiss it
-        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-
-        //sets reward text
-        ((TextView)popupWindow.getContentView().findViewById(R.id.rewardwindow)).setText(reward);
-        // show the popup window
-        // which view you pass in doesn't matter, it is only used for the window token
-        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-
-        // dismiss the popup window when touched
-        popupView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                popupWindow.dismiss();
-                return true;
-            }
-        });
-         */
-
-        /*
-        new AlertDialog.Builder(this.getApplicationContext())
-                .setTitle("You've earned a reward!")
-                .setMessage("Pizza for dinner!")
-
-                // Specifying a listener allows you to take an action before dismissing the dialog.
-                // The dialog is automatically dismissed when a dialog button is clicked.
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Continue with delete operation
-                    }
-                })
-
-                // A null listener allows the button to dismiss the dialog and take no further action.
-                .setNegativeButton(android.R.string.no, null)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show();
-
-         */
 
         AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
         builder1.setMessage("You've earned a reward!");
@@ -424,18 +360,5 @@ public class Goals extends AppCompatActivity
 
         AlertDialog alert11 = builder1.create();
         alert11.show();
-    }
-
-
-
-    private int getIndexByGameID(int gameID)
-    {
-        for (int i = 0; i < goals.size(); i++) {
-            if (goals.get(i) != null && (goals.get(i).game == gameID))
-            {
-                return i;
-            }
-        }
-        return 0;// not here
     }
 }

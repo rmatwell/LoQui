@@ -21,6 +21,7 @@ import com.google.firebase.firestore.SetOptions;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -861,8 +862,9 @@ public class FirestoreWorker
                 });
     }
 
-    public void addToGoalCount(String goalID, int correctAnswer)
+    public void addToGoalCount(int game, int correctAnswer)
     {
+        /*
         DocumentReference userRef = db.collection("users").document(userID).collection("Goals").document(goalID);
 
         userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -903,6 +905,39 @@ public class FirestoreWorker
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
+                    }
+                });
+
+         */
+
+        db.collection("users").document(userID).collection("Goals")
+                .whereEqualTo("game", 0)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            /*
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                DocumentReference currentDoc = document;
+                            }
+                            */
+
+                            QuerySnapshot userData = task.getResult();
+                            List<DocumentSnapshot> docList = userData.getDocuments();
+
+                            for (int i = 0; i < docList.size(); i++)
+                            {
+                                DocumentReference userRef = docList.get(i).getReference();
+
+                                double count = docList.get(i).getDouble("count");
+                                count = count + 1;
+                                userRef.update("count", count);
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
                     }
                 });
     }
