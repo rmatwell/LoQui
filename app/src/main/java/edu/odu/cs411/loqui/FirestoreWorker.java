@@ -1,8 +1,17 @@
 package edu.odu.cs411.loqui;
 
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.TextView;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,6 +36,8 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import static android.content.Context.LAYOUT_INFLATER_SERVICE;
+
 public class FirestoreWorker
 {
     FirebaseAuth firebaseAuth;
@@ -34,6 +45,7 @@ public class FirestoreWorker
     String userID;
     FirebaseFirestore db;
     String TAG = "Firestore Worker";
+    String TAGreward = "Reward";
     static boolean rewardFlag;
     static double rewardScore;
     static int avatarNumber, numScores, numCorrect;
@@ -122,7 +134,7 @@ public class FirestoreWorker
                         double dbScore = userData.getDouble("rewardScore");
 
                         //If the amount to be added would make rewardScore 20 or more
-                        if(dbScore + amount > 20)
+                        if(dbScore + amount >= 20)
                         {
                             //double difference = (dbScore + amount) - 20;
                             //dbScore = dbScore + difference;
@@ -149,7 +161,7 @@ public class FirestoreWorker
                 });
     }
 
-    public int getRewardScore()
+    public int getRewardScore(Context context)
     {
         DocumentReference userRef = db.collection("users").document(userID);
 
@@ -166,6 +178,13 @@ public class FirestoreWorker
                     }
                     double dbScore = userData.getDouble("rewardScore");
                     rewardScore = dbScore;
+
+                    if (rewardScore >= 20)
+                    {
+                        Goals reward = new Goals();
+                        reward.Reward(context);
+                        userRef.update("rewardScore",0);
+                    }
                 } else {
                     Log.d(TAG, "get fail with ", task.getException());
                 }
@@ -499,6 +518,8 @@ public class FirestoreWorker
 
     public Goals getOverallCorrectGoals()
     {
+        Log.d("TAG", "Entering getOverallCorrectGoals");
+
         Goals goalList = new Goals();
 
         db.collection("users").document(userID).collection("Goals")
@@ -509,7 +530,7 @@ public class FirestoreWorker
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                Log.d(TAG, "getOverallCorrectGoals" + document.getId() + " => " + document.getData());
                                 Goals newGoal = new Goals();
                                 double goal = document.getDouble("goal");
                                 double game = document.getDouble("game");
@@ -834,6 +855,8 @@ public class FirestoreWorker
 
     public void removeGoal(String goalID)
     {
+        Log.d("removeGoal", "Entering removeGoal");
+        
         db.collection("users").document(userID).collection("Goals").document(goalID)
                 .delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {

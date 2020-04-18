@@ -49,7 +49,7 @@
         <activity android:name=".Time_Up"/>
         <activity android:name=".GameWon"/>
         <activity android:name=".Story"/>
-        <activity android:name=".Homepage" />
+        <activity android:name=".Homepage" android:exported="true"/>
         <activity android:name=".Homepage2"/>
         <activity android:name=".HomeScreen"/>
         <activity android:name=".Task1" />

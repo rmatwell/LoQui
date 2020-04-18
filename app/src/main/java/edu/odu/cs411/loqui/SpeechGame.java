@@ -125,7 +125,7 @@ public class SpeechGame extends AppCompatActivity {
                 mHandler.post(new Runnable() {
                     public void run() {
                         FirestoreWorker dbWorker = new FirestoreWorker();
-                        count = dbWorker.getRewardScore() - 1;
+                        count = dbWorker.getRewardScore(SpeechGame.this) - 1;
                         step_progress_bar.updateProgress(count);
                     }
                 });

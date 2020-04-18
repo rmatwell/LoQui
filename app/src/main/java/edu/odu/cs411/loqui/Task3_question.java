@@ -48,6 +48,7 @@ public class Task3_question extends AppCompatActivity {
     TimerTask timerTask;
     Map<String, Integer[]> drawableMap = new HashMap< String, Integer[]>();
     Goals g = new Goals();
+    FirestoreWorker dbWorker = new FirestoreWorker();
     // image source: https://www.pinclipart.com/
     private Integer[] happy_faces = {
             R.drawable.happy_1,
@@ -142,6 +143,18 @@ public class Task3_question extends AppCompatActivity {
         catch (NullPointerException e){}
         setContentView(R.layout.activity_task3_question);
         step_progress_bar = findViewById(R.id.step_progress_bar);
+
+        count = dbWorker.getRewardScore(Task3_question.this) - 1;
+
+        new CountDownTimer(10000, 1000) {
+            public void onFinish()
+            {
+                timer.cancel();
+            }
+            public void onTick(long millisUntilFinished) {
+                // millisUntilFinished    The amount of time until finished.
+            }
+        }.start();
 
         upperleft = findViewById(R.id.img_1);
         upperright = findViewById(R.id.img_2);
@@ -266,6 +279,41 @@ public class Task3_question extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        startTimer();
+    }
+
+    public void startTimer()
+    {
+        timer = new Timer();
+        initializeTimerTask();
+        timer.schedule(timerTask, 2000, 2000); //
+    }
+
+    public void initializeTimerTask()
+    {
+        timerTask = new TimerTask() {
+            public void run() {
+                handler.post(new Runnable() {
+                    public void run() {
+                        count = dbWorker.getRewardScore(Task3_question.this) - 1;
+                        if (count > -1)
+                        {
+                            step_progress_bar.updateProgress(count);
+                        }
+                        else
+                        {
+                            step_progress_bar.updateProgress(-1);
+                        }
+                    }
+                });
+            }
+        };
+    }
+
     private void gridEvent(GridLayout mainGrid) {
         // iterate through all images contained in the mainGrid
         for (int i = 0; i < mainGrid.getChildCount(); i++) {
@@ -290,9 +338,9 @@ public class Task3_question extends AppCompatActivity {
         return list.get(index);
     }
 
-    private String check_answers(){
+    private String check_answers() {
         int count = 0;
-        int correct_ones  = 0;
+        int correct_ones = 0;
         List<Boolean> checked = new ArrayList<>();
 
         for (int i = 0; i < mainGrid.getChildCount(); i++) {
@@ -308,61 +356,56 @@ public class Task3_question extends AppCompatActivity {
 
         if (count == 0) { // if users select no images, inform them to pick a total number of correct images
             return "Select " + num_correct_answers + " faces!";
-        }
-        else if (count < num_correct_answers) { // if users select less than the number of correct images, inform them to pick enough ones
+        } else if (count < num_correct_answers) { // if users select less than the number of correct images, inform them to pick enough ones
             //for(int i = 0; i < g.goals.size(); i++)
             //{g.goals.get(i).countw++;}
 
             return "Pick " + (num_correct_answers - count) + " more faces!";
 
-        }
-        else if (count > num_correct_answers) { // if users select more than the number of correct images, inform them the limit
+        } else if (count > num_correct_answers) { // if users select more than the number of correct images, inform them the limit
             //for(int i = 0; i < g.goals.size(); i++)
             //{g.goals.get(i).countw++;}
 
             return "Pick only " + (num_correct_answers) + " faces!";
 
-        }
-        else { // if users select exactly the number of correct images
-            if (checked.equals(correct_answers)){ // if they are correct
+        } else { // if users select exactly the number of correct images
+            if (checked.equals(correct_answers)) { // if they are correct
                 //g.setView(findViewById(android.R.id.content).getRootView());
                 //for(int i = 0; i < g.goals.size(); i++)
                 //{g.goals.get(i).count++;}
                 //g.Check(0); Remove the comment when this works again
 
                 FirestoreWorker dbWorker = new FirestoreWorker();
-                dbWorker.addToRewardScore(1);
+
                 dbWorker.addEmotionScore(1);
 
                 Goals goalData = dbWorker.getEmotionGoals();
 
                 new CountDownTimer(2500, 1000) {
-                    public void onFinish()
-                    {
-                        if (goalData.goals.size() != 0)
-                        {
-                            for (int i = 0; i < goalData.goals.size(); i++)
-                            {
+                    public void onFinish() {
+                        if (goalData.goals.size() != 0) {
+                            for (int i = 0; i < goalData.goals.size(); i++) {
                                 dbWorker.addToGoalCount(goalData.goals.get(i).goalID, 1);
                             }
                         }
                     }
+
                     public void onTick(long millisUntilFinished) {
                         // millisUntilFinished    The amount of time until finished.
                     }
                 }.start();
 
+                count = 0;
+
                 return "correct";
-            }
-            else {
+            } else {
                 // otherwise, improve the warning message to be in a gradient manner
                 for (int i = 0; i < mainGrid.getChildCount(); i++) {
                     final CardView child = (CardView) mainGrid.getChildAt(i);
                     if (child.getCardBackgroundColor().getDefaultColor() != -1) {
                         if (correct_answers.get(i) == true) {
                             correct_ones += 1;
-                        }
-                        else {
+                        } else {
 
                             // unselect incorrect answers by refreshing their backgrounds back to be white
                             child.setCardBackgroundColor(Color.parseColor("#FFFFFF"));
@@ -372,21 +415,19 @@ public class Task3_question extends AppCompatActivity {
 
                 FirestoreWorker dbWorker = new FirestoreWorker();
                 dbWorker.addEmotionScore(0);
-                count = dbWorker.getRewardScore() - 1;
-                step_progress_bar.updateProgress(count);
                 Goals goalData = dbWorker.getEmotionGoals();
 
                 new CountDownTimer(2500, 1000) {
-                    public void onFinish()
-                    {
-                        if (goalData.goals.size() != 0)
-                        {
-                            for (int i = 0; i < goalData.goals.size(); i++)
-                            {
+                    public void onFinish() {
+                        if (goalData.goals.size() != 0) {
+                            for (int i = 0; i < goalData.goals.size(); i++) {
                                 dbWorker.addToGoalCount(goalData.goals.get(i).goalID, 0);
                             }
+
+                            goalData.checkForGoalCompletion(Task3_question.this);
                         }
                     }
+
                     public void onTick(long millisUntilFinished) {
                         // millisUntilFinished    The amount of time until finished.
                     }
@@ -408,33 +449,4 @@ public class Task3_question extends AppCompatActivity {
 //            }
 //        }
     }
-    @Override
-    protected void onResume()
-    {
-        super.onResume();
-        startTimer();
-    }
-
-    public void startTimer()
-    {
-        timer = new Timer();
-        initializeTimerTask();
-        timer.schedule(timerTask, 1000, 1000); //
-    }
-
-    public void initializeTimerTask()
-    {
-        timerTask = new TimerTask() {
-            public void run() {
-                handler.post(new Runnable() {
-                    public void run() {
-                        FirestoreWorker dbWorker = new FirestoreWorker();
-                        count = dbWorker.getRewardScore() - 1;
-                        step_progress_bar.updateProgress(count);
-                    }
-                });
-            }
-        };
-    }
-
 }
