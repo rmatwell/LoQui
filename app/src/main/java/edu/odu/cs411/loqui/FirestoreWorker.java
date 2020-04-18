@@ -2,15 +2,7 @@ package edu.odu.cs411.loqui;
 
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
-import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -20,35 +12,31 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import static android.content.Context.LAYOUT_INFLATER_SERVICE;
+import androidx.annotation.NonNull;
 
 public class FirestoreWorker
 {
-    FirebaseAuth firebaseAuth;
-    FirebaseUser user;
-    String userID;
-    FirebaseFirestore db;
-    String TAG = "Firestore Worker";
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser user;
+    private String userID;
+    private FirebaseFirestore db;
+    private String TAG = "Firestore Worker";
     String TAGreward = "Reward";
-    static boolean rewardFlag;
-    static double rewardScore;
-    static int avatarNumber, numScores, numCorrect;
+    private static boolean rewardFlag;
+    private static double rewardScore;
+    private static int avatarNumber, numScores, numCorrect;
 
     FirestoreWorker()
     {

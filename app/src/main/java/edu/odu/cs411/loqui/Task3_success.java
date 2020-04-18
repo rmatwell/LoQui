@@ -1,12 +1,8 @@
 package edu.odu.cs411.loqui;
-import android.content.DialogInterface;
+
 import android.content.Intent;
-import android.media.Image;
-import android.os.CountDownTimer;
-import android.os.Handler;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +15,8 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Task3_success extends AppCompatActivity {
 
