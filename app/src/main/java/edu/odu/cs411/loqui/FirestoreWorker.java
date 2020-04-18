@@ -856,7 +856,7 @@ public class FirestoreWorker
     public void removeGoal(String goalID)
     {
         Log.d("removeGoal", "Entering removeGoal");
-        
+
         db.collection("users").document(userID).collection("Goals").document(goalID)
                 .delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
