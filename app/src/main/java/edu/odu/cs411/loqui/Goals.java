@@ -1,8 +1,16 @@
 package edu.odu.cs411.loqui;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
+import android.os.CountDownTimer;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -13,10 +21,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -29,6 +41,9 @@ public class Goals extends AppCompatActivity
     public int game; //which game the goal belongs to
     public int goal; //which goal type
     public List<Goals> goals = new ArrayList<Goals>();
+    String goalID;
+    FirestoreWorker dbWorker;
+    static boolean goalFlag;
 
     //4 types of goals
     //1: X correct answers overall (no streaks)
@@ -44,13 +59,18 @@ public class Goals extends AppCompatActivity
     public View view; //need this so we know where to display notification
     public String reward;
     private Button createGoals_btn;
+    public String TAG = "Goal";
+    public String TAGreward = "Reward";
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        dbWorker = new FirestoreWorker();
+
         try {this.getSupportActionBar().hide();}
-        catch (NullPointerException e) { System.out.print("it's fucked"); }
+        catch (NullPointerException e) { System.out.print("oh no"); }
 
         setContentView(R.layout.activity_goals);
 
@@ -99,13 +119,46 @@ public class Goals extends AppCompatActivity
                 int time = Integer.parseInt(t_time.getText().toString());
 
                 long timestamp = new Date().getTime()/1000;
+
+                dbWorker.addGoal(game, goal, amount, time, timestamp);
+                /*
                 Goals g = new Goals(game, goal, amount, time, timestamp);
                 goals.add(g);
+                 */
             }
+        });
+
+        RadioButton streak = findViewById(R.id.correct_streak);
+        RadioButton overallTime = findViewById(R.id.correct_overall_time);
+        RadioButton percentTime = findViewById(R.id.correct_percent_time);
+        RadioButton all = findViewById(R.id.all_games);
+
+        all.setOnTouchListener(new View.OnTouchListener()
+        {
+           @Override
+           public boolean onTouch(View view, MotionEvent mtnevent) {
+               ColorStateList colorStateList = new ColorStateList(new int[][]{
+                       new int[]{-android.R.attr.state_enabled},
+                       new int[]{android.R.attr.state_enabled}},
+                       new int[]{Color.BLACK, Color.BLUE});
+
+               if (mtnevent.getAction() == MotionEvent.ACTION_UP) {
+                   streak.setButtonTintList(colorStateList);
+                   overallTime.setButtonTintList(colorStateList);
+                   percentTime.setButtonTintList(colorStateList);
+                   streak.setEnabled(false);
+                   overallTime.setEnabled(false);
+                   percentTime.setEnabled(false);
+                   return true;
+               }
+               return false;
+           }
         });
     }
 
-    public Goals () {}
+    public Goals () {
+        dbWorker = new FirestoreWorker();
+    }
 
     public Goals(int game_, int goal_, int amount_, int time_, long timestamp_)
     {
@@ -116,6 +169,7 @@ public class Goals extends AppCompatActivity
         timestamp = timestamp_;
         count = 0;
         countw = 0;
+        goalID = "";
     }
 
     public void setView(View v)
@@ -123,8 +177,9 @@ public class Goals extends AppCompatActivity
         view = v;
     }
 
-    public void Check(int game)
+    public boolean checkForGoalCompletion(Context context)
     {
+       /*
         Goals g = goals.get(getIndexByGameID(game));
 
         switch(g.goal)
@@ -142,55 +197,151 @@ public class Goals extends AppCompatActivity
                 TimePercent(g.game, g.time, g.timestamp, g.count, g.countw, g.amount);
                 break;
         }
+        */
+       goalFlag = false;
+
+       Goals overallCorrectList = dbWorker.getOverallCorrectGoals();
+       Goals streakCorrectList = dbWorker.getStreakCorrectGoals();
+       Goals timeCorrectList = dbWorker.getTimeCorrectGoals();
+       Goals timePercentList = dbWorker.getTimePercentGoals();
+
+        new CountDownTimer(2000, 1000) {
+            public void onFinish()
+            {
+                if (overallCorrectList.goals.size() != 0)
+                {
+                    for (int i = 0; i < overallCorrectList.goals.size(); i++)
+                    {
+                        if (OverallCorrect(overallCorrectList.goals.get(i).game, overallCorrectList.goals.get(i).count, overallCorrectList.goals.get(i).amount))
+                        {
+                            goalAlert(context);
+                            dbWorker.removeGoal(overallCorrectList.goals.get(i).goalID);
+
+                        }
+                    }
+                }
+
+                if (streakCorrectList.goals.size() != 0)
+                {
+                    for (int i = 0; i < streakCorrectList.goals.size(); i++)
+                    {
+                        if (StreakCorrect(streakCorrectList.goals.get(i).game, streakCorrectList.goals.get(i).count, streakCorrectList.goals.get(i).amount))
+                        {
+                            goalAlert(context);
+                            dbWorker.removeGoal(streakCorrectList.goals.get(i).goalID);
+                        }
+                    }
+                }
+
+                if (timeCorrectList.goals.size() != 0)
+                {
+                    for (int i = 0; i < timeCorrectList.goals.size(); i++)
+                    {
+                        if (TimeCorrect(timeCorrectList.goals.get(i).game, timeCorrectList.goals.get(i).time, timeCorrectList.goals.get(i).timestamp))
+                        {
+                            goalAlert(context);
+                            dbWorker.removeGoal(timeCorrectList.goals.get(i).goalID);
+                        }
+                    }
+                }
+
+                if (timePercentList.goals.size() != 0)
+                {
+                    for (int i = 0; i < timePercentList.goals.size(); i++)
+                    {
+                        if (TimePercent(timePercentList.goals.get(i).game, timePercentList.goals.get(i).time, timePercentList.goals.get(i).timestamp,
+                                timePercentList.goals.get(i).count, timePercentList.goals.get(i).countw, timePercentList.goals.get(i).amount))
+                        {
+                            goalAlert(context);
+                            dbWorker.removeGoal(timePercentList.goals.get(i).goalID);
+                        }
+                    }
+                }
+            }
+            public void onTick(long millisUntilFinished) {
+                // millisUntilFinished    The amount of time until finished.
+            }
+        }.start();
+
+        Log.d("checkForGoalCompletion","Goal Flag = " + goalFlag);
+        return goalFlag;
     }
 
-    public void OverallCorrect(int game, int count, int amount)
+    public boolean OverallCorrect(int game, int count, int amount)
     {
+        Log.d("OverallCorrect", "Entering OverallCorrect");
         if(count >= amount)
         {
-            int index = getIndexByGameID(game);
-            goals.remove(index); //goal is complete, need to remove
-            Reward();
+            Log.d("OverallCorrect", "Goal completed. Updating rewardScore");
+            //int index = getIndexByGameID(game);
+            //goals.remove(index); //goal is complete, need to remove
+            dbWorker.addToRewardScore(5); //bonus points
+            //Reward();
+            return true;
         }
+
+        return false;
     }
 
-    public void StreakCorrect(int game, int count, int amount)
+    public boolean StreakCorrect(int game, int count, int amount)
     {
+        Log.d("StreakCorrect", "Entering StreakCorrect");
         if(count >= amount)
         {
-            int index = getIndexByGameID(game);
-            goals.remove(index); //goal is complete, need to remove
-            Reward();
+            Log.d("StreakCorrect","Goal completed. Updating rewardScore");
+            //int index = getIndexByGameID(game);
+            //goals.remove(index); //goal is complete, need to remove
+            dbWorker.addToRewardScore(5); //bonus points
+            //Reward();
+            return true;
         }
+
+        return false;
     }
 
-    public void TimeCorrect(int game, int time, long timestamp)
+    public boolean TimeCorrect(int game, int time, long timestamp)
     {
+        Log.d("TimeCorrect", "Entering TimeCorrect");
         long now = new Date().getTime()/1000;
         long elapsed = now - timestamp;
         if (((elapsed >= time) && (elapsed <= time + 10)) && (time != 0))
         {
-            int index = getIndexByGameID(game);
-            goals.remove(index); //goal is complete, need to remove
-            Reward();
+            Log.d("TimeCorrect", "Goal completed. Updating rewardScore");
+            //int index = getIndexByGameID(game);
+            //goals.remove(index); //goal is complete, need to remove
+            dbWorker.addToRewardScore(5); //bonus points
+            //Reward();
+            return true;
         }
+
+        return false;
     }
 
-    public void TimePercent(int game, int time, long timestamp, int count, int countw, int amount)
+    public boolean TimePercent(int game, int time, long timestamp, int count, int countw, int amount)
     {
+        Log.d("TimePercent", "Entering TimePercent");
+
         long now = new Date().getTime()/1000;
         long elapsed = now - timestamp;
         int percent = Math.round(count / (count + countw));
         if(((elapsed >= time) && (elapsed <= time + 10)) && percent >= amount)
         {
-            int index = getIndexByGameID(game);
-            goals.remove(index); //goal is complete, need to remove
-            Reward();
+            Log.d("TimePercent", "Goal completed. Updating rewardScore");
+            //int index = getIndexByGameID(game);
+            //goals.remove(index); //goal is complete, need to remove
+            dbWorker.addToRewardScore(5); //bonus points
+            //Reward();
+            return true;
         }
+
+        return false;
     }
 
-    public void Reward()
+    public void Reward(Context context)
     {
+        Log.d(TAGreward, "Entering the reward method.");
+
+        /*
         // inflate the layout of the popup window
         LayoutInflater inflater = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = inflater.inflate(R.layout.reward, null);
@@ -215,17 +366,79 @@ public class Goals extends AppCompatActivity
                 return true;
             }
         });
+         */
+
+        /*
+        new AlertDialog.Builder(this.getApplicationContext())
+                .setTitle("You've earned a reward!")
+                .setMessage("Pizza for dinner!")
+
+                // Specifying a listener allows you to take an action before dismissing the dialog.
+                // The dialog is automatically dismissed when a dialog button is clicked.
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Continue with delete operation
+                    }
+                })
+
+                // A null listener allows the button to dismiss the dialog and take no further action.
+                .setNegativeButton(android.R.string.no, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+
+         */
+
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+        builder1.setMessage("You've earned a reward!");
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "Accept",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        builder1.setNegativeButton(
+                "Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
     }
 
-    public void GlobalGoalAdd()
+    public void goalAlert(Context context)
     {
-        String userID = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+        builder1.setMessage("You've earned 5 points for completing a goal!");
+        builder1.setCancelable(true);
 
-        DocumentReference userRef = db.collection("users").document(userID);
+        builder1.setPositiveButton(
+                "Accept",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
 
-        //don't know how to retrieve user's points
+        builder1.setNegativeButton(
+                "Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
     }
+
+
 
     private int getIndexByGameID(int gameID)
     {
@@ -235,6 +448,6 @@ public class Goals extends AppCompatActivity
                 return i;
             }
         }
-        return -1;// not here
+        return 0;// not here
     }
 }

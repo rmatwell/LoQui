@@ -2,11 +2,12 @@ package edu.odu.cs411.loqui;
 
 public class DailyData
 {
-    int EmotionScore, scoreDay, scoreMonth, scoreYear;
+    int scoreDay, scoreMonth, scoreYear;
+    double score;
 
-    DailyData(int emotionScore, int newScoreDay, int newScoreMonth, int newScoreYear)
+    DailyData(double newScore, int newScoreDay, int newScoreMonth, int newScoreYear)
     {
-        EmotionScore = emotionScore;
+        score = newScore;
         scoreDay = newScoreDay;
         scoreMonth = newScoreMonth;
         scoreYear = newScoreYear;
@@ -17,14 +18,14 @@ public class DailyData
 
     }
 
-    public int getEmotionScore()
+    public double getScore()
     {
-        return EmotionScore;
+        return score;
     }
 
-    public void setEmotionScore(int emotionScore)
+    public void setScore(double score)
     {
-        EmotionScore = emotionScore;
+        this.score = score;
     }
 
     public int getScoreDay()

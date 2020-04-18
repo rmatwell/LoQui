@@ -1,7 +1,11 @@
 package edu.odu.cs411.loqui;
+import android.content.DialogInterface;
 import android.content.Intent;
-
-import androidx.appcompat.app.AppCompatActivity;
+import android.media.Image;
+import android.os.CountDownTimer;
+import android.os.Handler;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +19,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 public class Task3_success extends AppCompatActivity {
 
@@ -24,6 +29,7 @@ public class Task3_success extends AppCompatActivity {
     private TextView def_text, hint;
     private String emotion;
     private String def_json_path = "emotions_def.json";
+    private Handler mHandler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +40,8 @@ public class Task3_success extends AppCompatActivity {
         }
         catch (NullPointerException e){}
         setContentView(R.layout.activity_task3_success);
+
+        FirestoreWorker dbWorker = new FirestoreWorker();
 
         Intent intent = getIntent();
         first = intent.getIntExtra("first", 0);
@@ -65,6 +73,19 @@ public class Task3_success extends AppCompatActivity {
             hint = findViewById(R.id.hint);
             hint.setText("The " + emotion + " faces are:");
         }
+
+        Goals goalData = new Goals();
+
+        goalData.checkForGoalCompletion(Task3_success.this);
+
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                dbWorker.addToRewardScore(1);
+            }
+        }, 5000);
+
+
 
         clickOnButton();
     }

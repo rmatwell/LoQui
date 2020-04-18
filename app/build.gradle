@@ -58,7 +58,8 @@ dependencies {
 
 
     implementation group: 'commons-io', name: 'commons-io', version: '2.0.1'
-
+    implementation 'com.google.android.gms:play-services-vision:15.0.0'
+    implementation 'info.hoang8f:fbutton:1.0.5'
 }
 
 apply plugin: 'com.google.gms.google-services'

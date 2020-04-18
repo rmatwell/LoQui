@@ -200,6 +200,50 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         }
 
+        for (int i = 0; i < 30; i++)
+        {
+
+            for (int j = 0; j < 5; j++)
+            {
+                double randomNum = 0;
+                randomNum = Math.random();
+                Date date = new Date();
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(date);
+                Map<String,Object> eyeData = new HashMap<>();
+                eyeData.put("EyeContactScore",randomNum);
+                eyeData.put("scoreMonth",3);
+                eyeData.put("scoreDay",i);
+                eyeData.put("scoreYear",2020);
+
+                db.collection("users").document(inputEmail.toLowerCase())
+                        .collection("AprilEyeContactScores")
+                        .add(eyeData);
+            }
+        }
+
+        for (int i = 0; i < 30; i++)
+        {
+
+            for (int j = 0; j < 5; j++)
+            {
+                long randomNum = 0;
+                randomNum = Math.round(Math.random());
+                Date date = new Date();
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(date);
+                Map<String,Object> speechData = new HashMap<>();
+                speechData.put("SpeechScore",(int)randomNum);
+                speechData.put("scoreMonth",3);
+                speechData.put("scoreDay",i);
+                speechData.put("scoreYear",2020);
+
+                db.collection("users").document(inputEmail.toLowerCase())
+                        .collection("AprilSpeechScores")
+                        .add(speechData);
+            }
+        }
+
     }
 
     private boolean validateInput(String inName, String inPw, String confirmPw, String inEmail, String inChildName){

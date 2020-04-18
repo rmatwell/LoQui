@@ -4,9 +4,10 @@ import lecho.lib.hellocharts.view.LineChartView;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import androidx.appcompat.app.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -19,8 +20,9 @@ import lecho.lib.hellocharts.model.Line;
 import lecho.lib.hellocharts.model.LineChartData;
 import lecho.lib.hellocharts.model.PointValue;
 import lecho.lib.hellocharts.model.Viewport;
+import lecho.lib.hellocharts.view.LineChartView;
 
-public class MonthlyProgressActivity extends AppCompatActivity
+public class MonthlySpeechProgressActivity extends AppCompatActivity
 {
     LineChartView monthlyChart;
     String[] axisData = {"3", "6", "9", "12", "15", "18", "21", "24", "27", "30"};
@@ -46,7 +48,7 @@ public class MonthlyProgressActivity extends AppCompatActivity
 
         FirestoreWorker dbWorker = new FirestoreWorker();
         MonthlyReport newReport = new MonthlyReport();
-        dbWorker.getMonthlyScores(newReport, cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.ENGLISH), 1);
+        dbWorker.getMonthlyScores(newReport, cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.ENGLISH), 2);
 
         new CountDownTimer(2500, 1000) {
             public void onFinish() {
@@ -117,7 +119,7 @@ public class MonthlyProgressActivity extends AppCompatActivity
                 Axis axis = new Axis();
                 axis.setValues(scoreValues);
                 axis.setTextSize(16);
-                axis.setName("Month of April Emotion Progress");
+                axis.setName("Month of April Speech Progress");
                 axis.setTextColor(Color.parseColor("#03A9F4"));
                 data.setAxisXBottom(axis);
 
