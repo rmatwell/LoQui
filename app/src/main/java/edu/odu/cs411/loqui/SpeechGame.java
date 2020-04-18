@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Build;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
@@ -56,7 +57,8 @@ public class SpeechGame extends AppCompatActivity {
     int questionCounter = 0;
     int resID;
     private FirestoreWorker worker = new FirestoreWorker();
-    private TimerTask timerTask;
+    Timer timer;
+    TimerTask timerTask;
     private int count = 0;
     private SpeechRecognizer speechRecognizer;
     private ProgressBar myProgressBar;
@@ -72,6 +74,8 @@ public class SpeechGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speech_game);
         step_progress_bar = findViewById(R.id.step_progress_bar);
+
+        count = worker.getRewardScore(SpeechGame.this) - 1;
 
         mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
@@ -104,6 +108,20 @@ public class SpeechGame extends AppCompatActivity {
         speechImage.setImageResource(images.getImages().getResourceId(images.getIndex(), 0));
 
         speechButton.setOnClickListener(v -> speak());
+
+        new CountDownTimer(10000, 1000) {
+            public void onFinish()
+            {
+                timer.cancel();
+            }
+            public void onTick(long millisUntilFinished) {
+                // millisUntilFinished    The amount of time until finished.
+            }
+        }.start();
+
+        Goals goalData = new Goals();
+
+        goalData.checkForGoalCompletion(SpeechGame.this);
 
         homeButton.setOnClickListener(v -> {
             mySoundHelper.playHomeSound();
@@ -180,6 +198,8 @@ public class SpeechGame extends AppCompatActivity {
                 else {
                     if (questionCounter < 3) {
                         questionCounter++;
+                        worker.addToGoalCount(1, 0);
+                        worker.addSpeechScore(0);
                         mySoundHelper.playIncorrectSound();
                         textSpeech.setText("Try Again");
                         textSpeech.setVisibility(View.VISIBLE);
@@ -210,24 +230,36 @@ public class SpeechGame extends AppCompatActivity {
     }
 
 
-    protected void onResume() {
+    @Override
+    protected void onResume()
+    {
         super.onResume();
         startTimer();
     }
 
-    public void startTimer() {
-        Timer timer = new Timer();
+    public void startTimer()
+    {
+        timer = new Timer();
         initializeTimerTask();
-        timer.schedule(timerTask, 1000, 1000); //
+        timer.schedule(timerTask, 2000, 2000); //
     }
 
-    public void initializeTimerTask() {
+    public void initializeTimerTask()
+    {
         timerTask = new TimerTask() {
             public void run() {
-                mHandler.post(() -> {
-                    FirestoreWorker dbWorker = new FirestoreWorker();
-                    count = dbWorker.getRewardScore(SpeechGame.this) - 1;
-                    step_progress_bar.updateProgress(count);
+                mHandler.post(new Runnable() {
+                    public void run() {
+                        count = worker.getRewardScore(SpeechGame.this) - 1;
+                        if (count > -1)
+                        {
+                            step_progress_bar.updateProgress(count);
+                        }
+                        else
+                        {
+                            step_progress_bar.updateProgress(-1);
+                        }
+                    }
                 });
             }
         };
@@ -257,6 +289,7 @@ public class SpeechGame extends AppCompatActivity {
     private void correctAnswer() {
         worker.addToRewardScore(1);
         worker.addSpeechScore(1);
+        worker.addToGoalCount(1, 1);
         textSpeech.setText("Amazing!");
         textSpeech.setVisibility(View.VISIBLE);
         mySoundHelper.playCorrectSound();
