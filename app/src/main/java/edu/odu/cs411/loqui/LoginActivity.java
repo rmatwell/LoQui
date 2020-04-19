@@ -39,8 +39,6 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseUser user;
     private ProgressDialog progressDialog;
-    private FirebaseFirestore db;
-    Timer timer;
 
 
     @Override
@@ -48,7 +46,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initializeGUI();
-        db = FirebaseFirestore.getInstance();
 
         //This block of code automatically signs in whoever was using the app previously.
         //While useful, Im removing it for now so we know exactly who is signing in for testing purposes.
@@ -117,28 +114,8 @@ public class LoginActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     progressDialog.dismiss();
                     Toast.makeText(LoginActivity.this,"Login Successful",Toast.LENGTH_SHORT).show();
-                    FirestoreWorker dbWorker = new FirestoreWorker();
-                    IntegerRef avatar = new IntegerRef();
-                    dbWorker.getAvatar(avatar);
-
-                    new CountDownTimer(2500, 1000) {
-                        public void onFinish()
-                        {
-                            if (avatar.intRef == 0)
-                            {
-                                finish();
-                                startActivity(new Intent(LoginActivity.this,Avatars.class));
-                            }
-                            else if (avatar.intRef == 1 || avatar.intRef == 2)
-                            {
-                                finish();
-                                startActivity(new Intent(LoginActivity.this,Homepage.class));
-                            }
-                        }
-                        public void onTick(long millisUntilFinished) {
-                            // millisUntilFinished    The amount of time until finished.
-                        }
-                    }.start();
+                    finish();
+                    startActivity(new Intent(LoginActivity.this,Avatars.class));
                     //startActivity(new Intent(LoginActivity.this,Homepage.class));
                 }
                 else{
