@@ -32,6 +32,7 @@ import java.util.Timer;
 public class LoginActivity extends AppCompatActivity {
 
     private static final int MY_PERMISSIONS_RECORD_AUDIO = 1;
+    private static final int MY_PERMISSIONS_CAMERA = 1;
     private ImageView logo, ivSignIn, btnTwitter;
     private AutoCompleteTextView email, password;
     private TextView forgotPass, signUp;
@@ -56,11 +57,15 @@ public class LoginActivity extends AppCompatActivity {
 
         if(user != null) {
             finish();
-            startActivity(new Intent(LoginActivity.this,Homepage.class));
+            startActivity(new Intent(LoginActivity.this,Homepage.cla ss));
         }*/
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, MY_PERMISSIONS_RECORD_AUDIO);
+        }
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, MY_PERMISSIONS_CAMERA);
         }
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
