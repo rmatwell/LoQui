@@ -109,20 +109,6 @@ public class SpeechGame extends AppCompatActivity {
 
         speechButton.setOnClickListener(v -> speak());
 
-        new CountDownTimer(10000, 1000) {
-            public void onFinish()
-            {
-                timer.cancel();
-            }
-            public void onTick(long millisUntilFinished) {
-                // millisUntilFinished    The amount of time until finished.
-            }
-        }.start();
-
-        Goals goalData = new Goals();
-
-        goalData.checkForGoalCompletion(SpeechGame.this);
-
         homeButton.setOnClickListener(v -> {
             mySoundHelper.playHomeSound();
             animateButton();
@@ -295,6 +281,26 @@ public class SpeechGame extends AppCompatActivity {
         mySoundHelper.playCorrectSound();
         correctAnswerPlayer.start();
         speechImage.setImageResource(R.drawable.check);
+
+        //Goal and rewardScore polling operations//////////////////
+        ///////////////////////////////////////////////////////////
+        new CountDownTimer(10000, 1000) {
+            public void onFinish()
+            {
+                timer.cancel();
+            }
+            public void onTick(long millisUntilFinished) {
+                // millisUntilFinished    The amount of time until finished.
+            }
+        }.start();
+
+        startTimer();
+
+        Goals goalData = new Goals();
+
+        goalData.checkForGoalCompletion(SpeechGame.this);
+        ///////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////
 
         Drawable drawable = speechImage.getDrawable();
 
