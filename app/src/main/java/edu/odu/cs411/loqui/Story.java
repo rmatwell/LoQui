@@ -49,7 +49,7 @@ public class Story extends AppCompatActivity {
         else {
             video = (VideoView) findViewById(R.id.videoView);
             textView = findViewById(R.id.textView);
-            String path = "android.resource://edu.odu.cs411.loqui/" + R.raw.avatar1;
+            String path = "android.resource://edu.odu.cs411.loqui/" + R.raw.threelilpigs;
             Uri uri = Uri.parse(path);
             video.setVideoURI(uri);
             video.requestFocus();
