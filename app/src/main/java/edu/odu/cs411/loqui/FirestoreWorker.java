@@ -266,8 +266,8 @@ public class FirestoreWorker
                     } else {
                         Log.d(TAG, "No such document userID = " + userID);
                     }
-                    double dbAvatar = userData.getDouble("Avatar");
-                    avatar.intRef = (int)dbAvatar;
+                   double dbAvatar = userData.getDouble("Avatar");
+                   avatar.intRef = (int)dbAvatar;
                 } else {
                     Log.d(TAG, "get fail with ", task.getException());
                 }
