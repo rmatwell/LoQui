@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat;
 
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -22,6 +23,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.Timer;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -33,6 +39,8 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseUser user;
     private ProgressDialog progressDialog;
+    private FirebaseFirestore db;
+    Timer timer;
 
 
     @Override
@@ -40,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initializeGUI();
+        db = FirebaseFirestore.getInstance();
 
         //This block of code automatically signs in whoever was using the app previously.
         //While useful, Im removing it for now so we know exactly who is signing in for testing purposes.
@@ -108,9 +117,28 @@ public class LoginActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     progressDialog.dismiss();
                     Toast.makeText(LoginActivity.this,"Login Successful",Toast.LENGTH_SHORT).show();
-                    FirebaseUser user = firebaseAuth.getCurrentUser();
-                    finish();
-                    startActivity(new Intent(LoginActivity.this,Avatars.class));
+                    FirestoreWorker dbWorker = new FirestoreWorker();
+                    IntegerRef avatar = new IntegerRef();
+                    dbWorker.getAvatar(avatar);
+
+                    new CountDownTimer(2500, 1000) {
+                        public void onFinish()
+                        {
+                            if (avatar.intRef == 0)
+                            {
+                                finish();
+                                startActivity(new Intent(LoginActivity.this,Avatars.class));
+                            }
+                            else if (avatar.intRef == 1 || avatar.intRef == 2)
+                            {
+                                finish();
+                                startActivity(new Intent(LoginActivity.this,Homepage.class));
+                            }
+                        }
+                        public void onTick(long millisUntilFinished) {
+                            // millisUntilFinished    The amount of time until finished.
+                        }
+                    }.start();
                     //startActivity(new Intent(LoginActivity.this,Homepage.class));
                 }
                 else{

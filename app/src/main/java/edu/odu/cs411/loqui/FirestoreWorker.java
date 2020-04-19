@@ -150,7 +150,7 @@ public class FirestoreWorker
                 });
     }
 
-    public int getRewardScore(Context context)
+    public void getRewardScore(Context context, IntegerRef rewardScore)
     {
         DocumentReference userRef = db.collection("users").document(userID);
 
@@ -166,9 +166,9 @@ public class FirestoreWorker
                         Log.d(TAG, "No such document userID = " + userID);
                     }
                     double dbScore = userData.getDouble("rewardScore");
-                    rewardScore = dbScore;
+                    rewardScore.intRef = Math.round((int)dbScore);
 
-                    if (rewardScore >= 20)
+                    if (rewardScore.intRef >= 20)
                     {
                         Goals reward = new Goals();
                         reward.Reward(context);
@@ -185,8 +185,6 @@ public class FirestoreWorker
                     public void onFailure(@NonNull Exception e) {
                     }
                 });
-
-        return (int) rewardScore;
     }
 
     public void addEmotionScore(int emotionScore)
@@ -205,22 +203,6 @@ public class FirestoreWorker
 
         db.collection("users").document(userID)
                 .collection(cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.ENGLISH) + "EmotionScores")
-                .add(emotionData);
-    }
-
-    public void addEmotionScore(int emotionScore, int day, int month, int year)
-    {
-        Date date = new Date();
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        Map<String,Object> emotionData = new HashMap<>();
-        emotionData.put("EmotionScore",emotionScore);
-        emotionData.put("scoreMonth",month);
-        emotionData.put("scoreDay",day);
-        emotionData.put("scoreYear",year);
-
-        db.collection("users").document(userID)
-                .collection(cal.getDisplayName(month, Calendar.LONG, Locale.ENGLISH) + "EmotionScores")
                 .add(emotionData);
     }
 
@@ -269,7 +251,7 @@ public class FirestoreWorker
 
         db.collection("users").document(userID).set(data, SetOptions.merge());
     }
-    public int getAvatar()
+    public void getAvatar(IntegerRef avatar)
     {
         DocumentReference userRef = db.collection("users").document(userID);
 
@@ -285,7 +267,7 @@ public class FirestoreWorker
                         Log.d(TAG, "No such document userID = " + userID);
                     }
                     double dbAvatar = userData.getDouble("Avatar");
-                    avatarNumber = (int)dbAvatar;
+                    avatar.intRef = (int)dbAvatar;
                 } else {
                     Log.d(TAG, "get fail with ", task.getException());
                 }
@@ -297,8 +279,6 @@ public class FirestoreWorker
                     public void onFailure(@NonNull Exception e) {
                     }
                 });
-
-        return avatarNumber;
     }
 
     public int getNumberOfScores(String month)

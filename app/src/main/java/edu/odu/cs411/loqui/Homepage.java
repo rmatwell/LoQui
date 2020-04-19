@@ -23,6 +23,7 @@ public class Homepage extends AppCompatActivity {
     Timer timer;
     TimerTask timerTask;
     FirestoreWorker dbWorker = new FirestoreWorker();
+    IntegerRef countRef = new IntegerRef();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,8 @@ public class Homepage extends AppCompatActivity {
         setContentView(R.layout.activity_homepage);
         step_progress_bar = findViewById(R.id.step_progress_bar);
 
-        count = dbWorker.getRewardScore(Homepage.this) - 1;
+        dbWorker.getRewardScore(Homepage.this, countRef);
+        count = countRef.intRef - 1;
 
         new CountDownTimer(10000, 1000) {
             public void onFinish()
@@ -70,7 +72,8 @@ public class Homepage extends AppCompatActivity {
             public void run() {
                 handler.post(new Runnable() {
                     public void run() {
-                        count = dbWorker.getRewardScore(Homepage.this) - 1;
+                        dbWorker.getRewardScore(Homepage.this, countRef);
+                        count = countRef.intRef - 1;
                         if (count > -1)
                         {
                             step_progress_bar.updateProgress(count);

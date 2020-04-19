@@ -44,6 +44,7 @@ public class Task3_question extends AppCompatActivity {
     private Integer first, second, third, fourth;
     private static final String TAG = "EmotionActivity";
     static int count = 0;
+    IntegerRef countRef = new IntegerRef();
     MyProgressBar step_progress_bar;
     final Handler handler = new Handler();
     Timer timer;
@@ -146,7 +147,8 @@ public class Task3_question extends AppCompatActivity {
         setContentView(R.layout.activity_task3_question);
         step_progress_bar = findViewById(R.id.step_progress_bar);
 
-        count = dbWorker.getRewardScore(Task3_question.this) - 1;
+        dbWorker.getRewardScore(Task3_question.this, countRef);
+        count = countRef.intRef - 1;
 
         new CountDownTimer(10000, 1000) {
             public void onFinish()
@@ -305,7 +307,8 @@ public class Task3_question extends AppCompatActivity {
             public void run() {
                 handler.post(new Runnable() {
                     public void run() {
-                        count = dbWorker.getRewardScore(Task3_question.this) - 1;
+                        dbWorker.getRewardScore(Task3_question.this, countRef);
+                        count = countRef.intRef - 1;
                         if (count > -1)
                         {
                             step_progress_bar.updateProgress(count);
