@@ -99,11 +99,12 @@
             android:orientation="horizontal"
             android:weightSum="2">
 
-            <ImageView
-                android:layout_width="243dp"
-                android:layout_height="408dp"
+            <VideoView
+                android:id="@+id/videoView2"
+                android:layout_width="427dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@drawable/emma3" />
+                tools:ignore="DuplicateIds" />
 
             <TextView
                 android:id="@+id/msg_def"

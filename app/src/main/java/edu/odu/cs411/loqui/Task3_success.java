@@ -1,13 +1,20 @@
 package edu.odu.cs411.loqui;
+
 import android.content.Intent;
-import android.media.Image;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import android.graphics.PixelFormat;
+import android.net.Uri;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.widget.VideoView;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,7 +22,8 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Task3_success extends AppCompatActivity {
 
@@ -25,16 +33,27 @@ public class Task3_success extends AppCompatActivity {
     private TextView def_text, hint;
     private String emotion;
     private String def_json_path = "emotions_def.json";
+    private Handler mHandler = new Handler();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        try
-        {
+        try {
             this.getSupportActionBar().hide();
+        } catch (NullPointerException e) {
         }
-        catch (NullPointerException e){}
         setContentView(R.layout.activity_task3_success);
+        Button play = (Button) findViewById(R.id.button);
+        getWindow().setFormat(PixelFormat.UNKNOWN);
+        VideoView video = (VideoView) findViewById(R.id.videoView2);
+        String path = "android.resource://edu.odu.cs411.loqui/" + R.raw.welldonefinal;
+        Uri uri = Uri.parse(path);
+        video.setVideoURI(uri);
+        video.requestFocus();
+        video.start();
+        FirestoreWorker dbWorker = new FirestoreWorker();
 
         Intent intent = getIntent();
         first = intent.getIntExtra("first", 0);
@@ -66,6 +85,8 @@ public class Task3_success extends AppCompatActivity {
             hint = findViewById(R.id.hint);
             hint.setText("The " + emotion + " faces are:");
         }
+
+        dbWorker.addToRewardScore(1);
 
         clickOnButton();
     }

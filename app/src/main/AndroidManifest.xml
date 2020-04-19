@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="edu.odu.cs411.loqui">
 
     <uses-permission android:name="android.permission.CAMERA" />
@@ -22,7 +23,7 @@
             android:enabled="true" />
 
         <provider
-            android:name="android.support.v4.content.FileProvider"
+            android:name="androidx.core.content.FileProvider"
             android:authorities="edu.odu.cs411.loqui.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
@@ -41,15 +42,17 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginActivity" />
-        <activity android:name=".SpeechGame" android:exported="true"/>
+        <activity android:name=".SpeechGame" android:exported="true"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity android:name=".PWresetActivity"></activity>
         <activity android:name=".UserProfile"/>
         <activity android:name=".MainGameActivity"/>
         <activity android:name=".PlayAgain"/>
         <activity android:name=".Time_Up"/>
         <activity android:name=".GameWon"/>
-        <activity android:name=".Story" />
-        <activity android:name=".Homepage" />
+        <activity android:name=".Story"/>
+        <activity android:name=".Homepage" android:exported="true"/>
         <activity android:name=".Homepage2"/>
         <activity android:name=".HomeScreen"/>
         <activity android:name=".Task1" />

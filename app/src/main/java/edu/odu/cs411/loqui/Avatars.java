@@ -4,18 +4,11 @@ package edu.odu.cs411.loqui;
 import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.VideoView;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 public class Avatars extends AppCompatActivity {
     private Button next, back, sam, sarah;

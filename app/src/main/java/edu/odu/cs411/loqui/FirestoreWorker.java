@@ -1,8 +1,9 @@
 package edu.odu.cs411.loqui;
 
 
-import android.support.annotation.NonNull;
+import android.content.Context;
 import android.util.Log;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -11,32 +12,32 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import androidx.annotation.NonNull;
+
 public class FirestoreWorker
 {
-    FirebaseAuth firebaseAuth;
-    FirebaseUser user;
-    String userID;
-    FirebaseFirestore db;
-    String TAG = "Firestore Worker";
-    static boolean rewardFlag;
-    static double rewardScore;
-    static int avatarNumber, numScores, numCorrect;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser user;
+    private String userID;
+    private FirebaseFirestore db;
+    private String TAG = "Firestore Worker";
+    String TAGreward = "Reward";
+    private static boolean rewardFlag;
+    private static double rewardScore;
+    private static int avatarNumber, numScores, numCorrect;
 
     FirestoreWorker()
     {
@@ -122,7 +123,7 @@ public class FirestoreWorker
                         double dbScore = userData.getDouble("rewardScore");
 
                         //If the amount to be added would make rewardScore 20 or more
-                        if(dbScore + amount > 20)
+                        if(dbScore + amount >= 20)
                         {
                             //double difference = (dbScore + amount) - 20;
                             //dbScore = dbScore + difference;
@@ -149,7 +150,7 @@ public class FirestoreWorker
                 });
     }
 
-    public int getRewardScore()
+    public void getRewardScore(Context context, IntegerRef rewardScore)
     {
         DocumentReference userRef = db.collection("users").document(userID);
 
@@ -165,7 +166,14 @@ public class FirestoreWorker
                         Log.d(TAG, "No such document userID = " + userID);
                     }
                     double dbScore = userData.getDouble("rewardScore");
-                    rewardScore = dbScore;
+                    rewardScore.intRef = Math.round((int)dbScore);
+
+                    if (rewardScore.intRef >= 20)
+                    {
+                        Goals reward = new Goals();
+                        reward.Reward(context);
+                        userRef.update("rewardScore",0);
+                    }
                 } else {
                     Log.d(TAG, "get fail with ", task.getException());
                 }
@@ -177,8 +185,6 @@ public class FirestoreWorker
                     public void onFailure(@NonNull Exception e) {
                     }
                 });
-
-        return (int) rewardScore;
     }
 
     public void addEmotionScore(int emotionScore)
@@ -197,22 +203,6 @@ public class FirestoreWorker
 
         db.collection("users").document(userID)
                 .collection(cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.ENGLISH) + "EmotionScores")
-                .add(emotionData);
-    }
-
-    public void addEmotionScore(int emotionScore, int day, int month, int year)
-    {
-        Date date = new Date();
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        Map<String,Object> emotionData = new HashMap<>();
-        emotionData.put("EmotionScore",emotionScore);
-        emotionData.put("scoreMonth",month);
-        emotionData.put("scoreDay",day);
-        emotionData.put("scoreYear",year);
-
-        db.collection("users").document(userID)
-                .collection(cal.getDisplayName(month, Calendar.LONG, Locale.ENGLISH) + "EmotionScores")
                 .add(emotionData);
     }
 
@@ -261,7 +251,7 @@ public class FirestoreWorker
 
         db.collection("users").document(userID).set(data, SetOptions.merge());
     }
-    public int getAvatar()
+    public void getAvatar(IntegerRef avatar)
     {
         DocumentReference userRef = db.collection("users").document(userID);
 
@@ -277,7 +267,7 @@ public class FirestoreWorker
                         Log.d(TAG, "No such document userID = " + userID);
                     }
                     double dbAvatar = userData.getDouble("Avatar");
-                    avatarNumber = (int)dbAvatar;
+                    avatar.intRef = (int)dbAvatar;
                 } else {
                     Log.d(TAG, "get fail with ", task.getException());
                 }
@@ -289,8 +279,6 @@ public class FirestoreWorker
                     public void onFailure(@NonNull Exception e) {
                     }
                 });
-
-        return avatarNumber;
     }
 
     public int getNumberOfScores(String month)
@@ -499,6 +487,8 @@ public class FirestoreWorker
 
     public Goals getOverallCorrectGoals()
     {
+        Log.d("TAG", "Entering getOverallCorrectGoals");
+
         Goals goalList = new Goals();
 
         db.collection("users").document(userID).collection("Goals")
@@ -509,7 +499,7 @@ public class FirestoreWorker
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                Log.d(TAG, "getOverallCorrectGoals" + document.getId() + " => " + document.getData());
                                 Goals newGoal = new Goals();
                                 double goal = document.getDouble("goal");
                                 double game = document.getDouble("game");
@@ -834,6 +824,8 @@ public class FirestoreWorker
 
     public void removeGoal(String goalID)
     {
+        Log.d("removeGoal", "Entering removeGoal");
+
         db.collection("users").document(userID).collection("Goals").document(goalID)
                 .delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -850,8 +842,9 @@ public class FirestoreWorker
                 });
     }
 
-    public void addToGoalCount(String goalID, int correctAnswer)
+    public void addToGoalCount(int game, int correctAnswer)
     {
+        /*
         DocumentReference userRef = db.collection("users").document(userID).collection("Goals").document(goalID);
 
         userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -892,6 +885,39 @@ public class FirestoreWorker
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
+                    }
+                });
+
+         */
+
+        db.collection("users").document(userID).collection("Goals")
+                .whereEqualTo("game", 0)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            /*
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                DocumentReference currentDoc = document;
+                            }
+                            */
+
+                            QuerySnapshot userData = task.getResult();
+                            List<DocumentSnapshot> docList = userData.getDocuments();
+
+                            for (int i = 0; i < docList.size(); i++)
+                            {
+                                DocumentReference userRef = docList.get(i).getReference();
+
+                                double count = docList.get(i).getDouble("count");
+                                count = count + 1;
+                                userRef.update("count", count);
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
                     }
                 });
     }

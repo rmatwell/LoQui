@@ -1,14 +1,16 @@
 package edu.odu.cs411.loqui;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
-import android.os.Handler;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Homepage extends AppCompatActivity {
 
@@ -20,6 +22,8 @@ public class Homepage extends AppCompatActivity {
     final Handler handler = new Handler();
     Timer timer;
     TimerTask timerTask;
+    FirestoreWorker dbWorker = new FirestoreWorker();
+    IntegerRef countRef = new IntegerRef();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +36,20 @@ public class Homepage extends AppCompatActivity {
         setContentView(R.layout.activity_homepage);
         step_progress_bar = findViewById(R.id.step_progress_bar);
 
+        dbWorker.getRewardScore(Homepage.this, countRef);
+        count = countRef.intRef - 1;
+
+        new CountDownTimer(10000, 1000) {
+            public void onFinish()
+            {
+                timer.cancel();
+            }
+            public void onTick(long millisUntilFinished) {
+                // millisUntilFinished    The amount of time until finished.
+            }
+        }.start();
+
         clickOnButton();
-
-
     }
 
     @Override
@@ -48,7 +63,7 @@ public class Homepage extends AppCompatActivity {
     {
         timer = new Timer();
         initializeTimerTask();
-        timer.schedule(timerTask, 1000, 1000); //
+        timer.schedule(timerTask, 2000, 2000); //
     }
 
     public void initializeTimerTask()
@@ -57,9 +72,16 @@ public class Homepage extends AppCompatActivity {
             public void run() {
                 handler.post(new Runnable() {
                     public void run() {
-                        FirestoreWorker dbWorker = new FirestoreWorker();
-                        count = dbWorker.getRewardScore() - 1;
-                        step_progress_bar.updateProgress(count);
+                        dbWorker.getRewardScore(Homepage.this, countRef);
+                        count = countRef.intRef - 1;
+                        if (count > -1)
+                        {
+                            step_progress_bar.updateProgress(count);
+                        }
+                        else
+                        {
+                            step_progress_bar.updateProgress(-1);
+                        }
                     }
                 });
             }
@@ -76,6 +98,8 @@ public class Homepage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(Homepage.this, StoryBook.class);
+                timer.cancel();
+                count = 0;
                 startActivity(it);
             }
         });
@@ -86,6 +110,8 @@ public class Homepage extends AppCompatActivity {
                 it.putExtra("content", "Let's improve your speech!");
                 it.putExtra("task", "Sarah Says");
                 it.putExtra("pic_id", R.drawable.task2_intro);
+                timer.cancel();
+                count = 0;
                 startActivity(it);
             }
         });
@@ -94,6 +120,8 @@ public class Homepage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent it = new Intent(Homepage.this, Task3_question.class);
                 it.putExtra("content", "Let's quiz your understanding of emotions!");
+                timer.cancel();
+                count = 0;
                 startActivity(it);
             }
         });
@@ -101,6 +129,8 @@ public class Homepage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(Homepage.this, ParentPortalActivity.class);
+                timer.cancel();
+                count = 0;
                 startActivity(it);
             }
         });

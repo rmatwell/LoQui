@@ -2,33 +2,21 @@ package edu.odu.cs411.loqui;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.*;
-
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    private ImageView logo, joinus;
     private AutoCompleteTextView username, email, password, confirmPassword, childName;
     private Button signup;
     private TextView signin;
@@ -47,32 +35,24 @@ public class RegistrationActivity extends AppCompatActivity {
 
         initializeGUI();
 
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        signup.setOnClickListener(view -> {
 
-                progressDialog.dismiss();
+            progressDialog.dismiss();
 
-                final String inputName = username.getText().toString().trim();
-                final String inputPw = password.getText().toString().trim();
-                final String inputConfirmPw = confirmPassword.getText().toString().trim();
-                final String inputEmail = email.getText().toString().trim();
-                final String inputChildName = childName.getText().toString().trim();
+            final String inputName = username.getText().toString().trim();
+            final String inputPw = password.getText().toString().trim();
+            final String inputConfirmPw = confirmPassword.getText().toString().trim();
+            final String inputEmail = email.getText().toString().trim();
+            final String inputChildName = childName.getText().toString().trim();
 
 
-                    if(validateInput(inputName, inputPw, inputConfirmPw, inputEmail, inputChildName)) {
-                        registerUser(inputName, inputPw, inputEmail, inputChildName);
-                    }
-            }
+                if(validateInput(inputName, inputPw, inputConfirmPw, inputEmail, inputChildName)) {
+                    registerUser(inputName, inputPw, inputEmail, inputChildName);
+                }
         });
 
 
-        signin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(RegistrationActivity.this,LoginActivity.class));
-            }
-        });
+        signin.setOnClickListener(view -> startActivity(new Intent(RegistrationActivity.this,LoginActivity.class)));
 
     }
 
@@ -98,28 +78,25 @@ public class RegistrationActivity extends AppCompatActivity {
         progressDialog.show();
 
 
-            firebaseAuth.createUserWithEmailAndPassword(inputEmail,inputPw).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()){
-                        progressDialog.dismiss();
-                        if (inputName.equals("ProgressTest"))
-                        {
-                            sendProgressUserData(inputName, inputEmail, childName);
-                            Toast.makeText(RegistrationActivity.this,"You've been registered successfully.",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(RegistrationActivity.this,Avatars.class));
-                        }
-                        else
-                        {
-                            sendUserData(inputName, inputEmail, childName);
-                            Toast.makeText(RegistrationActivity.this,"You've been registered successfully.",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(RegistrationActivity.this,Avatars.class));
-                        }
+            firebaseAuth.createUserWithEmailAndPassword(inputEmail,inputPw).addOnCompleteListener(task -> {
+                if(task.isSuccessful()){
+                    progressDialog.dismiss();
+                    if (inputName.equals("ProgressTest"))
+                    {
+                        sendProgressUserData(inputName, inputEmail, childName);
+                        Toast.makeText(RegistrationActivity.this,"You've been registered successfully.",Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(RegistrationActivity.this,LoginActivity.class));
                     }
-                    else{
-                        progressDialog.dismiss();
-                        Toast.makeText(RegistrationActivity.this,"Email already exists.",Toast.LENGTH_SHORT).show();
+                    else
+                    {
+                        sendUserData(inputName, inputEmail, childName);
+                        Toast.makeText(RegistrationActivity.this,"You've been registered successfully.",Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(RegistrationActivity.this,LoginActivity.class));
                     }
+                }
+                else{
+                    progressDialog.dismiss();
+                    Toast.makeText(RegistrationActivity.this,"Email already exists.",Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -143,15 +120,6 @@ public class RegistrationActivity extends AppCompatActivity {
         userData.put("rewardLimit", 20);
         db.collection("users").document(inputEmail.toLowerCase())
                 .set(userData);
-
-        //This code is a template for adding score data to the DB for user in the games when they are created
-        /*
-        Map<String,Object> emotionData = new HashMap<>();
-        emotionData.put(inputUsername + "EmotionScore",50);
-        emotionData.put("EmotionScoreTimestamp",FieldValue.serverTimestamp());
-
-        db.collection("users").document(inputUsername).collection("EmotionScores").add(emotionData);
-        */
     }
 
     private void sendProgressUserData(String inputUsername, String inputEmail, String childName){
@@ -172,21 +140,12 @@ public class RegistrationActivity extends AppCompatActivity {
         db.collection("users").document(inputEmail.toLowerCase())
                 .set(userData);
 
-        //This code is a template for adding score data to the DB for user in the games when they are created
-        /*
-        Map<String,Object> emotionData = new HashMap<>();
-        emotionData.put(inputUsername + "EmotionScore",50);
-        emotionData.put("EmotionScoreTimestamp",FieldValue.serverTimestamp());
-
-        db.collection("users").document(inputUsername).collection("EmotionScores").add(emotionData);
-        */
-
         for (int i = 0; i < 30; i++)
         {
 
             for (int j = 0; j < 5; j++)
             {
-                long randomNum = 0;
+                long randomNum;
                 randomNum = Math.round(Math.random());
                 Date date = new Date();
                 Calendar cal = Calendar.getInstance();
@@ -208,7 +167,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
             for (int j = 0; j < 5; j++)
             {
-                double randomNum = 0;
+                double randomNum;
                 randomNum = Math.random();
                 Date date = new Date();
                 Calendar cal = Calendar.getInstance();
@@ -230,7 +189,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
             for (int j = 0; j < 5; j++)
             {
-                long randomNum = 0;
+                long randomNum;
                 randomNum = Math.round(Math.random());
                 Date date = new Date();
                 Calendar cal = Calendar.getInstance();
@@ -256,13 +215,13 @@ public class RegistrationActivity extends AppCompatActivity {
             return false;
         }
 
-        if(inPw.equals(confirmPw) == false)
+        if(!inPw.equals(confirmPw))
         {
             confirmPassword.setError("Passwords must be the same in both password fields.");
             return false;
         }
 
-        if(validatePassword(inPw) == false)
+        if(!validatePassword(inPw))
         {
             return false;
         }
@@ -287,7 +246,7 @@ public class RegistrationActivity extends AppCompatActivity {
         boolean lowerFlag = false;
         boolean numberFlag = false;
 
-        int asciiVal = 0;
+        int asciiVal;
 
         if(passIn.isEmpty()){
             password.setError("Password is empty.");
@@ -318,17 +277,17 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         }
 
-        if (upperFlag == false)
+        if (!upperFlag)
         {
             password.setError("Password must contain at least 1 uppercase letter.");
             return false;
         }
-        else if (lowerFlag == false)
+        else if (!lowerFlag)
         {
             password.setError("Password must contain at least 1 lowercase letter.");
             return false;
         }
-        else if (numberFlag == false)
+        else if (!numberFlag)
         {
             password.setError("Password must contain at least 1 number.");
             return false;
