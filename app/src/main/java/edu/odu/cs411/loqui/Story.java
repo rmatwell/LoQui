@@ -6,18 +6,13 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.PixelFormat;
 import android.net.Uri;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
-import android.widget.Chronometer;
 
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
@@ -27,7 +22,9 @@ import com.google.android.gms.vision.face.Face;
 import com.google.android.gms.vision.face.FaceDetector;
 
 import java.io.IOException;
-import java.util.ArrayList;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 
 public class Story extends AppCompatActivity {
@@ -55,7 +52,8 @@ public class Story extends AppCompatActivity {
         else {
             video = (VideoView) findViewById(R.id.videoView);
             chronometer = findViewById(R.id.chronometer);
-            String path = "android.resource://edu.odu.cs411.loqui/" + R.raw.avatar1;
+            textView = findViewById(R.id.textView);
+            String path = "android.resource://edu.odu.cs411.loqui/" + R.raw.threelilpigs;
             Uri uri = Uri.parse(path);
             video.setVideoURI(uri);
             video.requestFocus();
@@ -79,12 +77,14 @@ public class Story extends AppCompatActivity {
                 showStatus("Eye Contact Not Detected");
                 if(isRunning){
                     chronometer.stop();
+                    isRunning = false;
                 }
             }
             else{
                 showStatus("Eye Contact Detected");
                 if(!isRunning){
                     chronometer.start();
+                    isRunning = true;
                 }
             }
         }
@@ -95,6 +95,7 @@ public class Story extends AppCompatActivity {
             showStatus("No face deteceted");
             if(isRunning){
                 chronometer.stop();
+                isRunning = false;
             }
         }
 
