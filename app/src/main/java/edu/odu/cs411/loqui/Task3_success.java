@@ -9,6 +9,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import android.graphics.PixelFormat;
+import android.net.Uri;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.widget.VideoView;
+
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,16 +35,24 @@ public class Task3_success extends AppCompatActivity {
     private String def_json_path = "emotions_def.json";
     private Handler mHandler = new Handler();
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        try
-        {
+        try {
             this.getSupportActionBar().hide();
+        } catch (NullPointerException e) {
         }
-        catch (NullPointerException e){}
         setContentView(R.layout.activity_task3_success);
-
+        Button play = (Button) findViewById(R.id.button);
+        getWindow().setFormat(PixelFormat.UNKNOWN);
+        VideoView video = (VideoView) findViewById(R.id.videoView2);
+        String path = "android.resource://edu.odu.cs411.loqui/" + R.raw.welldonefinal;
+        Uri uri = Uri.parse(path);
+        video.setVideoURI(uri);
+        video.requestFocus();
+        video.start();
         FirestoreWorker dbWorker = new FirestoreWorker();
 
         Intent intent = getIntent();
