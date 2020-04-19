@@ -62,6 +62,7 @@ public class SpeechGame extends AppCompatActivity {
     private int count = 0;
     private SpeechRecognizer speechRecognizer;
     private ProgressBar myProgressBar;
+    IntegerRef countRef = new IntegerRef();
 
     AnimatedVectorDrawable checkAVD;
     AnimatedVectorDrawableCompat checkAVDCompat;
@@ -75,7 +76,8 @@ public class SpeechGame extends AppCompatActivity {
         setContentView(R.layout.activity_speech_game);
         step_progress_bar = findViewById(R.id.step_progress_bar);
 
-        count = worker.getRewardScore(SpeechGame.this) - 1;
+        worker.getRewardScore(SpeechGame.this, countRef);
+        count = countRef.intRef - 1;
 
         mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
@@ -236,7 +238,8 @@ public class SpeechGame extends AppCompatActivity {
             public void run() {
                 mHandler.post(new Runnable() {
                     public void run() {
-                        count = worker.getRewardScore(SpeechGame.this) - 1;
+                        worker.getRewardScore(SpeechGame.this, countRef);
+                        count = countRef.intRef - 1;
                         if (count > -1)
                         {
                             step_progress_bar.updateProgress(count);
