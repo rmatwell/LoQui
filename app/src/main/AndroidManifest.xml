@@ -48,7 +48,7 @@
         <activity android:name=".PlayAgain"/>
         <activity android:name=".Time_Up"/>
         <activity android:name=".GameWon"/>
-        <activity android:name=".Story"/>
+        <activity android:name=".Story" />
         <activity android:name=".Homepage" />
         <activity android:name=".Homepage2"/>
         <activity android:name=".HomeScreen"/>

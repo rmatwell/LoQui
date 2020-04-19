@@ -13,9 +13,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
+import android.widget.Chronometer;
 
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
@@ -32,7 +34,9 @@ public class Story extends AppCompatActivity {
     private Button next, back, sam, sarah;
     CameraSource camera;
     VideoView video;
+    Chronometer chronometer;
     TextView textView;
+    boolean isRunning;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,13 +54,14 @@ public class Story extends AppCompatActivity {
         }
         else {
             video = (VideoView) findViewById(R.id.videoView);
-            textView = findViewById(R.id.textView);
+            chronometer = findViewById(R.id.chronometer);
             String path = "android.resource://edu.odu.cs411.loqui/" + R.raw.avatar1;
             Uri uri = Uri.parse(path);
             video.setVideoURI(uri);
             video.requestFocus();
             video.start();
-
+            chronometer.start();
+            isRunning = true;
             createCameraSource();
         }
         clickOnButton();
@@ -72,9 +77,15 @@ public class Story extends AppCompatActivity {
         public void onUpdate(Detector.Detections<Face> detections, Face face){
             if(face.getEulerY() > THRESHOLD || face.getEulerY() < -THRESHOLD){
                 showStatus("Eye Contact Not Detected");
+                if(isRunning){
+                    chronometer.stop();
+                }
             }
             else{
                 showStatus("Eye Contact Detected");
+                if(!isRunning){
+                    chronometer.start();
+                }
             }
         }
 
@@ -82,6 +93,9 @@ public class Story extends AppCompatActivity {
         public void onMissing(Detector.Detections<Face> detections){
             super.onMissing(detections);
             showStatus("No face deteceted");
+            if(isRunning){
+                chronometer.stop();
+            }
         }
 
         @Override
