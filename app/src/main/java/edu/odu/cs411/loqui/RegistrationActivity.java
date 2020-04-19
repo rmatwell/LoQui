@@ -118,6 +118,7 @@ public class RegistrationActivity extends AppCompatActivity {
         userData.put("accountCreationDate",FieldValue.serverTimestamp());
         userData.put("rewardScore",0);
         userData.put("rewardLimit", 20);
+        userData.put("Avatar", 0);
         db.collection("users").document(inputEmail.toLowerCase())
                 .set(userData);
     }
@@ -137,6 +138,7 @@ public class RegistrationActivity extends AppCompatActivity {
         userData.put("accountCreationDate",FieldValue.serverTimestamp());
         userData.put("rewardScore",0);
         userData.put("rewardLimit", 20);
+        userData.put("Avatar", 0);
         db.collection("users").document(inputEmail.toLowerCase())
                 .set(userData);
 
