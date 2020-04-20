@@ -187,6 +187,36 @@ public class FirestoreWorker
                 });
     }
 
+    public void getChildName(Context context, StringRef childName)
+    {
+        DocumentReference userRef = db.collection("users").document(userID);
+
+        userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot userData = task.getResult();
+
+                    if (userData.exists()) {
+                        Log.d(TAG, "DocumentSnapshot data: " + userData.getData());
+                    } else {
+                        Log.d(TAG, "No such document userID = " + userID);
+                    }
+                    String childFirstName = userData.getString("childFirstName");
+                    childName.stringRef = childFirstName;
+                } else {
+                    Log.d(TAG, "get fail with ", task.getException());
+                }
+            }
+        })
+
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                    }
+                });
+    }
+
     public void addEmotionScore(int emotionScore)
     {
         Date date = new Date();
