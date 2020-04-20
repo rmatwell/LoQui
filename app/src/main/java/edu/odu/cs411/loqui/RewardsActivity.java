@@ -5,12 +5,13 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 
-public class SettingsActivity extends AppCompatActivity {
+public class RewardsActivity extends AppCompatActivity {
 
-    private CardView accountCard, tutorialCard, audioCard, aboutCard;
+    private Button createReward_btn;
     private ImageView settings_backbtn;
 
 
@@ -21,31 +22,28 @@ public class SettingsActivity extends AppCompatActivity {
             this.getSupportActionBar().hide();
         } catch (NullPointerException e) {
         }
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_rewards);
 
-        //accountCard = (CardView) findViewById(R.id.settings_account);
-        //tutorialCard = (CardView) findViewById(R.id.settings_tutorial);
-        audioCard = (CardView) findViewById(R.id.settings_audio);
-        //aboutCard = (CardView) findViewById(R.id.settings_about);
+        createReward_btn = findViewById(R.id.create_reward);
         settings_backbtn = findViewById(R.id.settings_back_btn);
 
 
 
-        audioCard.setOnClickListener(new View.OnClickListener() {
+        settings_backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it = new Intent(SettingsActivity.this, MusicActivity.class);
+                Intent it = new Intent(RewardsActivity.this, ParentPortalActivity.class);
                 startActivity(it);
             }
         });
 
-        settings_backbtn.setOnClickListener(new View.OnClickListener() {
+        /*createReward_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it = new Intent(SettingsActivity.this, ParentPortalActivity.class);
+                Intent it = new Intent(RewardsActivity.this, MusicActivity.class);
                 startActivity(it);
             }
-        });
+        });*/
 
 
 

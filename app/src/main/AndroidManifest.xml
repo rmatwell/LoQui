@@ -57,7 +57,7 @@
         <activity android:name=".Task3_question" />
         <activity android:name=".Task3_success" />
         <activity android:name=".Task1_1" />
-        <activity android:name=".SettingsActivity"/>
+        <activity android:name=".RewardsActivity"/>
         <activity android:name=".MusicActivity"/>
         <activity android:name=".ProgressActivity"/>
         <activity android:name=".ParentPortalActivity"/>

@@ -24,7 +24,7 @@ public class MusicActivity extends AppCompatActivity {
         audio_backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it = new Intent(MusicActivity.this, SettingsActivity.class);
+                Intent it = new Intent(MusicActivity.this, ParentPortalActivity.class);
                 startActivity(it);
             }
         });
