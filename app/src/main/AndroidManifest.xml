@@ -47,7 +47,7 @@
             tools:ignore="LockedOrientationActivity" />
         <activity android:name=".PWresetActivity"></activity>
         <activity android:name=".UserProfile"/>
-        <activity android:name=".Story"/>
+        <activity android:name=".Story" android:exported="true" />
         <activity android:name=".Homepage" android:exported="true"/>
         <activity android:name=".Homepage2"/>
         <activity android:name=".Task1" />

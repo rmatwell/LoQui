@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
@@ -34,6 +35,7 @@ public class Story extends AppCompatActivity {
     Chronometer chronometer;
     TextView textView;
     boolean isRunning;
+    long timeStopped = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +49,7 @@ public class Story extends AppCompatActivity {
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
-            Toast.makeText(this, "Grant Permission and restart app", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Camera permission required for game", Toast.LENGTH_SHORT).show();
         }
         else {
             video = (VideoView) findViewById(R.id.videoView);
@@ -55,6 +57,8 @@ public class Story extends AppCompatActivity {
             textView = findViewById(R.id.textView);
             String path = "android.resource://edu.odu.cs411.loqui/" + R.raw.threelilpigs;
             Uri uri = Uri.parse(path);
+            chronometer.setBase(SystemClock.elapsedRealtime());
+
             video.setVideoURI(uri);
             video.requestFocus();
             video.start();
@@ -76,6 +80,7 @@ public class Story extends AppCompatActivity {
             if(face.getEulerY() > THRESHOLD || face.getEulerY() < -THRESHOLD){
                 showStatus("Eye Contact Not Detected");
                 if(isRunning){
+                    timeStopped = chronometer.getBase() - SystemClock.elapsedRealtime();
                     chronometer.stop();
                     isRunning = false;
                 }
@@ -83,6 +88,7 @@ public class Story extends AppCompatActivity {
             else{
                 showStatus("Eye Contact Detected");
                 if(!isRunning){
+                    chronometer.setBase(SystemClock.elapsedRealtime() + timeStopped);
                     chronometer.start();
                     isRunning = true;
                 }
@@ -94,6 +100,7 @@ public class Story extends AppCompatActivity {
             super.onMissing(detections);
             showStatus("No face deteceted");
             if(isRunning){
+                timeStopped = chronometer.getBase() - SystemClock.elapsedRealtime();
                 chronometer.stop();
                 isRunning = false;
             }
