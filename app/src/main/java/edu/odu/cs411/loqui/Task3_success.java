@@ -46,8 +46,6 @@ public class Task3_success extends AppCompatActivity {
     TimerTask timerTask;
     FirestoreWorker dbWorker = new FirestoreWorker();
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +56,6 @@ public class Task3_success extends AppCompatActivity {
         setContentView(R.layout.activity_task3_success);
         step_progress_bar = findViewById(R.id.step_progress_bar);
         dbWorker.getRewardScore(Task3_success.this, countRef);
-        count = countRef.intRef - 1;
 
         new CountDownTimer(10000, 1000) {
             public void onFinish()
@@ -69,6 +66,7 @@ public class Task3_success extends AppCompatActivity {
                 // millisUntilFinished    The amount of time until finished.
             }
         }.start();
+
         Button play = (Button) findViewById(R.id.button);
         getWindow().setFormat(PixelFormat.UNKNOWN);
         VideoView video = (VideoView) findViewById(R.id.videoView2);
@@ -104,6 +102,41 @@ public class Task3_success extends AppCompatActivity {
         clickOnButton();
     }
 
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        startTimer();
+    }
+
+    public void startTimer()
+    {
+        timer = new Timer();
+        initializeTimerTask();
+        timer.schedule(timerTask, 2000, 2000); //
+    }
+
+    public void initializeTimerTask()
+    {
+        timerTask = new TimerTask() {
+            public void run() {
+                handler.post(new Runnable() {
+                    public void run() {
+                        dbWorker.getRewardScore(Task3_success.this, countRef);
+                        count = countRef.intRef - 1;
+                        if (count > -1)
+                        {
+                            step_progress_bar.updateProgress(count);
+                        }
+                        else
+                        {
+                            step_progress_bar.updateProgress(-1);
+                        }
+                    }
+                });
+            }
+        };
+    }
 
     private void clickOnButton(){
         home  = (Button) findViewById(R.id.home);

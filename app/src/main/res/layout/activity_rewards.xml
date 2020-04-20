@@ -59,10 +59,11 @@
             android:textSize="25sp"/>
 
         <EditText
+            android:id="@+id/rewardStringField"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:layout_marginStart="20dp"/>
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="100dp" />
 
     </RelativeLayout>
 
