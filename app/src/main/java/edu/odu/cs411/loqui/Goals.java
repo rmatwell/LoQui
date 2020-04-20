@@ -295,10 +295,18 @@ public class Goals extends AppCompatActivity
     {
         Log.d("TimePercent", "Entering TimePercent");
 
+        /*
         long now = new Date().getTime()/1000;
         long elapsed = now - timestamp;
         int percent = Math.round(count / (count + countw));
         if(((elapsed >= time) && (elapsed <= time + 10)) && percent >= amount)
+        {
+            Log.d("TimePercent", "Goal completed. Updating rewardScore");
+            dbWorker.addToRewardScore(5); //bonus points
+            return true;
+        }*/
+
+        if (count >= amount)
         {
             Log.d("TimePercent", "Goal completed. Updating rewardScore");
             dbWorker.addToRewardScore(5); //bonus points

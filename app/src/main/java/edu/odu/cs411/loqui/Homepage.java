@@ -43,6 +43,10 @@ public class Homepage extends AppCompatActivity {
         StringRef childName = new StringRef();
         dbWorker.getChildName(childName);
 
+        Goals currentGoals = new Goals();
+
+        currentGoals.checkForGoalCompletion(Homepage.this);
+
         new CountDownTimer(2000, 1000) {
             public void onFinish()
             {
