@@ -241,6 +241,7 @@ public class Story extends AppCompatActivity {
                 double totalRewardScore = 5.0 * (score / 100.0);
                 dbWorker.addToRewardScore(totalRewardScore);
                 dbWorker.addEyeScore(score / 100.0);
+                dbWorker.addToGoalCount(2, Math.round((int)score));
             }
         });
     }
