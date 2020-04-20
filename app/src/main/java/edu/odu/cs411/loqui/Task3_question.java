@@ -39,7 +39,7 @@ public class Task3_question extends AppCompatActivity {
     List<Integer> images;
     List<Boolean> correct_answers;
     private String correct_emotion;
-    private final Integer num_correct_answers = 3;
+    private final Integer num_correct_answers = 1;
     private ImageView upperleft, upperright, lowerleft, lowerright;
     private Integer first, second, third, fourth;
     private static final String TAG = "EmotionActivity";
@@ -192,24 +192,24 @@ public class Task3_question extends AppCompatActivity {
 
         // select 3 images randomly from the correct emotional category
         index = new Random();
-        first = correct[index.nextInt(correct.length)];
+        first = wrong[index.nextInt(wrong.length)];
         images.add(first);
 
-        second = correct[index.nextInt(correct.length)];
+        second = wrong[index.nextInt(wrong.length)];
         while (images.contains(second)) {
-            second = correct[index.nextInt(correct.length)];
+            second = wrong[index.nextInt(wrong.length)];
         }
         images.add(second);
 
-        third = correct[index.nextInt(correct.length)];
+        third = wrong[index.nextInt(wrong.length)];
         while (images.contains(third)) {
-            third = correct[index.nextInt(correct.length)];
+            third = wrong[index.nextInt(wrong.length)];
         }
         images.add(third);
 
         // select 1 images randomly from the wrong emotional category
         index = new Random();
-        fourth = wrong[index.nextInt(wrong.length)];
+        fourth = correct[index.nextInt(correct.length)];
         images.add(fourth);
 
         // correct_answers is list of three boolean variables indicating
@@ -221,10 +221,10 @@ public class Task3_question extends AppCompatActivity {
         for (int image: images) {
             // fill in correct_answer
             if (image == first || image == second || image == third) {
-                correct_answers.add(true);
+                correct_answers.add(false);
             }
             else {
-                correct_answers.add(false);
+                correct_answers.add(true);
             }
         }
 
@@ -235,7 +235,7 @@ public class Task3_question extends AppCompatActivity {
         lowerright.setImageResource(images.get(3));
 
         TextView hint = findViewById(R.id.hint);
-        hint.setText("Pick all of the " + correct_emotion + " faces. Hint: There are " + num_correct_answers +"!");
+        hint.setText("Pick all of the " + correct_emotion + " faces. Hint: There are only" + num_correct_answers +"!");
         //hint.setBackgroundColor(Color.parseColor("#FFCAEA"));
 
         // detect image selection

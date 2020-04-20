@@ -1,26 +1,26 @@
 [
 	{
 		"picture": "bored",
-		"content": "If someone was reading you a long story you didn't like, you would feel bored!"
+		"content": "When you are taking a class you don’t like, you feel bored!"
 	},
 	{
 		"picture": "happy",
-		"content": "When you eat your favorite food, you feel happy!"
+		"content": "When you get what you want, you feel happy!"
 	},
 	{
 		"picture": "scared",
-		"content": "If you get lost in a mall, you would feel scared!"
+		"content": "When something spooks you, you get scared!"
 	},
 	{
 		"picture": "sad",
-		"content": "When you lose a game, you feel sad!"
+		"content": "When you lose something, you feel sad!"
 	},
 	{
 		"picture": "surprised",
-		"content": "If you opened a present and it was a puppy, you would feel suprised!"
-	}
+		"content": "When you see something unexpected, you feel surprised!"
+	},
 	{
 		"picture": "angry",
-		"content": "If your mom or dad yells at you, you would feel angry!"
+		"content": "When something you don’t like happens, you feel angry!"
 	}
 ]
