@@ -187,7 +187,7 @@ public class FirestoreWorker
                 });
     }
 
-    public void getChildName(Context context, StringRef childName)
+    public void getChildName(StringRef childName)
     {
         DocumentReference userRef = db.collection("users").document(userID);
 
