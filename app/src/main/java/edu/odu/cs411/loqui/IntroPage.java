@@ -26,7 +26,7 @@ public class IntroPage extends AppCompatActivity {
         Button play = (Button) findViewById(R.id.button);
         getWindow().setFormat(PixelFormat.UNKNOWN);
         VideoView video = (VideoView) findViewById(R.id.videoView);
-        String path = "android.resource://edu.odu.cs411.loqui/" + R.raw.welcometostorygirl;
+        String path = "android.resource://edu.odu.cs411.loqui/" + R.raw.storytimefinal;
         Uri uri = Uri.parse(path);
         video.setVideoURI(uri);
         video.requestFocus();
