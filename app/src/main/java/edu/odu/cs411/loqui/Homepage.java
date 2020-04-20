@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -38,6 +39,19 @@ public class Homepage extends AppCompatActivity {
 
         dbWorker.getRewardScore(Homepage.this, countRef);
         count = countRef.intRef - 1;
+
+        StringRef childName = new StringRef();
+        dbWorker.getChildName(childName);
+
+        new CountDownTimer(2000, 1000) {
+            public void onFinish()
+            {
+                Log.d("ChildName", "Child Name = " + childName.stringRef);
+            }
+            public void onTick(long millisUntilFinished) {
+                // millisUntilFinished    The amount of time until finished.
+            }
+        }.start();
 
         new CountDownTimer(10000, 1000) {
             public void onFinish()

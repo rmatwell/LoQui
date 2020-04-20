@@ -41,6 +41,7 @@ public class Story extends AppCompatActivity {
     int duration;
     int eyeContactTime;
     double score;
+    FirestoreWorker dbWorker = new FirestoreWorker();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -236,6 +237,10 @@ public class Story extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), Integer.toString(eyeContactTime), Toast.LENGTH_LONG).show();
                 calculateScores(duration, eyeContactTime);
 
+                //Progress Tracking and Scoring section
+                double totalRewardScore = 5.0 * (score / 100.0);
+                dbWorker.addToRewardScore(totalRewardScore);
+                dbWorker.addEyeScore(score / 100.0);
             }
         });
     }
