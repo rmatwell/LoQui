@@ -16,14 +16,13 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/white"
-        android:gravity="center_horizontal|center_vertical"
+        android:background="#FFCAEA"
         android:orientation="vertical">
 
         <edu.odu.cs411.loqui.MyProgressBar
             android:id="@+id/step_progress_bar"
-            android:layout_width="420dp"
-            android:layout_height="35dp"
+            android:layout_width="401dp"
+            android:layout_height="61dp"
             android:layout_marginStart="16dp"
             android:background="?android:selectableItemBackground"
             app:completeColor="@color/colorAccent"
@@ -44,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="9"
-        android:background="@drawable/softbg"
+        android:background="@color/white"
         android:orientation="vertical"
         android:weightSum="10">
 
@@ -83,6 +82,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
+            <VideoView
+                android:id="@+id/videoView2"
+                android:layout_width="wrap_content"
+                android:layout_height="195dp"
+                android:layout_weight="1" />
+
 
         </LinearLayout>
 
@@ -99,25 +104,17 @@
             android:orientation="horizontal"
             android:weightSum="2">
 
-            <VideoView
-                android:id="@+id/videoView2"
-                android:layout_width="427dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                tools:ignore="DuplicateIds" />
-
             <TextView
                 android:id="@+id/msg_def"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="15dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/schoolbell"
                 android:gravity="center"
                 android:scaleType="centerInside"
-                android:textColor="#696969"
-                android:textSize="28sp"
+                android:textColor="#9C27B0"
+                android:textSize="25sp"
                 android:visibility="visible" />
         </LinearLayout>
 
@@ -128,8 +125,8 @@
 
             <Button
                 android:id="@+id/home"
-                android:layout_width="151dp"
-                android:layout_height="match_parent"
+                android:layout_width="158dp"
+                android:layout_height="77dp"
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/back"
@@ -139,8 +136,8 @@
 
             <Button
                 android:id="@+id/next"
-                android:layout_width="149dp"
-                android:layout_height="match_parent"
+                android:layout_width="162dp"
+                android:layout_height="70dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/next"
