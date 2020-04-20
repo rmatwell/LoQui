@@ -2,6 +2,7 @@ package edu.odu.cs411.loqui;
 
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.util.Log;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,6 +27,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 
 public class FirestoreWorker
 {
@@ -49,6 +51,34 @@ public class FirestoreWorker
                 .setPersistenceEnabled(true)
                 .build();
         db.setFirestoreSettings(settings);
+    }
+
+    public void Reward(Context context, String rewardString)
+    {
+        Log.d(TAGreward, "Entering the reward method.");
+
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+        builder1.setMessage("You've earned a reward! Great Job! Your reward is " + rewardString);
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "Accept",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        builder1.setNegativeButton(
+                "Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
     }
 
     public void checkForReward()
@@ -166,12 +196,12 @@ public class FirestoreWorker
                         Log.d(TAG, "No such document userID = " + userID);
                     }
                     double dbScore = userData.getDouble("rewardScore");
+                    String rewardString = userData.getString("Reward");
                     rewardScore.intRef = Math.round((int)dbScore);
 
                     if (rewardScore.intRef >= 20)
                     {
-                        Goals reward = new Goals();
-                        reward.Reward(context);
+                        Reward(context, rewardString);
                         userRef.update("rewardScore",0);
                     }
                 } else {
@@ -274,6 +304,44 @@ public class FirestoreWorker
                 .add(eyeData);
     }
 
+    public void setReward(String newReward)
+    {
+        Map<String,Object> data = new HashMap<>();
+        data.put("Reward",newReward);
+
+        db.collection("users").document(userID).set(data, SetOptions.merge());
+    }
+
+    public void getReward(StringRef rewardName)
+    {
+        DocumentReference userRef = db.collection("users").document(userID);
+
+        userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot userData = task.getResult();
+
+                    if (userData.exists()) {
+                        Log.d(TAG, "DocumentSnapshot data: " + userData.getData());
+                    } else {
+                        Log.d(TAG, "No such document userID = " + userID);
+                    }
+                    String reward = userData.getString("Reward");
+                    rewardName.stringRef = reward;
+                } else {
+                    Log.d(TAG, "get fail with ", task.getException());
+                }
+            }
+        })
+
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                    }
+                });
+    }
+
     public void setAvatar(int avatar)
     {
         Map<String,Object> data = new HashMap<>();
@@ -281,6 +349,7 @@ public class FirestoreWorker
 
         db.collection("users").document(userID).set(data, SetOptions.merge());
     }
+
     public void getAvatar(IntegerRef avatar)
     {
         DocumentReference userRef = db.collection("users").document(userID);
