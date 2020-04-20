@@ -94,7 +94,7 @@ public class FirestoreWorker
                 });
     }
 
-    public void addToRewardScore(int amount)
+    public void addToRewardScore(double amount)
     {
         DocumentReference userRef = db.collection("users").document(userID);
 
