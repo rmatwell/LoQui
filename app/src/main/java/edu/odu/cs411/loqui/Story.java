@@ -5,10 +5,12 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.PixelFormat;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
@@ -36,6 +38,9 @@ public class Story extends AppCompatActivity {
     TextView textView;
     boolean isRunning;
     long timeStopped = 0;
+    int duration;
+    int eyeContactTime;
+    double score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +51,7 @@ public class Story extends AppCompatActivity {
         }
         setContentView(R.layout.activity_story);
         getWindow().setFormat(PixelFormat.UNKNOWN);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
@@ -67,6 +73,8 @@ public class Story extends AppCompatActivity {
             createCameraSource();
         }
         clickOnButton();
+        getDuration();
+        videoEndListener();
     }
 
     //EyeContactTracker Class uses the Google Vision API to detect eye contact.
@@ -173,6 +181,10 @@ public class Story extends AppCompatActivity {
         if (video.isPlaying()) {
             video.pause();
         }
+        if(isRunning){
+            timeStopped = chronometer.getBase() - SystemClock.elapsedRealtime();
+            chronometer.stop();
+        }
     }
     
     private void showStatus(final String status) {
@@ -206,5 +218,46 @@ public class Story extends AppCompatActivity {
         });
 
     }
+    private void getDuration(){
+        video.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer media){
+                duration = video.getDuration() / 1000;
+                Toast.makeText(getApplicationContext(), Integer.toString(duration), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+    private void videoEndListener(){
+        video.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer media){
+                chronometer.stop();
+                eyeContactTime = getSecondsFromChronometer();
+                Toast.makeText(getApplicationContext(), Integer.toString(eyeContactTime), Toast.LENGTH_LONG).show();
+                calculateScores(duration, eyeContactTime);
 
+            }
+        });
+    }
+
+    private void calculateScores(int videoDur, int contactTime){
+        score = ((double)contactTime / (double) videoDur) * 100;
+        String scoreStr = String.format("%.2f", score);
+        String scoreMessage = "Your score is: " + scoreStr + "%";
+        Toast.makeText(getApplicationContext(), scoreMessage, Toast.LENGTH_LONG).show();
+    }
+
+    private int getSecondsFromChronometer(){
+        String time = chronometer.getText().toString();
+
+        String [] hourMin = time.split(":");
+
+        int seconds;
+        int minutes;
+
+        seconds = Integer.parseInt(hourMin[1]);
+        minutes = Integer.parseInt(hourMin[0]);
+
+        return seconds + (minutes * 60);
+    }
 }
