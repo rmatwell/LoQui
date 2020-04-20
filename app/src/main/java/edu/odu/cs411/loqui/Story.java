@@ -223,7 +223,7 @@ public class Story extends AppCompatActivity {
             @Override
             public void onPrepared(MediaPlayer media){
                 duration = video.getDuration() / 1000;
-                Toast.makeText(getApplicationContext(), Integer.toString(duration), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), Integer.toString(duration), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -233,7 +233,7 @@ public class Story extends AppCompatActivity {
             public void onCompletion(MediaPlayer media){
                 chronometer.stop();
                 eyeContactTime = getSecondsFromChronometer();
-                Toast.makeText(getApplicationContext(), Integer.toString(eyeContactTime), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), Integer.toString(eyeContactTime), Toast.LENGTH_LONG).show();
                 calculateScores(duration, eyeContactTime);
 
             }
