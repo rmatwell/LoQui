@@ -2,6 +2,7 @@ package edu.odu.cs411.loqui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
@@ -22,18 +23,28 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Task3_success extends AppCompatActivity {
 
     private Button home, next;
-    private Integer first, second, third;
-    private ImageView first_img, second_img, third_img;
+    private Integer first, second, third, fourth;
+    private ImageView first_img, second_img, third_img, fourth_img;
     private TextView def_text, hint;
     private String emotion;
     private String def_json_path = "emotions_def.json";
     private Handler mHandler = new Handler();
+    private static final String TAG = "EmotionActivity";
+    static int count = 0;
+    IntegerRef countRef = new IntegerRef();
+    MyProgressBar step_progress_bar;
+    final Handler handler = new Handler();
+    Timer timer;
+    TimerTask timerTask;
+    FirestoreWorker dbWorker = new FirestoreWorker();
 
 
 
@@ -45,6 +56,19 @@ public class Task3_success extends AppCompatActivity {
         } catch (NullPointerException e) {
         }
         setContentView(R.layout.activity_task3_success);
+        step_progress_bar = findViewById(R.id.step_progress_bar);
+        dbWorker.getRewardScore(Task3_success.this, countRef);
+        count = countRef.intRef - 1;
+
+        new CountDownTimer(10000, 1000) {
+            public void onFinish()
+            {
+                timer.cancel();
+            }
+            public void onTick(long millisUntilFinished) {
+                // millisUntilFinished    The amount of time until finished.
+            }
+        }.start();
         Button play = (Button) findViewById(R.id.button);
         getWindow().setFormat(PixelFormat.UNKNOWN);
         VideoView video = (VideoView) findViewById(R.id.videoView2);
@@ -56,34 +80,23 @@ public class Task3_success extends AppCompatActivity {
         FirestoreWorker dbWorker = new FirestoreWorker();
 
         Intent intent = getIntent();
-        first = intent.getIntExtra("first", 0);
-        second = intent.getIntExtra("second", 0);
-        third = intent.getIntExtra("third", 0);
+        fourth = intent.getIntExtra("fourth", 0);
         emotion = intent.getStringExtra("emotion");
 
         String def = readFromJSON(def_json_path);
 
-        if (first != 0) {
-            first_img = findViewById(R.id.img_1);
-            first_img.setImageResource(first);
+        if (fourth != 0) {
+            first_img = findViewById(R.id.img_4);
+            first_img.setImageResource(fourth);
         }
 
-        if (second != 0) {
-            second_img = findViewById(R.id.img_2);
-            second_img.setImageResource(second);
-        }
-
-        if (third != 0) {
-            third_img = findViewById(R.id.img_3);
-            third_img.setImageResource(third);
-        }
 
         if (def != null) {
             def_text = findViewById(R.id.msg_def);
             def_text.setText(def);
 
             hint = findViewById(R.id.hint);
-            hint.setText("The " + emotion + " faces are:");
+            hint.setText("The " + emotion  + " face is:");
         }
 
         dbWorker.addToRewardScore(1);

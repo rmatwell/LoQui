@@ -9,7 +9,7 @@ import android.widget.ImageView;
 
 public class ParentPortalActivity extends AppCompatActivity {
 
-    private CardView goalsCard, progressCard, rewardsCard, settingsCard;
+    private CardView goalsCard, progressCard, rewardsCard, audioCard;
     private ImageView portal_backbtn;
 
 
@@ -26,7 +26,7 @@ public class ParentPortalActivity extends AppCompatActivity {
         goalsCard = (CardView) findViewById(R.id.portal_goals);
         progressCard = (CardView) findViewById(R.id.portal_progress);
         rewardsCard = (CardView) findViewById(R.id.portal_rewards);
-        settingsCard = (CardView) findViewById(R.id.portal_settings);
+        audioCard = (CardView) findViewById(R.id.portal_audio);
         portal_backbtn = findViewById(R.id.portal_back_btn);
 
         goalsCard.setOnClickListener(new View.OnClickListener() {
@@ -45,18 +45,18 @@ public class ParentPortalActivity extends AppCompatActivity {
             }
         });
 
-        /*rewardsCard.setOnClickListener(new View.OnClickListener() {
+        rewardsCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it = new Intent(ParentPortalActivity.this, RewardsSetting.class);
+                Intent it = new Intent(ParentPortalActivity.this, RewardsActivity.class);
                 startActivity(it);
             }
-        });*/
+        });
 
-        settingsCard.setOnClickListener(new View.OnClickListener() {
+        audioCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it = new Intent(ParentPortalActivity.this, SettingsActivity.class);
+                Intent it = new Intent(ParentPortalActivity.this, MusicActivity.class);
                 startActivity(it);
             }
         });
