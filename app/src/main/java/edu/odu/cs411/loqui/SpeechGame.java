@@ -278,7 +278,7 @@ public class SpeechGame extends AppCompatActivity {
     private void correctAnswer() {
         worker.addToRewardScore(1);
         worker.addSpeechScore(1);
-        worker.addToGoalCount(1, 1);
+        worker.addToGoalCount(3, 1);
         textSpeech.setText("Amazing!");
         textSpeech.setVisibility(View.VISIBLE);
         mySoundHelper.playCorrectSound();
