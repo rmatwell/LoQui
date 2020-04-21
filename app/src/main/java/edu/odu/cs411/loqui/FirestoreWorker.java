@@ -18,6 +18,8 @@ import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
+import android.view.View;
+import android.widget.TextView;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -234,6 +236,38 @@ public class FirestoreWorker
                     }
                     String childFirstName = userData.getString("childFirstName");
                     childName.stringRef = childFirstName;
+                } else {
+                    Log.d(TAG, "get fail with ", task.getException());
+                }
+            }
+        })
+
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                    }
+                });
+    }
+
+    public void setHomepageBanner(Context context)
+    {
+        DocumentReference userRef = db.collection("users").document(userID);
+
+        userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot userData = task.getResult();
+
+                    if (userData.exists()) {
+                        Log.d(TAG, "DocumentSnapshot data: " + userData.getData());
+                    } else {
+                        Log.d(TAG, "No such document userID = " + userID);
+                    }
+                    String childFirstName = userData.getString("childFirstName");
+                    TextView childName = ((Homepage)context).findViewById(R.id.button3);
+                    childName.setText("Hi " + childFirstName + "! ");
+                    childName.setVisibility(View.VISIBLE);
                 } else {
                     Log.d(TAG, "get fail with ", task.getException());
                 }
