@@ -110,9 +110,9 @@
                     android:layout_width="81dp"
                     android:layout_height="81dp"
                     android:background="@color/white"
-                    app:layout_constraintBottom_toBottomOf="@+id/videoView"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/videoView"
                     app:srcCompat="@drawable/checkmark" />
 
                 <androidx.constraintlayout.widget.Guideline
