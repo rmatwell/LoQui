@@ -263,7 +263,7 @@ public class Story extends AppCompatActivity {
 
     private void calculateScores(int videoDur, int contactTime){
         score = ((double)contactTime / (double) videoDur) * 100;
-        String scoreStr = String.format("%.2f", score);
+        String scoreStr = String.format("%.0f", score);
         String scoreMessage = "Your score is: " + scoreStr + "%";
         Toast.makeText(getApplicationContext(), scoreMessage, Toast.LENGTH_LONG).show();
     }
