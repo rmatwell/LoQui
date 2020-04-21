@@ -29,7 +29,7 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"></meta-data>
+                android:resource="@xml/file_paths" />
         </provider>
         <uses-library android:name="org.apache.http.legacy" android:required="false" />
         <activity android:name=".MainActivity" />
@@ -45,7 +45,7 @@
         <activity android:name=".SpeechGame" android:exported="true"
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
-        <activity android:name=".PWresetActivity"></activity>
+        <activity android:name=".PWresetActivity" />
         <activity android:name=".UserProfile"/>
         <activity android:name=".Story" android:exported="true" />
         <activity android:name=".Homepage" android:exported="true"/>
@@ -74,7 +74,7 @@
             android:value="face" />
 
         <activity android:name=".Task1_emotion" />
-        <activity android:name=".IntroPage"></activity>
+        <activity android:name=".IntroPage" />
     </application>
 
 </manifest>

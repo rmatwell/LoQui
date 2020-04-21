@@ -199,6 +199,7 @@ public class Goals extends AppCompatActivity
                         {
                             Toast.makeText(context,"You've earned 5 points for completing a Goal! Way to go!",Toast.LENGTH_SHORT).show();
                             dbWorker.removeGoal(overallCorrectList.goals.get(i).goalID);
+                            dbWorker.addToRewardScore(5); //bonus points
 
                         }
                     }
@@ -212,6 +213,7 @@ public class Goals extends AppCompatActivity
                         {
                             Toast.makeText(context,"You've earned 5 points for completing a Goal! Way to go!",Toast.LENGTH_SHORT).show();
                             dbWorker.removeGoal(streakCorrectList.goals.get(i).goalID);
+                            dbWorker.addToRewardScore(5); //bonus points
                         }
                     }
                 }
@@ -220,10 +222,11 @@ public class Goals extends AppCompatActivity
                 {
                     for (int i = 0; i < timeCorrectList.goals.size(); i++)
                     {
-                        if (TimeCorrect(timeCorrectList.goals.get(i).game, timeCorrectList.goals.get(i).time, timeCorrectList.goals.get(i).timestamp))
+                        if (TimeCorrect(timeCorrectList.goals.get(i).game, timeCorrectList.goals.get(i).time, timeCorrectList.goals.get(i).timestamp, timeCorrectList.goals.get(i).count, timeCorrectList.goals.get(i).amount))
                         {
                             Toast.makeText(context,"You've earned 5 points for completing a Goal! Way to go!",Toast.LENGTH_SHORT).show();
                             dbWorker.removeGoal(timeCorrectList.goals.get(i).goalID);
+                            dbWorker.addToRewardScore(5); //bonus points
                         }
                     }
                 }
@@ -237,6 +240,7 @@ public class Goals extends AppCompatActivity
                         {
                             Toast.makeText(context,"You've earned 5 points for completing a Goal! Way to go!",Toast.LENGTH_SHORT).show();
                             dbWorker.removeGoal(timePercentList.goals.get(i).goalID);
+                            dbWorker.addToRewardScore(5); //bonus points
                         }
                     }
                 }
@@ -256,7 +260,6 @@ public class Goals extends AppCompatActivity
         if(count >= amount)
         {
             Log.d("OverallCorrect", "Goal completed. Updating rewardScore");
-            dbWorker.addToRewardScore(5); //bonus points
             return true;
         }
 
@@ -269,22 +272,23 @@ public class Goals extends AppCompatActivity
         if(count >= amount)
         {
             Log.d("StreakCorrect","Goal completed. Updating rewardScore");
-            dbWorker.addToRewardScore(5); //bonus points
             return true;
         }
 
         return false;
     }
 
-    public boolean TimeCorrect(int game, int time, long timestamp)
+    public boolean TimeCorrect(int game, int time, long timestamp, int count, int amount)
     {
         Log.d("TimeCorrect", "Entering TimeCorrect");
         long now = new Date().getTime()/1000;
         long elapsed = now - timestamp;
-        if (((elapsed >= time) && (elapsed <= time + 10)) && (time != 0))
+
+        Log.d("TimeCorrect", "elapsed = " + elapsed + " and time = " + time);
+
+        if ((elapsed <= time && (time != 0)) && count >= amount)
         {
             Log.d("TimeCorrect", "Goal completed. Updating rewardScore");
-            dbWorker.addToRewardScore(5); //bonus points
             return true;
         }
 
@@ -295,78 +299,43 @@ public class Goals extends AppCompatActivity
     {
         Log.d("TimePercent", "Entering TimePercent");
 
-        /*
-        long now = new Date().getTime()/1000;
-        long elapsed = now - timestamp;
-        int percent = Math.round(count / (count + countw));
-        if(((elapsed >= time) && (elapsed <= time + 10)) && percent >= amount)
-        {
-            Log.d("TimePercent", "Goal completed. Updating rewardScore");
-            dbWorker.addToRewardScore(5); //bonus points
-            return true;
-        }*/
+        int percent;
 
-        if (count >= amount)
+        if (game == 0 || game == 1)
         {
-            Log.d("TimePercent", "Goal completed. Updating rewardScore");
-            dbWorker.addToRewardScore(5); //bonus points
-            return true;
+            long now = new Date().getTime()/1000;
+            long elapsed = now - timestamp;
+
+            Log.d("TimeCorrect", "elapsed = " + elapsed + " and time = " + time);
+
+            if (count >= 3)
+            {
+                percent = Math.round(count / (count + countw));
+
+                if(elapsed <= time && percent >= (amount / 100))
+                {
+                    Log.d("TimePercent", "Goal completed. Updating rewardScore");
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else if (game == 2)
+        {
+            long now = new Date().getTime()/1000;
+            long elapsed = now - timestamp;
+            percent = count;
+            if(elapsed <= time && percent >= amount)
+            {
+                Log.d("TimePercent", "Goal completed. Updating rewardScore");
+                return true;
+            }
         }
 
+
         return false;
-    }
-
-    public void Reward(Context context)
-    {
-        Log.d(TAGreward, "Entering the reward method.");
-
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-        builder1.setMessage("You've earned a reward!");
-        builder1.setCancelable(true);
-
-        builder1.setPositiveButton(
-                "Accept",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-
-        builder1.setNegativeButton(
-                "Cancel",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-
-        AlertDialog alert11 = builder1.create();
-        alert11.show();
-    }
-
-    public void goalAlert(Context context)
-    {
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-        builder1.setMessage("You've earned 5 points for completing a goal!");
-        builder1.setCancelable(true);
-
-        builder1.setPositiveButton(
-                "Accept",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-
-        builder1.setNegativeButton(
-                "Cancel",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-
-        AlertDialog alert11 = builder1.create();
-        alert11.show();
     }
 }
