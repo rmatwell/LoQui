@@ -36,30 +36,16 @@ public class Homepage extends AppCompatActivity {
         }
         catch (NullPointerException e){}
         setContentView(R.layout.activity_homepage);
-        welcomeMessage = findViewById(R.id.button3);
+        //welcomeMessage = findViewById(R.id.button3);
         step_progress_bar = findViewById(R.id.step_progress_bar);
 
         dbWorker.getRewardScore(Homepage.this, countRef);
         count = countRef.intRef - 1;
 
-        StringRef childName = new StringRef();
-        dbWorker.getChildName(childName);
-
         Goals currentGoals = new Goals();
-
         currentGoals.checkForGoalCompletion(Homepage.this);
 
-        new CountDownTimer(2000, 1000) {
-            public void onFinish()
-            {
-                Log.d("ChildName", "Child Name = " + childName.stringRef);
-                welcomeMessage.setText("Hi " + childName.stringRef + "! ");
-                welcomeMessage.setVisibility(View.VISIBLE);
-            }
-            public void onTick(long millisUntilFinished) {
-                // millisUntilFinished    The amount of time until finished.
-            }
-        }.start();
+        dbWorker.setHomepageBanner(Homepage.this);
 
         new CountDownTimer(10000, 1000) {
             public void onFinish()

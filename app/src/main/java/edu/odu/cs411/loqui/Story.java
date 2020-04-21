@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -35,8 +36,9 @@ public class Story extends AppCompatActivity {
     CameraSource camera;
     VideoView video;
     Chronometer chronometer;
-    TextView textView;
+    ImageView faceDetectStatus;
     boolean isRunning;
+    boolean faceDetected;
     long timeStopped = 0;
     int duration;
     int eyeContactTime;
@@ -61,7 +63,7 @@ public class Story extends AppCompatActivity {
         else {
             video = (VideoView) findViewById(R.id.videoView);
             chronometer = findViewById(R.id.chronometer);
-            textView = findViewById(R.id.textView);
+            faceDetectStatus = findViewById(R.id.imageView);
             String path = "android.resource://edu.odu.cs411.loqui/" + R.raw.threelilpigs;
             Uri uri = Uri.parse(path);
             chronometer.setBase(SystemClock.elapsedRealtime());
@@ -71,6 +73,7 @@ public class Story extends AppCompatActivity {
             video.start();
             chronometer.start();
             isRunning = true;
+            faceDetected = true;
             createCameraSource();
         }
         clickOnButton();
@@ -87,32 +90,39 @@ public class Story extends AppCompatActivity {
         @Override
         public void onUpdate(Detector.Detections<Face> detections, Face face){
             if(face.getEulerY() > THRESHOLD || face.getEulerY() < -THRESHOLD){
-                showStatus("Eye Contact Not Detected");
+                //Face detected, but eye contact not detected
                 if(isRunning){
                     timeStopped = chronometer.getBase() - SystemClock.elapsedRealtime();
                     chronometer.stop();
                     isRunning = false;
+                    faceDetected = false;
                 }
+                showStatus();
             }
             else{
-                showStatus("Eye Contact Detected");
+                //Eye contact detected
+
                 if(!isRunning){
                     chronometer.setBase(SystemClock.elapsedRealtime() + timeStopped);
                     chronometer.start();
                     isRunning = true;
+                    faceDetected = true;
                 }
+                showStatus();
             }
         }
 
         @Override
         public void onMissing(Detector.Detections<Face> detections){
             super.onMissing(detections);
-            showStatus("No face deteceted");
+            //No face detected
             if(isRunning){
                 timeStopped = chronometer.getBase() - SystemClock.elapsedRealtime();
                 chronometer.stop();
                 isRunning = false;
+                faceDetected = false;
             }
+            showStatus();
         }
 
         @Override
@@ -188,11 +198,16 @@ public class Story extends AppCompatActivity {
         }
     }
     
-    private void showStatus(final String status) {
+    private void showStatus() {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                textView.setText(status);
+                if(faceDetected){
+                    faceDetectStatus.setImageResource(R.drawable.checkmark);
+                }
+                else{
+                    faceDetectStatus.setImageResource(R.drawable.ic_xmark);
+                }
             }
         });
     }
@@ -248,7 +263,7 @@ public class Story extends AppCompatActivity {
 
     private void calculateScores(int videoDur, int contactTime){
         score = ((double)contactTime / (double) videoDur) * 100;
-        String scoreStr = String.format("%.2f", score);
+        String scoreStr = String.format("%.0f", score);
         String scoreMessage = "Your score is: " + scoreStr + "%";
         Toast.makeText(getApplicationContext(), scoreMessage, Toast.LENGTH_LONG).show();
     }
