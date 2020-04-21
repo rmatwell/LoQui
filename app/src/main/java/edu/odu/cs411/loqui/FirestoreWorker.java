@@ -943,52 +943,6 @@ public class FirestoreWorker
 
     public void addToGoalCount(int game, int correctAnswer)
     {
-        /*
-        DocumentReference userRef = db.collection("users").document(userID).collection("Goals").document(goalID);
-
-        userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful())
-                {
-                    DocumentSnapshot userData = task.getResult();
-
-                    if(userData.exists())
-                    {
-                        Log.d(TAG, "DocumentSnapshot data: " + userData.getData());
-                    }
-                    else {
-                        Log.d(TAG, "No such document userID = " + userID);
-                    }
-
-                    if (correctAnswer == 0)
-                    {
-                        double counter = userData.getDouble("countw");
-                        counter++;
-                        userRef.update("countw", (int)counter);
-                    }
-                    else if (correctAnswer == 1)
-                    {
-                        double counter = userData.getDouble("count");
-                        counter++;
-                        userRef.update("count", (int)counter);
-                    }
-                }
-                else
-                {
-                    Log.d(TAG, "get fail with ", task.getException());
-                }
-            }
-        })
-
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                    }
-                });
-
-         */
-
         db.collection("users").document(userID).collection("Goals")
                 .whereEqualTo("game", game)
                 .get()
@@ -1006,25 +960,47 @@ public class FirestoreWorker
                             QuerySnapshot userData = task.getResult();
                             List<DocumentSnapshot> docList = userData.getDocuments();
 
-                            for (int i = 0; i < docList.size(); i++)
+                            if (correctAnswer > 0)
                             {
-                                if (game == 2)
+                                for (int i = 0; i < docList.size(); i++)
                                 {
-                                    DocumentReference userRef = docList.get(i).getReference();
+                                    if (game == 2)
+                                    {
+                                        DocumentReference userRef = docList.get(i).getReference();
 
-                                    double count = docList.get(i).getDouble("count");
+                                        userRef.update("count",correctAnswer);
+                                    }
+                                    else
+                                    {
+                                        DocumentReference userRef = docList.get(i).getReference();
 
-                                    userRef.update("count",correctAnswer);
-                                }
-                                else
-                                {
-                                    DocumentReference userRef = docList.get(i).getReference();
-
-                                    double count = docList.get(i).getDouble("count");
-                                    count = count + correctAnswer;
-                                    userRef.update("count", count);
+                                        double count = docList.get(i).getDouble("count");
+                                        count = count + correctAnswer;
+                                        userRef.update("count", count);
+                                    }
                                 }
                             }
+                            else
+                            {
+                                for (int i = 0; i < docList.size(); i++)
+                                {
+                                    if (game == 2)
+                                    {
+                                        DocumentReference userRef = docList.get(i).getReference();
+
+                                        userRef.update("count",correctAnswer);
+                                    }
+                                    else
+                                    {
+                                        DocumentReference userRef = docList.get(i).getReference();
+
+                                        double countw = docList.get(i).getDouble("countw");
+                                        countw = countw + correctAnswer;
+                                        userRef.update("countw", countw);
+                                    }
+                                }
+                            }
+
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
