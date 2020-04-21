@@ -30,7 +30,6 @@
             android:layout_height="36dp"
             android:background="@color/white"
             android:fontFamily="@font/schoolbell"
-            android:text="Hello! Choose an activity!"
             android:textColor="#3F51B5"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -275,26 +274,21 @@
             android:background="@color/white"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="217dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/white" />
+                android:layout_weight="1">
 
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="161dp"
-                android:layout_height="33dp"
-                android:layout_weight="1"
-                android:background="@drawable/pp" />
-
-            <Button
-                android:id="@+id/button6"
-                android:layout_width="203dp"
-                android:layout_height="47dp"
-                android:layout_weight="1"
-                android:background="@color/white" />
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="164dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/pp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="4dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
 

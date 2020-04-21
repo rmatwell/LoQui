@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Homepage extends AppCompatActivity {
 
     private Button go1, go2, go3,button2;
+    private Button welcomeMessage;
     Button btnahead, btnback;
     static int count = 0;
     MyProgressBar step_progress_bar;
@@ -35,6 +36,7 @@ public class Homepage extends AppCompatActivity {
         }
         catch (NullPointerException e){}
         setContentView(R.layout.activity_homepage);
+        welcomeMessage = findViewById(R.id.button3);
         step_progress_bar = findViewById(R.id.step_progress_bar);
 
         dbWorker.getRewardScore(Homepage.this, countRef);
@@ -51,6 +53,8 @@ public class Homepage extends AppCompatActivity {
             public void onFinish()
             {
                 Log.d("ChildName", "Child Name = " + childName.stringRef);
+                welcomeMessage.setText("Hi " + childName.stringRef + "! ");
+                welcomeMessage.setVisibility(View.VISIBLE);
             }
             public void onTick(long millisUntilFinished) {
                 // millisUntilFinished    The amount of time until finished.

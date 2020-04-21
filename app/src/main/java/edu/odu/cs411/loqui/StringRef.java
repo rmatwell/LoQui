@@ -4,8 +4,4 @@ public class StringRef
 {
     String stringRef;
 
-    StringRef()
-    {
-        stringRef = "";
-    }
 }
