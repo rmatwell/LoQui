@@ -44,9 +44,7 @@ public class SoundHelper {
 
         mySoundPool = new Builder().setAudioAttributes(attributes).setMaxStreams(1).build();
 
-        mySoundPool.setOnLoadCompleteListener((soundPool, sampleId, status) -> {
-            isLoaded = true;
-        });
+        mySoundPool.setOnLoadCompleteListener((soundPool, sampleId, status) -> isLoaded = true);
 
         successSoundID0 = mySoundPool.load(activity, R.raw.success0,1);
         successSoundID1 = mySoundPool.load(activity, R.raw.success1,1);
