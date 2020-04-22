@@ -124,7 +124,6 @@ public class Task3_question extends AppCompatActivity {
             R.drawable.surprised_7,
             R.drawable.surprised_8,
             R.drawable.surprised_9,
-            R.drawable.surprised_11
     };
     private Integer[] scared_faces = {
             R.drawable.scared_2,
