@@ -91,12 +91,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Speech Training" />
-
+            <!--
             <RadioButton
                 android:id="@+id/all_games"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="All Games" />
+                android:text="All Games"/>
+            -->
         </RadioGroup>
 
         <RadioGroup
