@@ -133,7 +133,8 @@ public class Goals extends AppCompatActivity
         RadioButton streak = findViewById(R.id.correct_streak);
         RadioButton overallTime = findViewById(R.id.correct_overall_time);
         RadioButton percentTime = findViewById(R.id.correct_percent_time);
-        RadioButton all = findViewById(R.id.all_games);
+
+       /* RadioButton all = findViewById(R.id.all_games);
 
         all.setOnTouchListener(new View.OnTouchListener()
         {
@@ -155,7 +156,8 @@ public class Goals extends AppCompatActivity
                }
                return false;
            }
-        });
+        });*/
+
     }
 
     public Goals () {
