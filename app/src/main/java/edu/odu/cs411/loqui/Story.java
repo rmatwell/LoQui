@@ -38,6 +38,8 @@ public class Story extends AppCompatActivity {
     Chronometer chronometer;
     ImageView faceDetectStatus;
     boolean isRunning;
+    //Creating new Boolean Variable to determine if video is Playing
+    boolean isPlaying;
     boolean faceDetected;
     long timeStopped = 0;
     int duration;
@@ -72,6 +74,8 @@ public class Story extends AppCompatActivity {
             video.requestFocus();
             video.start();
             chronometer.start();
+            //Setting isPlaying variable to return value of video.isPLaying() method
+            isPlaying = video.isPlaying();
             isRunning = true;
             faceDetected = true;
             createCameraSource();
@@ -94,8 +98,9 @@ public class Story extends AppCompatActivity {
                 if(isRunning){
                     timeStopped = chronometer.getBase() - SystemClock.elapsedRealtime();
                     chronometer.stop();
-                    // Works but video doesn't "resume" unless line is commented out
-                    video.pause();
+                    //If video is playing when it shouldn't be
+                    //WORK IN PROGRESS
+                    if(isPlaying){video.pause(); isPlaying =false;}
                     isRunning = false;
                     faceDetected = false;
                 }
@@ -106,8 +111,9 @@ public class Story extends AppCompatActivity {
                 if(!isRunning){
                     chronometer.setBase(SystemClock.elapsedRealtime() + timeStopped);
                     chronometer.start();
-                    // Starts video over on my phone
-                    video.resume();
+                    //If video is not playing when it should be
+                    //WORK IN PROGRESS
+                    if (!isPlaying){video.resume();isPlaying=true;}
                     isRunning = true;
                     faceDetected = true;
                 }
@@ -122,8 +128,8 @@ public class Story extends AppCompatActivity {
             if(isRunning){
                 timeStopped = chronometer.getBase() - SystemClock.elapsedRealtime();
                 chronometer.stop();
-                /// Doesn't work as well as when line is in code block above
-                video.pause();
+                /// WORK IN PROGRESS
+                if(isPlaying){video.pause(); isPlaying=false;}
                 isRunning = false;
                 faceDetected = false;
             }
