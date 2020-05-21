@@ -94,6 +94,8 @@ public class Story extends AppCompatActivity {
                 if(isRunning){
                     timeStopped = chronometer.getBase() - SystemClock.elapsedRealtime();
                     chronometer.stop();
+                    // Works but video doesn't "resume" unless line is commented out
+                    video.pause();
                     isRunning = false;
                     faceDetected = false;
                 }
@@ -101,10 +103,11 @@ public class Story extends AppCompatActivity {
             }
             else{
                 //Eye contact detected
-
                 if(!isRunning){
                     chronometer.setBase(SystemClock.elapsedRealtime() + timeStopped);
                     chronometer.start();
+                    // Starts video over on my phone
+                    video.resume();
                     isRunning = true;
                     faceDetected = true;
                 }
@@ -119,6 +122,8 @@ public class Story extends AppCompatActivity {
             if(isRunning){
                 timeStopped = chronometer.getBase() - SystemClock.elapsedRealtime();
                 chronometer.stop();
+                /// Doesn't work as well as when line is in code block above
+                video.pause();
                 isRunning = false;
                 faceDetected = false;
             }
