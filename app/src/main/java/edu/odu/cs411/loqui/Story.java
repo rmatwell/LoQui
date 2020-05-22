@@ -74,8 +74,8 @@ public class Story extends AppCompatActivity {
             video.requestFocus();
             video.start();
             chronometer.start();
-            //Setting isPlaying variable to return value of video.isPLaying() method
-            isPlaying = video.isPlaying();
+            //Setting isPlaying variable to true because the video has started
+            isPlaying = true;
             isRunning = true;
             faceDetected = true;
             createCameraSource();
