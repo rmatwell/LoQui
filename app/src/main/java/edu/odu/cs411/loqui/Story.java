@@ -101,9 +101,8 @@ public class Story extends AppCompatActivity {
                 if(isRunning){
                     timeStopped = chronometer.getBase() - SystemClock.elapsedRealtime();
                     chronometer.stop();
-                    //If video is playing when it shouldn't be
-                    //WORK IN PROGRESS
-                    if(isPlaying){video.pause(); isPlaying =false;}
+                    //If video is playing when it shouldn't be, Video Will Pause
+                    if(isPlaying){video.pause(); isPlaying = false;}
                     isRunning = false;
                     faceDetected = false;
                 }
@@ -114,9 +113,8 @@ public class Story extends AppCompatActivity {
                 if(!isRunning){
                     chronometer.setBase(SystemClock.elapsedRealtime() + timeStopped);
                     chronometer.start();
-                    //If video is not playing when it should be
-                    //WORK IN PROGRESS
-                    if (!isPlaying){video.resume();isPlaying=true;}
+                    //If video is not playing when it should be. Video will Resume from Pause Point
+                    if (!isPlaying){video.start();isPlaying=true;}
                     isRunning = true;
                     faceDetected = true;
                 }
@@ -131,7 +129,7 @@ public class Story extends AppCompatActivity {
             if(isRunning){
                 timeStopped = chronometer.getBase() - SystemClock.elapsedRealtime();
                 chronometer.stop();
-                /// WORK IN PROGRESS
+                //If video is playing when it shouldn't be, Video Will Pause
                 if(isPlaying){video.pause(); isPlaying=false;}
                 isRunning = false;
                 faceDetected = false;
