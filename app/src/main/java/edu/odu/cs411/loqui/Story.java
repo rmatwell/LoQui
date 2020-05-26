@@ -27,6 +27,7 @@ import com.google.android.gms.vision.face.FaceDetector;
 
 import java.io.IOException;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -37,7 +38,7 @@ public class Story extends AppCompatActivity {
     VideoView video;
     Chronometer chronometer;
     // Planning to create another Chronometer variable to determine the story time when it's both finished over time and interrupted
-    // Chronometer chronometer2;
+    //Chronometer chronometer2;
     ImageView faceDetectStatus;
     boolean isRunning;
     //Creating new Boolean Variable to determine if video is Playing
@@ -239,8 +240,23 @@ public class Story extends AppCompatActivity {
        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // TYLER'S CODE
                 Intent it = new Intent(Story.this, StoryBook.class);
                 startActivity(it);
+
+                // BEGINNING OF JOSH'S CODE
+                chronometer.stop();
+                //chronometer2.stop;
+                eyeContactTime = getSecondsFromChronometer();
+                //Toast.makeText(getApplicationContext(), Integer.toString(eyeContactTime), Toast.LENGTH_LONG).show();
+                calculateScores(duration, eyeContactTime);
+
+                //Progress Tracking and Scoring section
+                double totalRewardScore = 5.0 * (score / 100.0);
+                dbWorker.addToRewardScore(totalRewardScore);
+                dbWorker.addEyeScore(score / 100.0);
+                dbWorker.addToGoalCount(2, Math.round((int)score));
+                // END OF JOSH'S CODE
             }
 
         });
@@ -261,9 +277,10 @@ public class Story extends AppCompatActivity {
             public void onCompletion(MediaPlayer media){
                 chronometer.stop();
                 //chronometer2.stop();
-                //MIGHT COMMENT OUT GetDuration Method(),  Wait for Tyler's consent If I figure it's necessary
+                //Commenting out Call to getDuration();
                 //Setting duration variable here
                 //storyTime = getSecondsFromChronometer(Chronometer Parameter)  MIGHT ALSO EDIT getSecondsFromChronoMeter() method but also wait for Tyler's Consent
+                //duration=getSecondsFromChronometer(chronometer2);
                 eyeContactTime = getSecondsFromChronometer();
                 //Toast.makeText(getApplicationContext(), Integer.toString(eyeContactTime), Toast.LENGTH_LONG).show();
                 calculateScores(duration, eyeContactTime);
@@ -274,22 +291,6 @@ public class Story extends AppCompatActivity {
                 dbWorker.addEyeScore(score / 100.0);
                 dbWorker.addToGoalCount(2, Math.round((int)score));
             }
-            /*
-            @Override
-            public void OnBackPressed(MediaPlayer media){
-                chronometer.stop();
-                chronometer2.stop;
-                eyeContactTime = getSecondsFromChronometer();
-                //Toast.makeText(getApplicationContext(), Integer.toString(eyeContactTime), Toast.LENGTH_LONG).show();
-                calculateScores(duration, eyeContactTime);
-
-                //Progress Tracking and Scoring section
-                double totalRewardScore = 5.0 * (score / 100.0);
-                dbWorker.addToRewardScore(totalRewardScore);
-                dbWorker.addEyeScore(score / 100.0);
-                dbWorker.addToGoalCount(2, Math.round((int)score));
-            }
-             */
         });
     }
 
@@ -301,6 +302,7 @@ public class Story extends AppCompatActivity {
     }
 
     private int getSecondsFromChronometer(){
+    //private int getSecondsFromChronometer(Chronometer chronometer){
         String time = chronometer.getText().toString();
 
         String [] hourMin = time.split(":");
