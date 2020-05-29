@@ -4,6 +4,7 @@ package edu.odu.cs411.loqui;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -38,7 +39,7 @@ public class Story extends AppCompatActivity {
     VideoView video;
     Chronometer chronometer;
     // Planning to create another Chronometer variable to determine the story time when it's both finished over time and interrupted
-    //Chronometer chronometer2;
+    Chronometer chronometer2;
     ImageView faceDetectStatus;
     boolean isRunning;
     //Creating new Boolean Variable to determine if video is Playing
@@ -68,16 +69,19 @@ public class Story extends AppCompatActivity {
         else {
             video = (VideoView) findViewById(R.id.videoView);
             chronometer = findViewById(R.id.chronometer);
+            chronometer2 = findViewById(R.id.chronometer2);
             faceDetectStatus = findViewById(R.id.imageView);
             String path = "android.resource://edu.odu.cs411.loqui/" + R.raw.threelilpigs;
             Uri uri = Uri.parse(path);
             chronometer.setBase(SystemClock.elapsedRealtime());
+            chronometer2.setBase(SystemClock.elapsedRealtime());
+            chronometer2.setTextColor(Color.WHITE);
 
             video.setVideoURI(uri);
             video.requestFocus();
             video.start();
             chronometer.start();
-            //chronometer2.start();
+            chronometer2.start();
             //Setting isPlaying variable to true because the video has started
             isPlaying = true;
             isRunning = true;
@@ -85,7 +89,7 @@ public class Story extends AppCompatActivity {
             createCameraSource();
         }
         clickOnButton();
-        getDuration();
+        //getDuration();
         videoEndListener();
     }
 
@@ -246,8 +250,9 @@ public class Story extends AppCompatActivity {
 
                 // BEGINNING OF JOSH'S CODE
                 chronometer.stop();
-                //chronometer2.stop;
-                eyeContactTime = getSecondsFromChronometer();
+                chronometer2.stop();
+                duration=getSecondsFromChronometer(chronometer2);
+                eyeContactTime = getSecondsFromChronometer(chronometer);
                 //Toast.makeText(getApplicationContext(), Integer.toString(eyeContactTime), Toast.LENGTH_LONG).show();
                 calculateScores(duration, eyeContactTime);
 
@@ -276,12 +281,12 @@ public class Story extends AppCompatActivity {
             @Override
             public void onCompletion(MediaPlayer media){
                 chronometer.stop();
-                //chronometer2.stop();
+                chronometer2.stop();
                 //Commenting out Call to getDuration();
                 //Setting duration variable here
                 //storyTime = getSecondsFromChronometer(Chronometer Parameter)  MIGHT ALSO EDIT getSecondsFromChronoMeter() method but also wait for Tyler's Consent
-                //duration=getSecondsFromChronometer(chronometer2);
-                eyeContactTime = getSecondsFromChronometer();
+                duration=getSecondsFromChronometer(chronometer2);
+                eyeContactTime = getSecondsFromChronometer(chronometer);
                 //Toast.makeText(getApplicationContext(), Integer.toString(eyeContactTime), Toast.LENGTH_LONG).show();
                 calculateScores(duration, eyeContactTime);
 
@@ -301,8 +306,8 @@ public class Story extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), scoreMessage, Toast.LENGTH_LONG).show();
     }
 
-    private int getSecondsFromChronometer(){
-    //private int getSecondsFromChronometer(Chronometer chronometer){
+    //private int getSecondsFromChronometer(){
+    private int getSecondsFromChronometer(Chronometer chronometer){
         String time = chronometer.getText().toString();
 
         String [] hourMin = time.split(":");

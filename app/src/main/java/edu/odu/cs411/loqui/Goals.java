@@ -79,6 +79,23 @@ public class Goals extends AppCompatActivity
         createGoals_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /* BEGGINING OF JOSH'S IDEA OF CODE
+                // Color Set of Buttons
+                ColorStateList colorStateList = new ColorStateList(new int[][]{
+                        new int[]{android.R.attr.state_enabled},
+                        new int[]{-android.R.attr.state_enabled}},
+                        new int[]{Color.BLACK, Color.GRAY});
+
+                g_overall.setButtonTintList(colorStateList);
+                g_streak.setButtonTintList(colorStateList);
+                g_overallt.setButtonTintList(colorStateList);
+                g_percent.setButtonTintList(colorStateList);
+
+                g_overall.setEnabled(false);
+                if (g_emotion.isSelected()){g_overall.setEnabled(true);}
+                 */
+
+
                 //game type
                 int game = 0;
                 RadioButton g_emotion = (RadioButton) findViewById(R.id.emotion_game);
@@ -129,12 +146,32 @@ public class Goals extends AppCompatActivity
                 Toast.makeText(Goals.this,"You've successfully created a new Goal",Toast.LENGTH_SHORT).show();
             }
         });
+/*
+        ColorStateList colorStateList = new ColorStateList(new int[][]{
+                        new int[]{android.R.attr.state_enabled},
+                        new int[]{-android.R.attr.state_enabled}},
+                        new int[]{Color.BLACK, Color.GRAY});
 
+        RadioButton emotion = findViewById(R.id.emotion_game);
+        RadioButton eyeContact = findViewById(R.id.eye_contact_game);
+        RadioButton speechTraining = findViewById(R.id.speech_training);
+
+        RadioButton overall = findViewById(R.id.correct_overall);
         RadioButton streak = findViewById(R.id.correct_streak);
         RadioButton overallTime = findViewById(R.id.correct_overall_time);
         RadioButton percentTime = findViewById(R.id.correct_percent_time);
 
-       /* RadioButton all = findViewById(R.id.all_games);
+        overall.setEnabled(false);
+        overall.setButtonTintList(colorStateList);
+        streak.setEnabled(false);
+        overallTime.setEnabled(false);
+        percentTime.setEnabled(false);
+
+
+        if (emotion.isPressed()){overall.setEnabled(true); overall.setClickable(true);}
+
+
+       RadioButton all = findViewById(R.id.all_games);
 
         all.setOnTouchListener(new View.OnTouchListener()
         {
