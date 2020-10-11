@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "project_info": {
     "project_number": "477431818594",
@@ -46,3 +47,8 @@
   ],
   "configuration_version": "1"
 }
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:fbb6e701f122c63f1ad17cb2f61626d8c5e616ed312644fc466efd75fd15adf4
+size 1361
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

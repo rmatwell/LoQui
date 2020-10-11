@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle" android:padding="10dp"
@@ -14,3 +15,8 @@
         android:topRightRadius="15dp"
         />
 </shape>
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:3597547f8415fc9797f3102955804d60012d7cbe2272b474cc195b5dfe84c3db
+size 499
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

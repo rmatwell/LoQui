@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package edu.odu.cs411.loqui;
 
 
@@ -1042,3 +1043,8 @@ public class FirestoreWorker
                 });
     }
 }
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:8158565e7c3f3122f79c4065e8b6595069963a0c3e396afd7f5d25f628501f74
+size 46936
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

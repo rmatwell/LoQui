@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package edu.odu.cs411.loqui;
 
 import android.annotation.SuppressLint;
@@ -378,3 +379,8 @@ public class Goals extends AppCompatActivity
         return false;
     }
 }
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:b9039af97e3d38fc26bbc96df5f5199ecb3a8d946b236ce34b0110571c26b8e9
+size 14336
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

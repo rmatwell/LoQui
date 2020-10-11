@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package edu.odu.cs411.loqui;
 
 import android.content.Context;
@@ -24,3 +25,8 @@ public class ExampleInstrumentedTest {
         //assertEquals("edu.odu.cs411.loqui", appContext.getPackageName());
     }
 }
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:906339a09c11f1aaa928203d49e14f8389e1abb9c9679a4096cc5e9f98c89bd2
+size 736
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

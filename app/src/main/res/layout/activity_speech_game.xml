@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -115,3 +116,8 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:94456e5540b5cc049853a70c0d5dce63853fcba603371ef6ad799c4224ba4b07
+size 4614
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

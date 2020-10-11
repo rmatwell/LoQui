@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
@@ -168,3 +169,8 @@
         android:strokeWidth="0.8"
         android:strokeColor="#33FFFFFF" />
 </vector>
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:5b64022770a2aa5ba3d0a955024240c54bf0d26e5f96d2c5bcdadb26d271e038
+size 5606
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

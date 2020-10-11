@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package edu.odu.cs411.loqui;
 
 import android.content.Intent;
@@ -70,3 +71,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 }
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:75e29a77b9e0eaa2fcc3e2c17e92a99e699f5c650e9f3be6b34decdaeda61003
+size 2122
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

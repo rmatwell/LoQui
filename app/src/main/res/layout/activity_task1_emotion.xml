@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -88,3 +89,8 @@
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:48c338a190a07d0a6a1d75d33999aac8a0940fa392762c3adf64d15e4e7d21aa
+size 3196
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

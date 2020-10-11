@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="MyProgressBar">
@@ -16,3 +17,8 @@
     </declare-styleable>
 
 </resources>
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:fd34da4499f62c8e6d9a9b9646bc2c5a9ce7ce8ea8684774866f244ca24b73a4
+size 761
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

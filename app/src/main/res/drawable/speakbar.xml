@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <!--  res/drawable/rounded_edittext.xml -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
@@ -9,3 +10,8 @@
         android:topLeftRadius="25dp"
         android:topRightRadius="25dp"/>
 </shape>
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:9d42c3d042678168092cfa41832e6b1b52dda4cbedc13fdcf1082c03ec5c24da
+size 420
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

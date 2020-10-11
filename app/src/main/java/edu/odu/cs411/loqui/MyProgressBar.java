@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package edu.odu.cs411.loqui;
 
 import android.content.Context;
@@ -130,3 +131,8 @@ public class MyProgressBar extends LinearLayout {
         return noOfSteps;
     }
 }
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:702276f830de732760b9b4341820904e2fe5cbe6c4d8467da62cf477b23f8b20
+size 4523
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

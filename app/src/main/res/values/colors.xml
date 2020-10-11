@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
@@ -33,3 +34,8 @@
     <color name="transparent">#88000000</color>
 
 </resources>
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:5cb11dc2c7ed4eeff209eb89d3c58fe1252d451a2c98fadd3fe439a2315162b3
+size 1382
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

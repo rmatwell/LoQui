@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -49,3 +50,8 @@
 
 
 </selector>
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:c960a0457bf34f4bb7bebd7bd9d8b44636a153cfcc2d33423e2cf4cf690fc45f
+size 1035
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

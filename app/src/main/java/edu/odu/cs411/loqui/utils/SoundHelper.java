@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package edu.odu.cs411.loqui.utils;
 
 import android.app.Activity;
@@ -99,3 +100,8 @@ public class SoundHelper {
 
 }
 
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:10c26c282d90422de47578b42ab3d8fa3cab8f67a1774642cdc800c2f9ef3f16
+size 3278
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8
