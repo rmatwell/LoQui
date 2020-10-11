@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:fontProviderAuthority="com.google.android.gms.fonts"
+        app:fontProviderPackage="com.google.android.gms"
+        app:fontProviderQuery="Schoolbell"
+        app:fontProviderCerts="@array/com_google_android_gms_fonts_certs">
+</font-family>
+=======
 version https://git-lfs.github.com/spec/v1
 oid sha256:8d2216aed3e4f5eddc94e1750ec19e22b0b3cd5393ecd468d4079160a39ea0e9
 size 359
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

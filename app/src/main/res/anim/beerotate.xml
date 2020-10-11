@@ -1,3 +1,21 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="utf-8"?>
+<set android:shareInterpolator="false"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <rotate
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+        android:duration="3000"
+        android:fromDegrees="0"
+        android:toDegrees="360"
+        android:pivotX="50%"
+        android:pivotY="50%" />
+
+
+
+</set>
+=======
 version https://git-lfs.github.com/spec/v1
 oid sha256:2462083d66c1c9bf952c3dc70bf215a861e1af4dae566f465d72f703f3dbe4b5
 size 401
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

@@ -1,3 +1,41 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gray">#5b5b5b</color>
+    <color name="colorPrimary2">#008577</color>
+    <color name="colorPrimaryDark2">#00574B</color>
+    <color name="colorAccent2">#FFF173</color>
+    <color name="babyblueback">#CDEEF3</color>
+    <color name="purpleText">#420ED6</color>
+    <color name="pinkBack">#FFCAEA</color>
+    <color name="beige">#FACA91</color>
+    <color name="popup_background">#DD1F2833</color>
+    <color name="meaningBackground">#FFFFFF</color>
+    <color name="floatingButton">#ab47bc</color>
+    <color name="searchBackground">#FF9800</color>
+    <!-- Demo colors -->
+    <color name="turquoise_medium">#FF4ECDC4</color>
+    <color name="golden_tainoi">#FFFFBD55</color>
+    <color name="crusta">#FFFB8A61</color>
+    <color name="blue">#FF20A7C7</color>
+    <color name="orange">#fffaaa00</color>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="grey">#757171</color>
+    <color name="backgroundColor">#3E454F</color>
+    <color name="lightGreen">#8BC34A</color>
+    <color name="green">#008000</color>
+    <color name="red">#FF0000</color>
+
+    <color name="transparent">#88000000</color>
+
+</resources>
+=======
 version https://git-lfs.github.com/spec/v1
 oid sha256:5cb11dc2c7ed4eeff209eb89d3c58fe1252d451a2c98fadd3fe439a2315162b3
 size 1382
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

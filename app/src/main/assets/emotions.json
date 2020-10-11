@@ -1,3 +1,36 @@
+<<<<<<< HEAD
+{
+"emotions":[
+	{
+		"picture": "bored",
+		"content": "When someone reads you a long story you don't like, you feel bored!"
+	},
+	{
+		"picture": "happy",
+		"content": "When you get what you want, you feel happy!"
+	},
+	{
+		"picture": "scared",
+		"content": "When something spooks you, you get scared!"
+	},
+	{
+		"picture": "sad",
+		"content": "When you lose something, you feel sad!"
+	},
+	{
+		"picture": "surprised",
+		"content": "When you see something unexpected, you feel surprised!"
+	},
+	{
+		"picture": "angry",
+		"content": "When something you don’t like happens, you feel angry!"
+	}
+]
+}
+
+
+=======
 version https://git-lfs.github.com/spec/v1
 oid sha256:ee3387cf81baa2f925d9fc48f731f7902e6782ae4b4a76a386ef8b8e70858f87
 size 593
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

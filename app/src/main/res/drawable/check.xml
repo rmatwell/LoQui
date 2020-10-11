@@ -1,3 +1,38 @@
+<<<<<<< HEAD
+<animated-vector xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    tools:targetApi="lollipop_mr1">
+    <aapt:attr name="android:drawable">
+        <vector
+            android:name="vector"
+            android:width="85dp"
+            android:height="64dp"
+            android:viewportWidth="85"
+            android:viewportHeight="64">
+            <path
+                android:name="done"
+                android:pathData="M 3.536 27.097 L 30.258 53.819 L 80.541 3.536"
+                android:strokeColor="@color/colorPrimary"
+                android:strokeWidth="11"
+                android:trimPathEnd="0"/>
+        </vector>
+    </aapt:attr>
+    <target android:name="done">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:propertyName="trimPathEnd"
+                android:duration="600"
+                android:valueFrom="0"
+                android:valueTo="1"
+                android:valueType="floatType"
+                android:interpolator="@android:interpolator/fast_out_slow_in"/>
+        </aapt:attr>
+    </target>
+</animated-vector>
+
+=======
 version https://git-lfs.github.com/spec/v1
 oid sha256:295a0a1ae57835813a9ad660269e0f6bf06504013b3be11066c214d350c32573
 size 1211
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

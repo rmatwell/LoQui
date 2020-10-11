@@ -1,3 +1,25 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#62def8">
+
+    <TextView
+        android:id="@+id/rewardwindow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:text="sample text"
+        android:textSize="22sp" />
+
+</RelativeLayout>
+=======
 version https://git-lfs.github.com/spec/v1
 oid sha256:b6cc354b57c5f0b3a586d90819786fe35d330f0cd3f8d57f1d96937de985e5c4
 size 670
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

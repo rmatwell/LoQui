@@ -1,3 +1,86 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="edu.odu.cs411.loqui">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.hardware.camera2.full" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/logo_noshadow"
+        android:label="LoQui"
+        android:roundIcon="@mipmap/logo_noshadow"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <service
+            android:name=".MusicActivity"
+            android:enabled="true" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="edu.odu.cs411.loqui.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".RegistrationActivity" />
+        <activity android:name=".SplashScrActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".SpeechGame" android:exported="true"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity android:name=".PWresetActivity" />
+        <activity android:name=".UserProfile"/>
+        <activity android:name=".Story" android:exported="true" />
+        <activity android:name=".Homepage" android:exported="true"/>
+        <activity android:name=".Homepage2"/>
+        <activity android:name=".Task1" />
+        <activity android:name=".StoryBook"/>
+        <activity android:name=".Goals"/>
+        <activity android:name=".Avatars"/>
+        <activity android:name=".Task3_question" />
+        <activity android:name=".Task3_success" />
+        <activity android:name=".Task1_1" />
+        <activity android:name=".RewardsActivity"/>
+        <activity android:name=".MusicActivity"/>
+        <activity android:name=".ProgressActivity"/>
+        <activity android:name=".ParentPortalActivity"/>
+        <activity android:name=".MonthlyProgressActivity" android:exported="true"/>
+        <activity android:name=".MonthlySpeechProgressActivity" android:exported="true"/>
+        <activity android:name=".MonthlyEyeProgressActivity" android:exported="true"/>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <meta-data
+            android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+            android:value="face" />
+
+        <activity android:name=".Task1_emotion" />
+        <activity android:name=".IntroPage" />
+    </application>
+
+</manifest>
+=======
 version https://git-lfs.github.com/spec/v1
 oid sha256:676c0e013cd6475f5da100fbbbcf2f0b773c18e78d3bed9fad6ca30bdca1004a
 size 3593
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

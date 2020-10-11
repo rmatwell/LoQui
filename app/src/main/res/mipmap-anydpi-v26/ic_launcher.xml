@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@drawable/ic_launcher_background" />
+    <foreground android:drawable="@drawable/ic_launcher_foreground" />
+</adaptive-icon>
+=======
 version https://git-lfs.github.com/spec/v1
 oid sha256:993b38e238eaf485eca875727e0a128293d612a52e20ea8e2ef84a15493bb06e
 size 272
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

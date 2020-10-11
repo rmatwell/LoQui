@@ -1,3 +1,149 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Story">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/ll0"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.9"
+            android:background="#FFCAEA"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="@color/white"
+                android:fontFamily="@font/schoolbell"
+                android:gravity="center"
+                android:text="The Three Little Pigs"
+                android:textAlignment="center"
+                android:textColor="#3F51B5"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                tools:ignore="NestedWeights" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                android:layout_weight="0.8"
+                android:background="#F02E8B" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.13"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.3"
+                android:orientation="vertical"
+                tools:ignore="NestedWeights">
+
+
+                <VideoView
+                    android:id="@+id/videoView"
+                    android:layout_width="407dp"
+                    android:layout_height="460dp"
+                    android:layout_marginBottom="108dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.485"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="2dp" />
+
+                <Button
+                    android:id="@+id/back"
+                    android:layout_width="204dp"
+                    android:layout_height="86dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/back"
+                    android:fontFamily="@font/schoolbell"
+                    android:textColor="#3F51B5"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <Chronometer
+                    android:id="@+id/chronometer"
+                    android:layout_width="114dp"
+                    android:layout_height="47dp"
+                    android:layout_marginStart="65dp"
+                    android:layout_marginEnd="46dp"
+                    android:layout_marginBottom="28dp"
+                    android:fontFamily="@font/schoolbell"
+                    android:textAlignment="center"
+                    android:textColor="#3F51B5"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/back" />
+
+                <Chronometer
+                    android:id="@+id/chronometer2"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginBottom="0dp"
+                    android:fontFamily="@font/schoolbell"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/back" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="81dp"
+                    android:layout_height="81dp"
+                    android:background="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/videoView"
+                    app:srcCompat="@drawable/checkmark" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="20dp" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+=======
 version https://git-lfs.github.com/spec/v1
 oid sha256:edc3ee2426979fd43550652a3728ef0bc670fde8b68a330589505dc72df372c8
 size 6037
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

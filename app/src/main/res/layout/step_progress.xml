@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:id="@+id/ll_step_progress"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content"></LinearLayout>
+=======
 version https://git-lfs.github.com/spec/v1
 oid sha256:310a982b9c7520bf1deb0e5eddf60c70c29cc4ff4ddf3fe30055a2c3f29910de
 size 313
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+</paths>
+
+=======
 version https://git-lfs.github.com/spec/v1
 oid sha256:e1e006aca9a97bf9dd3759e26135dd121244c6f7a010bddfb71cccc3866cca2c
 size 116
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

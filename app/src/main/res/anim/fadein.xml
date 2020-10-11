@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+<translate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:toXDelta="0%p" android:toYDelta="0%p"
+    android:fromXDelta="50%p" android:fromYDelta="50%p"
+    android:duration="1000"
+    android:fillAfter="true" />
+=======
 version https://git-lfs.github.com/spec/v1
 oid sha256:e8210af219d316e647e42a75f041efa8f9b4b9c554b97a3c1dc63d1981c79f69
 size 235
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

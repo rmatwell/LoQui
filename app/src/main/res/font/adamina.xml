@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:fontProviderAuthority="com.google.android.gms.fonts"
+        app:fontProviderPackage="com.google.android.gms"
+        app:fontProviderQuery="Adamina"
+        app:fontProviderCerts="@array/com_google_android_gms_fonts_certs">
+</font-family>
+=======
 version https://git-lfs.github.com/spec/v1
 oid sha256:67114594dacbecb018c36d3c1c0c93b3aba1aa2ef6282f28e233d2065a463204
 size 356
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

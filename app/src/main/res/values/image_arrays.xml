@@ -1,3 +1,24 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="speechImages">
+        <item>@drawable/frog</item>
+        <item>@drawable/truck</item>
+        <item>@drawable/house</item>
+        <item>@drawable/moon</item>
+        <item>@drawable/milk</item>
+        <item>@drawable/cow</item>
+        <item>@drawable/bird</item>
+        <item>@drawable/dog</item>
+        <item>@drawable/cat</item>
+        <item>@drawable/plane</item>
+        <item>@drawable/ball</item>
+        <item>@drawable/shoe</item>
+
+    </array>
+</resources>
+=======
 version https://git-lfs.github.com/spec/v1
 oid sha256:5f488d57d273829237589b4ca9d569621b89f9d284514f09306e9e1251995bac
 size 541
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

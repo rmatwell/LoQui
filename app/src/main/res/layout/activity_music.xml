@@ -1,3 +1,82 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MusicActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:id="@+id/audio_back_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_backarrow_purple"
+            android:layout_marginTop="10dp"/>
+
+        <ImageView
+            android:src="@drawable/ic_sound_purple"
+            android:id="@+id/music"
+            android:layout_centerInParent="true"
+            android:layout_width="200dp"
+            android:layout_height="200dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Music"
+            android:textSize="34sp"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+    <RadioGroup
+        android:layout_weight="5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/radioGroup">
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:text="On"
+            android:textSize="25sp"
+            android:id="@+id/song_on"
+            android:padding="25dp"/>
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:text="Off"
+            android:textSize="25sp"
+            android:id="@+id/song_off"
+            android:padding="25dp"/>
+
+
+
+    </RadioGroup>
+
+
+</LinearLayout>
+=======
 version https://git-lfs.github.com/spec/v1
 oid sha256:b22612c4052a564f29108e7efe366feb1025ba1c25aa9657f97dbd660b2f350e
 size 2370
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

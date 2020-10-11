@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+<vector android:height="64dp" android:viewportHeight="24"
+    android:viewportWidth="24" android:width="64dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#000000" android:pathData="M12,5.69l5,4.5V18h-2v-6H9v6H7v-7.81l5,-4.5M12,3L2,12h3v8h6v-6h2v6h6v-8h3L12,3z"/>
+</vector>
+=======
 version https://git-lfs.github.com/spec/v1
 oid sha256:8f899a7162894f45f3123e2b6c9bb88cd4c59cb34db984b76734dd25c8b8744f
 size 318
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

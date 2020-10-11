@@ -1,3 +1,24 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MyProgressBar">
+        <attr name="completeColor" format="color" />
+        <attr name="waitingColor" format="color" />
+        <attr name="noOfSteps" format="integer" />
+    </declare-styleable>
+
+    <!-- Declare custom theme attributes that allow changing which styles are
+         used for button bars depending on the API level.
+         ?android:attr/buttonBarStyle is new as of API 11 so this is
+         necessary to support previous API levels. -->
+    <declare-styleable name="ButtonBarContainerTheme">
+        <attr name="metaButtonBarStyle" format="reference" />
+        <attr name="metaButtonBarButtonStyle" format="reference" />
+    </declare-styleable>
+
+</resources>
+=======
 version https://git-lfs.github.com/spec/v1
 oid sha256:fd34da4499f62c8e6d9a9b9646bc2c5a9ce7ce8ea8684774866f244ca24b73a4
 size 761
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

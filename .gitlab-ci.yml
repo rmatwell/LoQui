@@ -1,3 +1,49 @@
+<<<<<<< HEAD
+image: commit451/android-sdk-installer:latest
+
+before_script:
+  - android-sdk-installer
+
+stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  script:
+    - chmod a+x ./gradlew
+    - ./gradlew --no-daemon assembleDebug
+
+test:
+  stage: test
+  script:
+    - chmod a+x ./gradlew
+    - ./gradlew --no-daemon lint testDebug
+  artifacts:
+    when: always
+    paths:
+      - app/build/reports/
+    expire_in: 15 days
+
+pages:
+  stage: deploy
+  dependencies:
+    - test
+  allow_failure: true
+  before_script:
+  - echo "Overide global before_script and don't do anything."
+  script:
+    - mkdir -p public/tests
+    - cp -r app/build/reports/ public/reports
+  artifacts:
+    paths:
+      - public
+  when: always
+  only:
+    - develop
+=======
 version https://git-lfs.github.com/spec/v1
 oid sha256:7e17dc1b186ecd677f12c4a8e1f57d526d131e2244067fcfe79da3b5258474c2
 size 732
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

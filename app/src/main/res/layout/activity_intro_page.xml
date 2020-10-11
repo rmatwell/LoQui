@@ -1,3 +1,110 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".IntroPage">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/ll0"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.9"
+            android:background="#FFCAEA"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="@color/white"
+                android:fontFamily="@font/schoolbell"
+                android:gravity="center"
+                android:text="Emotion Quest"
+                android:textAlignment="center"
+                android:textColor="#3F51B5"
+                android:textSize="36sp"
+                android:textStyle="bold" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                android:layout_weight="0.8"
+                android:background="#F02E8B" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.13"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.3"
+                android:orientation="vertical">
+
+
+                <VideoView
+                    android:id="@+id/videoView"
+                    android:layout_width="403dp"
+                    android:layout_height="484dp"
+                    android:layout_marginBottom="108dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.485"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="5dp" />
+
+                <Button
+                    android:id="@+id/back"
+                    android:layout_width="204dp"
+                    android:layout_height="86dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/back"
+                    android:fontFamily="@font/schoolbell"
+                    android:textColor="#3F51B5"
+                    android:textSize="25dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <Button
+                    android:id="@+id/next"
+                    android:layout_width="205dp"
+                    android:layout_height="83dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/next"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+=======
 version https://git-lfs.github.com/spec/v1
 oid sha256:05a9f1350d708c0244178eaab1db93d2fa6705d3c70af2ced7ab1336fb4f60de
 size 4158
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

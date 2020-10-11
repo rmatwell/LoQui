@@ -1,3 +1,199 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Goals">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/goals_back_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_backarrow_purple"
+            android:layout_marginTop="10dp"/>
+
+        <ImageView
+            android:id="@+id/goals"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_star" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Goals"
+            android:textSize="34sp"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6">
+
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="40dp"
+            android:text="Select Game"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="40dp"
+            android:text="Select Goal Type"
+            android:textStyle="bold"/>
+
+        <RadioGroup
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="40dp">
+
+            <RadioButton
+                android:id="@+id/emotion_game"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Emotion Game" />
+
+            <RadioButton
+                android:id="@+id/eye_contact_game"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Eye Contact Game" />
+
+            <RadioButton
+                android:id="@+id/speech_training"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Speech Training" />
+            <!--
+            <RadioButton
+                android:id="@+id/all_games"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="All Games"/>
+            -->
+        </RadioGroup>
+
+        <RadioGroup
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="30dp">
+
+            <RadioButton
+                android:id="@+id/correct_overall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Overall Correct" />
+
+            <RadioButton
+                android:id="@+id/correct_streak"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Streak Correct" />
+
+            <RadioButton
+                android:id="@+id/correct_overall_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Overall Correct w/Time" />
+
+            <RadioButton
+                android:id="@+id/correct_percent_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Percent Correct w/Time" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="220dp"
+            android:text="Enter amount or percent for correct answers." />
+
+        <EditText
+            android:id="@+id/amount_correct"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="220dp"
+            android:layout_marginEnd="50dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="320dp"
+            android:text="Enter the amount of time in seconds." />
+
+        <EditText
+            android:id="@+id/time"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="320dp"
+            android:layout_marginEnd="50dp"
+            android:ems="10"
+            android:inputType="number" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/create_goal"
+            android:layout_width="300dp"
+            android:layout_height="400dp"
+            android:backgroundTint="#31DA0D"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="20dp"
+            android:text="Create Goal" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>
+=======
 version https://git-lfs.github.com/spec/v1
 oid sha256:aab8b32486a0035ae1ddb85f479575442ad68e73a36be3b209c0d37724793f3e
 size 6643
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

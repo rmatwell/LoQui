@@ -1,3 +1,42 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/emotion2"
+    tools:context=".Task2">
+
+    <Button
+        android:id="@+id/back2_1"
+        style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+        android:layout_width="146dp"
+        android:layout_height="77dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/back"
+        android:textColor="#FFFFFF"
+        android:textColorLink="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/b2_2"
+        style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+        android:layout_width="197dp"
+        android:layout_height="109dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/next"
+        android:textColor="#F8F8FA"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+=======
 version https://git-lfs.github.com/spec/v1
 oid sha256:dd1ce454df62c8a4b9778c89d44d7d19277ec3f4cd74a32906c6b4197cbfb781
 size 1495
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8
