@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -185,3 +186,8 @@
     </ScrollView>
 
 </RelativeLayout>
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:ce4bb2ecbbbb4dbf48ace8a01551fdd727a42e969be98bf284b76948ae3fda7c
+size 7443
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

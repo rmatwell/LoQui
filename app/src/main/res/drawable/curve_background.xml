@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape android:shape="rectangle"/>
@@ -17,3 +18,8 @@
         </shape>
     </item>
 </layer-list>
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:200f08b62e764e07434b9210967b684e4f13953f666107709f9d996b62641bae
+size 602
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

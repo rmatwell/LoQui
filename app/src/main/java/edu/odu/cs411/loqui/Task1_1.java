@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package edu.odu.cs411.loqui;
 
 import android.content.Intent;
@@ -197,3 +198,8 @@ public class Task1_1 extends AppCompatActivity {
         return json;
     }
 }
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:44d162aa0a1a8f52649bb6aec7e4f7b001a028755ff1289f2895dc3cde9367aa
+size 7463
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

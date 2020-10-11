@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
         android:width="30dp"
         android:height="30dp"
@@ -7,3 +8,8 @@
         android:fillColor="@color/colorPrimary"
         android:pathData="M8,5v14l11,-7z"/>
 </vector>
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:dfeeb2457b1db985b3f2f7fbbfecb29b67a792fc4d82062965020d229a797287
+size 314
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

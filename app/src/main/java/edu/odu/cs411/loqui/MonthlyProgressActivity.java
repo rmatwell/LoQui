@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package edu.odu.cs411.loqui;
 
 import lecho.lib.hellocharts.view.LineChartView;
@@ -140,3 +141,8 @@ public class MonthlyProgressActivity extends AppCompatActivity
         }.start();
     }
 }
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:9e5e2c1a109e8e616f16dfbbac0343951b5ff7dbab979ed8978525229f632957
+size 4958
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

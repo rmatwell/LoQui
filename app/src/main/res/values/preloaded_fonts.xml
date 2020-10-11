@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
@@ -6,3 +7,8 @@
         <item>@font/schoolbell</item>
     </array>
 </resources>
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:00781cc9743a36ea631444564ba53f89c8bbfe7b38a641f2ea037ceaa6bb616e
+size 245
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 debug: true
 components:
   - build-tools;29.0.0
   - platforms;android-29
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:76d22861fd564f302d9fe9d372fde2e6ca587e4cf799ada435235e93798dc444
+size 71
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

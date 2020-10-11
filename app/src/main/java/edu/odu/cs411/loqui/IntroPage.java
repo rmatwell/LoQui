@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package edu.odu.cs411.loqui;
 
 
@@ -56,3 +57,8 @@ public class IntroPage extends AppCompatActivity {
 
     }
 }
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:025ce4359997d0f57602b6b0ec07c8e22ecd233ce19e42f2cbd439063b32a7c0
+size 1739
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

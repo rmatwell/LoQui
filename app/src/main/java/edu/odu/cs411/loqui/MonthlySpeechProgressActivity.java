@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package edu.odu.cs411.loqui;
 
 import android.graphics.Color;
@@ -140,3 +141,8 @@ public class MonthlySpeechProgressActivity extends AppCompatActivity
         }.start();
     }
 }
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:a3d2b730ade877a4bd60397547d62b489e497b2def4fcd2d446d778acafb7a92
+size 4962
+>>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8
