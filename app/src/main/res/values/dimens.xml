@@ -1,11 +1,5 @@
-<<<<<<< HEAD
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 </resources>
-=======
-version https://git-lfs.github.com/spec/v1
-oid sha256:cca11cdbc1aaa8ff649c496469963f27150695f16fe0dcc558eacd6e7fc30c69
-size 211
->>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <shape android:shape="rectangle" xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -6,8 +5,3 @@
     <stroke android:color="#000" android:width="0.5dp"/>
 
 </shape>
-=======
-version https://git-lfs.github.com/spec/v1
-oid sha256:6e293a6aac8b8d1582926ae65d76e8f476da7bd0c9e9f204b632c6466e2e06b2
-size 233
->>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

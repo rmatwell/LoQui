@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package edu.odu.cs411.loqui;
 
 
@@ -62,8 +61,3 @@ public class Avatars extends AppCompatActivity {
     }
 
 }
-=======
-version https://git-lfs.github.com/spec/v1
-oid sha256:f5ff7a509a639e51197d070bfbf8124fdaa3fd207a2b85f0048b406f5f3f110b
-size 2004
->>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

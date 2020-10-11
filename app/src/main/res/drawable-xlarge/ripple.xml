@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
     android:color="@android:color/darker_gray">
@@ -9,8 +8,3 @@
         <color android:color="@color/white"/>
     </item>
 </ripple>
-=======
-version https://git-lfs.github.com/spec/v1
-oid sha256:493bbd2e9659d58bc057360aadb34a2ee05f08b6d4a6eabf0049a5529a0c2ee5
-size 375
->>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -79,8 +78,3 @@
         tools:srcCompat="@tools:sample/avatars[11]" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-=======
-version https://git-lfs.github.com/spec/v1
-oid sha256:1173f99fe5455aef01a4786dcbefc701bb03d346ae6a000606fe21bdec734896
-size 3108
->>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

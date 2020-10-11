@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="com_google_android_gms_fonts_certs">
@@ -16,8 +15,3 @@
         </item>
     </string-array>
 </resources>
-=======
-version https://git-lfs.github.com/spec/v1
-oid sha256:da8691b43b0b188e2a4eb0b9e70a141a1224c7b04a999ffb8ac2e2bf00b108ba
-size 3581
->>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

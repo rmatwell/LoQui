@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -20,8 +19,3 @@
 
 
 </RelativeLayout>
-=======
-version https://git-lfs.github.com/spec/v1
-oid sha256:707dbdbb60f1556be32d9de0cd9ba732f8e8501d98b1159816dacac0d903527b
-size 656
->>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

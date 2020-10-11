@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package edu.odu.cs411.loqui;
 
 import android.graphics.Color;
@@ -141,8 +140,3 @@ public class MonthlyEyeProgressActivity extends AppCompatActivity
         }.start();
     }
 }
-=======
-version https://git-lfs.github.com/spec/v1
-oid sha256:eef731d732177c028e1706cff70270c873500f33d23891c455703e8e6ac7a496
-size 5035
->>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -297,8 +296,3 @@
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
-=======
-version https://git-lfs.github.com/spec/v1
-oid sha256:bda5de41e5d0cebc58717b00e79121c19720d4456a9ecc04c91166e3912c45dc
-size 11717
->>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

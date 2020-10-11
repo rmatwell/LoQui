@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package edu.odu.cs411.loqui;
 
 import android.content.Intent;
@@ -31,8 +30,3 @@ public class GoalsActivity extends AppCompatActivity {
         });
     }
 }
-=======
-version https://git-lfs.github.com/spec/v1
-oid sha256:25220e77f3700319e5d66672e14c79a4c9b9ab49a87526edab3503bc8377956a
-size 922
->>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

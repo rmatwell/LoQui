@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
@@ -10,8 +9,3 @@
         android:layout_height="match_parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-=======
-version https://git-lfs.github.com/spec/v1
-oid sha256:1ebabc75ccbb6c3495399df6ba5ba687ee4603e2b6957cea852588cb13030e3b
-size 455
->>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

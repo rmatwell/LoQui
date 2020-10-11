@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 apply plugin: 'com.android.application'
 
 android {
@@ -64,8 +63,3 @@ dependencies {
 }
 
 apply plugin: 'com.google.gms.google-services'
-=======
-version https://git-lfs.github.com/spec/v1
-oid sha256:4d01800580dc9693a5713b2d1870733ff2d345483a391105d26a6d30fe3d5051
-size 2562
->>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

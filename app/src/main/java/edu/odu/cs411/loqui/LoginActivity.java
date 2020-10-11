@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package edu.odu.cs411.loqui;
 
 import android.Manifest;
@@ -164,8 +163,3 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 }
-=======
-version https://git-lfs.github.com/spec/v1
-oid sha256:e73870ec9857dd766a05092165bfefdef827f452a475238b4d08d2bcba08ed6b
-size 5459
->>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8

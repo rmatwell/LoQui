@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package edu.odu.cs411.loqui;
 
 import android.content.Intent;
@@ -149,8 +148,3 @@ public class Homepage extends AppCompatActivity {
 
 }
 
-=======
-version https://git-lfs.github.com/spec/v1
-oid sha256:15000db2113b0c3ef19a0acd52c3f2b95d846e821a08dd94eeb7c4ec7402ec53
-size 4551
->>>>>>> 69b172438de57648718503ac42d98caad0ea5cf8
